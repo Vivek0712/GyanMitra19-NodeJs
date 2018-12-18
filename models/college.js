@@ -8,10 +8,14 @@ const CollegeSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    locale: {
         type: String,
         required: true
     }
 });
 CollegeSchema.plugin(pagination);
 const College = module.exports = mongoose.model('College', CollegeSchema);
+
+module.exports.getAllColleges = (page, callback) => {
+    College.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}
