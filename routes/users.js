@@ -37,15 +37,9 @@ router.get('/', function(req, res, next) {
         }
 
     });
-    /*   User.getAllUsers(page, (err, docs) => {
-         console.log('hello');
-         if (!err) {
-             res.send(docs);
-         } else {
-             res.json({ error: true, msg: err });
-         }
-     });*/
 });
+
+//Read All Users
 router.get('/read', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
     User.getAllUsers(page, (err, docs) => {

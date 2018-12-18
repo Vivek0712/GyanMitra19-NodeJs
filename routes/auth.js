@@ -28,7 +28,6 @@ router.post('/authenticate', (req, res, next) => {
                     user: {
                         id: user._id,
                         name: user.name,
-                        roll_number: user.roll_number,
                         email_id: user.email_id,
                         type: user.type
                     },
@@ -41,12 +40,9 @@ router.post('/authenticate', (req, res, next) => {
     });
 });
 
-
-
-
-
-
-
-
+// Get Current User Profile
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    res.json({ profile: req.user, success: true });
+});
 
 module.exports = router;

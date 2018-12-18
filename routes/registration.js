@@ -4,6 +4,9 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const User = require('../models/user');
+
+
+
 //Create Registration User
 router.post('/create', (req, res, next) => {
     let newUser = new User({
@@ -45,5 +48,6 @@ router.get('/', function(req, res, next) {
 
     });
 });
+
 
 module.exports = router;
