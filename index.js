@@ -16,16 +16,9 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
     console.log('Database error ' + err);
 });
-//Routes Starts
 const app = express();
 const users = require('./routes/users');
-
-
-app.use('/users', users);
-
-//Routes End
-
-
+const registration = require('./routes/registration');
 //Running Port
 const port = 3000;
 
@@ -43,7 +36,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport')(passport);
-
+app.use('/users', users);
+app.use('/registration', registration);
 
 // Index Route
 app.get('/', (req, res) => {
@@ -58,3 +52,10 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log('Server started on port ' + port);
 });
+
+//Routes Starts
+
+
+
+
+//Routes End

@@ -24,11 +24,9 @@ const UserSchema = mongoose.Schema({
     },
     gender: {
         type: String,
-        required: true
     },
     mobile_number: {
         type: String,
-        required: true
     },
     confirmed: {
         type: Boolean
@@ -55,7 +53,9 @@ const User = module.exports = mongoose.model('User', UserSchema);
 module.exports.getAllUsers = (page, callback) => {
     User.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
-
+module.exports.findUser = (page, type, callback) => {
+    User.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}
 module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
