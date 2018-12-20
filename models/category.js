@@ -18,3 +18,4 @@ const Category = module.exports = mongoose.model('Category', CategorySchema);
 module.exports.getAllCategories = (page, callback) => {
     Category.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
+const Category = module.exports = mongoose.model('Category', CategorySchema);

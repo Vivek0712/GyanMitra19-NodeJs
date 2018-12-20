@@ -32,6 +32,7 @@ const degree = require('./routes/degree');
 const department = require('./routes/department');
 const event = require('./routes/event');
 
+const roleUser = require('./routes/role_user');
 //Routes
 
 //Running Port

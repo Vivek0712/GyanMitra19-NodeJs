@@ -18,3 +18,4 @@ const Department = module.exports = mongoose.model('Department', DepartmentSchem
 module.exports.getAllDepartments = (page, callback) => {
     Department.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
+const Department = module.exports = mongoose.model('Department', DepartmentSchema);

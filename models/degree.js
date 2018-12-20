@@ -18,3 +18,4 @@ const Degree = module.exports = mongoose.model('Degree', DegreeSchema);
 module.exports.getAllDegrees = (page, callback) => {
     Degree.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
+const Degree = module.exports = mongoose.model('Degree', DegreeSchema);
