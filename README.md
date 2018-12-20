@@ -1,10 +1,10 @@
 # GyanMitra19-NodeJs
 
 # Unfinished Routes
- > Category
- > Degree
- > Department
- > Event
+ > Category => Completed
+ > Degree => Completed
+ > Department => Completed
+ > Event => Completed
  > Payment - Hold
  > Team_Member
  > Team
