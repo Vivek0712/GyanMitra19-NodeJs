@@ -6,5 +6,5 @@
  > Department => Completed
  > Event => Completed
  > Payment - Hold
- > Team_Member
- > Team
+ > Team_Member => Completed
+ > Team => Completed

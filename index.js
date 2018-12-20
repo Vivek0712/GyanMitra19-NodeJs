@@ -31,8 +31,9 @@ const category = require('./routes/category');
 const degree = require('./routes/degree');
 const department = require('./routes/department');
 const event = require('./routes/event');
-
 const roleUser = require('./routes/role_user');
+const team_member = require('./routes/team_member');
+const team = require('./routes/team');
 //Routes
 
 //Running Port
@@ -69,6 +70,8 @@ app.use('/event',event);
 app.use('/department',department);
 app.use('/degree',degree);
 app.use('/category',category);
+app.use('/team_member',team_member);
+app.use('/tean',team);
 //Routes Ends
 
 

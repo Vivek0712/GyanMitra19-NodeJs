@@ -15,3 +15,9 @@ const TeamMemberSchema = mongoose.Schema({
 });
 TeamMemberSchema.plugin(pagination);
 const TeamMember = module.exports = mongoose.model('TeamMember', TeamMemberSchema);
+
+//Modified By : Aravind Raj
+//Added Pagination for team_members
+module.exports.getAllTeamMembers = (page, callback) => {
+    TeamMember.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}
