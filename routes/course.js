@@ -45,10 +45,10 @@ router.get('/', function(req, res, next) {
 // Date : 20-December-2018
 router.put('/:course_name', (req, res) => {
     if (!ObjectId.isValid(req.params.course_name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.course_name}`);
 
     var course = {
-        name: req.body.name
+        name: req.params.course_name
     };
     Course.findByIdAndUpdate({name : req.params.course_name}, { $set: course }, { new: true }, (err, doc) => {
         if (!err) {
@@ -66,7 +66,7 @@ router.delete('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.name))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
-    Accomodation.findByIdAndRemove({ name: req.params.name}, (err, doc) => {
+    Course.findByIdAndRemove({ name: req.params.name}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Accommodation Cancelled' });
         } else {
