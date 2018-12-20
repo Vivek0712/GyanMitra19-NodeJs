@@ -1,6 +1,6 @@
 //Created By : Aravind 
 //Added Routes for Accommodation
-//Date : 20-December-2018
+// Date : 20-December-2018
 
 const express = require('express');
 const router = express.Router();
@@ -8,6 +8,9 @@ const config = require('../config/env');
 const Accomodation = require('../models/accommodation');
 var ObjectId = require('mongoose').Types.ObjectId;
 
+// Creates a new Accommodation
+// Created By : Aravind S
+// Date : 20-December-2018
 router.post('/create' , (req,res, next)=>{
     let newAccommodation = new Accomodation({
         acc__transaction_id: req.body.acc__transaction_id,
@@ -27,27 +30,51 @@ router.post('/create' , (req,res, next)=>{
     });
 });
 
-// router.get('/', function(req, res, next) {
-//     let page = req.query.page ? req.query.page : 1;
+// Returns a pagination of all Accommodations
+// Created By : Aravind S
+// Date : 20-December-2018
+router.get('/', function(req, res, next) {
+    let page = req.query.page ? req.query.page : 1;
 
-//     College.getAllColleges(page, (err, docs) => {
-//         if (!err) {
-//             res.send(docs);
-//         } else {
-//             res.json({ error: true, msg: err });
-//         }
-//     });
-// });
+    Accomodation.getAllAccommodations(page, (err, docs) => {
+        if (!err) {
+            res.send(docs);
+        } else {
+            res.json({ error: true, msg: err });
+        }
+    });
+});
 
+// Confirms Payment for user once paid
+// Created By : Aravind S
+// Date : 20-December-2018
+router.put('confirmPayment/:user_id', (req, res) => {
+    if (!ObjectId.isValid(req.params.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
 
-router.put('confirm/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    var accommodation = {
+        acc_Accommodation_status: 'Payment Confirmed'
+    };
+    Accomodation.findByIdAndUpdate({user_id : req.body.user_id}, { $set: accommodation }, { new: true }, (err, doc) => {
+        if (!err) {
+            res.json({ error: false, msg: "Payment Confirmed" });
+        } else {
+            res.json({ error: true, msg: "Failed to Confirm Payment : " + err });
+        }
+    });
+})
+
+// Confirm Accommodation by Admin
+// Created By : Aravind S
+// Date : 20-December-2018
+router.put('confirmAccommodation/:user_id', (req, res) => {
+    if (!ObjectId.isValid(req.params.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
 
     var accommodation = {
         acc_status: 'Confirmed'
     };
-    College.findByIdAndUpdate(req.params.id, { $set: accommodation }, { new: true }, (err, doc) => {
+    Accomodation.findByIdAndUpdate({user_id : req.body.user_id}, { $set: accommodation }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Accommodation Confirmed" });
         } else {
@@ -56,11 +83,14 @@ router.put('confirm/:id', (req, res) => {
     });
 })
 
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+// Cancels an Accommodation of an user
+// Created By : Aravind S
+// Date : 20-December-2018
+router.delete('/:user_id', (req, res) => {
+    if (!ObjectId.isValid(req.params.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
 
-    Accomodation.findByIdAndRemove(req.params.id, (err, doc) => {
+    Accomodation.findByIdAndRemove({ user_id: req.params.user_id}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Accommodation Cancelled' });
         } else {

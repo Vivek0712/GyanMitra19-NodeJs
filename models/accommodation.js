@@ -33,5 +33,10 @@ const AccommodationSchema = mongoose.Schema({
         required: true
     }
 });
+
 AccommodationSchema.plugin(pagination);
 const Accommodation = module.exports = mongoose.model('Accommodation', AccommodationSchema);
+
+module.exports.getAllAccommodations = (page, callback) => {
+    Accommodation.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}
