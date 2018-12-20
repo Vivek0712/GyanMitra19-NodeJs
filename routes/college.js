@@ -4,19 +4,26 @@ const config = require('../config/env');
 const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
 
+
+
 router.post('/create', (req, res, next) => {
     let newCollege = new College({
         name: req.body.name,
         locale: req.body.locale
     });
+    // Modified By Aravind S
+    // Changed Error Status
+    // Error = True if Error occured
+    // Date : 20 - December - 2018
     newCollege.save((err, doc) => {
         if (err) {
-            res.json({ error: false, msg: 'Failed to Create College' + err });
+            res.json({ error: true, msg: 'Failed to Create College' + err });
         } else {
-            res.json({ error: true, msg: 'College Created' });
+            res.json({ error: false, msg: 'College Created' });
         }
     });
 });
+
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
 
@@ -28,6 +35,7 @@ router.get('/', function(req, res, next) {
         }
     });
 });
+
 router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
@@ -43,6 +51,7 @@ router.put('/:id', (req, res) => {
         }
     });
 })
+
 router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
