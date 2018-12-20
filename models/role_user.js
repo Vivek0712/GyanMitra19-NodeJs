@@ -15,3 +15,7 @@ const RoleUserSchema = mongoose.Schema({
 });
 RoleUserSchema.plugin(pagination);
 const RoleUser = module.exports = mongoose.model('RoleUser', RoleUserSchema);
+
+module.exports.getAllRolesAssignments = (page, callback) => {
+    RoleUser.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}

@@ -26,6 +26,8 @@ const registration = require('./routes/registration');
 const college = require('./routes/college');
 const accommodation = require('./routes/accommodation');
 const course = require('./routes/course');
+const role = require('./routes/role');
+const roleUser = require('./routes/role_user');
 //Routes
 
 //Running Port
@@ -56,6 +58,8 @@ app.use('/auth',auth);
 app.use('/college',college);
 app.use('/accommodation',accommodation);
 app.use('/course',course);
+app.use('/role',role);
+app.use('/role_user',roleUser);
 //Routes Ends
 
 

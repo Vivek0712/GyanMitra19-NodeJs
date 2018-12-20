@@ -6,6 +6,5 @@
  > Department
  > Event
  > Payment - Hold
- > Role_User
  > Team_Member
  > Team
