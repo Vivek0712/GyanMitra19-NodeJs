@@ -43,18 +43,18 @@ router.get('/', function(req, res, next) {
 // Modify Course Name
 // Created By : Aravind S
 // Date : 20-December-2018
-router.put('/:course_name', (req, res) => {
+router.post('/:update', (req, res) => {
     if (!ObjectId.isValid(req.params.course_name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.course_name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.course_name}`);
 
     var course = {
-        name: req.params.course_name
+        name: req.body.new_course_name
     };
-    Course.findByIdAndUpdate({name : req.params.course_name}, { $set: course }, { new: true }, (err, doc) => {
+    Course.findByIdAndUpdate({name : req.body.course_name}, { $set: course }, { new: true }, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: "Accommodation Confirmed" });
+            res.json({ error: false, msg: "Course Updated" });
         } else {
-            res.json({ error: true, msg: "Failed to Confirm Accommodation : " + err });
+            res.json({ error: true, msg: "Failed to Update Course : " + err });
         }
     });
 })
@@ -68,9 +68,9 @@ router.delete('/:name', (req, res) => {
 
     Course.findByIdAndRemove({ name: req.params.name}, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: 'Accommodation Cancelled' });
+            res.json({ error: false, msg: 'Course Deleted' });
         } else {
-            res.json({ error: true, msg: "Error in cancelling Accommodation" });
+            res.json({ error: true, msg: "Error in deleting Course" });
         }
     });
 });
