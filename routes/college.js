@@ -41,7 +41,8 @@ router.put('/:id', (req, res) => {
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var college = {
-        name: req.body.name
+        name: req.body.name,
+        locale: req.body.locale
     };
     College.findByIdAndUpdate(req.params.id, { $set: college }, { new: true }, (err, doc) => {
         if (!err) {
