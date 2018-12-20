@@ -11,3 +11,9 @@ const CourseSchema = mongoose.Schema({
 });
 CourseSchema.plugin(pagination);
 const Course = module.exports = mongoose.model('Course', CourseSchema);
+
+//Modified By : Aravind S
+//Added Pagination to get all Courses
+module.exports.getAllCourses = (page, callback) => {
+    Course.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}

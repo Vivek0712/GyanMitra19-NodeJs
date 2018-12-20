@@ -48,9 +48,9 @@ router.get('/', function(req, res, next) {
 // Confirms Payment for user once paid
 // Created By : Aravind S
 // Date : 20-December-2018
-router.put('confirmPayment/:user_id', (req, res) => {
+router.post('confirmPayment', (req, res) => {
     if (!ObjectId.isValid(req.params.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
 
     var accommodation = {
         acc_Accommodation_status: 'Payment Confirmed'
@@ -67,9 +67,9 @@ router.put('confirmPayment/:user_id', (req, res) => {
 // Confirm Accommodation by Admin
 // Created By : Aravind S
 // Date : 20-December-2018
-router.put('confirmAccommodation/:user_id', (req, res) => {
-    if (!ObjectId.isValid(req.params.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
+router.post('confirmAccommodation', (req, res) => {
+    if (!ObjectId.isValid(req.body.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
 
     var accommodation = {
         acc_status: 'Confirmed'

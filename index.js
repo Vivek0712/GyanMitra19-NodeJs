@@ -24,6 +24,8 @@ const auth = require('./routes/auth');
 const users = require('./routes/users');
 const registration = require('./routes/registration');
 const college = require('./routes/college');
+const accommodation = require('./routes/accommodation');
+const course = require('./routes/course');
 //Routes
 
 //Running Port
@@ -52,6 +54,8 @@ app.use('/users', users);
 app.use('/registration', registration);
 app.use('/auth',auth);
 app.use('/college',college);
+app.use('/accommodation',accommodation);
+app.use('/course',course);
 //Routes Ends
 
 
