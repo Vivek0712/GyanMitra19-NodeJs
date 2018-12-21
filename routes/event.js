@@ -54,14 +54,14 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.put('/:id/title', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/title', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
         name: req.body.title
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.param.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -71,14 +71,31 @@ router.put('/:id/title', (req, res) => {
     });
 })
 
-router.put('/:id/description', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
+router.put('/:title/description', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
+
+    var event = {
+        description: req.body.description
+    };
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
+        if (!err) {
+            res.json({ error: false, msg: "Event Updated" });
+        } 
+        else {
+            res.json({ error: true, msg: "Failed To Update Event" + err });
+        }
+    });
+})
+
+router.put('/:title/image_name', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var event = {
-        name: req.body.description
+        image_name: req.body.image_name
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: image_name }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -88,14 +105,14 @@ router.put('/:id/description', (req, res) => {
     });
 })
 
-router.put('/:id/image_name', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/rules', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.image_name
+        rules: req.body.rules
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: image_name }, { new: true }, (err, doc) => {
+    Event.update({title: req.prams.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -105,14 +122,14 @@ router.put('/:id/image_name', (req, res) => {
     });
 })
 
-router.put('/:id/rules', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/start_time', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.rules
+        start_time: req.body.start_time
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -122,14 +139,14 @@ router.put('/:id/rules', (req, res) => {
     });
 })
 
-router.put('/:id/start_time', (req, res) => {
+router.put('/:title/end_time', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.start_time
+        end_time: req.body.end_time
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},{ $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -139,14 +156,14 @@ router.put('/:id/start_time', (req, res) => {
     });
 })
 
-router.put('/:id/end_time', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/event_date', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.end_time
+        event_date: req.body.event_date
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -156,14 +173,14 @@ router.put('/:id/end_time', (req, res) => {
     });
 })
 
-router.put('/:id/event_date', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/prelims', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.event_date
+        prelims: req.body.prelims
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -173,14 +190,14 @@ router.put('/:id/event_date', (req, res) => {
     });
 })
 
-router.put('/:id/prelims', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/round_1', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.prelims
+        round_1: req.body.round_1
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -190,14 +207,14 @@ router.put('/:id/prelims', (req, res) => {
     });
 })
 
-router.put('/:id/round_1', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/round_2', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.round_1
+        round_2: req.body.round_2
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -207,14 +224,14 @@ router.put('/:id/round_1', (req, res) => {
     });
 })
 
-router.put('/:id/round_2', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/min_members', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.round_2
+        min_members: req.body.min_members
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -224,14 +241,14 @@ router.put('/:id/round_2', (req, res) => {
     });
 })
 
-router.put('/:id/min_members', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/max_members', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.min_members
+        max_members: req.body.max_members
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},  { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -241,31 +258,14 @@ router.put('/:id/min_members', (req, res) => {
     });
 })
 
-router.put('/:id/max_members', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-
-    var event = {
-        name: req.body.max_members
-    };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
-        if (!err) {
-            res.json({ error: false, msg: "Event Updated" });
-        } 
-        else {
-            res.json({ error: true, msg: "Failed To Update Event" + err });
-        }
-    });
-})
-
-router.put('/:id/max_limit', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/max_limit', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
         name: req.body.max_limit
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},  { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -275,14 +275,14 @@ router.put('/:id/max_limit', (req, res) => {
     });
 })
 
-router.put('/:id/contact_email', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/contact_email', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.contact_email
+        contact_email: req.body.contact_email
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},  { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -292,14 +292,14 @@ router.put('/:id/contact_email', (req, res) => {
     });
 })
 
-router.put('/:id/venue', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/venue', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.venue
+        venue: req.body.venue
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},  { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -309,14 +309,14 @@ router.put('/:id/venue', (req, res) => {
     });
 })
 
-router.put('/:id/amount', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/amount', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.amount
+        amount: req.body.amount
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title},  { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -326,14 +326,14 @@ router.put('/:id/amount', (req, res) => {
     });
 })
 
-router.put('/:id/allow_gender_mixing', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.put('/:title/allow_gender_mixing', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
     var event = {
-        name: req.body.allow_gender_mixing
+        allow_gender_mixing: req.body.allow_gender_mixing
     };
-    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
+    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -343,11 +343,11 @@ router.put('/:id/allow_gender_mixing', (req, res) => {
     });
 })
 
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+router.delete('/:title', (req, res) => {
+    if (!ObjectId.isValid(req.params.title))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
 
-    Event.findByIdAndRemove(req.params.id, (err, doc) => {
+    Event.remove({title: req.params.title}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Event' });
         } else {
