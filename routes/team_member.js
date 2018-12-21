@@ -36,17 +36,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-
-    TeamMember.findByIdAndRemove(req.params.id, (err, doc) => {
+router.delete('/:team_id/:user_id', (req, res) => 
+    TeamMember.remove({user_id: req.params.user_id, team_id: req.params.team_id}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted TeamMember' });
         } else {
             res.json({ error: true, msg: "Failed to Delete TeamMember" });
         }
-    });
-});
+}));
 
 module.exports = router;

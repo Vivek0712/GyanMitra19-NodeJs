@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
 // Changed Parameters and optimized Update Function
 // Date : 21-December-2018
 router.put('/:name', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
+    if (!ObjectId.isValid(req.params.name))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
     var newTeam = {
@@ -60,7 +60,7 @@ router.put('/:name', (req, res) => {
 // Changed Parameters and optimized Remove Function
 // Date : 21-December-2018
 router.delete('/:name', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
+    if (!ObjectId.isValid(req.params.name))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
     Team.remove({name: req.params.name}, (err, doc) => {

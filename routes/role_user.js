@@ -45,9 +45,6 @@ router.get('/', function(req, res, next) {
 // Created By : Aravind S
 // Date : 20-December-2018
 router.delete('/:user_id/:roll_id', (req, res) => {
-    if (!ObjectId.isValid(req.params.name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.role_name}`);
-
     RoleUser.remove({ user_id: req.params.user_id, role_id: req.params.role_id}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Role Assignment Deleted' });
