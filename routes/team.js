@@ -1,5 +1,5 @@
 //Created By Aravind Raj
-//Created routes for team_members
+//Created routes for team
 //Date : 20-10-2018
 
 const express = require('express');
@@ -36,14 +36,17 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.put('/:id', (req, res) => {
+// Modified By: Aravind S
+// Changed Parameters and optimized Update Function
+// Date : 21-December-2018
+router.put('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
-    var Team = {
+    var newTeam = {
         name: req.body.name
     };
-    Team.findByIdAndUpdate(req.params.id, { $set: Team }, { new: true }, (err, doc) => {
+    Team.update({name: req.params.name}, { $set: newTeam }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Team Updated" });
         } 
@@ -53,11 +56,14 @@ router.put('/:id', (req, res) => {
     });
 })
 
-router.delete('/:id', (req, res) => {
+// Modified By: Aravind S
+// Changed Parameters and optimized Remove Function
+// Date : 21-December-2018
+router.delete('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
-    Team.findByIdAndRemove(req.params.id, (err, doc) => {
+    Team.remove({name: req.params.name}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Team' });
         } else {
