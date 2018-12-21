@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
-
+const Schema = mongoose.Schema;
 // Event Schema
 const EventSchema = mongoose.Schema({
     title: {
@@ -9,11 +9,13 @@ const EventSchema = mongoose.Schema({
         required: true
     },
     category_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     },
     department_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Department',
         required: true
     },
     description: {
@@ -88,4 +90,3 @@ const Event = module.exports = mongoose.model('Event', EventSchema);
 module.exports.getAllEvents = (page, callback) => {
     Event.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
-const Event = module.exports = mongoose.model('Event', EventSchema);

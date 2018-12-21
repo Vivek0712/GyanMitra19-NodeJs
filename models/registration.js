@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
-
+const Schema = mongoose.Schema;
 // Registration Schema
 const RegistrationSchema = mongoose.Schema({
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     registration_id: {

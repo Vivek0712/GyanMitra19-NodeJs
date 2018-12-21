@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
-
+const Schema = mongoose.Schema;
 // RoleUser Schema
 const RoleUserSchema = mongoose.Schema({
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     role_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
         required: true
     }
 });

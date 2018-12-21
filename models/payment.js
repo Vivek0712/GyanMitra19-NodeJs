@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
-
+const Schema = mongoose.Schema;
 // Payment Schema
 const PaymentSchema = mongoose.Schema({
     transaction_id: {
@@ -25,7 +25,8 @@ const PaymentSchema = mongoose.Schema({
         required: true
     },
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     amount: {

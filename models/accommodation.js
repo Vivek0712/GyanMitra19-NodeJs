@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
+const Schema = mongoose.Schema;
 
 // Accommodation Schema
 const AccommodationSchema = mongoose.Schema({
@@ -24,8 +25,10 @@ const AccommodationSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    //Refrence Should be given Like this
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     acc_amount: {

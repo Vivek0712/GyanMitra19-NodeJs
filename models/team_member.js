@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
-
+const Schema = mongoose.Schema;
 // TeamMember Schema
 const TeamMemberSchema = mongoose.Schema({
     team_id: {
@@ -9,7 +9,8 @@ const TeamMemberSchema = mongoose.Schema({
         required: true
     },
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });

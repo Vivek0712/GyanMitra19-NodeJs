@@ -38,8 +38,11 @@ router.get('/', function(req, res, next) {
 router.put('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
-
-    var newDepartment = {
+    //Error
+    //newDepartment is given
+    //changed to newDegree 
+    //Shyam 21/12/2018 9:50pm
+    var newDegree = {
         name: req.body.name
     };
     Degree.update({name: req.params.name}, { $set: newDegree }, { new: true }, (err, doc) => {
