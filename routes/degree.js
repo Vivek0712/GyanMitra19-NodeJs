@@ -14,7 +14,7 @@ router.post('/create', (req, res, next) => {
     let newDegree = new Degree({
         name: req.body.name
     });
-    newCategory.save((err, doc) => {
+    newDegree.save((err, doc) => {
         if (err) {
             res.json({ error: true, msg: 'Failed to Create Degree' + err });
         } else {
