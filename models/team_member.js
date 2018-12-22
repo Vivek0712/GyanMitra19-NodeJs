@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 // TeamMember Schema
 const TeamMemberSchema = mongoose.Schema({
     team_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Team',
         required: true
     },
     user_id: {

@@ -13,11 +13,15 @@ const AccommodationSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    acc_days:{
+        type: String,
+        required: true
+    },
     acc_file_name: {
         type: String,
         required: true
     },
-    acc_Accommodation_status: {
+    acc_payment_status: {
         type: String,
         required: true
     },

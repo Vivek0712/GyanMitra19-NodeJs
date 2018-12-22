@@ -76,7 +76,7 @@ const EventSchema = mongoose.Schema({
         required: true
     },
     allow_gender_mixing: {
-        type: String,
+        type: Boolean,
         required: true
     }
 
