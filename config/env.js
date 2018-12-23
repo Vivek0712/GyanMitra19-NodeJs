@@ -1,6 +1,7 @@
 config = {
     database: {
-        name: 'mongodb://localhost:27017/GyanMitra19'
+        name: 'mongodb://gyanmitra19:gyanmitra19@ds241664.mlab.com:41664/gyanmitra19'
+        
     },
     application: {
         secret: 'secret',
