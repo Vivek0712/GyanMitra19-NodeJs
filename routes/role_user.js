@@ -8,9 +8,6 @@ const config = require('../config/env');
 const RoleUser = require('../models/role_user');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-// Creates a new Role for User
-// Created By : Aravind S
-// Date : 20-December-2018
 router.post('/create' , (req,res, next)=>{
     let newRoleUser = new Role({
         user_id : req.body.user_id,
