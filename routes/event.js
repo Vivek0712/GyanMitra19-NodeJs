@@ -80,7 +80,10 @@ router.put('/:id', (req, res) => {
         amount: req.body.amount,
         allow_gender_mixing: req.body.allow_gender_mixing
     };
-    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
+    //Wrongly typed
+    //Shyam
+    //23/12/2018
+    Event.findByIdAndUpdate(req.params.id, { $set: event }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Event Updated" });
         } 
@@ -89,12 +92,14 @@ router.put('/:id', (req, res) => {
         }
     });
 })
+ //Wrongly typed
+    //Shyam
+    //23/12/2018
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-router.delete('/:title', (req, res) => {
-    if (!ObjectId.isValid(req.params.title))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
-
-    Event.remove({title: req.params.title}, (err, doc) => {
+    Event.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Event' });
         } else {
