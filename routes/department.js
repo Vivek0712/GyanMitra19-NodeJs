@@ -2,6 +2,9 @@
 //Created routes for department
 //Date : 20-10-2018
 
+//Modified By Aravind S
+//Date : 21-10-2018
+//Corrected Department Routes
 const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
@@ -35,14 +38,14 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
     var department = {
         name: req.body.name
     };
-    Department.findByIdAndUpdate(req.params.id, { $set: department }, { new: true }, (err, doc) => {
+    Department.update({name: req.params.name}, { $set: department }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Department Updated" });
         } 
@@ -52,11 +55,11 @@ router.put('/:id', (req, res) => {
     });
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:name', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Department.findByIdAndRemove(req.params.id, (err, doc) => {
+    Department.remove({name: req.params.name}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Department' });
         } else {
