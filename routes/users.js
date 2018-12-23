@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const User = require('../models/user');
 
-
+var ObjectId = require('mongoose').Types.ObjectId;
 //Create Admin User
 router.post('/create', (req, res, next) => {
     let newUser = new User({
@@ -27,7 +27,6 @@ router.post('/create', (req, res, next) => {
 
 //Read Admin
 router.get('/', function(req, res, next) {
-    console.log('hello');
     let page = req.query.page ? req.query.page : 1;
     User.find({ type: 'admin' }).skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
         if (!err) {
@@ -48,6 +47,18 @@ router.get('/read', function(req, res, next) {
             res.send(docs);
         } else {
             res.json({ error: true, msg: err });
+        }
+    });
+});
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+
+    User.findByIdAndRemove({ _id: req.params.id}, (err, doc) => {
+        if (!err) {
+            res.json({ error: false, msg: 'User Deleted' });
+        } else {
+            res.json({ error: true, msg: "Error in deleting Course" });
         }
     });
 });
