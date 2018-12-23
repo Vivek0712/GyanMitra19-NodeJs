@@ -8,8 +8,6 @@ const config = require('../config/env');
 const TeamMember = require('../models/team_member');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-
-
 router.post('/create', (req, res, next) => {
     let newTeamMember = new TeamMember({
         team_id: req.body.team_id,
@@ -36,13 +34,34 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.delete('/:team_id/:user_id', (req, res) => 
-    TeamMember.remove({user_id: req.params.user_id, team_id: req.params.team_id}, (err, doc) => {
+router.put('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+
+    var team_member = {
+        team_id: req.body.team_id,
+        user_id: req.body.user_id
+    };
+    TeamMember.findByIdAndUpdate(req.params.id, { $set: team_member }, { new: true }, (err, doc) => {
+        if (!err) {
+            res.json({ error: false, msg: "Degree Updated" });
+        } 
+        else {
+            res.json({ error: true, msg: "Failed To Update Degree" + err });
+        }
+    });
+})
+
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+
+    TeamMember.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted TeamMember' });
         } else {
             res.json({ error: true, msg: "Failed to Delete TeamMember" });
         }
-}));
-
+    });
+});
 module.exports = router;
