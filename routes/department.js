@@ -38,9 +38,9 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.put('/:name', (req, res) => {
+router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var department = {
         name: req.body.name
@@ -55,7 +55,7 @@ router.put('/:name', (req, res) => {
     });
 })
 
-router.delete('/:name', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 

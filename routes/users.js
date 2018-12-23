@@ -43,7 +43,6 @@ router.get('/', function(req, res, next) {
 router.get('/read', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
     User.getAllUsers(page, (err, docs) => {
-        console.log('hello');
         if (!err) {
             res.send(docs);
         } else {

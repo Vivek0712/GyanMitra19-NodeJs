@@ -43,9 +43,9 @@ router.get('/', function(req, res, next) {
 // Modify Course Name
 // Created By : Aravind S
 // Date : 20-December-2018
-router.post('/:update', (req, res) => {
+router.post('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.course_name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.course_name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var course = {
         name: req.body.new_course_name
@@ -62,9 +62,9 @@ router.post('/:update', (req, res) => {
 // Deletes an Course
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:name', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     Course.findByIdAndRemove({ name: req.params.name}, (err, doc) => {
         if (!err) {
