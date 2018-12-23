@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
     var department = {
         name: req.body.name
     };
-    Department.update({name: req.params.name}, { $set: department }, { new: true }, (err, doc) => {
+    Department.findByIdAndUpdate(req.params.id, { $set: department }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Department Updated" });
         } 
@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Department.remove({name: req.params.name}, (err, doc) => {
+    Department.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Department' });
         } else {

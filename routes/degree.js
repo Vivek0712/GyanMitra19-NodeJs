@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
     var newDegree = {
         name: req.body.name
     };
-    Degree.update({name: req.params.name}, { $set: newDegree }, { new: true }, (err, doc) => {
+    Degree.findByIdAndUpdate(req.params.id, { $set: newDegree }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Degree Updated" });
         } 
