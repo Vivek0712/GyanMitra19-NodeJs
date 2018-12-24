@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/env');
-
+const fileUpload = require('express-fileupload');
 
 mongoose.connect(config.database.name, { useNewUrlParser: true });
 // On Connection
@@ -36,6 +36,9 @@ const team_member = require('./routes/team_member');
 const team = require('./routes/team');
 //Routes
 
+// File-Upload Middleware
+app.use(fileUpload());
+
 //Running Port
 const port = 3000;
 
@@ -52,10 +55,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
-
-
-
-
 
 //Routes Starts
 app.use('/users', users);

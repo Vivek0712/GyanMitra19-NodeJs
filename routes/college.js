@@ -4,8 +4,6 @@ const config = require('../config/env');
 const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-
-
 router.post('/create', (req, res, next) => {
     let newCollege = new College({
         name: req.body.name,
