@@ -9,23 +9,9 @@ const Event = require('../models/event');
 var ObjectId = require('mongoose').Types.ObjectId;
 const fileUpload = require('express-fileupload');
 
-router.post('/upload', function(req, res) {
-    console.log('Entered');
-    if (Object.keys(req.files).length == 0) {
-      return res.status(400).send('No files were uploaded.');
-    }
-  
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.sampleFile;
-  
-    // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv('../assests/images/events/filename.jpg', function(err) {
-      if (err)
-        return res.status(500).send(err);
-  
-      res.send('File uploaded!');
-    });
-  });
+router.post('/test', (req,res,next) => {
+    console.log('hello');
+});
 
 router.post('/create', (req, res, next) => {
     let newEvent = new Event({
@@ -59,7 +45,8 @@ router.post('/create', (req, res, next) => {
         } else {
             res.json({
                 error: false,
-                msg: 'Event Created'
+                msg: 'Event Created',
+                id: doc._id
             });
         }
     });
