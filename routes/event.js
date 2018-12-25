@@ -9,8 +9,10 @@ const Event = require('../models/event');
 var ObjectId = require('mongoose').Types.ObjectId;
 const fileUpload = require('express-fileupload');
 
-router.post('/test', (req,res,next) => {
-    console.log('hello');
+router.post('/upload', (req, res, next) => {
+    res.send({
+        msg: 'ellorum nalla irukrom'
+    });
 });
 
 router.post('/create', (req, res, next) => {
@@ -51,6 +53,19 @@ router.post('/create', (req, res, next) => {
         }
     });
 });
+
+router.get('/all', function (req, res) {
+    Event.find({}, (err, docs) => {
+        if (!err) {
+            res.send(docs);
+        } else {
+            res.json({
+                error: true,
+                msg: err
+            })
+        }
+    })
+})
 
 router.get('/', function (req, res, next) {
     let page = req.query.page ? req.query.page : 1;
