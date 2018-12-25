@@ -8,7 +8,7 @@ config = {
         env: 'development'
     },
     pagination: {
-        perPage: 10
+        perPage: 2
     }
 }
 
