@@ -24,14 +24,27 @@ router.post('/create', (req, res, next) => {
 
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
-    College.getAllColleges(page, (err, docs) => {
-        if (!err) {
-            res.send(docs);
-        } else {
-            res.json({ error: true, msg: err });
-        }
-    });
+    if(page != 0){
+        College.getAllColleges(page, (err, docs) => {
+            if (!err) {
+                res.send(docs);
+            } else {
+                res.json({ error: true, msg: err });
+            }
+        });
+    }
+    else{
+        College.find({}, (err, docs)=>{
+            if(!err){
+                console.log(docs);
+                res.send(docs);
+            }
+            else{
+                res.json({error:true, msg: err});
+            }
+        })
+    }
+    
 });
 
 router.put('/:id', (req, res) => {
