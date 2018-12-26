@@ -43,14 +43,14 @@ router.get('/', function(req, res, next) {
 // Modify Role
 // Created By : Aravind S
 // Date : 20-December-2018
-router.put('/:role_name', (req, res) => {
+router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.course_name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.role_name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var role = {
         name: req.body.role_name
     };
-    Course.findByIdAndUpdate({name : req.params.role_name}, { $set: role }, { new: true }, (err, doc) => {
+    Role.findByIdAndUpdate(req.params.id, { $set: role }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Role Created" });
         } else {
@@ -62,11 +62,11 @@ router.put('/:role_name', (req, res) => {
 // Deletes an Role
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:role_name', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.name))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.role_name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Course.findByIdAndRemove({ name: req.params.role_name}, (err, doc) => {
+    Role.remove({ name: req.params.role_name}, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Role Deleted' });
         } else {

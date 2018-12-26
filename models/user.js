@@ -56,9 +56,10 @@ const User = module.exports = mongoose.model('User', UserSchema);
 module.exports.getAllUsers = (page, callback) => {
     User.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
-module.exports.findUser = (page, type, callback) => {
-    User.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+module.exports.findUsers = (page, type, callback) => {
+    User.paginate({type: type}, { limit: config.pagination.perPage, page: page }, callback);
 }
+
 module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }

@@ -48,14 +48,14 @@ router.get('/', function(req, res, next) {
 // Confirms Payment for user once paid
 // Modified By : Aravind S
 // Date : 21-December-2018
-router.post('/confirmPayment', (req, res) => {
-    if (!ObjectId.isValid(req.params.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
+router.put('/confirmPayment/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.id}`);
 
     var accommodation = {
         acc_Accommodation_status: 'Payment Confirmed'
     };
-    Accomodation.findByIdAndUpdate({user_id : req.body.user_id}, { $set: accommodation }, { new: true }, (err, doc) => {
+    Accomodation.findByIdAndUpdate(req.params.id, { $set: accommodation }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Payment Confirmed" });
         } else {
@@ -67,14 +67,14 @@ router.post('/confirmPayment', (req, res) => {
 // Confirm Accommodation by Admin
 // Created By : Aravind S
 // Date : 20-December-2018
-router.post('confirmAccommodation', (req, res) => {
+router.post('/confirmAccommodation/:id', (req, res) => {
     if (!ObjectId.isValid(req.body.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var accommodation = {
         acc_status: 'Confirmed'
     };
-    Accomodation.findByIdAndUpdate({user_id : req.body.user_id}, { $set: accommodation }, { new: true }, (err, doc) => {
+    Accomodation.findByIdAndUpdate(req.params.id, { $set: accommodation }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Accommodation Confirmed" });
         } else {
@@ -86,11 +86,11 @@ router.post('confirmAccommodation', (req, res) => {
 // Cancels an Accommodation of an user
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:user_id', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.user_id}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Accomodation.findByIdAndRemove({ user_id: req.params.user_id}, (err, doc) => {
+    Accomodation.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Accommodation Cancelled' });
         } else {

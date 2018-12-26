@@ -36,9 +36,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// Modified By: Aravind S
+// Changed Parameters and optimized Update Function
+// Date : 21-December-2018
 router.put('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+    if (!ObjectId.isValid(req.params.name))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+
 
     var newTeam = {
         name: req.body.name
@@ -52,10 +56,12 @@ router.put('/:id', (req, res) => {
         }
     });
 })
-
+// Modified By: Aravind S
+// Changed Parameters and optimized Remove Function
+// Date : 21-December-2018
 router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+    if (!ObjectId.isValid(req.params.name))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     Team.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {

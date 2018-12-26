@@ -11,8 +11,6 @@ const config = require('../config/env');
 const Department = require('../models/department');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-
-
 router.post('/create', (req, res, next) => {
     let newDepartment = new Department({
         name: req.body.name
@@ -28,24 +26,35 @@ router.post('/create', (req, res, next) => {
 
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
-    Department.getAllDepartments(page, (err, docs) => {
-        if (!err) {
-            res.send(docs);
-        } else {
-            res.json({ error: true, msg: err });
+    if(page==0){
+        console.log(Department.find({}, (err, docs)=> {
+            if(err){
+                res.json({ error: true, msg: err });
+            }
+            else{
+                res.json(docs);
+            }
+        }));
         }
-    });
+    else {
+        Department.getAllDepartments(page, (err, docs) => {
+            if (!err) {
+                res.send(docs);
+            } else {
+                res.json({ error: true, msg: err });
+            }
+        });
+    }
 });
 
-router.put('/:name', (req, res) => {
+router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var department = {
         name: req.body.name
     };
-    Department.update({name: req.params.name}, { $set: department }, { new: true }, (err, doc) => {
+    Department.findByIdAndUpdate(req.params.id, { $set: department }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Department Updated" });
         } 
@@ -55,11 +64,11 @@ router.put('/:name', (req, res) => {
     });
 })
 
-router.delete('/:name', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Department.remove({name: req.params.name}, (err, doc) => {
+    Department.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Deleted Department' });
         } else {

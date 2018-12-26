@@ -35,9 +35,9 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.put('/:name', (req, res) => {
+router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
     //Error
     //newDepartment is given
     //changed to newDegree 
@@ -45,7 +45,7 @@ router.put('/:name', (req, res) => {
     var newDegree = {
         name: req.body.name
     };
-    Degree.update({name: req.params.name}, { $set: newDegree }, { new: true }, (err, doc) => {
+    Degree.findByIdAndUpdate(req.params.id, { $set: newDegree }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Degree Updated" });
         } 
@@ -55,7 +55,7 @@ router.put('/:name', (req, res) => {
     });
 })
 
-router.delete('/:name', (req, res) => {
+router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 

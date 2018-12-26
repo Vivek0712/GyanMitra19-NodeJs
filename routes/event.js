@@ -7,8 +7,13 @@ const router = express.Router();
 const config = require('../config/env');
 const Event = require('../models/event');
 var ObjectId = require('mongoose').Types.ObjectId;
+const fileUpload = require('express-fileupload');
 
-
+router.post('/upload', (req, res, next) => {
+    res.send({
+        msg: 'ellorum nalla irukrom'
+    });
+});
 
 router.post('/create', (req, res, next) => {
     let newEvent = new Event({
@@ -35,21 +40,44 @@ router.post('/create', (req, res, next) => {
     });
     newEvent.save((err, doc) => {
         if (err) {
-            res.json({ error: true, msg: 'Failed to Create Event' + err });
+            res.json({
+                error: true,
+                msg: 'Failed to Create Event' + err
+            });
         } else {
-            res.json({ error: false, msg: 'Event Created' });
+            res.json({
+                error: false,
+                msg: 'Event Created',
+                id: doc._id
+            });
         }
     });
 });
 
-router.get('/', function(req, res, next) {
+router.get('/all', function (req, res) {
+    Event.find({}, (err, docs) => {
+        if (!err) {
+            res.send(docs);
+        } else {
+            res.json({
+                error: true,
+                msg: err
+            })
+        }
+    })
+})
+
+router.get('/', function (req, res, next) {
     let page = req.query.page ? req.query.page : 1;
 
     Event.getAllEvents(page, (err, docs) => {
         if (!err) {
             res.send(docs);
         } else {
-            res.json({ error: true, msg: err });
+            res.json({
+                error: true,
+                msg: err
+            });
         }
     });
 });
@@ -80,25 +108,45 @@ router.put('/:id', (req, res) => {
         amount: req.body.amount,
         allow_gender_mixing: req.body.allow_gender_mixing
     };
-    Event.update({title: req.params.title}, { $set: event }, { new: true }, (err, doc) => {
+    //Wrongly typed
+    //Shyam
+    //23/12/2018
+    Event.findByIdAndUpdate(req.params.id, {
+        $set: event
+    }, {
+        new: true
+    }, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: "Event Updated" });
-        } 
-        else {
-            res.json({ error: true, msg: "Failed To Update Event" + err });
+            res.json({
+                error: false,
+                msg: "Event Updated"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed To Update Event" + err
+            });
         }
     });
 })
+//Wrongly typed
+//Shyam
+//23/12/2018
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-router.delete('/:title', (req, res) => {
-    if (!ObjectId.isValid(req.params.title))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.title}`);
-
-    Event.remove({title: req.params.title}, (err, doc) => {
+    Event.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: 'Deleted Event' });
+            res.json({
+                error: false,
+                msg: 'Deleted Event'
+            });
         } else {
-            res.json({ error: true, msg: "Failed to Delete Event" });
+            res.json({
+                error: true,
+                msg: "Failed to Delete Event"
+            });
         }
     });
 });
