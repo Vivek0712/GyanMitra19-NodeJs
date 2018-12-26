@@ -15,6 +15,7 @@ router.post('/create', (req, res, next) => {
         department_id: req.body.department_id,
         degree_id: req.body.degree_id,
         email_id: req.body.email_id,
+        year: req.body.year,
         gender: req.body.gender,
         mobile_number: req.body.mobile_number,
         confirmed: false,
