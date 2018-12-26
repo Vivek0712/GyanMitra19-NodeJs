@@ -6,6 +6,21 @@ const config = require('../config/env');
 const User = require('../models/user');
 
 var ObjectId = require('mongoose').Types.ObjectId;
+
+router.get('/participants/search', (req, res, next) => {
+    let _id = req.query.id;
+    User.findById(_id, (err, docs) => {
+        if (!err) {
+            res.json(docs);
+        } else {
+            res.json({
+                success: true,
+                msg: 'User registered'
+            })
+        }
+    })
+});
+
 //Create Admin User
 router.post('/create', (req, res, next) => {
     let newUser = new User({
@@ -61,6 +76,29 @@ router.get('/read', function (req, res, next) {
     });
 });
 
+//Confirm Payment by Admin
+router.post('/confirmPayment', function (req, res) {
+    User.count({
+        _id: req.body._id
+    }, function (err, count) {
+        if (count == 0) {
+            res.json({
+                error: true,
+                msg: 'Invalid ID'
+            })
+        } else {
+            User.findByIdAndUpdate(req.body._id, {
+                confirmed: true
+            }, function (err, result) {
+                res.json({
+                    error: false,
+                    msg: 'Confirmed Payment Successfully'
+                })
+            })
+        }
+    });
+});
+
 //Read All Participants
 router.get('/participants', function (req, res, next) {
 
@@ -112,4 +150,5 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
+
 module.exports = router;
