@@ -43,14 +43,18 @@ router.get('/', function(req, res, next) {
 // Modify Course Name
 // Created By : Aravind S
 // Date : 20-December-2018
-router.post('/:update', (req, res) => {
-    if (!ObjectId.isValid(req.params.course_name))
+
+//Error :id not :update
+//Modified by Aravind Raj
+router.put('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.course_name}`);
 
     var course = {
-        name: req.body.new_course_name
+        _id: req.params.id,
+        name: req.body.name
     };
-    Course.findByIdAndUpdate({name : req.body.course_name}, { $set: course }, { new: true }, (err, doc) => {
+    Course.findByIdAndUpdate(req.params.id, { $set: course }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "Course Updated" });
         } else {
@@ -62,11 +66,14 @@ router.post('/:update', (req, res) => {
 // Deletes an Course
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:name', (req, res) => {
-    if (!ObjectId.isValid(req.params.name))
+
+//Error Delete by name was don
+//Modified by Aravind Raj
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 
-    Course.findByIdAndRemove({ name: req.params.name}, (err, doc) => {
+    Course.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: 'Course Deleted' });
         } else {
