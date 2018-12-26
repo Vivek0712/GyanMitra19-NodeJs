@@ -76,6 +76,29 @@ router.get('/read', function (req, res, next) {
     });
 });
 
+//Confirm Payment by Admin
+router.post('/confirmPayment', function (req, res) {
+    User.count({
+        _id: req.body._id
+    }, function (err, count) {
+        if (count == 0) {
+            res.json({
+                error: true,
+                msg: 'Invalid ID'
+            })
+        } else {
+            User.findByIdAndUpdate(req.body._id, {
+                confirmed: true
+            }, function (err, result) {
+                res.json({
+                    error: false,
+                    msg: 'Confirmed Payment Successfully'
+                })
+            })
+        }
+    });
+});
+
 //Read All Participants
 router.get('/participants', function (req, res, next) {
 
@@ -127,4 +150,5 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
+
 module.exports = router;
