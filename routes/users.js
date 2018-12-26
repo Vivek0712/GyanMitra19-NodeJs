@@ -6,6 +6,21 @@ const config = require('../config/env');
 const User = require('../models/user');
 
 var ObjectId = require('mongoose').Types.ObjectId;
+
+router.get('/participants/search', (req, res, next) => {
+    let _id = req.query.id;
+    User.findById(_id, (err, docs) => {
+        if (!err) {
+            res.json(docs);
+        } else {
+            res.json({
+                success: true,
+                msg: 'User registered'
+            })
+        }
+    })
+});
+
 //Create Admin User
 router.post('/create', (req, res, next) => {
     let newUser = new User({
