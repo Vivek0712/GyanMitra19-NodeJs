@@ -36,7 +36,6 @@ router.get('/', function(req, res, next) {
     else{
         College.find({}, (err, docs)=>{
             if(!err){
-                console.log(docs);
                 res.send(docs);
             }
             else{
