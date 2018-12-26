@@ -76,10 +76,6 @@ app.use('/tean',team);
 
 
 
-
-
-
-
 // Index Route
 app.get('/', (req, res) => {
     res.send('invaild endpoint');

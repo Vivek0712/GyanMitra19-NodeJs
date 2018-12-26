@@ -17,12 +17,11 @@ router.post('/create', (req, res, next) => {
         email_id: req.body.email_id,
         gender: req.body.gender,
         mobile_number: req.body.mobile_number,
-        confirmed: req.body.confirmed,
-        activated: req.body.activated,
-        activation_code: req.body.activation_code,
+        confirmed: false,
+        activated: false,
+        activation_code: Math.floor((Math.random() * 10000)),
         type: req.body.type,
         password: req.body.password
-
     });
 
     User.addUser(newUser, (err, user) => {
