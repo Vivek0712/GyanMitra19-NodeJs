@@ -25,14 +25,25 @@ router.post('/create', (req, res, next) => {
 
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
-    Degree.getAllDegrees(page, (err, docs) => {
-        if (!err) {
-            res.send(docs);
-        } else {
-            res.json({ error: true, msg: err });
+    if(page==0){
+        Degree.find({}, (err, docs)=> {
+            if(err){
+                res.json({ error: true, msg: err });
+            }
+            else{
+                res.json(docs);
+            }
+        });
         }
-    });
+    else {
+        Degree.getAllCourses(page, (err, docs) => {
+            if (!err) {
+                res.send(docs);
+            } else {
+                res.json({ error: true, msg: err });
+            }
+        });
+    }
 });
 
 router.put('/:id', (req, res) => {
