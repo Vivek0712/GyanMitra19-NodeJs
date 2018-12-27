@@ -28,7 +28,7 @@ router.post('/create', (req, res, next) => {
         gender: req.body.gender,
         mobile_number: req.body.mobile_number,
         confirmed: false,
-        activated: false,
+        activated: req.body.activated,
         type: req.body.type,
         password: req.body.password
     });
@@ -45,6 +45,7 @@ router.post('/create', (req, res, next) => {
 router.post('/activate',function(req, res, next){
     let host=req.get('host');
     let id = "";
+    console.log(req.body.email_id);
     User.getUserByEmailId(req.body.email_id , (err, result) => {
         id=result;
     });
