@@ -38,7 +38,7 @@ const participationStatus = require('./routes/participationstatus');
 //Routes
 
 // File-Upload Middleware
-app.use(fileUpload());
+
 
 //Running Port
 const port = 3000;
