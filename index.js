@@ -34,7 +34,7 @@ const event = require('./routes/event');
 const roleUser = require('./routes/role_user');
 const team_member = require('./routes/team_member');
 const team = require('./routes/team');
-var multer = require('multer')
+const participationStatus = require('./routes/participationstatus');
 //Routes
 
 // File-Upload Middleware
@@ -72,6 +72,7 @@ app.use('/degree',degree);
 app.use('/category',category);
 app.use('/team_member',team_member);
 app.use('/tean',team);
+app.use('/participationStatus',participationStatus);
 //Routes Ends
 
 

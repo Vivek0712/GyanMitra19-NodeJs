@@ -50,6 +50,10 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    registration_mode: {
+        type: String,
+        required: true
     }
 
 });
@@ -82,6 +86,13 @@ module.exports.addUser = function(newUser, callback) {
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if (err) throw err;
+        callback(null, isMatch);
+    });
+}
+
+module.exports.compareActivationCode = function(id, hash, callback) {
+    bcrypt.compare(id, hash, (err, isMatch) => {
         if (err) throw err;
         callback(null, isMatch);
     });
