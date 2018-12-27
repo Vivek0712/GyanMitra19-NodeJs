@@ -50,6 +50,10 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    registration_mode: {
+        type: String,
+        required: true
     }
 
 });
