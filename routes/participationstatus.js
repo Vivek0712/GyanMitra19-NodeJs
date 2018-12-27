@@ -11,7 +11,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 
 router.post('/create', (req, res, next) => {
-    let newParticipantStatus = new participationStatus({
+    let newParticipantStatus = new ParticipationStatus({
         name: req.body.name,
         score: req.body.score
     });

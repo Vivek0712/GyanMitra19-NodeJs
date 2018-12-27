@@ -44,12 +44,17 @@ router.post('/create', (req, res, next) => {
 
 router.post('/activate',function(req, res, next){
     let host=req.get('host');
-    let id = "";
-    console.log(req.body.email_id);
+    let id = "",hashValue="";
+    rand = Math.floor((Math.random() * 100000));
     User.getUserByEmailId(req.body.email_id , (err, result) => {
         id=result;
     });
-    let link="http://"+req.get('host')+"/verify?id="+id;
+    console.log(id);
+    bcrypt.hash(id, 5, function(err, hash) {
+        User.update(req.body.email_id,{$set: {activation_code: hash}});  
+        hashValue = hash;      
+    });
+    let link="http://"+req.get('host')+"/verify?id="+id+"&hash="+hashValue;
     let mailOptions={
         to : req.body.email_id,
         subject : "Please confirm your Email account",
@@ -74,12 +79,18 @@ router.get('/verify',function(req, res, next){
     var user = {
         activated: true
     };
-
-    User.findByIdAndUpdate(id, { $set: user }, { new: true }, (err, doc) => {
-        if (!err) {
-            res.json({ success: false, msg: 'Activation code is invalid' });
-        } else {
-            res.json({ success: true, msg: "Your Account is Activated" });
+    User.compareActivationCode(req.query.id,req.query.hash,function(err,result){
+        if(err){
+            res.json({ success: false, msg: 'Invalid link' });
+        }
+        else{
+            User.findByIdAndUpdate(id, { $set: user }, { new: true }, (err, doc) => {
+                if (!err) {
+                    res.json({ success: false, msg: 'Activation code is invalid' });
+                } else {
+                    res.json({ success: true, msg: "Your Account is Activated" });
+                }
+            });
         }
     });
 });
