@@ -30,7 +30,8 @@ router.post('/create', (req, res, next) => {
         confirmed: false,
         activated: req.body.activated,
         type: req.body.type,
-        password: req.body.password
+        password: req.body.password,
+        registration_mode: req.body.registration_mode
     });
 
     User.addUser(newUser, (err, user) => {
