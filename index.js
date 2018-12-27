@@ -34,10 +34,11 @@ const event = require('./routes/event');
 const roleUser = require('./routes/role_user');
 const team_member = require('./routes/team_member');
 const team = require('./routes/team');
+var multer = require('multer')
 //Routes
 
 // File-Upload Middleware
-app.use(fileUpload());
+
 
 //Running Port
 const port = 3000;
