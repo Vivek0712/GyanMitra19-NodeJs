@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
         });
         }
     else {
-        Degree.getAllCourses(page, (err, docs) => {
+        Degree.getAllDegrees(page, (err, docs) => {
             if (!err) {
                 res.send(docs);
             } else {
