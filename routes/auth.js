@@ -4,7 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const User = require('../models/user');
-
+var ObjectId = require('mongoose').Types.ObjectId;
 //Login
 router.post('/authenticate', (req, res, next) => {
     const email_id = req.body.email_id;

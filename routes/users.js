@@ -145,7 +145,7 @@ router.delete('/:id', (req, res) => {
         } else {
             res.json({
                 error: true,
-                msg: "Error in deleting Course"
+                msg: "Error in deleting user"
             });
         }
     });

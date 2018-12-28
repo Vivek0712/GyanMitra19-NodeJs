@@ -25,8 +25,10 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    year: {
-        type: String
+    year_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Year',
+        required: true
     },
     gender: {
         type: String,
@@ -83,6 +85,18 @@ module.exports.addUser = function(newUser, callback) {
         });
     });
 }
+module.exports.activationCode = function (user, callback) {
+    bcrypt.genSalt(10, (err, salt) => {
+        hashValue = user.email_id + user.name;
+        bcrypt.hash(hashValue, salt, (err, hash) => {
+            if (err) throw err;
+            user.activation_code = hash;
+            user.save(callback);
+            
+        })
+    })
+    
+}
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
@@ -91,7 +105,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
     });
 }
 
-module.exports.compareActivationCode = function(id, hash, callback) {
+module.exports.compareActivationCode = function (id, hash, callback) {
     bcrypt.compare(id, hash, (err, isMatch) => {
         if (err) throw err;
         callback(null, isMatch);
