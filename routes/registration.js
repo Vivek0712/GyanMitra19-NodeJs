@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/env');
@@ -10,8 +11,8 @@ var nodemailer = require("nodemailer");
 let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "your mail",
-        pass: "password"
+        user: "saravind23399@gmail.com",
+        pass: "Aravindiam29#"
     }
 });
 
@@ -30,68 +31,107 @@ router.post('/create', (req, res, next) => {
         confirmed: false,
         activated: req.body.activated,
         type: req.body.type,
-        password: req.body.password
+        password: req.body.password,
+        registration_mode: req.body.registration_mode
     });
 
     User.addUser(newUser, (err, user) => {
         if (err) {
-            res.json({ success: false, msg: 'Failed to register user' + err });
+            res.json({
+                success: false,
+                msg: 'Failed to register user' + err
+            });
         } else {
-            res.json({ success: true, msg: 'User Activated' });            
+            res.json({
+                success: true,
+                msg: 'User Activated'
+            });
         }
     });
 });
 
-router.post('/activate',function(req, res, next){
-    let host=req.get('host');
+router.post('/activate', function (req, res, next) {
+    let host = req.get('host');
     let id = "";
-    console.log(req.body.email_id);
-    User.getUserByEmailId(req.body.email_id , (err, result) => {
-        id=result;
-    });
-    let link="http://"+req.get('host')+"/verify?id="+id;
-    let mailOptions={
-        to : req.body.email_id,
-        subject : "Please confirm your Email account",
-        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to Activate</a>" 
-    }
-    smtpTransport.sendMail(mailOptions, function(error, response){
-        if(error){
-            res.json({ success: false, msg: 'Failed to register user' + error });
+    User.getUserByEmailId(req.body.email_id, (err, result) => {
+        id = result._id;
+        let link = "";
+        let hashvalue = '';
+        bcrypt.hash(id, 5,(err, hash) => {
+            console.log(hash) //Showing Undefined
+            User.updateOne({
+                email_id: req.body.email_id
+            }, {
+                $set: {
+                    activation_code: hash
+                }
+            }, (err, raw) => {
+            });
+        });
+        link = "http://" + req.get('host') + "/verify?id=" + id + "&hash=" + hashvalue;
+        let mailOptions = {
+            to: req.body.email_id,
+            subject: "Please confirm your Email account",
+            html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to Activate</a>"
         }
-        else{
-            console.log("Message sent: " + response.message);
-            res.json({ success: true, msg: 'User Registered<br>Activation Mail sent' });
-        }
+        smtpTransport.sendMail(mailOptions, function (error, response) {
+            if (error) {
+                res.json({
+                    success: false,
+                    msg: 'Failed to register user' + error
+                });
+            } else {
+                res.json({
+                    success: true,
+                    msg: 'User Registered<br>Activation Mail sent'
+                });
+            }
+        });
+
     });
 });
 
-router.get('/verify',function(req, res, next){
-    let id = req.query.id ? req.query.id : 1;
+router.get('/verify', function (req, res, next) {
     if (!ObjectId.isValid(id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${id}`);
-
     var user = {
         activated: true
     };
-
-    User.findByIdAndUpdate(id, { $set: user }, { new: true }, (err, doc) => {
-        if (!err) {
-            res.json({ success: false, msg: 'Activation code is invalid' });
+    User.compareActivationCode(req.query.id, req.query.hash, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.json({
+                success: false,
+                msg: 'Invalid link'
+            });
         } else {
-            res.json({ success: true, msg: "Your Account is Activated" });
+            User.findByIdAndUpdate(id, {
+                $set: user
+            }, {
+                new: true
+            }, (err, doc) => {
+                if (!err) {
+                    res.json({
+                        success: false,
+                        msg: 'Activation code is invalid'
+                    });
+                } else {
+                    res.send('Please <a href=localhost:4200 > Click Here </a> to go to login page');
+                }
+            });
         }
     });
 });
 
 //Read Registered User
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-    User.find({ type: 'user' }).limit(config.pagination.perPage).skip(page).exec((err, docs) => {
+    User.find({
+        type: 'user'
+    }).limit(config.pagination.perPage).skip(page).exec((err, docs) => {
         if (!err) {
             res.send(docs);
-        } 
-        else {
+        } else {
             res.send(err);
         }
     });

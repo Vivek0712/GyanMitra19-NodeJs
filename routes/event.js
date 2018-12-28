@@ -7,14 +7,32 @@ const router = express.Router();
 const config = require('../config/env');
 const Event = require('../models/event');
 var ObjectId = require('mongoose').Types.ObjectId;
-const fileUpload = require('express-fileupload');
+var path = require('path')
+var multer = require('multer')
 
-router.post('/upload', (req, res, next) => {
-    res.send({
-        msg: 'ellorum nalla irukrom'
-    });
-});
-
+router.post('/uploadImage', (request, res)=>{
+    var upload = multer({
+		storage: multer.diskStorage({
+            destination: function (req, file, cb) {
+                cb(null, './assests/images/events/')
+            },
+            filename: function (req, file, cb) {
+                cb(null,request.body._id + file.originalname )
+            }
+        })
+    }).any()
+	upload(request, res, function(err) {
+		if(!err){
+            res.json({
+                error: false,
+                msg: 'FIle Uploaded Successfully'
+            })
+        }
+        else{
+            res.json(err);
+        }
+	})
+})
 router.post('/create', (req, res, next) => {
     let newEvent = new Event({
         title: req.body.title,
@@ -150,5 +168,6 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
+
 
 module.exports = router;
