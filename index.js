@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/env');
-const fileUpload = require('express-fileupload');
+
 
 mongoose.connect(config.database.name, { useNewUrlParser: true });
 // On Connection

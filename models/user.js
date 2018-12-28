@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/env');
 const pagination = require('mongoose-paginate');
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('myTotalySecretKey');
 const Schema = mongoose.Schema;
 // User Schema
 const UserSchema = mongoose.Schema({
@@ -77,6 +79,7 @@ module.exports.getUserByEmailId = function(email_id, callback) {
     User.findOne(query, callback);
 }
 module.exports.addUser = function(newUser, callback) {
+    
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -86,7 +89,11 @@ module.exports.addUser = function(newUser, callback) {
     });
 }
 module.exports.activationCode = function (user, callback) {
-    bcrypt.genSalt(10, (err, salt) => {
+    hashValue = user.email_id + user.name+user.mobile_number;
+    const encryptedString = cryptr.encrypt(hashValue);
+    user.activation_code = encryptedString;
+    user.save(callback);
+    /*bcrypt.genSalt(10, (err, salt) => {
         hashValue = user.email_id + user.name;
         bcrypt.hash(hashValue, salt, (err, hash) => {
             if (err) throw err;
@@ -94,7 +101,7 @@ module.exports.activationCode = function (user, callback) {
             user.save(callback);
             
         })
-    })
+    })*/
     
 }
 
