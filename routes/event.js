@@ -10,14 +10,14 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
 var multer = require('multer')
 
-router.post('/uploadImage', (request, res)=>{
+router.post('/uploadImage/:id', (request, res)=>{
     var upload = multer({
 		storage: multer.diskStorage({
             destination: function (req, file, cb) {
                 cb(null, './assests/images/events/')
             },
             filename: function (req, file, cb) {
-                cb(null,request.body._id + file.originalname )
+                cb(null,request.params.id+path.extname(file.originalname))
             }
         })
     }).any()
@@ -85,18 +85,21 @@ router.get('/all', function (req, res) {
     })
 })
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
-    Event.getAllEvents(page, (err, docs) => {
-        if (!err) {
-            res.send(docs);
-        } else {
-            res.json({
-                error: true,
-                msg: err
-            });
+    Event.find().skip((page-1) * config.pagination.perPage).limit(config.pagination.perPage).populate('category_id').populate('department_id').exec(function (err, docs) {
+        if (!err){
+            if(docs.length == 0){
+                res.json({error:true , msg:'No Pages to retreive'});                
+            }
+            else {
+                res.json({error:false , msg:docs});
+            }
         }
+        else{
+            
+            res.json({error:true , msg:err});
+        }   
     });
 });
 
