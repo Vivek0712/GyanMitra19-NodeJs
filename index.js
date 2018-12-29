@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/env');
-const fileUpload = require('express-fileupload');
+
 
 mongoose.connect(config.database.name, { useNewUrlParser: true });
 // On Connection
@@ -35,6 +35,7 @@ const roleUser = require('./routes/role_user');
 const team_member = require('./routes/team_member');
 const team = require('./routes/team');
 const participationStatus = require('./routes/participationstatus');
+const year = require('./routes/year');
 //Routes
 
 // File-Upload Middleware
@@ -71,7 +72,8 @@ app.use('/department',department);
 app.use('/degree',degree);
 app.use('/category',category);
 app.use('/team_member',team_member);
-app.use('/tean',team);
+app.use('/team', team);
+app.use('/year', year);
 app.use('/participationStatus',participationStatus);
 //Routes Ends
 
