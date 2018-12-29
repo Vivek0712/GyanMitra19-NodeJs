@@ -85,18 +85,15 @@ router.get('/all', function (req, res) {
     })
 })
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
-    Event.getAllEvents(page, (err, docs) => {
-        if (!err) {
-            res.send(docs);
-        } else {
-            res.json({
-                error: true,
-                msg: err
-            });
+    Event.find().populate('category_id').populate('department_id').exec(function (err, docs) {
+        if (!err){
+            res.json({error:false , msg:docs});
         }
+        else{
+            res.json({error:true , msg:err});
+        }   
     });
 });
 
