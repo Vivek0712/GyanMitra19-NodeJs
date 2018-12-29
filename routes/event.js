@@ -87,11 +87,17 @@ router.get('/all', function (req, res) {
 
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-    Event.find().populate('category_id').populate('department_id').exec(function (err, docs) {
+    Event.find().skip((page-1) * config.pagination.perPage).limit(config.pagination.perPage).populate('category_id').populate('department_id').exec(function (err, docs) {
         if (!err){
-            res.json({error:false , msg:docs});
+            if(docs.length == 0){
+                res.json({error:true , msg:'No Pages to retreive'});                
+            }
+            else {
+                res.json({error:false , msg:docs});
+            }
         }
         else{
+            
             res.json({error:true , msg:err});
         }   
     });
