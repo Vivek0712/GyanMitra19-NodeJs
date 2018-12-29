@@ -10,14 +10,14 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
 var multer = require('multer')
 
-router.post('/uploadImage', (request, res)=>{
+router.post('/uploadImage/:id', (request, res)=>{
     var upload = multer({
 		storage: multer.diskStorage({
             destination: function (req, file, cb) {
                 cb(null, './assests/images/events/')
             },
             filename: function (req, file, cb) {
-                cb(null,request.body._id + file.originalname )
+                cb(null,request.params.id+path.extname(file.originalname))
             }
         })
     }).any()
