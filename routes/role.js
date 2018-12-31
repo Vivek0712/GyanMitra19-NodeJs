@@ -44,7 +44,7 @@ router.get('/', function(req, res, next) {
 // Created By : Aravind S
 // Date : 20-December-2018
 router.put('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.course_name))
+    if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     var role = {
@@ -63,14 +63,14 @@ router.put('/:id', (req, res) => {
 // Created By : Aravind S
 // Date : 20-December-2018
 router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.name))
+    if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
-    Role.remove({ name: req.params.role_name}, (err, doc) => {
+    Role.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: 'Role Deleted' });
+            res.json({ error: false, msg: 'Deleted Role' });
         } else {
-            res.json({ error: true, msg: "Error in Deleting Role" });
+            res.json({ error: true, msg: "Failed to Delete Role" });
         }
     });
 });
