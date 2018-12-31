@@ -48,7 +48,7 @@ const port = 3000;
 app.use(cors({ origin: 'http://localhost:4200' }));
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assests', express.static('assests'))
 
 // Body Parser Middleware
 app.use(bodyParser.json());

@@ -33,6 +33,7 @@ router.post('/uploadImage/:id', (request, res)=>{
         }
 	})
 })
+
 router.post('/create', (req, res, next) => {
     let newEvent = new Event({
         title: req.body.title,

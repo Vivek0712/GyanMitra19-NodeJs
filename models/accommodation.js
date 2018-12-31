@@ -6,28 +6,22 @@ const Schema = mongoose.Schema;
 // Accommodation Schema
 const AccommodationSchema = mongoose.Schema({
     acc__transaction_id: {
-        type: String,
-        required: true
+        type: String
     },
     acc_mode_of_payment: {
-        type: String,
-        required: true
+        type: String
     },
     acc_days:{
-        type: String,
-        required: true
+        type: String
     },
     acc_file_name: {
-        type: String,
-        required: true
+        type: String
     },
     acc_payment_status: {
-        type: String,
-        required: true
+        type: String
     },
     acc_status: {
-        type: String,
-        required: true
+        type: String
     },
     //Refrence Should be given Like this
     user_id: {
