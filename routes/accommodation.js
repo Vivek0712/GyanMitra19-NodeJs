@@ -10,6 +10,40 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var multer = require('multer')
 var path = require('path')
 
+router.get('/populate', (req, res) => {
+    Accomodation.find().populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'degree_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
+        }
+    }).exec((err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        }
+        else{
+            res.json(docs);
+        }
+    })
+})
+
 // Uploads a file for DD
 // Created By : Aravind S
 // Date : 31-December-2018
@@ -88,6 +122,7 @@ router.post('/create', (req, res, next) => {
     });
 });
 
+
 // Returns a pagination of all Accommodations
 // Created By : Aravind S
 // Date : 20-December-2018
@@ -141,7 +176,7 @@ router.put('/confirmPayment/:id', (req, res) => {
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.id}`);
 
     var accommodation = {
-        acc_Accommodation_status: 'Payment Confirmed'
+        acc_payment_status: 'Paid'
     };
     Accomodation.findByIdAndUpdate(req.params.id, {
         $set: accommodation
@@ -151,7 +186,7 @@ router.put('/confirmPayment/:id', (req, res) => {
         if (!err) {
             res.json({
                 error: false,
-                msg: "Payment Confirmed"
+                msg: "Payment Successfull"
             });
         } else {
             res.json({
@@ -166,9 +201,6 @@ router.put('/confirmPayment/:id', (req, res) => {
 // Created By : Aravind S
 // Date : 20-December-2018
 router.post('/confirmAccommodation/:id', (req, res) => {
-    if (!ObjectId.isValid(req.body.user_id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-
     var accommodation = {
         acc_status: 'Confirmed'
     };
