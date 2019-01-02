@@ -11,6 +11,7 @@ var path = require('path')
 var multer = require('multer')
 
 router.post('/uploadImage/:id', (request, res)=>{
+    var fileName =""
     var upload = multer({
 		storage: multer.diskStorage({
             destination: function (req, file, cb) {
@@ -18,6 +19,12 @@ router.post('/uploadImage/:id', (request, res)=>{
             },
             filename: function (req, file, cb) {
                 cb(null,request.params.id+path.extname(file.originalname))
+                this.fileName = request.params.id + path.extname(file.originalname);
+                Event.findByIdAndUpdate(req.params.id, {
+                    $set: {
+                        image_name: request.params.id + path.extname(file.originalname)
+                    }
+                })
             }
         })
     }).any()
