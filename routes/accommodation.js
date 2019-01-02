@@ -48,7 +48,6 @@ router.get('/populate', (req, res) => {
 // Created By : Aravind S
 // Date : 31-December-2018
 router.post('/uploadImage/:id', (request, res) => {
-    var fileName = "";
     var upload = multer({
         storage: multer.diskStorage({
             destination: function (req, file, cb) {
@@ -56,11 +55,13 @@ router.post('/uploadImage/:id', (request, res) => {
             },
             filename: function (req, file, cb) {
                 cb(null, request.params.id + path.extname(file.originalname));
-                this.fileName = request.params.id + path.extname(file.originalname);
-                Accomodation.findByIdAndUpdate(req.params.id, {
-                    $set: {
-                        acc_file_name: request.params.id + path.extname(file.originalname)
-                    }
+                data = {
+                    acc_file_name: request.params.id + path.extname(file.originalname),
+                    acc_payment_status: 'Paid'
+                }
+                Accomodation.updateOne({_id: request.params.id}, {
+                    $set: data
+                },(err, resp)=>{
                 })
             }
         })
@@ -69,7 +70,7 @@ router.post('/uploadImage/:id', (request, res) => {
         if (!err) {
             Accomodation.findByIdAndUpdate(request.params.id, {
                 $set: {
-                    acc_payment_status: 'Paid',
+                    acc_mode_of_payment: 'Demand Draft',
                 }
             }, (error, docs) => {
                 if (error) {
@@ -116,7 +117,7 @@ router.post('/create', (req, res, next) => {
         } else {
             res.json({
                 error: false,
-                msg: 'Accommodation created Successfully'
+                msg: 'Accommodation request Successfull'
             });
         }
     });
@@ -197,6 +198,32 @@ router.put('/confirmPayment/:id', (req, res) => {
     });
 })
 
+// Approve Accommodation by Admin
+// Created By : Aravind S
+// Date : 02-January-2019
+router.post('/approveAccommodation/:id', (req, res) => {
+    var accommodation = {
+        acc_status: 'Approved'
+    };
+    Accomodation.findByIdAndUpdate(req.params.id, {
+        $set: accommodation
+    }, {
+        new: true
+    }, (err, doc) => {
+        if (!err) {
+            res.json({
+                error: false,
+                msg: "Accommodation Approved"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed to Approve Accommodation : " + err
+            });
+        }
+    });
+})
+
 // Confirm Accommodation by Admin
 // Created By : Aravind S
 // Date : 20-December-2018
@@ -227,7 +254,7 @@ router.post('/confirmAccommodation/:id', (req, res) => {
 // Created By : Aravind S
 // Date : 20-December-2018
 router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.user_id))
+    if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
     Accomodation.findByIdAndRemove(req.params.id, (err, doc) => {
