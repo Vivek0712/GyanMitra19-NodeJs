@@ -93,6 +93,25 @@ router.get('/all', function (req, res) {
     })
 })
 
+router.get('/:event',function (req, res) {
+    Event.find().populate('category_id').populate('department_id').exec(function(err, docs){
+        if (!err) {
+            var events = [];
+            for(var work of docs){
+                if(work.category_id.name === req.params.event){
+                    events.push(work);
+                }
+            }
+            res.send(events)
+        } else {
+            res.json({
+                error: true,
+                msg: err
+            })
+        }
+    })
+});
+
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
     Event.find().skip((page-1) * config.pagination.perPage).limit(config.pagination.perPage).populate('category_id').populate('department_id').exec(function (err, docs) {
