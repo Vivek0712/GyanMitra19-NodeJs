@@ -36,7 +36,6 @@ const team_member = require('./routes/team_member');
 const team = require('./routes/team');
 const participationStatus = require('./routes/participationstatus');
 const year = require('./routes/year');
-const cart = require('./routes/cart');
 //End Routes
 
 //Running Port
@@ -72,7 +71,6 @@ app.use('/category',category);
 app.use('/team_member',team_member);
 app.use('/team', team);
 app.use('/year', year);
-app.use('/cart',cart);
 app.use('/participationStatus',participationStatus);
 //Routes Ends
 
