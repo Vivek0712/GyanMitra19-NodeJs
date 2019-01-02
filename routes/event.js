@@ -19,10 +19,16 @@ router.post('/uploadImage/:id', (request, res)=>{
             },
             filename: function (req, file, cb) {
                 cb(null,request.params.id+path.extname(file.originalname))
+                console.log(req.params.id)
                 this.fileName = request.params.id + path.extname(file.originalname);
                 Event.findByIdAndUpdate(req.params.id, {
                     $set: {
                         image_name: request.params.id + path.extname(file.originalname)
+                    }
+                },(err, resp)=>{
+                    if(err){
+                    }
+                    else{
                     }
                 })
             }
