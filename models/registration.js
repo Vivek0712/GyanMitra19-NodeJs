@@ -4,14 +4,18 @@ const pagination = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 // Registration Schema
 const RegistrationSchema = mongoose.Schema({
-    user_id: {
+    event_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Event',
         required: true
     },
-    registration_id: {
-        type: String,
-        required: true
+    user_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    team_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
     },
     registration_type: {
         type: String,
