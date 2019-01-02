@@ -224,6 +224,58 @@ router.post('/approveAccommodation/:id', (req, res) => {
     });
 })
 
+// Approve Accommodation by Admin
+// Created By : Aravind S
+// Date : 02-January-2019
+router.post('/deproveAccommodation/:id', (req, res) => {
+    var accommodation = {
+        acc_status: 'Not Confirmed'
+    };
+    Accomodation.findByIdAndUpdate(req.params.id, {
+        $set: accommodation
+    }, {
+        new: true
+    }, (err, doc) => {
+        if (!err) {
+            res.json({
+                error: false,
+                msg: "Accommodation Rejected!"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed to reject Accommodation : " + err
+            });
+        }
+    });
+})
+
+// Approve Accommodation by Admin
+// Created By : Aravind S
+// Date : 02-January-2019
+router.post('/refusePayment/:id', (req, res) => {
+    var accommodation = {
+        acc_payment_status: 'Not Paid'
+    };
+    Accomodation.findByIdAndUpdate(req.params.id, {
+        $set: accommodation
+    }, {
+        new: true
+    }, (err, doc) => {
+        if (!err) {
+            res.json({
+                error: false,
+                msg: "Payment Rejected!"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed to reject Payment : " + err
+            });
+        }
+    });
+})
+
 // Confirm Accommodation by Admin
 // Created By : Aravind S
 // Date : 20-December-2018
