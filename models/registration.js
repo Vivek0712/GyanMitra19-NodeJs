@@ -17,7 +17,6 @@ const RegistrationSchema = mongoose.Schema({
         type: String,
         required: true
     }
-
 });
 RegistrationSchema.plugin(pagination);
 const Registration = module.exports = mongoose.model('Registration', RegistrationSchema);
