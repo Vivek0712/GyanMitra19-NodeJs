@@ -99,5 +99,26 @@ router.post('/newEventRegistration', (req, res)=>{
         }
     });
 });
-
+router.get('/', function(req, res, next) {
+    let page = req.query.page ? req.query.page : 1;
+    if(page==0){
+        Registration.find({}, (err, docs)=> {
+            if(err){
+                res.json({ error: true, msg: err });
+            }
+            else{
+                res.json(docs);
+            }
+        });
+        }
+    else {
+        Registration.getAllRegistrations(page, (err, docs) => {
+            if (!err) {
+                res.send(docs);
+            } else {
+                res.json({ error: true, msg: err });
+            }
+        });
+    }
+});
 module.exports = router;

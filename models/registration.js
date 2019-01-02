@@ -24,3 +24,6 @@ const RegistrationSchema = mongoose.Schema({
 });
 RegistrationSchema.plugin(pagination);
 const Registration = module.exports = mongoose.model('Registration', RegistrationSchema);
+module.exports.getAllRegistrations = (page, callback) => {
+    Registration.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}
