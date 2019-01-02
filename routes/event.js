@@ -104,7 +104,7 @@ router.get('/:event',function (req, res) {
         if (!err) {
             var events = [];
             for(var work of docs){
-                if(work.category_id.name === req.params.event){
+                if (work.category_id.name === req.params.event) {
                     events.push(work);
                 }
             }
