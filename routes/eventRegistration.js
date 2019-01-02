@@ -96,26 +96,50 @@ router.post('/newEventRegistration', (req, res) => {
         }
     });
 });
-router.get('/', function(req, res, next) {
-    let page = req.query.page ? req.query.page : 1;
-    if(page==0){
-        Registration.find({}, (err, docs)=> {
-            if(err){
-                res.json({ error: true, msg: err });
-            }
-            else{
-                res.json(docs);
-            }
-        });
+
+router.delete('/:id', (req, res)=>{
+    Registration.findByIdAndRemove(req.params.id, (err, docs)=>{
+        if(err){
+            res.json({
+                error: true,
+                msg: 'Unable to cancel your registration. Try again'
+            })
         }
-    else {
-        Registration.getAllRegistrations(page, (err, docs) => {
-            if (!err) {
-                res.send(docs);
-            } else {
-                res.json({ error: true, msg: err });
-            }
-        });
-    }
+        else{
+            res.json({
+                error: false,
+                msg: 'Registration removed from cart!'
+            })
+        }
+    })
+} );
+
+router.get('/:id/:type', function (req, res, next) {
+    Registration.find({
+        user_id: req.params.id
+    }).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id',
+        }
+    }).exec((err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            });
+        } else {
+            docs = docs.filter((doc)=>{
+                return doc.event_id.category_id.name == req.params.type
+            })
+            res.json(docs);
+        }
+    });
 });
+
 module.exports = router;
