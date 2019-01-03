@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
 const Registration = require('../models/registration');
+const User = require('../models/user');
 var nodemailer = require("nodemailer");
 var ObjectId = require('mongoose').Types.ObjectId;
 
-router.get('/checkWorkshopRegistration/:event_id/:user_id', (req, res) => {
+router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     Registration.countDocuments({
         user_id: req.params.user_id,
         event_id: req.params.event_id
@@ -34,22 +35,12 @@ router.get('/checkWorkshopRegistration/:event_id/:user_id', (req, res) => {
 })
 
 router.post('/newWorkshopRegistration', (req, res) => {
-    let newRegistration = undefined;
-    if (req.body.registration_type == 'Team') {
-        newRegistration = new Registration({
-            event_id: req.body.event_id,
-            team_id: req.body.team_id,
-            registration_type: req.body.registration_type,
-            participation: 'Absent'
-        })
-    } else {
-        newRegistration = new Registration({
+    let newRegistration = new Registration({
             event_id: req.body.event_id,
             user_id: req.body.user_id,
             registration_type: req.body.registration_type,
             participation: 'Absent'
         })
-    }
     newRegistration.save((err, doc) => {
         if (err) {
             res.json({
@@ -73,13 +64,16 @@ router.post('/newEventRegistration', (req, res) => {
         newRegistration = new Registration({
             event_id: req.body.event_id,
             team_id: req.body.team_id,
-            registration_type: req.body.registration_type
+            user_id: req.body.user_id,
+            registration_type: req.body.registration_type,
+            participation: req.body.participation
         })
     } else {
         newRegistration = new Registration({
             event_id: req.body.event_id,
             user_id: req.body.user_id,
-            registration_type: req.body.registration_type
+            registration_type: req.body.registration_type,
+            participation: req.body.participation
         })
     }
 
@@ -115,29 +109,30 @@ router.delete('/:id', (req, res)=>{
     })
 } );
 
-router.get('/:id/:type', function (req, res, next) {
+router.get('/events/:id', function (req, res, next) {
     Registration.find({
-        user_id: req.params.id
-    }).populate('event_id').populate({
-        path: 'event_id',
-        populate: {
-            path: 'department_id'
-        }
-    }).populate('event_id').populate({
-        path: 'event_id',
-        populate: {
-            path: 'category_id',
-        }
-    }).exec((err, docs) => {
+        event_id: req.params.id
+    }).populate('user_id').exec((err, docs) => {
         if (err) {
             res.json({
                 error: true,
                 msg: err
             });
         } else {
-            docs = docs.filter((doc)=>{
-                return doc.event_id.category_id.name == req.params.type
-            })
+            res.json(docs);
+        }
+    });
+});
+
+
+router.get('/:email',function(req ,res, next) {
+    User.getUserByEmailId(req.params.email,(err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            });
+        } else {
             res.json(docs);
         }
     });
