@@ -107,7 +107,25 @@ router.delete('/:id', (req, res)=>{
             })
         }
     })
-} );
+});
+
+router.put('/:id', (req,res)=>{
+
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    var newParticipation = {
+        participation: req.body.participation
+    };
+
+    Registration.findByIdAndUpdate(req.params.id, { $set: newParticipation }, { new: true },(err,docs)=>{
+        if (!err) {
+            res.json({ error: false, msg: "Attendance updated" });
+        }
+        else {
+            res.json({ error: true, msg: "Failed To Update Attendance" + err });
+        }
+    })
+});
 
 router.get('/events/:id', function (req, res, next) {
     Registration.find({

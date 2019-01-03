@@ -57,7 +57,7 @@ router.put('/:id', (req, res) => {
     ParticipationStatus.findByIdAndUpdate(req.params.id, { $set: newParticipationStatus }, { new: true }, (err, doc) => {
         if (!err) {
             res.json({ error: false, msg: "ParticipationStatus Updated" });
-        } 
+        }
         else {
             res.json({ error: true, msg: "Failed To Update ParticipationStatus" + err });
         }
