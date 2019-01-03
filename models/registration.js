@@ -20,6 +20,10 @@ const RegistrationSchema = mongoose.Schema({
     registration_type: {
         type: String,
         required: true
+    },
+    participation:{
+        type: String,
+        required: true
     }
 });
 RegistrationSchema.plugin(pagination);

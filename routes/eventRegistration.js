@@ -35,18 +35,19 @@ router.get('/checkWorkshopRegistration/:event_id/:user_id', (req, res) => {
 
 router.post('/newWorkshopRegistration', (req, res) => {
     let newRegistration = undefined;
-
     if (req.body.registration_type == 'Team') {
         newRegistration = new Registration({
             event_id: req.body.event_id,
             team_id: req.body.team_id,
-            registration_type: req.body.registration_type
+            registration_type: req.body.registration_type,
+            participation: 'Absent'
         })
     } else {
         newRegistration = new Registration({
             event_id: req.body.event_id,
             user_id: req.body.user_id,
-            registration_type: req.body.registration_type
+            registration_type: req.body.registration_type,
+            participation: 'Absent'
         })
     }
     newRegistration.save((err, doc) => {
