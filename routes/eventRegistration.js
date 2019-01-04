@@ -8,6 +8,28 @@ const TeamMember = require('../models/team_member');
 var nodemailer = require("nodemailer");
 var ObjectId = require('mongoose').Types.ObjectId;
 
+
+router.get('/getRegistrations/:id/:type', (req, res) => {
+    Registration.find({
+        user_id: req.params.id
+    }).populate('event_id').populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).then((docs) => {
+        docs = docs.filter((doc)=>{
+            return doc.event_id.category_id.name == req.params.type;
+        })
+        res.json(docs);
+    })
+})
+
 router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     Registration.countDocuments({
         user_id: req.params.user_id,
@@ -66,11 +88,12 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
 
 router.post('/newWorkshopRegistration', (req, res) => {
     let newRegistration = new Registration({
-            event_id: req.body.event_id,
-            user_id: req.body.user_id,
-            registration_type: req.body.registration_type,
-            participation: 'Absent'
-        })
+        event_id: req.body.event_id,
+        user_id: req.body.user_id,
+        registration_type: req.body.registration_type,
+        participation: 'Absent',
+        status: 'Not Confirmed'
+    })
     newRegistration.save((err, doc) => {
         if (err) {
             res.json({
@@ -89,35 +112,37 @@ router.post('/newWorkshopRegistration', (req, res) => {
 
 router.post('/newEventRegistration', (req, res) => {
 
-    User.find({email_id:req.body.email_id},function(err,docs){
-        if(err){
+    User.find({
+        email_id: req.body.email_id
+    }, function (err, docs) {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
             })
-        }
-        else if(docs.length==0){
+        } else if (docs.length == 0) {
             res.json({
                 error: true,
                 msg: "Mail id is not registered"
             })
-        }
-        else {
-            Registration.find({user_id:docs.user_id},function(err,doc){
-                if(doc.length!=0){
+        } else {
+            Registration.find({
+                user_id: docs.user_id
+            }, function (err, doc) {
+                if (doc.length != 0) {
                     res.json({
                         error: true,
                         msg: "User had already registered"
                     })
-                }
-                else {
+                } else {
                     let newRegistration = new Registration({
                         event_id: req.body.event_id,
                         user_id: docs[0]._id,
                         registration_type: req.body.registration_type,
-                        participation: req.body.participation
+                        participation: req.body.participation,
+                        status: 'Not Confirmed'
                     });
-        
+
                     newRegistration.save((err, doc) => {
                         if (err) {
                             res.json({
@@ -138,34 +163,38 @@ router.post('/newEventRegistration', (req, res) => {
 });
 
 
-router.post('newTeamEventRegistration', (req,res) => {
-    User.find({email_id: req.body.email_id}, function(err,doc){
-        if(err){
+router.post('newTeamEventRegistration', (req, res) => {
+    User.find({
+        email_id: req.body.email_id
+    }, function (err, doc) {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
             })
-        }
-        else if(doc.length==0){
+        } else if (doc.length == 0) {
             res.json({
                 error: true,
                 msg: "Mail id is not registered"
             })
-        }
-        else {
-            Registration.find({event_id: req.body.event_id,user_id:doc[0]._id}).populate('user_id').exec(function(err,docs){
-                if(docs.length!=0){
+        } else {
+            Registration.find({
+                event_id: req.body.event_id,
+                user_id: doc[0]._id
+            }).populate('user_id').exec(function (err, docs) {
+                if (docs.length != 0) {
                     res.json({
                         error: true,
                         msg: "User had already registered"
                     })
-                }
-                else {
-                    if(req.body.position === "leader"){
-                        Team.find({name:req.body.name},function(err,re){
-                            if(re.length==0){
+                } else {
+                    if (req.body.position === "leader") {
+                        Team.find({
+                            name: req.body.name
+                        }, function (err, re) {
+                            if (re.length == 0) {
                                 let newTeam = new Team({
-                                    name:req.body.name,
+                                    name: req.body.name,
                                     user_id: doc._id
                                 })
                                 newTeam.save((err, res1) => {
@@ -175,37 +204,38 @@ router.post('newTeamEventRegistration', (req,res) => {
                                             msg: err
                                         })
                                     } else {
-                                        Team.find({name:req.body.name},(err,res2)=>{
+                                        Team.find({
+                                            name: req.body.name
+                                        }, (err, res2) => {
                                             let newTeamMember = new TeamMember({
-                                                user_id:doc[0]._id,
+                                                user_id: doc[0]._id,
                                                 team_id: res2[0]._id
                                             })
-                                            newTeamMember.save((err,res3)=>{
-                                                if(err){
+                                            newTeamMember.save((err, res3) => {
+                                                if (err) {
                                                     res.json({
-                                                        error:true,
-                                                        msg:err
+                                                        error: true,
+                                                        msg: err
                                                     })
-                                                }
-                                                else {
+                                                } else {
                                                     let newRegistration = new Registration({
-                                                        event_id:req.body.event_id,
+                                                        event_id: req.body.event_id,
                                                         user_id: doc[0]._id,
                                                         team_id: res2[0]._id,
                                                         registration_type: "Team",
-                                                        participation: "absent"
+                                                        participation: "absent",
+                                                        status: "Not Confirmed"
                                                     })
-                                                    newRegistration.save((err,res4)=>{
-                                                        if(err){
+                                                    newRegistration.save((err, res4) => {
+                                                        if (err) {
                                                             res.json({
-                                                                registered:false,
-                                                                msg:err
+                                                                registered: false,
+                                                                msg: err
                                                             });
-                                                        }
-                                                        else{
+                                                        } else {
                                                             res.json({
-                                                                registered:true,
-                                                                msg:"REgistered sucessfully"
+                                                                registered: true,
+                                                                msg: "Registered sucessfully"
                                                             })
                                                         }
                                                     });
@@ -214,55 +244,53 @@ router.post('newTeamEventRegistration', (req,res) => {
                                         })
                                     }
                                 });
-                            }
-                            else {
+                            } else {
                                 res.json({
-                                    error:true,
+                                    error: true,
                                     msg: "Team name already registered"
                                 });
                             }
                         });
-                    }
-                    else {
-                        Team.find({name:req.body.name},(err,res1)=>{
-                            if(err){
+                    } else {
+                        Team.find({
+                            name: req.body.name
+                        }, (err, res1) => {
+                            if (err) {
                                 res.json({
-                                    error:true,
-                                    msg:err
+                                    error: true,
+                                    msg: err
                                 });
-                            }
-                            else {
+                            } else {
                                 let newTeamMember = new TeamMember({
                                     team_id: res1[0]._id,
                                     user_id: doc[0]._id
                                 })
 
-                                newTeamMember.save((err,res2)=>{
-                                    if(err){
+                                newTeamMember.save((err, res2) => {
+                                    if (err) {
                                         res.json({
-                                            error:true,
-                                            msg:err
+                                            error: true,
+                                            msg: err
                                         })
-                                    }
-                                    else {
+                                    } else {
                                         let newRegistration = new Registration({
                                             event_id: req.body.event_id,
                                             team_id: res1[0]._id,
                                             user_id: doc[0]._id,
                                             registration_type: "Team",
-                                            participation: "absent"
+                                            participation: "absent",
+                                            status: "Not Confirmed"
                                         })
-                                        newRegistration.save((err,res3)=>{
-                                            if(err){
+                                        newRegistration.save((err, res3) => {
+                                            if (err) {
                                                 res.json({
-                                                    registered:false,
-                                                    msg:err
+                                                    registered: false,
+                                                    msg: err
                                                 })
-                                            }
-                                            else{
+                                            } else {
                                                 res.json({
-                                                    registered:true,
-                                                    msg:"Registered Sucessfully"
+                                                    registered: true,
+                                                    msg: "Registered Sucessfully"
                                                 })
                                             }
                                         })
@@ -294,7 +322,7 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', (req,res)=>{
+router.put('/:id', (req, res) => {
 
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
@@ -302,12 +330,21 @@ router.put('/:id', (req,res)=>{
         participation: req.body.participation
     };
 
-    Registration.findByIdAndUpdate(req.params.id, { $set: newParticipation }, { new: true },(err,docs)=>{
+    Registration.findByIdAndUpdate(req.params.id, {
+        $set: newParticipation
+    }, {
+        new: true
+    }, (err, docs) => {
         if (!err) {
-            res.json({ error: false, msg: "Attendance updated" });
-        }
-        else {
-            res.json({ error: true, msg: "Failed To Update Attendance" + err });
+            res.json({
+                error: false,
+                msg: "Attendance updated"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed To Update Attendance" + err
+            });
         }
     })
 });
@@ -328,8 +365,8 @@ router.get('/events/:id', function (req, res, next) {
 });
 
 
-router.get('/:email',function(req ,res, next) {
-    User.getUserByEmailId(req.params.email,(err, docs) => {
+router.get('/:email', function (req, res, next) {
+    User.getUserByEmailId(req.params.email, (err, docs) => {
         if (err) {
             res.json({
                 error: true,
@@ -340,5 +377,6 @@ router.get('/:email',function(req ,res, next) {
         }
     });
 });
+
 
 module.exports = router;
