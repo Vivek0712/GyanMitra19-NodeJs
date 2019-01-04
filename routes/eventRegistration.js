@@ -210,6 +210,27 @@ router.post('/newTeamEventRegistration', (req, res) => {
 
 
 
+router.get('/getRegistrations/:id/:type', (req, res) => {
+    Registration.find({
+        user_id: req.params.id
+    }).populate('event_id').populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).then((docs) => {
+        docs = docs.filter((doc)=>{
+            return doc.event_id.category_id.name == req.params.type;
+        })
+        res.json(docs);
+    })
+})
+
 router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     Registration.countDocuments({
         user_id: req.params.user_id,
@@ -271,7 +292,8 @@ router.post('/newWorkshopRegistration', (req, res) => {
         event_id: req.body.event_id,
         user_id: req.body.user_id,
         registration_type: req.body.registration_type,
-        participation: 'Absent'
+        participation: 'Absent',
+        status: 'Not Confirmed'
     })
     newRegistration.save((err, doc) => {
         if (err) {
@@ -291,33 +313,35 @@ router.post('/newWorkshopRegistration', (req, res) => {
 
 router.post('/newEventRegistration', (req, res) => {
 
-    User.find({ email_id: req.body.email_id }, function (err, docs) {
+    User.find({
+        email_id: req.body.email_id
+    }, function (err, docs) {
         if (err) {
             res.json({
                 error: true,
                 msg: err
             })
-        }
-        else if (docs.length == 0) {
+        } else if (docs.length == 0) {
             res.json({
                 error: true,
                 msg: "Mail id is not registered"
             })
-        }
-        else {
-            Registration.find({ user_id: docs.user_id }, function (err, doc) {
+        } else {
+            Registration.find({
+                user_id: docs.user_id
+            }, function (err, doc) {
                 if (doc.length != 0) {
                     res.json({
                         error: true,
                         msg: "User had already registered"
                     })
-                }
-                else {
+                } else {
                     let newRegistration = new Registration({
                         event_id: req.body.event_id,
                         user_id: docs[0]._id,
                         registration_type: req.body.registration_type,
-                        participation: req.body.participation
+                        participation: req.body.participation,
+                        status: 'Not Confirmed'
                     });
 
                     newRegistration.save((err, doc) => {
@@ -366,12 +390,21 @@ router.put('/:id', (req, res) => {
         participation: req.body.participation
     };
 
-    Registration.findByIdAndUpdate(req.params.id, { $set: newParticipation }, { new: true }, (err, docs) => {
+    Registration.findByIdAndUpdate(req.params.id, {
+        $set: newParticipation
+    }, {
+        new: true
+    }, (err, docs) => {
         if (!err) {
-            res.json({ error: false, msg: "Attendance updated" });
-        }
-        else {
-            res.json({ error: true, msg: "Failed To Update Attendance" + err });
+            res.json({
+                error: false,
+                msg: "Attendance updated"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed To Update Attendance" + err
+            });
         }
     })
 });
@@ -404,5 +437,6 @@ router.get('/:email', function (req, res, next) {
         }
     });
 });
+
 
 module.exports = router;
