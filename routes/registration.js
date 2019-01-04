@@ -50,7 +50,7 @@ router.post('/create', (req, res, next) => {
                         msg: 'Failed to add activtionCode to user' + err2
                     });
                 } else {
-                    link = "http://localhost:4200/user/"+"activate/" + activationUser._id + "/" + activationUser.activation_code;
+                    link = "http://localhost:4200/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
                     let mailOptions = {
                         to: req.body.email_id,
                         subject: "Please confirm your Email account",
@@ -123,5 +123,20 @@ router.get('/', function (req, res, next) {
         }
     });
 });
+
+router.get('/hasConfirmed/:id', function (req, res, next) {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    User.findById(req.params.id, (err, user) => {
+        if (err) throw err;
+        if (user.cart_confirmed) {
+            res.json({
+                error: true,
+                data: user,
+                msg:"Confirmed"
+            })
+        }
+    })
+})
 
 module.exports = router;
