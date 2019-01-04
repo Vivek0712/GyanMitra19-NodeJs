@@ -23,9 +23,13 @@ router.get('/getRegistrations/:id/:type', (req, res) => {
             path: 'category_id'
         }
     }).then((docs) => {
-        docs = docs.filter((doc)=>{
-            return doc.event_id.category_id.name == req.params.type;
-        })
+        docs = docs.filter((doc) => {
+            if (doc.event_id.category_id.name == req.params.type) {
+                return true;
+            } else {
+                return false;
+            }
+        });
         res.json(docs);
     })
 })
@@ -234,8 +238,8 @@ router.post('newTeamEventRegistration', (req, res) => {
                                                             });
                                                         } else {
                                                             res.json({
-                                                                registered:true,
-                                                                msg:"Team Leader registered sucessfully"
+                                                                registered: true,
+                                                                msg: "Team Leader registered sucessfully"
                                                             })
                                                         }
                                                     });
@@ -377,6 +381,23 @@ router.get('/:email', function (req, res, next) {
         }
     });
 });
+
+router.get('/getUserEvents/:id',function(req,res,next){
+    Registration.find({user_id: req.params.id}).populate('event_id').exec(function (err, docs){
+        if(err){
+            res.json({
+                error:true,
+                msg:'NO Events'
+            });
+        }else{
+            res.json({
+                error:false,
+                msg:docs
+            });
+        }
+    });
+});
+
 
 
 module.exports = router;
