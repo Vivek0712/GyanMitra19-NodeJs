@@ -58,6 +58,9 @@ const UserSchema = mongoose.Schema({
     registration_mode: {
         type: String,
         required: true
+    },
+    cart_confirmed: {
+        type: Boolean
     }
 
 });
