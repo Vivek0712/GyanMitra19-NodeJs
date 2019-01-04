@@ -205,7 +205,7 @@ router.post('newTeamEventRegistration', (req,res) => {
                                                         else{
                                                             res.json({
                                                                 registered:true,
-                                                                msg:"REgistered sucessfully"
+                                                                msg:"Team Leader registered sucessfully"
                                                             })
                                                         }
                                                     });
