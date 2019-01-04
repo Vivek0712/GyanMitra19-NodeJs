@@ -583,22 +583,19 @@ router.get('/:email', function (req, res, next) {
     });
 });
 
-router.get('/getUserEvents/:id',function(req,res,next){
-    Registration.find({user_id: req.params.id}).populate('event_id').exec(function (err, docs){
-        if(err){
-            res.json({
-                error:true,
-                msg:'NO Events'
-            });
-        }else{
-            res.json({
-                error:false,
-                msg:docs
-            });
+router.get('/getCollegeMates/:event_id', function (req, res, next) {
+
+    Event.findById(req.params.event_id, (err, docs) => {
+        if (docs.allow_gender_mixing) {
+            console.log('hello');
         }
+        else {
+            console.log('hello2');
+        }
+    
     });
+
+
 });
-
-
 
 module.exports = router;

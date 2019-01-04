@@ -90,3 +90,4 @@ const Event = module.exports = mongoose.model('Event', EventSchema);
 module.exports.getAllEvents = (page, callback) => {
     Event.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
 }
+
