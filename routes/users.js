@@ -99,6 +99,37 @@ router.post('/confirmPayment', function (req, res) {
     });
 });
 
+router.post('/confirmCart', function (req, res) {
+    if (!ObjectId.isValid(req.body.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
+    User.findById(req.body.user_id).then((doc) => {
+        if (doc.length == 0) {
+            res.json({
+                error: true,
+                msg: 'Cannot find an account for that ID'
+            })
+        } else {
+            User.findByIdAndUpdate(req.body.user_id, {
+                $set: {
+                    cart_confirmed: true
+                }
+            }, (err, docs) => {
+                if (err) {
+                    res.json({
+                        error: true,
+                        msg: 'Unable to Confirm Cart. Try Again'
+                    })
+                } else {
+                    res.json({
+                        error: false,
+                        msg: 'Cart Successfully confirmed!'
+                    })
+                }
+            })
+        }
+    })
+})
+
 //Read All Participants
 router.get('/participants', function (req, res, next) {
 
@@ -129,6 +160,24 @@ router.get('/participants', function (req, res, next) {
         });
     }
 });
+
+router.get('/isCartConfirmed/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    User.findById(req.params.id, {}, (err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: error
+            })
+        } else {
+            res.json({
+                error: false,
+                isCartConfirmed: docs.cart_confirmed
+            })
+        }
+    })
+})
 
 router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
