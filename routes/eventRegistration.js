@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Registration = require('../models/registration');
 const User = require('../models/user');
+const Event = require('../models/event');
 var nodemailer = require("nodemailer");
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -17,7 +18,7 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
             })
         }
     }).then((docs) => {
-        if (docs.length != 0) {
+        if (docs != 0) {
             res.json({
                 error: false,
                 registered: true,
