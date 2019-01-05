@@ -9,7 +9,7 @@ var nodemailer = require("nodemailer");
 var ObjectId = require('mongoose').Types.ObjectId;
 
 router.post('/newTeamEventRegistration', (req, res) => {
-   /* User.find({ email_id: req.body.email_id }, function (err, doc) {
+    User.find({ email_id: req.body.email_id }, function (err, doc) {
         if (err) {
             res.json({
                 error: true,
@@ -117,7 +117,7 @@ router.post('/newTeamEventRegistration', (req, res) => {
                 }
             });
         }
-    });*/
+    });
 });
 
 
@@ -503,7 +503,7 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
             User.findById(req.params.user_id, (err, currentUser) => {
                 if (err) throw console.error();
 
-                User.find({ college_id: currentUser.college_id, gender: currentUser.gender }, (err, collegeMates) => {
+                User.find({ college_id: currentUser.college_id, gender: currentUser.gender , activated: true ,cart_confirmed:false}, 'email_id' ,(err, collegeMates) => {
                     if (err) {
                         res.json({
                             error: true,
