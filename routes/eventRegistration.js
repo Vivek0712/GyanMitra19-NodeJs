@@ -9,7 +9,6 @@ const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 router.post('/newTeamEventRegistration', (req, res) => {
-
     if (req.body.position === "leader") {
         let newTeam = new Team({
             name: req.body.name,
