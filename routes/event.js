@@ -130,7 +130,6 @@ router.get('/', function(req, res, next) {
             }
         }
         else{
-            
             res.json({error:true , msg:err});
         }   
     });
