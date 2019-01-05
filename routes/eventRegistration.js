@@ -493,19 +493,74 @@ router.get('/:email', function (req, res, next) {
     });
 });
 
-router.get('/getCollegeMates/:event_id', function (req, res, next) {
+router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 
     Event.findById(req.params.event_id, (err, docs) => {
         if (docs.allow_gender_mixing) {
-            console.log('hello');
+            User.findById(req.params.user_id, (err, currentUser) => {
+                if (err) throw console.error();
+
+                User.find({ college_id: currentUser.college_id, gender: currentUser.gender , activated: true ,cart_confirmed:false}, 'email_id' ,(err, collegeMates) => {
+                    if (err) {
+                        res.json({
+                            error: true,
+                            msg: 'No Mates'
+                        });
+                    }
+                    else {
+                        var college_mates = new Array();
+                        for (key in collegeMates) {
+                            if (collegeMates.hasOwnProperty) {
+                                college_mates[key] = new Object();
+                                college_mates[key].id = collegeMates[key]._id;
+                                college_mates[key].text = collegeMates[key].email_id;
+
+                            }
+                        }
+                        res.json({
+                            error: false,
+                            msg: college_mates
+                        })
+                    }
+                })
+            });
         }
         else {
-            console.log('hello2');
+            User.findById(req.params.user_id, (err, currentUser) => {
+                if (err) throw console.error();
+
+                User.find({ college_id: currentUser.college_id, activated: true ,cart_confirmed:false}, ' email_id', (err, collegeMates) => {
+                    if (err) {
+                        res.json({
+                            error: true,
+                            msg: 'No Mates'
+                        });
+                    }
+                    else {
+                        var college_mates = new Array();
+                        for (key in collegeMates) {
+                            if (collegeMates.hasOwnProperty) {
+                                college_mates[key] = new Object();
+                                if (collegeMates[key]._id.toString().localeCompare(currentUser._id.toString())) {
+                                    college_mates[key].id = collegeMates[key]._id;
+                                    college_mates[key].text = collegeMates[key].email_id;
+                                }
+
+
+                            }
+                        }
+                        res.json({
+                            error: false,
+                            msg: college_mates,
+
+                        })
+
+                    }
+                })
+            });
         }
-    
+
     });
-
-
 });
 
 module.exports = router;
