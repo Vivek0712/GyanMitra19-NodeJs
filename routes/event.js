@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
 const Event = require('../models/event');
+const Registration = require('../models/registration');
 var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
 var multer = require('multer')
