@@ -222,16 +222,50 @@ router.post('/newWorkshopRegistration', (req, res) => {
 
 
 router.post('/newEventRegistration', (req, res) => {
-
-    User.find({
-        email_id: req.body.email_id
-    }, function (err, docs) {
-        if (err) {
+    if (!ObjectId.isValid(req.body.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    Registration.countDocuments({
+        user_id: req.body.user_id,
+        event_id: req.body.event_id
+    }).then((count) => {
+        if (count != 0) {
+            res.json({
+                error: true,
+                msg: 'Already Registered!'
+            })
+        } else {
+            let newRegistration = new Registration({
+                user_id: req.body.user_id,
+                event_id: req.body.event_id,
+                registration_type: req.body.registration_type,
+                participation: 'Absent',
+                status: 'Not Confirmed'
+            })
+            newRegistration.save((err, doc) => {
+                if (err) {
+                    res.json({
+                        error: true,
+                        msg: err
+                    })
+                } else {
+                    res.json({
+                        error: false,
+                        msg: 'Successfully Registered!'
+                    })
+                }
+            });
+        }
+    })
+    
+  /*  User.findById(req.body.user_id, function (err, docs) {
+            if (err) {
+                console.log(docs);
             res.json({
                 error: true,
                 msg: err
             })
         } else if (docs.length == 0) {
+            console.log(docs);
             res.json({
                 error: true,
                 msg: "Mail id is not registered"
@@ -270,7 +304,7 @@ router.post('/newEventRegistration', (req, res) => {
                 }
             })
         }
-    });
+    });*/
 });
 
 router.delete('/:id', (req, res) => {
