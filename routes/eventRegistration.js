@@ -120,9 +120,6 @@ router.post('/newTeamEventRegistration', (req, res) => {
     });
 });
 
-
-
-
 router.get('/getRegistrations/:id/:type', (req, res) => {
     Registration.find({
         user_id: req.params.id
