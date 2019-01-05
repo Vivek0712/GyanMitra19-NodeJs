@@ -5,6 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/env');
+const http = require('http');
 
 
 mongoose.connect(config.database.name, { useNewUrlParser: true });
@@ -40,7 +41,7 @@ const eventRegistration = require('./routes/eventRegistration');
 //End Routes
 
 //Running Port
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // CORS Middleware
 app.use(cors({ origin: 'http://localhost:4200' }));
@@ -80,15 +81,13 @@ app.use('/eventRegistration', eventRegistration);
 
 
 // Index Route
-app.get('/', (req, res) => {
-    res.send('invaild endpoint');
-});
+app.use(express.static('../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
+app.get('/*', (req, res) => {
+    res.sendFile(path.join('../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
-
+const server = http.createServer(app);
 // Start Server
-app.listen(port, () => {
+server.listen(port, () => {
     console.log('Server started on port ' + port);
 });
