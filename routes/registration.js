@@ -29,7 +29,8 @@ router.post('/create', (req, res, next) => {
         activated: req.body.activated,
         type: req.body.type,
         password: req.body.password,
-        registration_mode: req.body.registration_mode
+        registration_mode: req.body.registration_mode,
+        gmID: 'GM19'
     });
 
     User.addUser(newUser, (err, user) => {
@@ -39,15 +40,11 @@ router.post('/create', (req, res, next) => {
                 msg: 'Failed to register user' + err
             });
         } else {
-            /*res.json({
-                success: true,
-                msg: 'User Activated'
-            });*/
             User.activationCode(newUser, (err2, activationUser) => {
                 if (err) {
                     res.json({
                         success: false,
-                        msg: 'Failed to add activtionCode to user' + err2
+                        msg: 'Failed to add activtion Code to user' + err2
                     });
                 } else {
                     link = "http://localhost:4200/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
@@ -91,6 +88,7 @@ router.post('/activate', function (req, res, next) {
         } else {
             if (user.activation_code == activation_code) {
                 user.activated = true;
+                user.gmID = 'GM19'+ substring(user._id.length - 7)
                 user.save(function (err, newUser) {
                     if (err) {
                         res.json({

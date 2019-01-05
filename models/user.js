@@ -11,6 +11,10 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    gmID: {
+        type: String,
+        required: true
+    },
     college_id: {
         type: Schema.Types.ObjectId,
         ref: 'College',

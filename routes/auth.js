@@ -29,7 +29,8 @@ router.post('/authenticate', (req, res, next) => {
                         id: user._id,
                         name: user.name,
                         email_id: user.email_id,
-                        type: user.type
+                        type: user.type,
+                        gmID: user.gmID
                     },
                     msg: 'YOUR LOGGED IN'
                 })
