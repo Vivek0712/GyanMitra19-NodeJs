@@ -113,8 +113,16 @@ router.post('/newTeamEventRegistration', (req, res) => {
     }
 });
 
-
-
+router.get('/getPendingDDConfirmation', (req,res)=>{
+    User.find({
+        cart_confirmed: true,
+        cart_dd_image: {
+            $ne: ''
+        }
+    }).populate('department_id').populate('college_id').populate('degree_id').then((docs)=>{
+        res.json(docs);
+    })
+})
 
 router.get('/getRegistrations/:id/:type', (req, res) => {
     Registration.find({
