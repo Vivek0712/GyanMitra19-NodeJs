@@ -37,7 +37,7 @@ router.post('/newTeamEventRegistration', (req, res) => {
                             let newRegistration = new Registration({
                                 event_id: req.body.event_id,
                                 user_id: req.body.user_id,
-                                team_id: res2[0]._id,
+                                team_id: res2._id,
                                 registration_type: "Team",
                                 participation: "Absent",
                                 status: "Not Confirmed"
@@ -54,7 +54,6 @@ router.post('/newTeamEventRegistration', (req, res) => {
                                         registered: true,
                                         msg: "Team Leader registered sucessfully"
                                     })
-
                                 }
                             });
                         }
@@ -76,6 +75,7 @@ router.post('/newTeamEventRegistration', (req, res) => {
                     team_id: res1[0]._id,
                     user_id: req.body.user_id
                 })
+                //console.log(newTeamMember);
                 newTeamMember.save((err, res2) => {
                     if (err) {
                         res.json({
@@ -86,7 +86,7 @@ router.post('/newTeamEventRegistration', (req, res) => {
                     else {
                         let newRegistration = new Registration({
                             event_id: req.body.event_id,
-                            team_id: res1[0]._id,
+                            team_id: res1._id,
                             user_id: req.body.user_id,
                             registration_type: "Team",
                             participation: "Absent",
