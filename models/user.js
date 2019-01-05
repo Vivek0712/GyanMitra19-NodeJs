@@ -61,6 +61,9 @@ const UserSchema = mongoose.Schema({
     },
     cart_confirmed: {
         type: Boolean
+    },
+    cart_dd_image: {
+        type: String
     }
 
 });

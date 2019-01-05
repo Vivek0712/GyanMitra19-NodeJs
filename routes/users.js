@@ -4,7 +4,57 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const User = require('../models/user');
+const EventRegistration = require('../models/registration');
 var ObjectId = require('mongoose').Types.ObjectId;
+var path = require('path')
+var multer = require('multer')
+
+
+router.post('/uploadCartDDImage/:id', (request, res)=>{
+    var fileName =""
+    var upload = multer({
+		storage: multer.diskStorage({
+            destination: function (req, file, cb) {
+                cb(null, './assests/images/cart/')
+            },
+            filename: function (req, file, cb) {
+                cb(null,request.params.id+path.extname(file.originalname))
+                console.log(req.params.id)
+                this.fileName = request.params.id + path.extname(file.originalname);
+                User.findByIdAndUpdate(req.params.id, {
+                    $set: {
+                        cart_dd_image: request.params.id + path.extname(file.originalname)
+                    }
+                },(err, resp)=>{
+                    if(err){
+                    }
+                    else{
+                        
+                    }
+                })
+            }
+        })
+    }).any()
+	upload(request, res, function(err) {
+		if(!err){
+            
+            res.json({
+                error: false,
+                msg: 'FIle Uploaded Successfully'
+            })
+        }
+        else{
+            res.json(err);
+        }
+    })
+    EventRegistration.updateMany({user_id : request.params.id}, {
+        $set: {
+            status: 'Verifying Payment'
+        }
+    }, (err, docs)=>{
+    })
+})
+
 
 router.get('/participants/search', (req, res, next) => {
     let _id = req.query.id;
@@ -76,6 +126,7 @@ router.get('/read', function (req, res, next) {
     });
 });
 
+
 //Confirm Payment by Admin
 router.post('/confirmPayment', function (req, res) {
     User.count({
@@ -120,9 +171,23 @@ router.post('/confirmCart', function (req, res) {
                         msg: 'Unable to Confirm Cart. Try Again'
                     })
                 } else {
-                    res.json({
-                        error: false,
-                        msg: 'Cart Successfully confirmed!'
+                    EventRegistration.updateMany({user_id : req.body.user_id},{
+                        $set: {
+                            status: 'Payment pending'
+                        }
+                    },(err)=>{
+                        if(err){
+                            res.json({
+                                error: true,
+                                msg: 'Unable to Confirm Cart. Try Again'
+                            })
+                        }
+                        else {
+                            res.json({
+                                error: false,
+                                msg: 'Your cart has been successfully confirmed'
+                            })
+                        }
                     })
                 }
             })
