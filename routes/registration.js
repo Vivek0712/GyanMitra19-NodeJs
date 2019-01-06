@@ -89,7 +89,7 @@ router.post('/activate', function (req, res, next) {
         } else {
             if (user.activation_code == activation_code) {
                 user.activated = true;
-                user.gmID = 'GM19'+ substring(user._id.length - 7)
+                user.gmID = 'GM19'+ user_id.substring(this._id.length - 7)
                 user.save(function (err, newUser) {
                     if (err) {
                         res.json({
