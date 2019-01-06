@@ -567,4 +567,5 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 });
 
 
+
 module.exports = router;

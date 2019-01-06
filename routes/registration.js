@@ -30,7 +30,7 @@ router.post('/create', (req, res, next) => {
         type: req.body.type,
         password: req.body.password,
         registration_mode: req.body.registration_mode,
-        gmID: 'GM19',
+        gmID: '',
         cart_paid: false
     });
 
@@ -89,7 +89,8 @@ router.post('/activate', function (req, res, next) {
         } else {
             if (user.activation_code == activation_code) {
                 user.activated = true;
-                user.gmID = 'GM19'+ user_id.substring(this._id.length - 7)
+                var  id = user._id.toString();
+                user.gmID = 'GM19_' + id.substring(id.length - 8, id.length);
                 user.save(function (err, newUser) {
                     if (err) {
                         res.json({

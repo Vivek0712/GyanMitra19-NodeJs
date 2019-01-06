@@ -41,10 +41,15 @@ const eventRegistration = require('./routes/eventRegistration');
 //End Routes
 
 //Running Port
-const port = process.env.PORT;
-console.log(port);
+const port = process.env.PORT || 3000;
+var production = false
 // CORS Middleware
-app.use(cors({ origin: 'http://gyanmitra.local' }));
+if (production) {
+    app.use(cors({ origin: 'http://gyanmitra.local' }));
+} else {
+    app.use(cors({ origin: 'http://localhost:4200' }));
+}
+
 
 // Set Static Folder
 app.use('/assests', express.static('assests'))
@@ -60,32 +65,49 @@ require('./config/passport')(passport);
 //Routes Starts
 app.use('/users', users);
 app.use('/registration', registration);
-app.use('/auth',auth);
-app.use('/college',college);
-app.use('/accommodation',accommodation);
-app.use('/course',course);
-app.use('/role',role);
-app.use('/role_user',roleUser);
-app.use('/event',event);
-app.use('/department',department);
-app.use('/degree',degree);
-app.use('/category',category);
-app.use('/team_member',team_member);
+app.use('/auth', auth);
+app.use('/college', college);
+app.use('/accommodation', accommodation);
+app.use('/course', course);
+app.use('/role', role);
+app.use('/role_user', roleUser);
+app.use('/event', event);
+app.use('/department', department);
+app.use('/degree', degree);
+app.use('/category', category);
+app.use('/team_member', team_member);
 app.use('/team', team);
 app.use('/year', year);
-app.use('/participationStatus',participationStatus);
+app.use('/participationStatus', participationStatus);
 app.use('/eventRegistration', eventRegistration);
 //Routes Ends
 
 // Index Route
-app.use(express.static(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/')));
-//console.log(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
-app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
+if (production) {
+    app.use(express.static(path.resolve(__dirname, '../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/')));
+    //console.log(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
 
-});
-const server = http.createServer(app);
-// Start Server
-server.listen(port, () => {
-    console.log('Server started on port ' + port);
-});
+    });
+    const server = http.createServer(app);
+    // Start Server
+    server.listen(port, () => {
+        console.log('Server started on port ' + port);
+    });
+
+}
+else {
+    app.get('/', (req, res) => {
+        res.send('invaild endpoint');
+    });
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public/index.html'));
+    });
+    
+    // Start Server
+    app.listen(port, () => {
+        console.log('Server started on port ' + port);
+    });
+}
