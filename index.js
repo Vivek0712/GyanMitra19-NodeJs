@@ -77,9 +77,6 @@ app.use('/participationStatus',participationStatus);
 app.use('/eventRegistration', eventRegistration);
 //Routes Ends
 
-
-
-
 // Index Route
 app.use(express.static(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/')));
 //console.log(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));

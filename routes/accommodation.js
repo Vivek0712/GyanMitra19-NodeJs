@@ -37,8 +37,7 @@ router.get('/populate', (req, res) => {
                 error: true,
                 msg: err
             })
-        }
-        else{
+        } else {
             res.json(docs);
         }
     })
@@ -57,35 +56,30 @@ router.post('/uploadImage/:id', (request, res) => {
                 cb(null, request.params.id + path.extname(file.originalname));
                 data = {
                     acc_file_name: request.params.id + path.extname(file.originalname),
-                    acc_payment_status: 'Paid'
+                    acc_payment_status: 'Paid',
+                    acc_mode_of_payment: 'Demand Draft'
                 }
-                Accomodation.updateOne({_id: request.params.id}, {
-                    $set: data
-                },(err, resp)=>{
+                Accomodation.updateOne({
+                    user_id: request.params.id
+                }, data, (err, resp) => {
+                    if (err) {
+                        res.json({
+                            error: true,
+                            msg: err
+                        })
+                    }
+                    else {
+                        res.json({
+                            error: false,
+                            msg: 'Image Successfully Uploaded'
+                        })
+                    }
                 })
             }
         })
     }).any()
     upload(request, res, function (err) {
-        if (!err) {
-            Accomodation.findByIdAndUpdate(request.params.id, {
-                $set: {
-                    acc_mode_of_payment: 'Demand Draft',
-                }
-            }, (error, docs) => {
-                if (error) {
-                    res.json({
-                        error: true,
-                        msg: error
-                    });
-                } else {
-                    res.json({
-                        error: false,
-                        msg: 'File Uploaded Successfully!'
-                    });
-                }
-            });
-        } else {
+        if (err) {
             res.json({
                 error: true,
                 msg: err

@@ -42,9 +42,6 @@ const UserSchema = mongoose.Schema({
     mobile_number: {
         type: String,
     },
-    confirmed: {
-        type: Boolean
-    },
     activated: {
         type: Boolean
     },
@@ -68,6 +65,9 @@ const UserSchema = mongoose.Schema({
     },
     cart_dd_image: {
         type: String
+    },
+    cart_paid: {
+        type: Boolean
     }
 
 });
