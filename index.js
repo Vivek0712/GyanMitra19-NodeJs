@@ -41,10 +41,10 @@ const eventRegistration = require('./routes/eventRegistration');
 //End Routes
 
 //Running Port
-const port = process.env.PORT || 3000;
-
+const port = process.env.PORT;
+console.log(port);
 // CORS Middleware
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: 'http://gyanmitra.local' }));
 
 // Set Static Folder
 app.use('/assests', express.static('assests'))
@@ -81,9 +81,10 @@ app.use('/eventRegistration', eventRegistration);
 
 
 // Index Route
-app.use(express.static('../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
+app.use(express.static(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/')));
+//console.log(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
 app.get('/*', (req, res) => {
-    res.sendFile(path.join('../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
+    res.sendFile(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
 
 });
 const server = http.createServer(app);

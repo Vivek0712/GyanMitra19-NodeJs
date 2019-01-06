@@ -1,0 +1,4 @@
+\\.\pipe\35b8dd1b-660d-4669-a744-613fa098665a
+10.147.19.86
+Server started on port \\.\pipe\35b8dd1b-660d-4669-a744-613fa098665a
+Connected to Database mongodb://gyanmitra19:gyanmitra19@ds241664.mlab.com:41664/gyanmitra19
