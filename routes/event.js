@@ -70,7 +70,7 @@ router.post('/create', (req, res, next) => {
         venue: req.body.venue,
         amount: req.body.amount,
         allow_gender_mixing: req.body.allow_gender_mixing,
-        resourse_person: releaseEvents.body.resourse_person
+        resource_person: releaseEvents.body.resource_person
     });
     newEvent.save((err, doc) => {
         if (err) {
@@ -162,7 +162,7 @@ router.put('/:id', (req, res) => {
         venue: req.body.venue,
         amount: req.body.amount,
         allow_gender_mixing: req.body.allow_gender_mixing,
-        resourse_person:req.body.resourse_person
+        resource_person:req.body.resource_person
     };
     //Wrongly typed
     //Shyam

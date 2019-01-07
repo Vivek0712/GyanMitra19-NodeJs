@@ -79,7 +79,7 @@ const EventSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
-    resourse_person: { 
+    resource_person: { 
         type: String
     }
 });
