@@ -77,7 +77,6 @@ router.post('/create', (req, res, next) => {
         email_id: req.body.email_id,
         type: req.body.type,
         password: req.body.password,
-        cart_confirmed: false
     });
 
     User.addUser(newUser, (err, user) => {

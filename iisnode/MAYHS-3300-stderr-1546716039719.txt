@@ -1,0 +1,18 @@
+ReferenceError: dir_name is not defined
+    at app.get (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\index.js:86:31)
+    at Layer.handle [as handle_request] (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\index.js:281:22
+    at param (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\index.js:354:14)
+    at param (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\index.js:410:3)
+    at next (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:116:13)
+    at SendStream.emit (events.js:211:7)
+    at SendStream.error (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\send\index.js:270:17)
+    at SendStream.onStatError (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\send\index.js:421:12)
+    at onstat (G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-NodeJs\node_modules\send\index.js:727:26)
+    at FSReqWrap.oncomplete (fs.js:152:21)

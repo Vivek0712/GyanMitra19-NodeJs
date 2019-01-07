@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"MAYHS-11848-stdout-1546794853963.txt","computername":"MAYHS","pid":11848,"type":"stdout","created":1546794853963},{"file":"MAYHS-18116-stdout-1546716170442.txt","computername":"MAYHS","pid":18116,"type":"stdout","created":1546716170442},{"file":"MAYHS-19460-stdout-1546718200784.txt","computername":"MAYHS","pid":19460,"type":"stdout","created":1546718200784},{"file":"MAYHS-22468-stdout-1546717091805.txt","computername":"MAYHS","pid":22468,"type":"stdout","created":1546717091805},{"file":"MAYHS-23516-stdout-1546716279451.txt","computername":"MAYHS","pid":23516,"type":"stdout","created":1546716279451},{"file":"MAYHS-24236-stdout-1546716477554.txt","computername":"MAYHS","pid":24236,"type":"stdout","created":1546716477554},{"file":"MAYHS-24264-stderr-1546718553499.txt","computername":"MAYHS","pid":24264,"type":"stderr","created":1546718553499},{"file":"MAYHS-24264-stdout-1546718553497.txt","computername":"MAYHS","pid":24264,"type":"stdout","created":1546718553497},{"file":"MAYHS-25040-stdout-1546718023318.txt","computername":"MAYHS","pid":25040,"type":"stdout","created":1546718023318},{"file":"MAYHS-3300-stderr-1546716039719.txt","computername":"MAYHS","pid":3300,"type":"stderr","created":1546716039719},{"file":"MAYHS-3300-stdout-1546716039718.txt","computername":"MAYHS","pid":3300,"type":"stdout","created":1546716039718},{"file":"MAYHS-4672-stdout-1546716411737.txt","computername":"MAYHS","pid":4672,"type":"stdout","created":1546716411737},{"file":"MAYHS-6252-stdout-1546716071693.txt","computername":"MAYHS","pid":6252,"type":"stdout","created":1546716071693},{"file":"MAYHS-6612-stdout-1546716688354.txt","computername":"MAYHS","pid":6612,"type":"stdout","created":1546716688354},{"file":"MAYHS-7408-stdout-1546716941460.txt","computername":"MAYHS","pid":7408,"type":"stdout","created":1546716941460},{"file":"MAYHS-9424-stderr-1546715993336.txt","computername":"MAYHS","pid":9424,"type":"stderr","created":1546715993336},{"file":"MAYHS-9424-stdout-1546715993336.txt","computername":"MAYHS","pid":9424,"type":"stdout","created":1546715993336}];
+        var lastUpdated = 1546794855332;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

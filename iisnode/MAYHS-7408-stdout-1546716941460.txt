@@ -1,0 +1,4 @@
+\\.\pipe\985e58ba-4dab-4843-a574-4abbe30da2d7
+G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\dist\GyanMitra19-AngularJs
+Server started on port \\.\pipe\985e58ba-4dab-4843-a574-4abbe30da2d7
+Connected to Database mongodb://gyanmitra19:gyanmitra19@ds241664.mlab.com:41664/gyanmitra19
