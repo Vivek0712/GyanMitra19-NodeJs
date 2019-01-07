@@ -78,8 +78,10 @@ const EventSchema = mongoose.Schema({
     allow_gender_mixing: {
         type: Boolean,
         required: true
+    },
+    resourse_person:{
+        type: String
     }
-
 });
 EventSchema.plugin(pagination);
 const Event = module.exports = mongoose.model('Event', EventSchema);
