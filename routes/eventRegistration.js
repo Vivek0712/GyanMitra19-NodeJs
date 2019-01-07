@@ -567,5 +567,19 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 });
 
 
+router.get('/checkEventRegistrationStatus/:event_id/:user_id',function(req,res)  {
+    Registration.find({event_id:req.params.event_id,user_id:req.params.user_id},function(err,docs) {
+        if(docs.length == 0){
+            res.json({
+                registered: false
+            })
+        }
+        else {
+            res.json({
+                registered: true
+            })
+        }
+    })
+});
 
 module.exports = router;
