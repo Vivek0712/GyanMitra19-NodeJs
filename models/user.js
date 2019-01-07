@@ -12,8 +12,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     gmID: {
-        type: String,
-        required: true
+        type: String
     },
     college_id: {
         type: Schema.Types.ObjectId,
