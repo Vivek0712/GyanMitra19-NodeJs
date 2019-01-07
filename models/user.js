@@ -12,8 +12,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     gmID: {
-        type: String,
-        required: true
+        type: String
     },
     college_id: {
         type: Schema.Types.ObjectId,
@@ -34,7 +33,6 @@ const UserSchema = mongoose.Schema({
     year_id: {
         type: Schema.Types.ObjectId,
         ref: 'Year',
-        required: true
     },
     gender: {
         type: String,
@@ -57,8 +55,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     registration_mode: {
-        type: String,
-        required: true
+        type: String
     },
     cart_confirmed: {
         type: Boolean
