@@ -4,6 +4,7 @@ const pagination = require('mongoose-paginate');
 
 // Config Schema
 const ConfigSchema = mongoose.Schema({
+    //have this has config itself
     config: {
         type: String,
         required: true
@@ -14,4 +15,4 @@ const ConfigSchema = mongoose.Schema({
     }
 });
 ConfigSchema.plugin(pagination);
-const Config = module.exports = mongoose.model('Config', ConfigSchema);
+const Config = module.exports = mongoose.model('Config', ConfigSchema);z

@@ -63,5 +63,16 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
+router.get('/:id', function (req, res, next) { 
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    Category.findById(req.params.id, (err, doc) => {
+        if (!err) {
+            res.json({ error: false, msg: doc });
+        } else {
+            res.json({ error: true, msg: "Failed to Find Category" });
+        }
+    })
+});
 
 module.exports = router;
