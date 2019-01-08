@@ -15,4 +15,8 @@ const ConfigSchema = mongoose.Schema({
     }
 });
 ConfigSchema.plugin(pagination);
-const Config = module.exports = mongoose.model('Config', ConfigSchema);z
+const Config = module.exports = mongoose.model('Config', ConfigSchema);
+
+module.exports.getAllConfigs = (page, callback) => {
+    Config.paginate({}, { limit: config.pagination.perPage, page: page }, callback);
+}

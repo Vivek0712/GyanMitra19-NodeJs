@@ -69,7 +69,8 @@ router.post('/create', (req, res, next) => {
         contact_email: req.body.contact_email,
         venue: req.body.venue,
         amount: req.body.amount,
-        allow_gender_mixing: req.body.allow_gender_mixing
+        allow_gender_mixing: req.body.allow_gender_mixing,
+        resource_person: req.body.resource_person
     });
     newEvent.save((err, doc) => {
         if (err) {
@@ -160,7 +161,8 @@ router.put('/:id', (req, res) => {
         contact_email: req.body.contact_email,
         venue: req.body.venue,
         amount: req.body.amount,
-        allow_gender_mixing: req.body.allow_gender_mixing
+        allow_gender_mixing: req.body.allow_gender_mixing,
+        resource_person:req.body.resource_person
     };
     //Wrongly typed
     //Shyam
