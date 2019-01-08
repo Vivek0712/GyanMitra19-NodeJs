@@ -18,8 +18,6 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error ' + err);
 });
 const app = express();
-
-
 //Routes
 const auth = require('./routes/auth');
 const users = require('./routes/users');
@@ -42,17 +40,22 @@ const eventRegistration = require('./routes/eventRegistration');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false
+var production = false;
 // CORS Middleware
+
+
 if (production) {
-    app.use(cors({ origin: 'http://gyanmitra.local' }));
+    app.use(cors({ origin: 'http://mepcoeng.local' }));
 } else {
     app.use(cors({ origin: 'http://localhost:4200' }));
+    //port = 3000;
 }
 
 
 // Set Static Folder
-app.use('/assests', express.static('assests'))
+app.use('/assests', express.static('assests'));
+app.use('/public', express.static('../GyanMitra19-AngularJs/public'));
+
 
 // Body Parser Middleware
 app.use(bodyParser.json());
@@ -84,28 +87,37 @@ app.use('/eventRegistration', eventRegistration);
 
 // Index Route
 if (production) {
-    app.use(express.static(path.resolve(__dirname, '../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/')));
-    //console.log(path.resolve(__dirname,'../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/'));
-    app.get('/*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../GyanMitra19-AngularJs/dist/GyanMitra19-AngularJs/index.html'));
+    /* app.use(express.static(path.resolve(__dirname, 'dist')));
+ 
+ 
+     app.get('/', (req, res) => {
+         res.sendFile("http://mepcoeng.local/nodejs/dist/index.html");
+     });
 
+    const server = http.createServer(app);
+    server.listen(port, () => {
+        console.log('Server started on port ' + port);
+    });*/
+    var distDir = __dirname + "/dist/";
+    app.use('/', express.static(distDir));
+    app.get('*', (req, res) => {
+        res.sendFile(distDir + "index.html");
     });
     const server = http.createServer(app);
-    // Start Server
     server.listen(port, () => {
         console.log('Server started on port ' + port);
     });
-
+    app.use(express.static(distDir));
 }
 else {
     app.get('/', (req, res) => {
         res.send('invaild endpoint');
     });
-    
-    app.get('*', (req, res) => {
+
+    app.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/index.html'));
     });
-    
+
     // Start Server
     app.listen(port, () => {
         console.log('Server started on port ' + port);

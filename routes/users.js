@@ -263,5 +263,19 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
-
+router.get('/admin', (req, res) => {
+    User.find({ type: 'admin' }, (err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: 'Error'+err
+            });
+        } else {
+            res.json({
+                error: false,
+                msg: docs
+            });
+        }
+    })
+})
 module.exports = router;
