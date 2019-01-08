@@ -41,7 +41,7 @@ const configurations = require('./routes/config');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
