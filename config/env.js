@@ -1,7 +1,6 @@
 config = {
     database: {
         name: 'mongodb://gyanmitra19:gyanmitra19@ds241664.mlab.com:41664/gyanmitra19'
-        
     },
     application: {
         secret: 'secret',
