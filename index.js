@@ -42,14 +42,14 @@ const payment = require('./routes/payment');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
 if (production) {
-    app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in' }));
+    app.use(cors({ origin: 'http://gyanmitra19.local' }));
 } else {
-    app.use(cors({ origin: 'http://localhost:3000' }));
+    app.use(cors({ origin: 'http://localhost:4200' }));
     //port = 3000;
 }
 
@@ -91,19 +91,11 @@ app.use('/payment', payment);
 
 // Index Route
 if (production) {
-    /* app.use(express.static(path.resolve(__dirname, 'dist')));
- 
- 
-     app.get('/', (req, res) => {
-         res.sendFile("http://mepcoeng.local/nodejs/dist/index.html");
-     });
 
-    const server = http.createServer(app);
-    server.listen(port, () => {
-        console.log('Server started on port ' + port);
-    });*/
     var distDir = __dirname + "/dist/";
+
     app.use('/', express.static(distDir));
+
     app.get('*', (req, res) => {
         res.sendFile(distDir + "index.html");
     });
@@ -114,7 +106,7 @@ if (production) {
     app.use(express.static(distDir));
 }
 else {
-   /* app.get('/', (req, res) => {
+    app.get('/', (req, res) => {
         res.send('invaild endpoint');
     });
 
@@ -123,14 +115,7 @@ else {
     });
 
     // Start Server
-   */
-    var distDir = __dirname + "/dist/";
-    app.use('/', express.static(distDir));
-    app.get('*', (req, res) => {
-        res.sendFile(distDir + "index.html");
-    });
     app.listen(port, () => {
         console.log('Server started on port ' + port);
     });
-
 }
