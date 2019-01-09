@@ -49,7 +49,7 @@ var production = false;
 if (production) {
     app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in' }));
 } else {
-    app.use(cors({ origin: 'http://localhost:4200' }));
+    app.use(cors({ origin: 'http://localhost:3000' }));
     //port = 3000;
 }
 
@@ -114,7 +114,7 @@ if (production) {
     app.use(express.static(distDir));
 }
 else {
-    app.get('/', (req, res) => {
+   /* app.get('/', (req, res) => {
         res.send('invaild endpoint');
     });
 
@@ -123,7 +123,14 @@ else {
     });
 
     // Start Server
+   */
+    var distDir = __dirname + "/dist/";
+    app.use('/', express.static(distDir));
+    app.get('*', (req, res) => {
+        res.sendFile(distDir + "index.html");
+    });
     app.listen(port, () => {
         console.log('Server started on port ' + port);
     });
+
 }

@@ -707,15 +707,9 @@ var AdminEventComponent = /** @class */ (function () {
         this.searchText = '';
         this.getEvents(1);
     };
-    AdminEventComponent.prototype.loadFull = function () {
-        var _this = this;
-        this.eventService.readAllEvents().subscribe(function (response) {
-            _this.events = response;
-        });
-    };
     AdminEventComponent.prototype.getEvents = function (page) {
         var _this = this;
-        this.eventService.readEvent(this.currentPage).subscribe(function (response) {
+        this.eventService.readWithPage(page).subscribe(function (response) {
             if (response.error == false) {
                 _this.events = response.msg;
             }
@@ -770,7 +764,6 @@ var AdminEventComponent = /** @class */ (function () {
     AdminEventComponent.prototype.onSubmit = function (form) {
         var _this = this;
         this.submitted = true;
-        console.log(form.value.image_name);
         if (form.value._id === '') {
             var data = form.value;
             this.eventService.createEvent(data.title, data.category_id, data.department_id, data.description, 'Not Uploaded', data.rules, data.start_time, data.end_time, data.event_date, data.prelims, data.round_1, data.round_2, data.finals, data.min_members, data.max_members, data.max_limit, data.contact_email, data.venue, data.amount, this.allow_gender_mixing, data.resourse_person).subscribe(function (response) {
@@ -1037,13 +1030,13 @@ var AdminSidebarComponent = /** @class */ (function () {
     };
     AdminSidebarComponent.prototype.loadEvents = function () {
         var _this = this;
-        this.eventService.readWithEventCategory('Event').subscribe(function (response) {
+        this.eventService.readWithEventCategory('Event', 0).subscribe(function (response) {
             _this.events = response;
         });
     };
     AdminSidebarComponent.prototype.loadWorkshops = function () {
         var _this = this;
-        this.eventService.readWithEventCategory('Workshop').subscribe(function (response) {
+        this.eventService.readWithEventCategory('Workshop', 0).subscribe(function (response) {
             _this.workshops = response;
         });
     };
@@ -3837,7 +3830,7 @@ module.exports = "\r\n/* Form Style */\r\na:hover,a:focus{\r\n text-decoration: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-4 col-4 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-4 col-4 mb-4\">\r\n        <select [(ngModel)]=\"searchText\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-4 col-4\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator\" src=\"http://localhost:3000/assests/images/events/{{event.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{event.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Rules<i class=\"fas fa-times float-right\"></i></span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                    <div *ngIf=\"!isCartConfirmed\">\r\n                      <div *ngIf=\"statusesLoaded\">\r\n                        <div *ngIf=\"event.min_members == event.max_members == 1 && !statuses[event._id].registered\">\r\n                          <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                            Register Now <i class=\"la la-angle-right\"></i>\r\n                          </button>\r\n                        </div>\r\n                        <div *ngIf=\"event.min_members != event.max_members && !statuses[event._id].registered\">\r\n                          <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                            [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                            Register Team <i class=\"la la-angle-right\"></i>\r\n                          </button>\r\n                        </div>\r\n                        <div *ngIf=\"statuses[event._id].registered\">\r\n                          <button type=\"button\" *ngIf=\"statuses[event._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                            style=\"width:100%\">\r\n                            Already Registered\r\n                          </button>\r\n                        </div>\r\n                      </div>\r\n                      <div *ngIf=\"isCartConfirmed\">\r\n                        <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                          Cart already Confirmed\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select [(ngModel)]=\"searchText\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"row float-right white\">\r\n          <span *ngIf=\"this.currentPage != 1\">\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n          </span>\r\n          &nbsp; Page {{currentPage}} &nbsp;\r\n          <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n        </div>\r\n      </span>\r\n\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator\" src=\"http://localhost:3000/assests/images/events/{{event.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{event.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Rules<i class=\"fas fa-times float-right\"></i></span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                    <div *ngIf=\"!isCartConfirmed\">\r\n                      <div *ngIf=\"event.min_members == event.max_members == 1 && !statuses[event._id].registered\">\r\n                        <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"event.min_members != event.max_members && !statuses[event._id].registered\">\r\n                        <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                          [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                          Register Team <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"statuses[event._id].registered\">\r\n                        <button type=\"button\" *ngIf=\"statuses[event._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          Already Registered\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"isCartConfirmed\">\r\n                        <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                          Cart already Confirmed\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -3881,18 +3874,32 @@ var EventsComponent = /** @class */ (function () {
         this.authService = authService;
         this.deptService = deptService;
         this.isCartConfirmed = true;
-        this.statusesLoaded = false;
+        this.currentPage = 1;
         this.selectedEventID = '';
-        this.loadFull();
-        this.currentUserId = (JSON.parse(localStorage.getItem('user'))).id;
+        this.loadFull(this.currentPage);
+        this.currentPage = 1;
+        this.currentUserId = '';
+        if ((JSON.parse(localStorage.getItem('user'))) != null) {
+            this.currentUserId = (JSON.parse(localStorage.getItem('user'))).id;
+        }
     }
     EventsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.isCartConfirmed(JSON.parse(localStorage.getItem('user')).id).subscribe(function (response) {
-            if (!response.error) {
-                _this.isCartConfirmed = response.isCartConfirmed;
-            }
-        });
+        if (this.currentUserId != '') {
+            this.userService.isCartConfirmed(this.currentUserId).subscribe(function (response) {
+                if (!response.error) {
+                    _this.isCartConfirmed = response.isCartConfirmed;
+                }
+            });
+        }
+    };
+    EventsComponent.prototype.nextPage = function () {
+        this.currentPage = this.currentPage + 1;
+        this.loadFull(this.currentPage);
+    };
+    EventsComponent.prototype.previousPage = function () {
+        this.currentPage = this.currentPage - 1;
+        this.loadFull(this.currentPage);
     };
     EventsComponent.prototype.checkEventRegistrations = function () {
         var _this = this;
@@ -3905,20 +3912,24 @@ var EventsComponent = /** @class */ (function () {
         this.statusesLoaded = true;
     };
     EventsComponent.prototype.selectEvent = function (_id) {
+        var _this = this;
         this.eventRegistrationService.createEventRegistration(JSON.parse(localStorage.getItem('user')).id, _id).subscribe(function (response) {
             if (response.error) {
                 M.toast({ html: response.msg, classes: 'roundeds' });
             }
             else {
                 M.toast({ html: response.msg, classes: 'roundeds' });
+                _this.loadFull(_this.currentPage);
             }
         });
     };
-    EventsComponent.prototype.loadFull = function () {
+    EventsComponent.prototype.loadFull = function (page) {
         var _this = this;
-        this.eventService.readWithEventCategory('Event').subscribe(function (response) {
+        this.eventService.readWithEventCategory('Event', page).subscribe(function (response) {
             _this.events = response;
-            _this.checkEventRegistrations();
+            if (_this.currentUserId != '') {
+                _this.checkEventRegistrations();
+            }
         });
         this.deptService.readDepartment(0).subscribe(function (response) {
             _this.departments = response;
@@ -4932,7 +4943,7 @@ module.exports = ".btn{\r\n    white-space:normal !important;\r\n    word-wrap: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-4 col-4 mb-4\">\r\n        <span class=\"content-header-title\">Workshops\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-4 col-4 mb-4\">\r\n        <select id=\"deptSelect\" [(ngModel)]=\"searchText\" class=\"custom-select float-right\">\r\n          <option class=\"custom-select\" *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-4 col-4\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Workshops\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n    </div>\r\n    <br />\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let workshop of workshops | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{workshop.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{workshop.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator\" src=\"http://localhost:3000/assests/images/events/{{workshop.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{workshop.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    Resource Person\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    {{workshop.resource_person}}\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{workshop.contact_email}}\">{{workshop.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Pre Requesites<i class=\"fas fa-times float-right\"></i></span>\r\n                {{workshop.rules}}\r\n                <hr />\r\n                <h4>Timing</h4>\r\n   \r\n                Date : {{workshop.event_date | date}}\r\n                {{workshop.start_time}} -\r\n                {{workshop.end_time}}\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{workshop.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                      <div *ngIf=\"statusesLoaded\">\r\n                      <div *ngIf=\"!isCartConfirmed\">\r\n                        <button type=\"button\" *ngIf=\"!statuses[workshop._id].registered\" class=\"btn btn-outline-primary\"\r\n                          (click)=\"selectWorkshop(workshop._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                        <button type=\"button\" *ngIf=\"statuses[workshop._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          <span *ngIf=\"statuses[workshop._id].msg != 'Already Registered!'\">\r\n                            Parallel Workshop Registered\r\n                          </span>\r\n                          <span *ngIf=\"statuses[workshop._id].msg == 'Already Registered!'\">\r\n                            Already Registered!\r\n                          </span>\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n                    <div *ngIf=\"isCartConfirmed\">\r\n                      <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                        Cart already Confirmed\r\n                      </button>\r\n                    </div>\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-3\">\r\n        <span class=\"content-header-title\">Workshops\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select id=\"deptSelect\" [(ngModel)]=\"searchText\" class=\"custom-select float-right\">\r\n          <option class=\"custom-select\" *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Workshops\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n          <div class=\"row float-right white\">\r\n            <span *ngIf=\"this.currentPage != 1\">\r\n              <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n            </span>\r\n            &nbsp; Page {{currentPage}} &nbsp;\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n          </div>\r\n        </span>\r\n    </div>\r\n    <br />\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let workshop of workshops | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{workshop.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{workshop.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator\" src=\"http://localhost:3000/assests/images/events/{{workshop.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{workshop.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    Resource Person\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    {{workshop.resource_person}}\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{workshop.contact_email}}\">{{workshop.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Pre Requesites<i class=\"fas fa-times float-right\"></i></span>\r\n                {{workshop.rules}}\r\n                <hr />\r\n                <h4>Timing</h4>\r\n   \r\n                Date : {{workshop.event_date | date}}\r\n                {{workshop.start_time}} -\r\n                {{workshop.end_time}}\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{workshop.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                      <div *ngIf=\"statusesLoaded\">\r\n                      <div *ngIf=\"!isCartConfirmed\">\r\n                        <button type=\"button\" *ngIf=\"!statuses[workshop._id].registered\" class=\"btn btn-outline-primary\"\r\n                          (click)=\"selectWorkshop(workshop._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                        <button type=\"button\" *ngIf=\"statuses[workshop._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          <span *ngIf=\"statuses[workshop._id].msg != 'Already Registered!'\">\r\n                            Parallel Workshop Registered\r\n                          </span>\r\n                          <span *ngIf=\"statuses[workshop._id].msg == 'Already Registered!'\">\r\n                            Already Registered!\r\n                          </span>\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n                    <div *ngIf=\"isCartConfirmed\">\r\n                      <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                        Cart already Confirmed\r\n                      </button>\r\n                    </div>\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -4978,11 +4989,12 @@ var WorkshopsComponent = /** @class */ (function () {
         this.statuses = {};
         this.isCartConfirmed = true;
         this.statusesLoaded = false;
-        this.loadFull();
+        this.currentPage = 1;
+        this.loadFull(this.currentPage);
     }
     WorkshopsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.loadFull();
+        this.loadFull(this.currentPage);
         this.currentUserId = JSON.parse(localStorage.getItem('user')).id;
         if (this.authService.isLoggedIn()) {
             this.userService.isCartConfirmed(this.currentUserId).subscribe(function (response) {
@@ -5002,8 +5014,16 @@ var WorkshopsComponent = /** @class */ (function () {
         });
         this.statusesLoaded = true;
     };
+    WorkshopsComponent.prototype.nextPage = function () {
+        this.currentPage = this.currentPage + 1;
+        this.loadFull(this.currentPage);
+    };
+    WorkshopsComponent.prototype.previousPage = function () {
+        this.currentPage = this.currentPage - 1;
+        this.loadFull(this.currentPage);
+    };
     WorkshopsComponent.prototype.reloadEvents = function () {
-        this.loadFull();
+        this.loadFull(this.currentPage);
     };
     WorkshopsComponent.prototype.selectWorkshop = function (_id) {
         var _this = this;
@@ -5030,9 +5050,9 @@ var WorkshopsComponent = /** @class */ (function () {
             }
         });
     };
-    WorkshopsComponent.prototype.loadFull = function () {
+    WorkshopsComponent.prototype.loadFull = function (page) {
         var _this = this;
-        this.eventService.readWithEventCategory('Workshop').subscribe(function (response) {
+        this.eventService.readWithEventCategory('Workshop', page).subscribe(function (response) {
             _this.workshops = response;
             _this.checkEventRegistrations();
         });
@@ -6212,10 +6232,10 @@ var EventService = /** @class */ (function () {
         headers.append('Content-Type', 'application/json');
         return this.http.get(this.app.getUrl(this.baseUrl) + 'all');
     };
-    EventService.prototype.readWithEventCategory = function (event) {
+    EventService.prototype.readWithEventCategory = function (event, page) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.app.getUrl(this.baseUrl) + event);
+        return this.http.get(this.app.getUrl(this.baseUrl) + event + '/' + page);
     };
     EventService.prototype.readEvent = function (page) {
         var headers = new Headers();
@@ -6224,6 +6244,11 @@ var EventService = /** @class */ (function () {
         headers.append('Content-Type', 'application/png');
         headers.append('Content-Type', 'application/jpg');
         return this.http.get(this.app.getUrl(this.baseUrl) + '?page=' + page);
+    };
+    EventService.prototype.readWithPage = function (page) {
+        var headers = new Headers();
+        console.log(this.app.getUrl(this.baseUrl) + 'all' + '/' + page);
+        return this.http.get(this.app.getUrl(this.baseUrl) + 'all' + '/' + page);
     };
     EventService.prototype.updateEvent = function (id, title, category_id, department_id, description, image_name, rules, start_time, end_time, event_date, prelims, round_1, round_2, finals, min_members, max_members, max_limit, contact_email, venue, amount, allow_gender_mixing, resource_person) {
         var body = {
