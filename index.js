@@ -37,6 +37,7 @@ const participationStatus = require('./routes/participationstatus');
 const year = require('./routes/year');
 const eventRegistration = require('./routes/eventRegistration');
 const configurations = require('./routes/config');
+const payment = require('./routes/payment');
 //End Routes
 
 //Running Port
@@ -85,6 +86,7 @@ app.use('/year', year);
 app.use('/participationStatus', participationStatus);
 app.use('/eventRegistration', eventRegistration);
 app.use('/config', configurations);
+app.use('/payment', payment);
 //Routes Ends
 
 // Index Route
