@@ -11,48 +11,94 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
 var multer = require('multer')
 
-router.post('/uploadImage/:id', (request, res)=>{
-    var fileName =""
+router.get('/:event/:department/:page', function (req, res) {
+    if (req.params.department != 'All') {
+        Event.find({}).populate({
+            path: 'category_id',
+            match: {
+                name: req.params.event
+            }
+        }).populate({
+            path: 'department_id',
+            match: {
+                name: req.params.department
+            }
+        }).exec((err, docs) => {
+            docs = docs.filter((doc) => {
+                return doc.category_id != null && doc.department_id != null
+            })
+            if (req.params.page == 0) {
+                res.send(docs)
+            } else {
+                page = req.params.page
+                const from = ((page - 1) * 6)
+                let to = (page * 6)
+                docs = docs.slice(from, to)
+                res.send(docs)
+            }
+        })
+    } else {
+        Event.find({}).populate({
+            path: 'category_id',
+            match: {
+                name: req.params.event
+            }
+        }).populate('department_id').exec((err, docs) => {
+            docs = docs.filter((doc) => {
+                return doc.category_id != null
+            })
+            if (req.params.page == 0) {
+                res.send(docs)
+            } else {
+                page = req.params.page
+                const from = ((page - 1) * 6)
+                let to = (page * 6)
+                docs = docs.slice(from, to)
+                res.send(docs)
+            }
+        })
+    }
+});
+
+
+
+router.post('/uploadImage/:id', (request, res) => {
+    var fileName = ""
     var upload = multer({
-		storage: multer.diskStorage({
+        storage: multer.diskStorage({
             destination: function (req, file, cb) {
                 cb(null, './assests/images/events/')
             },
             filename: function (req, file, cb) {
-                cb(null,request.params.id+path.extname(file.originalname))
+                cb(null, request.params.id + path.extname(file.originalname))
                 this.fileName = request.params.id + path.extname(file.originalname);
                 Event.findByIdAndUpdate(req.params.id, {
                     $set: {
                         image_name: request.params.id + path.extname(file.originalname)
                     }
-                },(err, resp)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        console.log(resp)
-                    }
+                }, (err, resp) => {
+                    if (err) {} else {}
                 })
             }
         })
     }).any()
-	upload(request, res, function(err) {
-		if(!err){
+    upload(request, res, function (err) {
+        if (!err) {
             res.json({
                 error: false,
                 msg: 'FIle Uploaded Successfully'
             })
-        }
-        else{
+        } else {
             res.json(err);
         }
-	})
+    })
 })
 
-router.get('/all/:page', (req,res)=>{
+
+router.get('/all/:page', (req, res) => {
     var page = req.params.page
-    if(page == 0){
-        Event.find().populate('category_id').populate('department_id').exec(function(err, docs){
+    if (page == 0) {
+        Event.find().populate('category_id').populate('department_id').exec(function (err, docs) {
             if (!err) {
                 res.json({
                     error: false,
@@ -65,9 +111,8 @@ router.get('/all/:page', (req,res)=>{
                 })
             }
         })
-    }
-    else{
-        Event.find().skip((page-1) * 6).limit(6).populate('category_id').populate('department_id').exec(function(err, docs){
+    } else {
+        Event.find().skip((page - 1) * 6).limit(6).populate('category_id').populate('department_id').exec(function (err, docs) {
             if (!err) {
                 res.json({
                     error: false,
@@ -136,13 +181,31 @@ router.get('/all', function (req, res) {
     })
 })
 
-router.get('/:event/:page',function (req, res) {
+
+router.get('/:event/:page', function (req, res) {
     var page = req.params.page
-    if(page == 0){
-        Event.find().populate('category_id').populate('department_id').exec(function(err, docs){
+    if (page == 0) {
+        Event.find().populate('category_id').populate('department_id').exec(function (err, docs) {
             if (!err) {
                 var events = [];
-                for(var work of docs){
+                for (var work of docs) {
+                    if (work.category_id.name === req.params.event) {
+                        events.push(work);
+                    }
+                }
+                res.send(events)
+            } else {
+                res.json({
+                    error: true,
+                    msg: err
+                })
+            }
+        })
+    } else {
+        Event.find().skip((page - 1) * 6).limit(6).populate('category_id').populate('department_id').exec(function (err, docs) {
+            if (!err) {
+                var events = [];
+                for (var work of docs) {
                     if (work.category_id.name === req.params.event) {
                         events.push(work);
                     }
@@ -156,40 +219,29 @@ router.get('/:event/:page',function (req, res) {
             }
         })
     }
-    else{
-        Event.find().skip((page-1) * 6).limit(6).populate('category_id').populate('department_id').exec(function(err, docs){
-            if (!err) {
-                var events = [];
-                for(var work of docs){
-                    if (work.category_id.name === req.params.event) {
-                        events.push(work);
-                    }
-                }
-                res.send(events)
-            } else {
-                res.json({
-                    error: true,
-                    msg: err
-                })
-            }
-        })
-    }
-    
+
 });
 
-router.get('/', function(req, res, next) {
-    Event.find().skip((page-1) * config.pagination.perPage).limit(config.pagination.perPage).populate('category_id').populate('department_id').exec(function (err, docs) {
-        if (!err){
-            if(docs.length == 0){
-                res.json({error:true , msg:'No Pages to retreive'});                
+router.get('/', function (req, res, next) {
+    Event.find().skip((page - 1) * config.pagination.perPage).limit(config.pagination.perPage).populate('category_id').populate('department_id').exec(function (err, docs) {
+        if (!err) {
+            if (docs.length == 0) {
+                res.json({
+                    error: true,
+                    msg: 'No Pages to retreive'
+                });
+            } else {
+                res.json({
+                    error: false,
+                    msg: docs
+                });
             }
-            else {
-                res.json({error:false , msg:docs});
-            }
+        } else {
+            res.json({
+                error: true,
+                msg: err
+            });
         }
-        else{
-            res.json({error:true , msg:err});
-        }   
     });
 });
 
@@ -218,7 +270,7 @@ router.put('/:id', (req, res) => {
         venue: req.body.venue,
         amount: req.body.amount,
         allow_gender_mixing: req.body.allow_gender_mixing,
-        resource_person:req.body.resource_person
+        resource_person: req.body.resource_person
     };
     //Wrongly typed
     //Shyam
