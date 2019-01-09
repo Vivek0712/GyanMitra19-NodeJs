@@ -20,7 +20,6 @@ router.post('/uploadImage/:id', (request, res)=>{
             },
             filename: function (req, file, cb) {
                 cb(null,request.params.id+path.extname(file.originalname))
-                console.log(req.params.id)
                 this.fileName = request.params.id + path.extname(file.originalname);
                 Event.findByIdAndUpdate(req.params.id, {
                     $set: {
@@ -28,8 +27,10 @@ router.post('/uploadImage/:id', (request, res)=>{
                     }
                 },(err, resp)=>{
                     if(err){
+                        console.log(err);
                     }
                     else{
+                        console.log(resp)
                     }
                 })
             }
@@ -46,6 +47,40 @@ router.post('/uploadImage/:id', (request, res)=>{
             res.json(err);
         }
 	})
+})
+
+router.get('/all/:page', (req,res)=>{
+    var page = req.params.page
+    if(page == 0){
+        Event.find().populate('category_id').populate('department_id').exec(function(err, docs){
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: docs
+                })
+            } else {
+                res.json({
+                    error: true,
+                    msg: err
+                })
+            }
+        })
+    }
+    else{
+        Event.find().skip((page-1) * 6).limit(6).populate('category_id').populate('department_id').exec(function(err, docs){
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: docs
+                })
+            } else {
+                res.json({
+                    error: true,
+                    msg: err
+                })
+            }
+        })
+    }
 })
 
 router.post('/create', (req, res, next) => {
