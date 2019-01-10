@@ -8,6 +8,34 @@ const TeamMember = require('../models/team_member');
 const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
 
+router.get('/registeredEvents/:id/:type', (req, res)=>{
+    Registration.find({user_id: req.params.id}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).exec((err, docs)=>{
+        if(err){
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            docs = docs.filter((doc)=>{
+                return doc.event_id.category_id.name == req.params.type
+            })
+            ids = [];
+            docs.forEach((doc)=>{
+                ids.push(doc.event_id._id)
+            })
+            res.json({
+                error: false,
+                msg: ids
+            })
+        }
+    })
+})
+
 router.post('/newTeamEventRegistration', (req, res) => {
     if (req.body.position === "leader") {
         let newTeam = new Team({
