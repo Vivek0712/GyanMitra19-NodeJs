@@ -476,6 +476,7 @@ router.get('/getUserEvents/:id', function (req, res, next) {
 });
 
 
+
 router.get('/getEvent/:id', function (req, res, next) {
     Event.find({
         _id: req.params.id
@@ -609,5 +610,7 @@ router.get('/checkEventRegistrationStatus/:event_id/:user_id',function(req,res) 
         }
     })
 });
+
+
 
 module.exports = router;

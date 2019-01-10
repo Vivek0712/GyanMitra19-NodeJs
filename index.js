@@ -109,19 +109,12 @@ else {
     app.get('/', (req, res) => {
         res.send('invaild endpoint');
     });
-
-   
-    // Start Server
-   
-    var distDir = __dirname + "/dist/";
-    app.use('/', express.static(distDir));
-    // app.get('*', (req, res) => {
-    //     res.sendFile(distDir + "index.html");
-    // });
-    app.get('/*', (req, res) => {
+    
+    app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/index.html'));
     });
-
+    
+    // Start Server
     app.listen(port, () => {
         console.log('Server started on port ' + port);
     });
