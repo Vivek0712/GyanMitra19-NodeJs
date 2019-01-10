@@ -226,9 +226,7 @@ router.get('/participants', function (req, res, next) {
 });
 
 router.get('/isCartConfirmed/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-    User.findById(req.params.id, {}, (err, docs) => {
+    User.findById(req.params.id, (err, docs) => {
         if (err) {
             res.json({
                 error: true,

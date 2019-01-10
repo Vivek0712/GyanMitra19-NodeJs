@@ -408,21 +408,21 @@ router.get('/:email', function (req, res, next) {
 });
 
 router.get('/getUserEvents/:id', function (req, res, next) {
-    Registration.find({
-        user_id: req.params.id
-    }).populate('event_id').exec(function (err, docs) {
-        if (err) {
-            res.json({
-                error: true,
-                msg: 'NO Events'
-            });
-        } else {
-            res.json({
-                error: false,
-                msg: docs
-            });
-        }
-    });
+    // Registration.find({
+    //     user_id: req.params.id
+    // }).populate('event_id').exec(function (err, docs) {
+    //     if (err) {
+    //         res.json({
+    //             error: true,
+    //             msg: 'NO Events'
+    //         });
+    //     } else {
+    //         res.json({
+    //             error: false,
+    //             msg: docs
+    //         });
+    //     }
+    // });
 });
 
 

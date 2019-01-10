@@ -3,3 +3,5 @@
 /web.config
 /dist
 config/env.js
+config/env.js
+index.js
