@@ -315,5 +315,15 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.get('/getWorkshop', (req, res, next) => {
+   // console.log('helloworshop');
+    Event.find().populate('category_id').exec((err, docs) => {
+        docs = docs.filter((doc) => { 
+            console.log(doc);
+        })
+    })
+    
+});
+
 
 module.exports = router;
