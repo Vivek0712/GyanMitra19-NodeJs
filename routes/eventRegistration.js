@@ -241,7 +241,6 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     })
 });
 
-
 router.post('/confirmCartPayment', (req, res) => {
     let user_id = req.body.user_id;
     User.findByIdAndUpdate(user_id, {
@@ -334,55 +333,6 @@ router.post('/newEventRegistration', (req, res) => {
             });
         }
     })
-
-    /*  User.findById(req.body.user_id, function (err, docs) {
-              if (err) {
-                  console.log(docs);
-              res.json({
-                  error: true,
-                  msg: err
-              })
-          } else if (docs.length == 0) {
-              console.log(docs);
-              res.json({
-                  error: true,
-                  msg: "Mail id is not registered"
-              })
-          } else {
-              Registration.find({
-                  user_id: docs.user_id
-              }, function (err, doc) {
-                  if (doc.length != 0) {
-                      res.json({
-                          error: true,
-                          msg: "User had already registered"
-                      })
-                  } else {
-                      let newRegistration = new Registration({
-                          event_id: req.body.event_id,
-                          user_id: docs[0]._id,
-                          registration_type: req.body.registration_type,
-                          participation: req.body.participation,
-                          status: 'Not Confirmed'
-                      });
-
-                      newRegistration.save((err, doc) => {
-                          if (err) {
-                              res.json({
-                                  error: true,
-                                  msg: err
-                              })
-                          } else {
-                              res.json({
-                                  error: false,
-                                  msg: 'Successfully Registered!'
-                              })
-                          }
-                      });
-                  }
-              })
-          }
-      });*/
 });
 
 router.delete('/:id', (req, res) => {
@@ -610,7 +560,5 @@ router.get('/checkEventRegistrationStatus/:event_id/:user_id',function(req,res) 
         }
     })
 });
-
-
 
 module.exports = router;

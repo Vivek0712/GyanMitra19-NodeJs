@@ -762,12 +762,12 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\css\vendors.css */"./src/public/css/vendors.css");
-__webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\css\app-lite.css */"./src/public/css/app-lite.css");
-__webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\css\core\menu\menu-types\vertical-menu.css */"./src/public/css/core/menu/menu-types/vertical-menu.css");
-__webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\css\core\colors\palette-gradient.css */"./src/public/css/core/colors/palette-gradient.css");
-__webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\vendors\css\forms\selects\select2.min.css */"./src/public/vendors/css/forms/selects/select2.min.css");
-module.exports = __webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\public\css\mycss.css */"./src/public/css/mycss.css");
+__webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\css\vendors.css */"./src/public/css/vendors.css");
+__webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\css\app-lite.css */"./src/public/css/app-lite.css");
+__webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\css\core\menu\menu-types\vertical-menu.css */"./src/public/css/core/menu/menu-types/vertical-menu.css");
+__webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\css\core\colors\palette-gradient.css */"./src/public/css/core/colors/palette-gradient.css");
+__webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\vendors\css\forms\selects\select2.min.css */"./src/public/vendors/css/forms/selects/select2.min.css");
+module.exports = __webpack_require__(/*! E:\Programming\GyanMithra19\GyanMitra19-AngularJs\src\public\css\mycss.css */"./src/public/css/mycss.css");
 
 
 /***/ })
