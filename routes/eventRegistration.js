@@ -36,33 +36,7 @@ router.get('/registeredEvents/:id/:type', (req, res) => {
             })
         }
     })
-})
-router.get('/userRegisteredEvents/:id/:type', (req, res) => {
-    console.log(req.param.id);
-    Registration.find({user_id: req.params.id}).populate('event_id').populate({
-        path: 'event_id',
-        populate: {
-            path: 'category_id'
-        },
-        populate: {
-            path:'department_id'
-        }
-    }).exec((err, docs)=>{
-        if(err){
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            docs = docs.filter((doc)=>{
-                return doc.event_id.category_id.name == req.params.type
-            })
-            res.json({ error: false, msg: docs });
-        }
-      
-    })
-   
-})
+});
 
 router.post('/newTeamEventRegistration', (req, res) => {
     if (req.body.position === "leader") {
