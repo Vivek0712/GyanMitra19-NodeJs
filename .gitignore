@@ -2,3 +2,4 @@
 /assests
 /web.config
 /dist
+config/env.js
