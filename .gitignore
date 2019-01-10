@@ -1,4 +1,9 @@
 /node_modules
 /assests
 /web.config
+<<<<<<< HEAD
 /dist
+=======
+/dist
+config/env.js
+>>>>>>> f168bdae096e450cfbbebd86ffbd8e1e5a7e5199

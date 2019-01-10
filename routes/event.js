@@ -60,8 +60,6 @@ router.get('/:event/:department/:page', function (req, res) {
     }
 });
 
-
-
 router.post('/uploadImage/:id', (request, res) => {
     var fileName = ""
     var upload = multer({
