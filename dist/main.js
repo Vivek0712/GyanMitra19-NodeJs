@@ -604,18 +604,16 @@ var AdminCartConfirmationComponent = /** @class */ (function () {
         });
     };
     AdminCartConfirmationComponent.prototype.loadEvents = function (_id) {
-        var _this = this;
-        this.eventRegistrtationService.getEventRegistrations(_id).subscribe(function (response) {
-            _this.events = response;
-            _this.calculateAmount();
-        });
+        //this.eventRegistrtationService.getEventRegistrations(_id).subscribe((response: any) => {
+        //  this.events = response;
+        //  this.calculateAmount();
+        //})
     };
     AdminCartConfirmationComponent.prototype.loadWorkshops = function (_id) {
-        var _this = this;
-        this.eventRegistrtationService.getWorkshops(_id).subscribe(function (response) {
-            _this.workshops = response;
-            _this.calculateAmount();
-        });
+        //this.eventRegistrtationService.getWorkshops(_id).subscribe((response: any) => {
+        //  this.workshops = response;
+        //  this.calculateAmount();
+        //})
     };
     AdminCartConfirmationComponent.prototype.calculateAmount = function () {
         var _this = this;
@@ -3696,58 +3694,56 @@ var CartComponent = /** @class */ (function () {
         });
     };
     CartComponent.prototype.getWorkshops = function () {
-        var _this = this;
-        this.eventRegistrationService.getWorkshops(this.user_id).subscribe(function (response) {
-            if (response.error == true) {
-                M.toast({ html: response.msg, classes: 'roundeds danger' });
-            }
-            else {
-                _this.workshops = response;
-                console.log(_this.workshops);
-                // this.calculateAmount();
-                // if (this.workshops.length == 0) {
-                //   this.hasWorkshops = false;
-                // }
-                // else {
-                //   this.hasWorkshops = true;
-                // if (this.workshops[0].status == 'Verifying Payment') {
-                //   this.paymentSent = true;
-                // }
-                // else {
-                //   this.paymentSent = false;
-                // }
-                // if (this.workshops[0].status == 'Paid') {
-                //   this.paymentConfirmed = true;
-                // } else {
-                //   this.paymentConfirmed = false;
-                // }
-                // }
-            }
-        });
+        // this.eventRegistrationService.getWorkshops(this.user_id).subscribe((response: any) => {
+        //   if (response.error == true) {
+        //     M.toast({ html: response.msg, classes: 'roundeds danger' });
+        //   }
+        //   else {
+        //     this.workshops = response;
+        //     console.log(this.workshops);
+        //     // this.calculateAmount();
+        //     // if (this.workshops.length == 0) {
+        //     //   this.hasWorkshops = false;
+        //     // }
+        //     // else {
+        //     //   this.hasWorkshops = true;
+        //       // if (this.workshops[0].status == 'Verifying Payment') {
+        //       //   this.paymentSent = true;
+        //       // }
+        //       // else {
+        //       //   this.paymentSent = false;
+        //       // }
+        //       // if (this.workshops[0].status == 'Paid') {
+        //       //   this.paymentConfirmed = true;
+        //       // } else {
+        //       //   this.paymentConfirmed = false;
+        //       // }
+        //     // }
+        //   }
+        // })
     };
     CartComponent.prototype.getEvents = function () {
-        var _this = this;
-        this.eventRegistrationService.getEventRegistrations(this.user_id).subscribe(function (response) {
-            if (response.error == true) {
-                M.toast({ html: response.msg, classes: 'roundeds danger' });
-            }
-            else {
-                _this.events = response;
-                console.log("Events" + _this.events);
-                //this.calculateAmount()
-                //   if (this.events.length == 0) {
-                //     this.hasEvents = false;
-                //   }
-                //   else {
-                //     this.hasEvents = true;
-                //   }
-                //   if (this.events[0].status == 'Paid') {
-                //     this.paymentConfirmed = true;
-                //   } else {
-                //     this.paymentConfirmed = false;
-                //   }
-            }
-        });
+        // this.eventRegistrationService.getEventRegistrations(this.user_id).subscribe((response: any) => {
+        //   if (response.error == true) {
+        //     M.toast({ html: response.msg, classes: 'roundeds danger' });
+        //   }
+        //   else {
+        //     this.events = response;
+        //     console.log("Events"+this.events);
+        //     //this.calculateAmount()
+        //     //   if (this.events.length == 0) {
+        //     //     this.hasEvents = false;
+        //     //   }
+        //     //   else {
+        //     //     this.hasEvents = true;
+        //     //   }
+        //     //   if (this.events[0].status == 'Paid') {
+        //     //     this.paymentConfirmed = true;
+        //     //   } else {
+        //     //     this.paymentConfirmed = false;
+        //     //   }
+        //      }
+        //   });
     };
     // processFile(hadEvent:any) {
     //   let fileList: FileList = hadEvent.target.files;
@@ -3852,7 +3848,7 @@ module.exports = "\r\n/* Form Style */\r\na:hover,a:focus{\r\n text-decoration: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select [(ngModel)]=\"searchText\" (change)=\"filter()\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option value=\"All\">All</option>\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"row float-right white\">\r\n          <span *ngIf=\"this.currentPage != 1\">\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n          </span>\r\n          &nbsp; Page {{currentPage}} &nbsp;\r\n          <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n        </div>\r\n      </span>\r\n\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{event.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{event.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Rules<i class=\"fas fa-times float-right\"></i></span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                    <div *ngIf=\"!isCartConfirmed\">\r\n                      <div *ngIf=\"event.min_members == event.max_members == 1 && !statuses[event._id].registered\">\r\n                        <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"event.min_members != event.max_members && !statuses[event._id].registered\">\r\n                        <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                          [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                          Register Team <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"statuses[event._id].registered\">\r\n                        <button type=\"button\" *ngIf=\"statuses[event._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          Already Registered\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"isCartConfirmed\">\r\n                        <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                          Cart already Confirmed\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select [(ngModel)]=\"searchText\" (change)=\"filter()\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option value=\"All\">All</option>\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"row float-right white\">\r\n          <span *ngIf=\"this.currentPage != 1\">\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n          </span>\r\n          &nbsp; Page {{currentPage}} &nbsp;\r\n          <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n        </div>\r\n      </span>\r\n\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{event.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{event.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Rules<i class=\"fas fa-times float-right\"></i></span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <ng-container *ngIf=\"user; else notLoggedIn\">\r\n                    <ng-container *ngIf=\"user.cart_confirmed; else cartNotConfirmed\">\r\n                        <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                            Cart already Confirmed\r\n                          </button>\r\n                    </ng-container>\r\n                    <ng-template #cartNotConfirmed>\r\n                        <div *ngIf=\"event.min_members == event.max_members == 1 && !registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                              Register Now <i class=\"la la-angle-right\"></i>\r\n                            </button>\r\n                          </div>\r\n                          <div *ngIf=\"event.min_members != event.max_members && !registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                              [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                              Register Team <i class=\"la la-angle-right\"></i>\r\n                            </button>\r\n                          </div>\r\n                          <div *ngIf=\"registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" *ngIf=\"registeredEvents.includes(event._id)d\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                              style=\"width:100%\">\r\n                              Already Registered\r\n                            </button>\r\n                          </div>\r\n                    </ng-template>\r\n                  </ng-container>\r\n                  <ng-template #notLoggedIn>\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </ng-template>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -3896,31 +3892,31 @@ var EventsComponent = /** @class */ (function () {
         this.authService = authService;
         this.deptService = deptService;
         this.searchText = 'All';
-        this.isCartConfirmed = true;
         this.currentPage = 1;
-        this.selectedEventID = '';
-        this.loadFull(this.currentPage);
-        this.currentPage = 1;
-        this.currentUserId = '';
-        if ((JSON.parse(localStorage.getItem('user'))) != null) {
-            this.currentUserId = (JSON.parse(localStorage.getItem('user'))).id;
-        }
+        this.registeredEvents = [];
     }
     EventsComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (this.currentUserId != '') {
-            this.userService.isCartConfirmed(this.currentUserId).subscribe(function (response) {
-                if (!response.error) {
-                    _this.isCartConfirmed = response.isCartConfirmed;
-                }
-                _this.eventService.readWithPageAndDepartment('Event', 'All', 1).subscribe(function (response) {
-                    _this.events = response;
-                    if (_this.currentUserId != '') {
-                        _this.checkEventRegistrations();
-                    }
-                });
+            this.eventService.readWithPageAndDepartment('Event', 'All', 1).subscribe(function (response) {
+                _this.events = response;
             });
         }
+        this.selectedEventID = '';
+        this.currentPage = 1;
+        this.currentUserId = '';
+        this.user = (JSON.parse(localStorage.getItem('user')));
+        if (this.user != null) {
+            this.currentUserId = this.user.id;
+        }
+        this.getRegistrations();
+        this.loadFull(this.currentPage);
+    };
+    EventsComponent.prototype.getRegistrations = function () {
+        var _this = this;
+        this.eventRegistrationService.getRegisteredEvents(this.currentUserId, 'Event').subscribe(function (response) {
+            _this.registeredEvents = response.msg;
+        });
     };
     EventsComponent.prototype.filter = function () {
         this.currentPage = 1;
@@ -3933,16 +3929,6 @@ var EventsComponent = /** @class */ (function () {
     EventsComponent.prototype.previousPage = function () {
         this.currentPage = this.currentPage - 1;
         this.loadFull(this.currentPage);
-    };
-    EventsComponent.prototype.checkEventRegistrations = function () {
-        var _this = this;
-        this.statuses = {};
-        this.events.forEach(function (event) {
-            _this.eventRegistrationService.checkRegistration(event._id, _this.currentUserId).subscribe(function (response) {
-                _this.statuses[event._id] = response;
-            });
-        });
-        this.statusesLoaded = true;
     };
     EventsComponent.prototype.selectEvent = function (_id) {
         var _this = this;
@@ -3964,10 +3950,8 @@ var EventsComponent = /** @class */ (function () {
                     _this.currentPage -= 1;
                 }
                 else {
+                    _this.getRegistrations();
                     _this.events = response;
-                }
-                if (_this.currentUserId != '') {
-                    _this.checkEventRegistrations();
                 }
             });
         }
@@ -3977,10 +3961,8 @@ var EventsComponent = /** @class */ (function () {
                     _this.currentPage -= 1;
                 }
                 else {
+                    _this.getRegistrations();
                     _this.events = response;
-                }
-                if (_this.currentUserId != '') {
-                    _this.checkEventRegistrations();
                 }
             });
         }
@@ -4021,7 +4003,7 @@ module.exports = ".carousel-item {\r\n    height: 55%;\r\n    width: 90%;\r\n\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n        <h3 class=\"content-header-title\">GyanMitra18</h3>\r\n      </div>\r\n      <div class=\"content-header-right col-md-8 col-12\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">GyanMitra18\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-12\">\r\n            <div class=\"card\">\r\n              <div class=\"card-content\">\r\n                <div class=\"card-body\">\r\n                  <h3 class=\"card-title text-center text-uppercase\">Gallery</h3>\r\n                  <div class=\"divider\"></div>\r\n                </div>\r\n                <div class=\"card-body text-center\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-1\"></div>\r\n                    <div class=\"col-11\">\r\n                      <div id=\"carouselExampleControls\" class=\"carousel slide\" data-ride=\"carousel\">\r\n                        <div class=\"carousel-inner\">\r\n                          <div class=\"carousel-item active\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0465w.jpg\" alt=\"First slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0450(WEB).jpg\" alt=\"Second slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0451w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0452w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0453w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0454w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0455w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0456w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0457w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0458w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0459w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0460w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0461w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0462w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0462w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0463w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0464w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0466w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0467w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0468w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0469w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0472w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                        </div>\r\n                        <a class=\"carousel-control-prev\" href=\"#carouselExampleControls\" role=\"button\" data-slide=\"prev\">\r\n                          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n                          <span class=\"sr-only\">Previous</span>\r\n                        </a>\r\n                        <a class=\"carousel-control-next\" href=\"#carouselExampleControls\" role=\"button\" data-slide=\"next\">\r\n                          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n                          <span class=\"sr-only\">Next</span>\r\n                        </a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-12\">\r\n            <div class=\"card\">\r\n              <div class=\"card-content\">\r\n                <div class=\"card-body\">\r\n                  <h3 class=\" size2 card-title text-center text-uppercase \"><i class=\"fas fa-medal\"></i> Winners <i\r\n                      class=\"fas fa-medal\"></i></h3>\r\n                  <div class=\"divider\"></div>\r\n                </div>\r\n                <div class=\"card-body text-center\">\r\n                  <div class=\"table-responsive\">\r\n                    <table class=\"table\">\r\n                      <thead>\r\n                        <tr>\r\n                          <th>Sl. No</th>\r\n                          <th>Domain</th>\r\n                          <th>College</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                        <tr>\r\n                          <td>\r\n                            1\r\n                          </td>\r\n                          <td>\r\n                            CIVIL\r\n                          </td>\r\n                          <td>\r\n                            Kamaraj\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            2\r\n                          </td>\r\n                          <td>\r\n                            EEE\r\n                          </td>\r\n                          <td>\r\n                            SSM College Of Engineering\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            3\r\n                          </td>\r\n                          <td>\r\n                            ECE\r\n                          </td>\r\n                          <td>\r\n                            KLN Engineering College\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            4\r\n                          </td>\r\n                          <td>\r\n                            CSE/IT\r\n                          </td>\r\n                          <td>\r\n                            Kamaraj Engineering College\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            5\r\n                          </td>\r\n                          <td>\r\n                            MECH\r\n                          </td>\r\n                          <td>\r\n                            Sethu Institute of Technology \r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            6\r\n                          </td>\r\n                          <td>\r\n                            MATHS\r\n                          </td>\r\n                          <td>\r\n                            PSNA College of Engineering and Technology\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            7\r\n                          </td>\r\n                          <td>\r\n                            Bio Tech\r\n                          </td>\r\n                          <td>\r\n                            Lady Doak College\r\n                          </td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n        <h3 class=\"content-header-title\">GyanMitra18</h3>\r\n      </div>\r\n      <div class=\"content-header-right col-md-8 col-12\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">GyanMitra18\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-12\">\r\n            <div class=\"card\">\r\n              <div class=\"card-content\">\r\n                <div class=\"card-body\">\r\n                  <h3 class=\"card-title text-center text-uppercase\">Gallery</h3>\r\n                  <div class=\"divider\"></div>\r\n                </div>\r\n                <div class=\"card-body text-center\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-1\"></div>\r\n                    <div class=\"col-11\">\r\n                      <div id=\"carouselExampleControls\" class=\"carousel slide\" data-ride=\"carousel\">\r\n                        <div class=\"carousel-inner\">\r\n                          <div class=\"carousel-item active\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0465w.jpg\" alt=\"First slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0450(WEB).jpg\" alt=\"Second slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0451w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0452w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0453w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0454w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0455w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0456w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0457w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0458w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0459w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0460w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0461w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0462w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0462w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0463w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0464w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0466w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0467w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0468w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0469w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n\r\n                          <div class=\"carousel-item\">\r\n                            <img class=\"d-block w-100\" src=\"public/images/Gallery/DSC_0472w.jpg\" alt=\"Third slide\">\r\n                          </div>\r\n                        </div>\r\n                        <a class=\"carousel-control-prev\" href=\"#carouselExampleControls\" role=\"button\" data-slide=\"prev\">\r\n                          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n                          <span class=\"sr-only\">Previous</span>\r\n                        </a>\r\n                        <a class=\"carousel-control-next\" href=\"#carouselExampleControls\" role=\"button\" data-slide=\"next\">\r\n                          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n                          <span class=\"sr-only\">Next</span>\r\n                        </a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-12\">\r\n            <div class=\"card\">\r\n              <div class=\"card-content\">\r\n                <div class=\"card-body\">\r\n                  <h3 class=\" size2 card-title text-center text-uppercase \"><i class=\"fas fa-medal\"></i> Winners <i\r\n                      class=\"fas fa-medal\"></i></h3>\r\n                  <div class=\"divider\"></div>\r\n                </div>\r\n                <div class=\"card-body text-center\">\r\n                  <div class=\"table-responsive\">\r\n                    <table class=\"table\">\r\n                      <thead>\r\n                        <tr>\r\n                          <th>Sl. No</th>\r\n                          <th>Domain</th>\r\n                          <th>College</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                        <tr>\r\n                          <td>\r\n                            1\r\n                          </td>\r\n                          <td>\r\n                            CIVIL\r\n                          </td>\r\n                          <td>\r\n                            Bharathiyar College of Engineering and Technology,Puducherry \r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            2\r\n                          </td>\r\n                          <td>\r\n                            EEE\r\n                          </td>\r\n                          <td>\r\n                            SSM College Of Engineering,Chennai\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            3\r\n                          </td>\r\n                          <td>\r\n                            ECE\r\n                          </td>\r\n                          <td>\r\n                            KLN College of Engineering,Madurai\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            4\r\n                          </td>\r\n                          <td>\r\n                            CSE/IT\r\n                          </td>\r\n                          <td>\r\n                            Kamaraj College of Engineering and Technology,Virudhunagar\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            5\r\n                          </td>\r\n                          <td>\r\n                            MECH\r\n                          </td>\r\n                          <td>\r\n                            Sethu Institute of Technology,Virudhunagar\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            6\r\n                          </td>\r\n                          <td>\r\n                            MATHS\r\n                          </td>\r\n                          <td>\r\n                            PSNA College of Engineering and Technology,Dindigul\r\n                          </td>\r\n                        </tr>\r\n                        <tr>\r\n                          <td>\r\n                            7\r\n                          </td>\r\n                          <td>\r\n                            MCA\r\n                          </td>\r\n                          <td>\r\n                            Lady Doak College,Madurai\r\n                          </td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>"
 
 /***/ }),
 
@@ -5122,7 +5104,7 @@ module.exports = ".btn{\r\n    white-space:normal !important;\r\n    word-wrap: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-3\">\r\n        <span class=\"content-header-title\">Workshops\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select id=\"deptSelect\" (click)=\"filter()\" [(ngModel)]=\"searchText\" class=\"custom-select float-right\">\r\n          <option class=\"custom-select\" *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Workshops\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n          <div class=\"row float-right white\">\r\n            <span *ngIf=\"this.currentPage != 1\">\r\n              <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n            </span>\r\n            &nbsp; Page {{currentPage}} &nbsp;\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n          </div>\r\n        </span>\r\n    </div>\r\n    <br />\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let workshop of workshops | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{workshop.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{workshop.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{workshop.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{workshop.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    Resource Person\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    {{workshop.resource_person}}\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{workshop.contact_email}}\">{{workshop.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Pre Requesites<i class=\"fas fa-times float-right\"></i></span>\r\n                {{workshop.rules}}\r\n                <hr />\r\n                <h4>Timing</h4>\r\n   \r\n                Date : {{workshop.event_date | date}}\r\n                {{workshop.start_time}} -\r\n                {{workshop.end_time}}\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{workshop.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                      <div *ngIf=\"statusesLoaded\">\r\n                      <div *ngIf=\"!isCartConfirmed\">\r\n                        <button type=\"button\" *ngIf=\"!statuses[workshop._id].registered\" class=\"btn btn-outline-primary\"\r\n                          (click)=\"selectWorkshop(workshop._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                        <button type=\"button\" *ngIf=\"statuses[workshop._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          <span *ngIf=\"statuses[workshop._id].msg != 'Already Registered!'\">\r\n                            Parallel Workshop Registered\r\n                          </span>\r\n                          <span *ngIf=\"statuses[workshop._id].msg == 'Already Registered!'\">\r\n                            Already Registered!\r\n                          </span>\r\n                        </button>\r\n                      </div>\r\n                    </div>\r\n                    <div *ngIf=\"isCartConfirmed\">\r\n                      <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                        Cart already Confirmed\r\n                      </button>\r\n                    </div>\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-3\">\r\n        <span class=\"content-header-title\">Workshops\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select id=\"deptSelect\" (click)=\"filter()\" [(ngModel)]=\"searchText\" class=\"custom-select float-right\">\r\n          <option class=\"custom-select\" *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Workshops\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n          <div class=\"row float-right white\">\r\n            <span *ngIf=\"this.currentPage != 1\">\r\n              <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n            </span>\r\n            &nbsp; Page {{currentPage}} &nbsp;\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n          </div>\r\n        </span>\r\n    </div>\r\n    <br />\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let workshop of workshops | filterEventsBasedOnDepartment : searchText\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{workshop.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{workshop.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{workshop.image_name}}\">\r\n              <div class=\"card-body\">\r\n                {{workshop.description}}\r\n              </div>\r\n              <div class=\"card-body\">\r\n                <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    Resource Person\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    {{workshop.resource_person}}\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{workshop.contact_email}}\">{{workshop.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Pre Requesites<i class=\"fas fa-times float-right\"></i></span>\r\n                {{workshop.rules}}\r\n                <hr />\r\n                <h4>Timing</h4>\r\n   \r\n                Date : {{workshop.event_date | date}}\r\n                {{workshop.start_time}} -\r\n                {{workshop.end_time}}\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{workshop.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <div *ngIf=\"authService.isLoggedIn()\">\r\n                      <!--<div *ngIf=\"statusesLoaded\">\r\n                      <div *ngIf=\"!isCartConfirmed\">-->\r\n                        <button type=\"button\" class=\"btn btn-outline-primary\"\r\n                          (click)=\"selectWorkshop(workshop._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                        <span *ngIf=\"user.cart_confirmed\">\r\n                            Already Registered!\r\n                          </span>\r\n                        <!--<button type=\"button\" *ngIf=\"statuses[workshop._id].registered\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          <span *ngIf=\"statuses[workshop._id].msg != 'Already Registered!'\">\r\n                            Parallel Workshop Registered\r\n                          </span>\r\n                          <span *ngIf=\"statuses[workshop._id].msg == 'Already Registered!'\">\r\n                            Already Registered!\r\n                          </span>\r\n                        </button>\r\n                      </div>\r\n                    </div>-->\r\n                    <!--<div *ngIf=\"isCartConfirmed\">\r\n                      <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                        Cart already Confirmed\r\n                      </button>\r\n                    </div>-->\r\n                  </div>\r\n                  <div *ngIf=\"!authService.isLoggedIn()\">\r\n                    <a class=\"btn btn-outline-primary\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </div>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -5141,7 +5123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/eventRegistration/event-registration.service */ "./src/app/services/eventRegistration/event-registration.service.ts");
 /* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
 /* harmony import */ var src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/department/department.service */ "./src/app/services/department/department.service.ts");
-/* harmony import */ var src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/user/user.service */ "./src/app/services/user/user.service.ts");
+/* harmony import */ var src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/app/app.service */ "./src/app/services/app/app.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5158,38 +5140,66 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var WorkshopsComponent = /** @class */ (function () {
-    function WorkshopsComponent(eventService, userService, eventRegistrationService, authService, deptService) {
-        var _this = this;
+    function WorkshopsComponent(appService, eventService, authService, deptService, eventRegistrationService) {
+        this.appService = appService;
         this.eventService = eventService;
-        this.userService = userService;
-        this.eventRegistrationService = eventRegistrationService;
         this.authService = authService;
         this.deptService = deptService;
+        this.eventRegistrationService = eventRegistrationService;
         this.statuses = {};
         this.searchText = 'Computer Science and Engineering and Information Technology';
         this.isCartConfirmed = true;
         this.statusesLoaded = false;
         this.currentPage = 1;
-        this.currentPage = 1;
-        this.eventService.readWithPageAndDepartment('Workshop', this.searchText, 1).subscribe(function (response) {
-            _this.workshops = response;
-            if (_this.currentUserId != '') {
-                _this.checkEventRegistrations();
-            }
-        });
     }
     WorkshopsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.loadFull(this.currentPage);
-        this.currentUserId = JSON.parse(localStorage.getItem('user')).id;
-        if (this.authService.isLoggedIn()) {
-            this.userService.isCartConfirmed(this.currentUserId).subscribe(function (response) {
-                if (!response.error) {
-                    _this.isCartConfirmed = response.isCartConfirmed;
-                }
-            });
-        }
+        //this.user = [];
+        this.getCurrentUser();
+        this.getWorkshop(this.currentPage);
     };
+    WorkshopsComponent.prototype.getCurrentUser = function () {
+        var _this = this;
+        this.authService.getCurrentUser().subscribe(function (response) {
+            _this.user = response.profile;
+        });
+    };
+    WorkshopsComponent.prototype.getWorkshop = function (page) {
+        var _this = this;
+        this.eventService.readWithPageAndDepartment('Workshop', this.searchText, page).subscribe(function (response) {
+            if (response.length == []) {
+                _this.currentPage -= 1;
+            }
+            else {
+                _this.workshops = response;
+            }
+            if (_this.currentUserId != '') {
+                //this.checkEventRegistrations();
+            }
+        });
+        this.deptService.readDepartment(0).subscribe(function (response) {
+            _this.departments = response;
+        });
+    };
+    // constructor(private eventService: EventService, private userService: UserService, private eventRegistrationService: EventRegistrationService, public authService: AuthService, private deptService: DepartmentService) {
+    //   this.currentPage = 1;
+    //   this.eventService.readWithPageAndDepartment('Workshop', this.searchText, 1).subscribe((response: any) => {
+    //     this.workshops = response;
+    //     if (this.currentUserId != '') {
+    //       this.checkEventRegistrations();
+    //     }
+    //   })
+    // }
+    // ngOnInit() {
+    //   this.loadFull(this.currentPage);
+    //   this.currentUserId = JSON.parse(localStorage.getItem('user')).id
+    //   if (this.authService.isLoggedIn()) {
+    //     this.userService.isCartConfirmed(this.currentUserId).subscribe((response: any) => {
+    //       if (!response.error) {
+    //         this.isCartConfirmed = response.isCartConfirmed
+    //       }
+    //     })
+    //   }
+    // }
     WorkshopsComponent.prototype.checkEventRegistrations = function () {
         var _this = this;
         this.statuses = {};
@@ -5202,14 +5212,14 @@ var WorkshopsComponent = /** @class */ (function () {
     };
     WorkshopsComponent.prototype.nextPage = function () {
         this.currentPage = this.currentPage + 1;
-        this.loadFull(this.currentPage);
+        this.getWorkshop(this.currentPage);
     };
     WorkshopsComponent.prototype.previousPage = function () {
         this.currentPage = this.currentPage - 1;
-        this.loadFull(this.currentPage);
+        this.getWorkshop(this.currentPage);
     };
     WorkshopsComponent.prototype.reloadEvents = function () {
-        this.loadFull(this.currentPage);
+        this.getWorkshop(this.currentPage);
     };
     WorkshopsComponent.prototype.selectWorkshop = function (_id) {
         var _this = this;
@@ -5236,34 +5246,13 @@ var WorkshopsComponent = /** @class */ (function () {
             }
         });
     };
-    WorkshopsComponent.prototype.filter = function () {
-        this.currentPage = 1;
-        this.loadFull(this.currentPage);
-    };
-    WorkshopsComponent.prototype.loadFull = function (page) {
-        var _this = this;
-        this.eventService.readWithPageAndDepartment('Workshop', this.searchText, page).subscribe(function (response) {
-            if (response.length == []) {
-                _this.currentPage -= 1;
-            }
-            else {
-                _this.workshops = response;
-            }
-            if (_this.currentUserId != '') {
-                _this.checkEventRegistrations();
-            }
-        });
-        this.deptService.readDepartment(0).subscribe(function (response) {
-            _this.departments = response;
-        });
-    };
     WorkshopsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-workshops',
             template: __webpack_require__(/*! ./workshops.component.html */ "./src/app/component/user/workshops/workshops.component.html"),
             styles: [__webpack_require__(/*! ./workshops.component.css */ "./src/app/component/user/workshops/workshops.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_services_event_event_service__WEBPACK_IMPORTED_MODULE_1__["EventService"], src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__["EventRegistrationService"], src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__["DepartmentService"]])
+        __metadata("design:paramtypes", [src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"], src_app_services_event_event_service__WEBPACK_IMPORTED_MODULE_1__["EventService"], src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__["DepartmentService"], src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__["EventRegistrationService"]])
     ], WorkshopsComponent);
     return WorkshopsComponent;
 }());
@@ -6445,7 +6434,6 @@ var EventService = /** @class */ (function () {
     };
     EventService.prototype.readWithPageAndDepartment = function (type, department, page) {
         var headers = new Headers();
-        console.log(this.app.getUrl(this.baseUrl) + type + '/' + department + '/' + page);
         return this.http.get(this.app.getUrl(this.baseUrl) + type + '/' + department + '/' + page);
     };
     EventService.prototype.updateEvent = function (id, title, category_id, department_id, description, image_name, rules, start_time, end_time, event_date, prelims, round_1, round_2, finals, min_members, max_members, max_limit, contact_email, venue, amount, allow_gender_mixing, resource_person) {
@@ -6547,6 +6535,11 @@ var EventRegistrationService = /** @class */ (function () {
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.app.getUrl(this.baseUrl + 'newTeamEventRegistration'), data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) { return res; }, { 'headers': headers }));
     };
+    EventRegistrationService.prototype.getRegisteredEvents = function (user_id, type) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get(this.app.getUrl(this.baseUrl) + 'registeredEvents/' + user_id + '/' + type);
+    };
     EventRegistrationService.prototype.createWorkshopRegistration = function (event_id, id) {
         var data = {
             event_id: event_id,
@@ -6572,12 +6565,12 @@ var EventRegistrationService = /** @class */ (function () {
         headers.append('Content-Type', 'application/json');
         return this.http.get(this.app.getUrl(this.baseUrl) + 'checkEventRegistration/' + event_id + "/" + user_id);
     };
-    EventRegistrationService.prototype.getWorkshops = function (user_id) {
+    EventRegistrationService.prototype.getUserWorkshops = function (user_id) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.get(this.app.getUrl(this.baseUrl) + 'getRegistrations/' + user_id + "/Workshop");
     };
-    EventRegistrationService.prototype.getEventRegistrations = function (user_id) {
+    EventRegistrationService.prototype.getUserEvents = function (user_id) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.get(this.app.getUrl(this.baseUrl) + 'getRegistrations/' + user_id + "/Event");
@@ -6649,6 +6642,10 @@ var EventRegistrationService = /** @class */ (function () {
         this.http.get(this.app.getUrl(this.baseUrl) + 'checkEventRegistrationStatus/' + event_id + '/' + user_id).subscribe(function (response) {
             return response.registered;
         });
+    };
+    EventRegistrationService.prototype.getWorkshops = function () {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
     };
     EventRegistrationService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -7472,7 +7469,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false,
+    production: true,
     backend: {
         server: 'http://www.gyanmitra19.mepcoeng.ac.in'
     },
@@ -7651,10 +7648,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_component_user_user_home_user_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/component/user/user-home/user-home.component */ "./src/app/component/user/user-home/user-home.component.ts");
 /* harmony import */ var src_app_component_user_team_register_team_register_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/component/user/team-register/team-register.component */ "./src/app/component/user/team-register/team-register.component.ts");
 /* harmony import */ var src_app_component_user_gyan_mitra18_gyan_mitra18_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/component/user/gyan-mitra18/gyan-mitra18.component */ "./src/app/component/user/gyan-mitra18/gyan-mitra18.component.ts");
-/* harmony import */ var src_app_guard_admin_admin_guard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/guard/admin/admin.guard */ "./src/app/guard/admin/admin.guard.ts");
-/* harmony import */ var src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/component/user/payment-success/payment-success.component */ "./src/app/component/user/payment-success/payment-success.component.ts");
-/* harmony import */ var src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/component/user/payment-failure/payment-failure.component */ "./src/app/component/user/payment-failure/payment-failure.component.ts");
-
+/* harmony import */ var src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/component/user/payment-success/payment-success.component */ "./src/app/component/user/payment-success/payment-success.component.ts");
+/* harmony import */ var src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/component/user/payment-failure/payment-failure.component */ "./src/app/component/user/payment-failure/payment-failure.component.ts");
 
 
 
@@ -7675,14 +7670,14 @@ var USER_ROUTE = [
     { path: 'events', component: src_app_component_user_events_events_component__WEBPACK_IMPORTED_MODULE_1__["EventsComponent"] },
     { path: 'workshops', component: src_app_component_user_workshops_workshops_component__WEBPACK_IMPORTED_MODULE_2__["WorkshopsComponent"] },
     { path: 'login', component: src_app_component_user_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
-    { path: 'register', component: src_app_component_user_register_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"], canActivate: [src_app_guard_admin_admin_guard__WEBPACK_IMPORTED_MODULE_12__["AdminGuard"]] },
+    { path: 'register', component: src_app_component_user_register_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"] },
     { path: 'activate/:id/:hash', component: src_app_component_user_activation_activation_component__WEBPACK_IMPORTED_MODULE_7__["ActivationComponent"] },
     { path: 'cart', component: src_app_component_user_cart_cart_component__WEBPACK_IMPORTED_MODULE_3__["CartComponent"], canActivate: [src_app_guard_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] },
     { path: 'accomodation', component: src_app_component_user_user_accomodation_user_accomodation_component__WEBPACK_IMPORTED_MODULE_8__["UserAccomodationComponent"] },
     { path: 'teamRegister/:id', component: src_app_component_user_team_register_team_register_component__WEBPACK_IMPORTED_MODULE_10__["TeamRegisterComponent"] },
     { path: 'gyanmitra18', component: src_app_component_user_gyan_mitra18_gyan_mitra18_component__WEBPACK_IMPORTED_MODULE_11__["GyanMitra18Component"] },
-    { path: 'payment/success', component: src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_13__["PaymentSuccessComponent"] },
-    { path: 'payment/failure', component: src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_14__["PaymentFailureComponent"] }
+    { path: 'payment/success', component: src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_12__["PaymentSuccessComponent"] },
+    { path: 'payment/failure', component: src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_13__["PaymentFailureComponent"] }
 ];
 
 

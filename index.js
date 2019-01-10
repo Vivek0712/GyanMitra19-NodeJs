@@ -47,7 +47,7 @@ var production = true;
 
 
 if (production) {
-    app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in/' }));
+    app.use(cors({ origin: 'http://192.168.16.14/' }));
 } else {
     app.use(cors({ origin: 'http://localhost:4200' }));
     //port = 3000;
