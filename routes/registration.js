@@ -48,7 +48,7 @@ router.post('/create', (req, res, next) => {
                         msg: 'Failed to add activtion Code to user' + err2
                     });
                 } else {
-                    link = "http://localhost:4200/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
+                    link = "http://www.gyanmitra19.mepcoeng.ac.in/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
                     let mailOptions = {
                         to: req.body.email_id,
                         subject: "Please confirm your Email account",
