@@ -42,12 +42,12 @@ const payment = require('./routes/payment');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
 if (production) {
-    app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in/' }));
+    app.use(cors({ origin: 'http://192.168.16.14/' }));
 } else {
     app.use(cors({ origin: 'http://localhost:4200' }));
     //port = 3000;
@@ -107,7 +107,7 @@ if (production) {
 }
 else {
     app.get('/', (req, res) => {
-        res.send('invaild endpoint');
+        res.send('HELLO WORlD!');
     });
     
     app.get('*', (req, res) => {
