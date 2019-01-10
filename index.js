@@ -42,7 +42,7 @@ const payment = require('./routes/payment');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
@@ -107,7 +107,7 @@ if (production) {
 }
 else {
     app.get('/', (req, res) => {
-        res.send('invaild endpoint');
+        res.send('HELLO WORlD!');
     });
 
    

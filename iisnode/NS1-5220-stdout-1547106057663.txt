@@ -1,0 +1,2 @@
+Server started on port \\.\pipe\960e00d2-7891-4961-b07c-61145bfae54e
+Database error MongoNetworkError: failed to connect to server [127.0.01:27017] on first connect [MongoNetworkError: getaddrinfo ENOTFOUND 127.0.01 127.0.01:27017]

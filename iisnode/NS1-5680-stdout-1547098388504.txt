@@ -1,0 +1,2 @@
+Server started on port \\.\pipe\ef3511d2-177c-45f1-a1ee-2721b57e5ac0
+Database error MongoError: Authentication failed.
