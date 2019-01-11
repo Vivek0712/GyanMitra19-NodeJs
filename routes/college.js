@@ -34,14 +34,14 @@ router.get('/', function(req, res, next) {
         });
     }
     else{
-        College.find({}, (err, docs)=>{
-            if(!err){
+        College.find({}).sort('name').exec((err, docs)=>{
+			if(!err){
                 res.send(docs);
             }
             else{
                 res.json({error:true, msg: err});
             }
-        })
+		});
     }
     
 });

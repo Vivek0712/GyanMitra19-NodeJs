@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
-const Category = require('../models/payment');
+const Payment = require('../models/payment');
 var ObjectId = require('mongoose').Types.ObjectId;
 var crypto = require('crypto');
 var jsSHA = require("jssha");
@@ -48,18 +48,21 @@ router.post('/success', (req, res, next) => {
           User.find({ email_id: pd.email }, (err, user) => {
                if (err) throw err;
                let payment = new Payment({
-                    transcation_id: pd.txnid,
+                    transaction_id: pd.txnid,
                     mode_of_payment: 'Online',
                     payment_status: 'Paid',
                     status: 'Paid',
-                    user_id: user._id,
+                    user_id: user[0]._id,
                     amount:pd.amount
                });
                payment.save(function (err, newUser) {
                     if (err) {
                         res.json({
                             success: false,
-                            msg: err
+                            msg: err,
+							user:user,
+							payment:payment,
+							pad:pd
                         });
                     } else {
                          res.redirect('/user/payment/success');
@@ -78,7 +81,7 @@ router.post('/success', (req, res, next) => {
 
 
 router.get('/test', (req, res, next) => {
-     res.send('The');  
+     res.send('Thes4');  
 });
 
 router.post('/acc/failure', (req, res, next) => {
