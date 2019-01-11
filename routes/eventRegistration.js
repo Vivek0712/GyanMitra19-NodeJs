@@ -155,7 +155,7 @@ router.get('/getPendingDDConfirmation', (req, res) => {
 router.get('/getUnconfirmedDDPayments', (req, res) => {
     User.find({
         cart_confirmed: true,
-        cart_paid: false
+        cart_dd_image: 'Awaiting Confirmation'
 
     }).populate('college_id').then((docs) => {
         res.json(docs);
@@ -246,7 +246,8 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
 router.post('/confirmCartPayment', (req, res) => {
     let user_id = req.body.user_id;
     User.findByIdAndUpdate(user_id, {
-        cart_paid: true
+        cart_paid: true,
+        cart_dd_image: 'Verified'
     }, (err, docs) => {
         if (err) {
             res.json({
@@ -353,7 +354,6 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
     var newParticipation = {

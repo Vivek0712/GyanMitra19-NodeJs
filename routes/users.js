@@ -10,48 +10,39 @@ var path = require('path')
 var multer = require('multer')
 
 
-router.post('/uploadCartDDImage/:id', (request, res)=>{
-    var fileName =""
-    var upload = multer({
-		storage: multer.diskStorage({
-            destination: function (req, file, cb) {
-                cb(null, './assests/images/cart/')
-            },
-            filename: function (req, file, cb) {
-                cb(null,request.params.id+path.extname(file.originalname))
-                console.log(req.params.id)
-                this.fileName = request.params.id + path.extname(file.originalname);
-                User.findByIdAndUpdate(req.params.id, {
-                    $set: {
-                        cart_dd_image: request.params.id + path.extname(file.originalname)
-                    }
-                },(err, resp)=>{
-                    if(err){
-                    }
-                    else{
-                        
-                    }
-                })
-            }
-        })
-    }).any()
-	upload(request, res, function(err) {
-		if(!err){
-            
+router.post('/uploadCartDDImage/:id', (req, res) => {
+    User.updateMany({
+        _id: req.params.id
+    },{
+        $set: {
+            cart_dd_image: 'Awaiting Confirmation'
+        }
+    }, (err, docs)=>{
+        if(err){
             res.json({
-                error: false,
-                msg: 'FIle Uploaded Successfully'
+                error: true,
+                msg: err
             })
         }
-        else{
-            res.json(err);
-        }
     })
-    EventRegistration.updateMany({user_id : request.params.id}, {
+    EventRegistration.updateMany({
+        user_id: req.params.id
+    }, {
         $set: {
             status: 'Verifying Payment'
         }
-    }, (err, docs)=>{
+    }, (err, docs) => {
+        if(err){
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            res.json({
+                error: false,
+                msg: 'Request successfully Sent!'
+            })
+        }
     })
 })
 
@@ -170,18 +161,19 @@ router.post('/confirmCart', function (req, res) {
                         msg: 'Unable to Confirm Cart. Try Again'
                     })
                 } else {
-                    EventRegistration.updateMany({user_id : req.body.user_id},{
+                    EventRegistration.updateMany({
+                        user_id: req.body.user_id
+                    }, {
                         $set: {
                             status: 'Payment pending'
                         }
-                    },(err)=>{
-                        if(err){
+                    }, (err) => {
+                        if (err) {
                             res.json({
                                 error: true,
                                 msg: 'Unable to Confirm Cart. Try Again'
                             })
-                        }
-                        else {
+                        } else {
                             res.json({
                                 error: false,
                                 msg: 'Your cart has been successfully confirmed'
@@ -262,11 +254,13 @@ router.delete('/:id', (req, res) => {
     });
 });
 router.get('/admin', (req, res) => {
-    User.find({ type: 'admin' }, (err, docs) => {
+    User.find({
+        type: 'admin'
+    }, (err, docs) => {
         if (err) {
             res.json({
                 error: true,
-                msg: 'Error'+err
+                msg: 'Error' + err
             });
         } else {
             res.json({
