@@ -71,16 +71,15 @@ router.post('/success', (req, res, next) => {
  
       } else {
  
-          res.send({'status':"Error occured",
-		  hash:hash,
-		  salt:salt,
-		  hello:'sa'});
+          res.send({'status':pd});
  
       }
 })
 
 
-
+router.get('/test', (req, res, next) => {
+     res.send('TEST');  
+});
 
 router.post('/acc/failure', (req, res, next) => {
      //res.send('Failed');
