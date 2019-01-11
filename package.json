@@ -17,6 +17,7 @@
     "express-fileupload": "^1.0.0",
     "ip": "^1.1.5",
     "jsonwebtoken": "^8.4.0",
+    "jssha": "^2.3.1",
     "mongoose": "^5.4.1",
     "mongoose-paginate": "^5.0.3",
     "mongoose-token": "^1.0.3",
@@ -24,6 +25,7 @@
     "nodemailer": "^4.7.0",
     "nodemon": "^1.18.9",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "payumoney-node": "^2.0.1"
   }
 }
