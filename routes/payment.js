@@ -74,7 +74,6 @@ router.post('/success', (req, res, next) => {
           res.send({'status':"Error occured",
 		  hash:hash,
 		  salt:salt,
-		  pd.hash:pd.hash,
 		  hello:'sa'});
  
       }
