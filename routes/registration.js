@@ -52,7 +52,11 @@ router.post('/create', (req, res, next) => {
                     let mailOptions = {
                         to: req.body.email_id,
                         subject: "Please confirm your Email account",
+<<<<<<< HEAD
                         html: "Please click this link To activate your account <br><br> <a href="+ link + ">Click here</a>;
+=======
+                        html: 'Hello from GyanMitra! Please Confirm your E-Mail <br /> <a href="'+link+'"</a>'
+>>>>>>> f003671b5ca115a49b3287d446dacd7c2d83e457
                     }
                     smtpTransport.sendMail(mailOptions, function (error, response) {
                         if (error) {

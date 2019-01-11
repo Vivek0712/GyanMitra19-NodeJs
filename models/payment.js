@@ -14,7 +14,7 @@ const PaymentSchema = mongoose.Schema({
     },
     file_name: {
         type: String,
-        required: true
+        
     },
     payment_status: {
         type: String,

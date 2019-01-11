@@ -170,6 +170,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pipes_rules_transform_pipe__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./pipes/rules-transform.pipe */ "./src/app/pipes/rules-transform.pipe.ts");
 /* harmony import */ var _component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./component/user/payment-success/payment-success.component */ "./src/app/component/user/payment-success/payment-success.component.ts");
 /* harmony import */ var _component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./component/user/payment-failure/payment-failure.component */ "./src/app/component/user/payment-failure/payment-failure.component.ts");
+/* harmony import */ var _component_user_acc_failure_acc_failure_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./component/user/acc-failure/acc-failure.component */ "./src/app/component/user/acc-failure/acc-failure.component.ts");
+/* harmony import */ var _component_user_acc_success_acc_success_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./component/user/acc-success/acc-success.component */ "./src/app/component/user/acc-success/acc-success.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -249,6 +251,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 /////////////////////////////////////////////////////////////////
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -300,6 +304,8 @@ var AppModule = /** @class */ (function () {
                 _pipes_rules_transform_pipe__WEBPACK_IMPORTED_MODULE_64__["RulesTransformPipe"],
                 _component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_65__["PaymentSuccessComponent"],
                 _component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_66__["PaymentFailureComponent"],
+                _component_user_acc_failure_acc_failure_component__WEBPACK_IMPORTED_MODULE_67__["AccFailureComponent"],
+                _component_user_acc_success_acc_success_component__WEBPACK_IMPORTED_MODULE_68__["AccSuccessComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -3112,7 +3118,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n      <div class=\"content-wrapper-before\"></div>\r\n      <div class=\"content-header row\">\r\n          <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n              <h3 class=\"content-header-title\">Manage Role</h3>\r\n          </div>\r\n          <div class=\"content-header-right col-md-8 col-12\">\r\n              <div class=\"breadcrumbs-top float-md-right\">\r\n                  <div class=\"breadcrumb-wrapper mr-1\">\r\n                      <ol class=\"breadcrumb\">\r\n                          <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n                          </li>\r\n                          <li class=\"breadcrumb-item active\">Role\r\n                          </li>\r\n                      </ol>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n      <div class=\"content-body\">\r\n          <section id=\"content-types\">\r\n              <div class=\"row match-height justify-content-md-center\">\r\n                  <div class=\"col-xl-6 col-md-12\">\r\n                      <div class=\"card\">\r\n                          <div class=\"card-content\">\r\n                              <div class=\"card-body\">\r\n                                  <h4 class=\"card-title\">Role</h4>\r\n                                  <h6 class=\"card-subtitle text-muted\">Add Role</h6>\r\n                              </div>\r\n                              <div class=\"card-body\">\r\n                                  <form class=\"form\" [formGroup]=\"roleForm\" (ngSubmit)=onSubmit(roleForm)>\r\n                                      <input type=\"hidden\" formControlName=\"_id\">\r\n                                      <div class=\"form-group\">\r\n                                          <input type=\"text\" class=\"form-control\" placeholder=\"Role Name\" formControlName=\"name\" required pattern=\"[a-zA-Z ]*\" [ngClass]=\"{'is-invalid': submitted && f.name.errors}\">\r\n                                          <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\r\n                                             <div *ngIf=\"f.name.errors.required\">Role Name is required</div>\r\n                                             <div *ngIf=\"f.name.errors && !f.name.errors.required\">Only Alpahabets</div>\r\n                                         </div>\r\n                                     </div>\r\n                                      <div class=\"form-action left row\">\r\n                                          <div class=\"col\">\r\n                                              <span (click)=\"createForm()\" class=\"btn btn-outline-danger left\">Reset</span>\r\n                                          </div>\r\n                                          <div class=\"col\">\r\n                                              <button type=\"submit\" class=\"btn btn-outline-success right\">{{this.Button}}</button>\r\n                                          </div>\r\n                                      </div>\r\n                                  </form>\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </section>\r\n          <div class=\"row\">\r\n              <div class=\"col-12\">\r\n                  <div class=\"card\">\r\n                      <div class=\"card-header\">\r\n                          <h4 class=\"card-title\">Roles</h4>\r\n                          <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n                          <div class=\"heading-elements\">\r\n                              <ul class=\"list-inline mb-0\">\r\n                                  <li><a data-action=\"collapse\"><i class=\"ft-minus\"></i></a></li>\r\n                                  <li><a data-action=\"reload\"><i class=\"ft-rotate-cw\"></i></a></li>\r\n                                  <li><a data-action=\"expand\"><i class=\"ft-maximize\"></i></a></li>\r\n                              </ul>\r\n                          </div>\r\n                      </div>\r\n                      <div class=\"card-content collapse show\">\r\n                          <div class=\"card-body\">\r\n                                  <input [(ngModel)]=\"searchText\" placeholder=\"Search Roles\" class=\"form-control\">\r\n                                  <div class = \"row\">\r\n                                          <div class=\"col-6\">\r\n                                          </div>\r\n                                          <div class=\"col-6\" style=\"margin-top:5px; margin-bottom:10px;\">\r\n                                            <div class=\"right\">\r\n                                                <span class=\"btn btn-info\" (click)=\"previousPage()\"> &lt; </span> &nbsp; Page {{currentPage}} &nbsp;  \r\n                                                <span class=\"btn btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n                                            </div>\r\n                                          </div>\r\n                                        </div>\r\n                              <div class=\"table-responsive\">\r\n                                  <table class=\"table\">\r\n                                      <thead>\r\n                                          <tr>\r\n                                              <th>Sl. No</th>\r\n                                              <th>Role Name</th>\r\n                                              <th>Update</th>\r\n                                              <th>Delete</th>\r\n                                          </tr>\r\n                                      </thead>\r\n                                      <tbody>\r\n                                          <tr *ngFor=\"let role of roles | searchfilter : searchText ; let i = index;\">\r\n\r\n                                              <th scope=\"row\">{{i+1}}</th>\r\n                                              <td>{{role.name}}</td>\r\n                                              <td>\r\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-warning\">\r\n                                                      <a (click)=\"updateRole(role._id,role.name)\"> <i class=\"la la-pencil la-2x\"></i></a>\r\n                                                  </div>\r\n                                              </td>\r\n                                              <td>\r\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-danger\" (click)=\"deleteRole(role._id)\">\r\n                                                      <a> <i class=\"la la-trash la-2x\"></i></a>\r\n                                                  </div>\r\n                                              </td>\r\n                                          </tr>\r\n                                      </tbody>\r\n                                  </table>\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"app-content content\">\n  <div class=\"content-wrapper\">\n      <div class=\"content-wrapper-before\"></div>\n      <div class=\"content-header row\">\n          <div class=\"content-header-left col-md-4 col-12 mb-2\">\n              <h3 class=\"content-header-title\">Manage Role</h3>\n          </div>\n          <div class=\"content-header-right col-md-8 col-12\">\n              <div class=\"breadcrumbs-top float-md-right\">\n                  <div class=\"breadcrumb-wrapper mr-1\">\n                      <ol class=\"breadcrumb\">\n                          <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\n                          </li>\n                          <li class=\"breadcrumb-item active\">Role\n                          </li>\n                      </ol>\n                  </div>\n              </div>\n          </div>\n      </div>\n      <div class=\"content-body\">\n          <section id=\"content-types\">\n              <div class=\"row match-height justify-content-md-center\">\n                  <div class=\"col-xl-6 col-md-12\">\n                      <div class=\"card\">\n                          <div class=\"card-content\">\n                              <div class=\"card-body\">\n                                  <h4 class=\"card-title\">Role</h4>\n                                  <h6 class=\"card-subtitle text-muted\">Add Role</h6>\n                              </div>\n                              <div class=\"card-body\">\n                                  <form class=\"form\" [formGroup]=\"roleForm\" (ngSubmit)=onSubmit(roleForm)>\n                                      <input type=\"hidden\" formControlName=\"_id\">\n                                      <div class=\"form-group\">\n                                          <input type=\"text\" class=\"form-control\" placeholder=\"Role Name\" formControlName=\"name\" required pattern=\"[a-zA-Z ]*\" [ngClass]=\"{'is-invalid': submitted && f.name.errors}\">\n                                          <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\n                                             <div *ngIf=\"f.name.errors.required\">Role Name is required</div>\n                                             <div *ngIf=\"f.name.errors && !f.name.errors.required\">Only Alpahabets</div>\n                                         </div>\n                                     </div>\n                                      <div class=\"form-action left row\">\n                                          <div class=\"col\">\n                                              <span (click)=\"createForm()\" class=\"btn btn-outline-danger left\">Reset</span>\n                                          </div>\n                                          <div class=\"col\">\n                                              <button type=\"submit\" class=\"btn btn-outline-success right\">{{this.Button}}</button>\n                                          </div>\n                                      </div>\n                                  </form>\n                              </div>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </section>\n          <div class=\"row\">\n              <div class=\"col-12\">\n                  <div class=\"card\">\n                      <div class=\"card-header\">\n                          <h4 class=\"card-title\">Roles</h4>\n                          <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\n                          <div class=\"heading-elements\">\n                              <ul class=\"list-inline mb-0\">\n                                  <li><a data-action=\"collapse\"><i class=\"ft-minus\"></i></a></li>\n                                  <li><a data-action=\"reload\"><i class=\"ft-rotate-cw\"></i></a></li>\n                                  <li><a data-action=\"expand\"><i class=\"ft-maximize\"></i></a></li>\n                              </ul>\n                          </div>\n                      </div>\n                      <div class=\"card-content collapse show\">\n                          <div class=\"card-body\">\n                                  <input [(ngModel)]=\"searchText\" placeholder=\"Search Roles\" class=\"form-control\">\n                                  <div class = \"row\">\n                                          <div class=\"col-6\">\n                                          </div>\n                                          <div class=\"col-6\" style=\"margin-top:5px; margin-bottom:10px;\">\n                                            <div class=\"right\">\n                                                <span class=\"btn btn-info\" (click)=\"previousPage()\"> &lt; </span> &nbsp; Page {{currentPage}} &nbsp;  \n                                                <span class=\"btn btn-info\" (click)=\"nextPage()\"> &gt; </span>\n                                            </div>\n                                          </div>\n                                        </div>\n                              <div class=\"table-responsive\">\n                                  <table class=\"table\">\n                                      <thead>\n                                          <tr>\n                                              <th>Sl. No</th>\n                                              <th>Role Name</th>\n                                              <th>Update</th>\n                                              <th>Delete</th>\n                                          </tr>\n                                      </thead>\n                                      <tbody>\n                                          <tr *ngFor=\"let role of roles | searchfilter : searchText ; let i = index;\">\n\n                                              <th scope=\"row\">{{i+1}}</th>\n                                              <td>{{role.name}}</td>\n                                              <td>\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-warning\">\n                                                      <a (click)=\"updateRole(role._id,role.name)\"> <i class=\"la la-pencil la-2x\"></i></a>\n                                                  </div>\n                                              </td>\n                                              <td>\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-danger\" (click)=\"deleteRole(role._id)\">\n                                                      <a> <i class=\"la la-trash la-2x\"></i></a>\n                                                  </div>\n                                              </td>\n                                          </tr>\n                                      </tbody>\n                                  </table>\n                              </div>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3278,7 +3284,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n      <div class=\"content-wrapper-before\"></div>\r\n      <div class=\"content-header row\">\r\n          <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n              <h3 class=\"content-header-title\">Manage Year</h3>\r\n          </div>\r\n          <div class=\"content-header-right col-md-8 col-12\">\r\n              <div class=\"breadcrumbs-top float-md-right\">\r\n                  <div class=\"breadcrumb-wrapper mr-1\">\r\n                      <ol class=\"breadcrumb\">\r\n                          <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n                          </li>\r\n                          <li class=\"breadcrumb-item active\">Year\r\n                          </li>\r\n                      </ol>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n      <div class=\"content-body\">\r\n          <section id=\"content-types\">\r\n              <div class=\"row match-height justify-content-md-center\">\r\n                  <div class=\"col-xl-6 col-md-12\">\r\n                      <div class=\"card\">\r\n                          <div class=\"card-content\">\r\n                              <div class=\"card-body\">\r\n                                  <h4 class=\"card-title\">Year</h4>\r\n                                  <h6 class=\"card-subtitle text-muted\">Add Year</h6>\r\n                              </div>\r\n                              <div class=\"card-body\">\r\n                                  <form class=\"form\" [formGroup]=\"yearForm\" (ngSubmit)=onSubmit(yearForm)>\r\n                                      <input type=\"hidden\" formControlName=\"_id\">\r\n                                      <div class=\"form-group\">\r\n                                          <input type=\"text\" class=\"form-control\" placeholder=\"Year Name\" formControlName=\"name\" required pattern=\"[a-zA-Z ]*\" [ngClass]=\"{'is-invalid': submitted && f.name.errors}\">\r\n                                          <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\r\n                                             <div *ngIf=\"f.name.errors.required\">Year Name is required</div>\r\n                                             <div *ngIf=\"f.name.errors && !f.name.errors.required\">Only Alpahabets</div>\r\n                                         </div>\r\n                                     </div>\r\n                                      <div class=\"form-action left row\">\r\n                                          <div class=\"col\">\r\n                                              <span (click)=\"createForm()\" class=\"btn btn-outline-danger left\">Reset</span>\r\n                                          </div>\r\n                                          <div class=\"col\">\r\n                                              <button type=\"submit\" class=\"btn btn-outline-success right\">{{this.Button}}</button>\r\n                                          </div>\r\n                                      </div>\r\n                                  </form>\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </section>\r\n          <div class=\"row\">\r\n              <div class=\"col-12\">\r\n                  <div class=\"card\">\r\n                      <div class=\"card-header\">\r\n                          <h4 class=\"card-title\">Year Tables</h4>\r\n                          <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n                          <div class=\"heading-elements\">\r\n                              <ul class=\"list-inline mb-0\">\r\n                                  <li><a data-action=\"collapse\"><i class=\"ft-minus\"></i></a></li>\r\n                                  <li><a data-action=\"reload\"><i class=\"ft-rotate-cw\"></i></a></li>\r\n                                  <li><a data-action=\"expand\"><i class=\"ft-maximize\"></i></a></li>\r\n                              </ul>\r\n                          </div>\r\n                      </div>\r\n                      <div class=\"card-content collapse show\">\r\n                          <div class=\"card-body\">\r\n                          Search : <input [(ngModel)]=\"searchText\" placeholder=\"Search Categories\" class=\"form-control\">\r\n                          <div class = \"row\">\r\n                                  <div class=\"col-6\">\r\n                                  </div>\r\n                                  <div class=\"col-6\" style=\"margin-top:5px; margin-bottom:10px;\">\r\n                                    <div class=\"right\">\r\n                                        <span class=\"btn btn-info\" (click)=\"previousPage()\"> &lt; </span> &nbsp;Page {{currentPage}} &nbsp;  \r\n                                        <span class=\"btn btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n                                    </div>\r\n                                  </div>\r\n                                </div>\r\n                              <div class=\"table-responsive\">\r\n                                  <table class=\"table\">\r\n                                      <thead>\r\n                                          <tr>\r\n                                              <th>Sl. No</th>\r\n                                              <th>Year Name</th>\r\n                                              <th>Update</th>\r\n                                              <th>Delete</th>\r\n                                          </tr>\r\n                                      </thead>\r\n                                      <tbody>\r\n                                          <tr *ngFor=\"let year of years | searchfilter : searchText; let i = index;\">\r\n\r\n                                              <th scope=\"row\">{{i+1}}</th>\r\n                                              <td>{{year.name}}</td>\r\n                                              <td>\r\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-warning\">\r\n                                                      <a (click)=\"updateDegree(year._id,year.name)\"> <i class=\"la la-pencil la-2x\"></i></a>\r\n                                                  </div>\r\n                                              </td>\r\n                                              <td>\r\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-danger\" (click)=\"deleteDegree(year._id)\">\r\n                                                      <a> <i class=\"la la-trash la-2x\"></i></a>\r\n                                                  </div>\r\n                                              </td>\r\n                                          </tr>\r\n                                      </tbody>\r\n                                  </table>\r\n                              </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"app-content content\">\n  <div class=\"content-wrapper\">\n      <div class=\"content-wrapper-before\"></div>\n      <div class=\"content-header row\">\n          <div class=\"content-header-left col-md-4 col-12 mb-2\">\n              <h3 class=\"content-header-title\">Manage Year</h3>\n          </div>\n          <div class=\"content-header-right col-md-8 col-12\">\n              <div class=\"breadcrumbs-top float-md-right\">\n                  <div class=\"breadcrumb-wrapper mr-1\">\n                      <ol class=\"breadcrumb\">\n                          <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\n                          </li>\n                          <li class=\"breadcrumb-item active\">Year\n                          </li>\n                      </ol>\n                  </div>\n              </div>\n          </div>\n      </div>\n      <div class=\"content-body\">\n          <section id=\"content-types\">\n              <div class=\"row match-height justify-content-md-center\">\n                  <div class=\"col-xl-6 col-md-12\">\n                      <div class=\"card\">\n                          <div class=\"card-content\">\n                              <div class=\"card-body\">\n                                  <h4 class=\"card-title\">Year</h4>\n                                  <h6 class=\"card-subtitle text-muted\">Add Year</h6>\n                              </div>\n                              <div class=\"card-body\">\n                                  <form class=\"form\" [formGroup]=\"yearForm\" (ngSubmit)=onSubmit(yearForm)>\n                                      <input type=\"hidden\" formControlName=\"_id\">\n                                      <div class=\"form-group\">\n                                          <input type=\"text\" class=\"form-control\" placeholder=\"Year Name\" formControlName=\"name\" required pattern=\"[a-zA-Z ]*\" [ngClass]=\"{'is-invalid': submitted && f.name.errors}\">\n                                          <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\n                                             <div *ngIf=\"f.name.errors.required\">Year Name is required</div>\n                                             <div *ngIf=\"f.name.errors && !f.name.errors.required\">Only Alpahabets</div>\n                                         </div>\n                                     </div>\n                                      <div class=\"form-action left row\">\n                                          <div class=\"col\">\n                                              <span (click)=\"createForm()\" class=\"btn btn-outline-danger left\">Reset</span>\n                                          </div>\n                                          <div class=\"col\">\n                                              <button type=\"submit\" class=\"btn btn-outline-success right\">{{this.Button}}</button>\n                                          </div>\n                                      </div>\n                                  </form>\n                              </div>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </section>\n          <div class=\"row\">\n              <div class=\"col-12\">\n                  <div class=\"card\">\n                      <div class=\"card-header\">\n                          <h4 class=\"card-title\">Year Tables</h4>\n                          <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\n                          <div class=\"heading-elements\">\n                              <ul class=\"list-inline mb-0\">\n                                  <li><a data-action=\"collapse\"><i class=\"ft-minus\"></i></a></li>\n                                  <li><a data-action=\"reload\"><i class=\"ft-rotate-cw\"></i></a></li>\n                                  <li><a data-action=\"expand\"><i class=\"ft-maximize\"></i></a></li>\n                              </ul>\n                          </div>\n                      </div>\n                      <div class=\"card-content collapse show\">\n                          <div class=\"card-body\">\n                          Search : <input [(ngModel)]=\"searchText\" placeholder=\"Search Categories\" class=\"form-control\">\n                          <div class = \"row\">\n                                  <div class=\"col-6\">\n                                  </div>\n                                  <div class=\"col-6\" style=\"margin-top:5px; margin-bottom:10px;\">\n                                    <div class=\"right\">\n                                        <span class=\"btn btn-info\" (click)=\"previousPage()\"> &lt; </span> &nbsp;Page {{currentPage}} &nbsp;  \n                                        <span class=\"btn btn-info\" (click)=\"nextPage()\"> &gt; </span>\n                                    </div>\n                                  </div>\n                                </div>\n                              <div class=\"table-responsive\">\n                                  <table class=\"table\">\n                                      <thead>\n                                          <tr>\n                                              <th>Sl. No</th>\n                                              <th>Year Name</th>\n                                              <th>Update</th>\n                                              <th>Delete</th>\n                                          </tr>\n                                      </thead>\n                                      <tbody>\n                                          <tr *ngFor=\"let year of years | searchfilter : searchText; let i = index;\">\n\n                                              <th scope=\"row\">{{i+1}}</th>\n                                              <td>{{year.name}}</td>\n                                              <td>\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-warning\">\n                                                      <a (click)=\"updateDegree(year._id,year.name)\"> <i class=\"la la-pencil la-2x\"></i></a>\n                                                  </div>\n                                              </td>\n                                              <td>\n                                                  <div class=\"fonticon-wrap icon-shadow icon-shadow-danger\" (click)=\"deleteDegree(year._id)\">\n                                                      <a> <i class=\"la la-trash la-2x\"></i></a>\n                                                  </div>\n                                              </td>\n                                          </tr>\n                                      </tbody>\n                                  </table>\n                              </div>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3444,7 +3450,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n        <h3 class=\"content-header-title\">About</h3>\r\n      </div>\r\n      <div class=\"content-header-right col-md-8 col-12\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">About\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-12\">\r\n            <div class=\"card\">\r\n              <div class=\"card-content\">\r\n                <div class=\"card-body\">\r\n                  <h3 class=\"card-title text-center text-uppercase\">About Us</h3>\r\n                  <div class=\"divider\"></div>\r\n                </div>\r\n                <div class=\"card-body text-center lineheight3\">\r\n                  <h1 class=\"lineheight3\"><strong>Mepco Schlenk Engineering College (Autonomous), Sivakasi</strong></h1> <h4 class=\"lineheight3\">Mepco\r\n                  Schlenk\r\n                  Engineering\r\n                  College\r\n                  (Autonomous), Sivakasi is one of the leading\r\n                  institutions in India, towering high in academic\r\n                  excellence and research pursuits\r\n                  ever since its\r\n                  inception on 1984.\r\n                  College is accredited with “A”\r\n                  Grade by National Assessment and Accreditation\r\n                  Council (NAAC) of UGC, New Delhi.\r\n                  The Institute\r\n                  offers under graduate programs in 7 disciplines\r\n                  and\r\n                  post\r\n                  graduate\r\n                  programs\r\n                  in\r\n                  12\r\n                  specializations. It has collaborations with leading\r\n                  Industrial, Academic and Research organizations\r\n                  in India and\r\n                  abroad.\r\n                  The college is ISO 9001:2008 certified\r\n                  and\r\n                  all its\r\n                  UG Programs\r\n                  are accredited by NBA\r\n                  under\r\n                  Tier I category\r\n                  .\r\n                  Our College\r\n                  got 5th rank at\r\n                  National level in Top Engineering Colleges of\r\n                  Eminence\r\n                  category\r\n                  in\r\n                  the\r\n                  CSR\r\n                  -\r\n                  GHRDC\r\n                  Engineering Colleges Survey June 2017 and 30th\r\n                  rank for National Level Engine\r\n                  ering Colleges\r\n                  including IITs, NITs by Outlook Survey, June 2017.\r\n                </h4>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>"
+module.exports = "<div class=\"app-content content\">\n  <div class=\"content-wrapper\">\n    <div class=\"content-wrapper-before\"></div>\n    <div class=\"content-header row\">\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\n        <h3 class=\"content-header-title\">About</h3>\n      </div>\n      <div class=\"content-header-right col-md-8 col-12\">\n        <div class=\"breadcrumbs-top float-md-right\">\n          <div class=\"breadcrumb-wrapper mr-1\">\n            <ol class=\"breadcrumb\">\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\n              </li>\n              <li class=\"breadcrumb-item active\">About\n              </li>\n            </ol>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"content-body\">\n      <section id=\"content-types\">\n        <div class=\"row match-height justify-content-md-center\">\n          <div class=\"col-12\">\n            <div class=\"card\">\n              <div class=\"card-content\">\n                <div class=\"card-body\">\n                  <h3 class=\"card-title text-center text-uppercase\">About Us</h3>\n                  <div class=\"divider\"></div>\n                </div>\n                <div class=\"card-body text-center lineheight3\">\n                  <h1 class=\"lineheight3\"><strong>Mepco Schlenk Engineering College (Autonomous), Sivakasi</strong></h1> <h4 class=\"lineheight3\">Mepco\n                  Schlenk\n                  Engineering\n                  College\n                  (Autonomous), Sivakasi is one of the leading\n                  institutions in India, towering high in academic\n                  excellence and research pursuits\n                  ever since its\n                  inception on 1984.\n                  College is accredited with “A”\n                  Grade by National Assessment and Accreditation\n                  Council (NAAC) of UGC, New Delhi.\n                  The Institute\n                  offers under graduate programs in 7 disciplines\n                  and\n                  post\n                  graduate\n                  programs\n                  in\n                  12\n                  specializations. It has collaborations with leading\n                  Industrial, Academic and Research organizations\n                  in India and\n                  abroad.\n                  The college is ISO 9001:2008 certified\n                  and\n                  all its\n                  UG Programs\n                  are accredited by NBA\n                  under\n                  Tier I category\n                  .\n                  Our College\n                  got 5th rank at\n                  National level in Top Engineering Colleges of\n                  Eminence\n                  category\n                  in\n                  the\n                  CSR\n                  -\n                  GHRDC\n                  Engineering Colleges Survey June 2017 and 30th\n                  rank for National Level Engine\n                  ering Colleges\n                  including IITs, NITs by Outlook Survey, June 2017.\n                </h4>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n    </div>"
 
 /***/ }),
 
@@ -3483,6 +3489,132 @@ var AboutComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], AboutComponent);
     return AboutComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-failure/acc-failure.component.css":
+/*!**********************************************************************!*\
+  !*** ./src/app/component/user/acc-failure/acc-failure.component.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC91c2VyL2FjYy1mYWlsdXJlL2FjYy1mYWlsdXJlLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-failure/acc-failure.component.html":
+/*!***********************************************************************!*\
+  !*** ./src/app/component/user/acc-failure/acc-failure.component.html ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  acc-failure works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-failure/acc-failure.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/component/user/acc-failure/acc-failure.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: AccFailureComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccFailureComponent", function() { return AccFailureComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AccFailureComponent = /** @class */ (function () {
+    function AccFailureComponent() {
+    }
+    AccFailureComponent.prototype.ngOnInit = function () {
+    };
+    AccFailureComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-acc-failure',
+            template: __webpack_require__(/*! ./acc-failure.component.html */ "./src/app/component/user/acc-failure/acc-failure.component.html"),
+            styles: [__webpack_require__(/*! ./acc-failure.component.css */ "./src/app/component/user/acc-failure/acc-failure.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AccFailureComponent);
+    return AccFailureComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-success/acc-success.component.css":
+/*!**********************************************************************!*\
+  !*** ./src/app/component/user/acc-success/acc-success.component.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC91c2VyL2FjYy1zdWNjZXNzL2FjYy1zdWNjZXNzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-success/acc-success.component.html":
+/*!***********************************************************************!*\
+  !*** ./src/app/component/user/acc-success/acc-success.component.html ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  acc-success works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/component/user/acc-success/acc-success.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/component/user/acc-success/acc-success.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: AccSuccessComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccSuccessComponent", function() { return AccSuccessComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AccSuccessComponent = /** @class */ (function () {
+    function AccSuccessComponent() {
+    }
+    AccSuccessComponent.prototype.ngOnInit = function () {
+    };
+    AccSuccessComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-acc-success',
+            template: __webpack_require__(/*! ./acc-success.component.html */ "./src/app/component/user/acc-success/acc-success.component.html"),
+            styles: [__webpack_require__(/*! ./acc-success.component.css */ "./src/app/component/user/acc-success/acc-success.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AccSuccessComponent);
+    return AccSuccessComponent;
 }());
 
 
@@ -3576,7 +3708,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n    <div class=\"content-wrapper\">\r\n        <div class=\"content-wrapper-before\"></div>\r\n        <div class=\"content-header row\">\r\n            <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n                <h3 class=\"content-header-title\">Cart - Rs. {{amount}}</h3>\r\n            </div>\r\n            <div class=\"content-header-right col-md-8 col-12\">\r\n                <div class=\"breadcrumbs-top float-md-right\">\r\n                    <div class=\"breadcrumb-wrapper mr-1\">\r\n                        <ol class=\"breadcrumb\">\r\n                            <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n                            </li>\r\n                            <li class=\"breadcrumb-item active\"> Cart\r\n                            </li>\r\n                        </ol>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        Modal\r\n        <div class=\"modal fade\" id=\"DDModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\r\n            aria-hidden=\"true\">\r\n            <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Upload DD - Rs. {{amount}}</h5>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                            <span aria-hidden=\"true\">&times;</span>\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form>\r\n                            <input #imageInput placeholder=\"Select an Image\" type=\"file\" accept=\"image/*\" (change)=\"processFile($event)\">\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"content-body\">\r\n            <section id=\"content-types\">\r\n                <div class=\"row match-height justify-content-md-center\">\r\n                    <div class=\"col-xl-6 col-md-12\">\r\n                    </div>\r\n                </div>\r\n            </section>\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"card  bg-gradient-x-blue\">\r\n                        <div class=\"card-header\">\r\n                            <span class=\"card-title white h4\">\r\n                                Heres what you added to your Tech Show!\r\n                            </span>\r\n                            <span class=\"float-right\" *ngIf=\"hasWorkshops || hasEvents\" style=\"margin:2px\">\r\n                                <button *ngIf=\"!isCartConfirmed\" class=\"btn btn-bg-gradient-x-blue-green border-white border-2\"\r\n                                    (click)=\"confirmCart()\">Confirm\r\n                                    Cart</button>\r\n                            </span>\r\n                            <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n                            <div class=\"heading-elements\">\r\n                                <ul class=\"list-inline mb-0\">\r\n                                </ul>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <h3 class=\"white\">Workshops</h3>\r\n                                <br />\r\n                                <ng-container *ngIf=\"!hasWorkshops; else hasWorkshop\">\r\n                                        <h5 class=\"white\">You have no workshop registrations. Register in one of our\r\n                                                workshops!!!</h5>\r\n                                </ng-container>\r\n                                <ng-template #hasWorkshop>\r\n                                        <div class=\"row\">\r\n                                                <div *ngFor=\"let workshop of workshops\">\r\n                                                    <div class=\"col-12\">\r\n                                                        <div class=\"card pull-up\">\r\n                                                            <div class=\"card-header\">\r\n                                                                <div class=\"h4\">{{workshop.event_id.title}}</div>\r\n                                                            </div>\r\n                                                            <div class=\"card-body\">\r\n                                                                <h5 class=\"card-title\">What you need to know</h5>\r\n                                                                <div class=\"row\">\r\n                                                                    <div class=\"col-6\">\r\n                                                                        Date : {{workshop.event_id.event_date}}\r\n                                                                    </div>\r\n                                                                    <div class=\"col-6\">\r\n                                                                        Venue : {{workshop.event_id.venue}}\r\n                                                                    </div>\r\n                                                                </div>\r\n                                                                <div class=\"row\">\r\n                                                                    <div class=\"col\">\r\n                                                                        Contact : <a href=\"mailto://{{workshop.event_id.contact_email}}\">{{workshop.event_id.contact_email}}</a>\r\n                                                                    </div>\r\n                                                                </div>\r\n                                                                <span [ngClass]=\"{'danger': workshop.satus != 'Paid'}\">\r\n                                                                    {{workshop.status}}\r\n                                                                </span>\r\n                                                                <button *ngIf=\"!isCartConfirmed\" class=\"btn btn-bg-gradient-x-red-pink float-right\"\r\n                                                                    (click)=\"cancelWorkshopRegistration(workshop._id)\">\r\n                                                                    Remove from Cart\r\n                                                                </button>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                </ng-template>\r\n                                    \r\n                                <h3 class=\"white\">Events</h3>\r\n\r\n                                <div *ngIf=\"!hasEvents\">\r\n                                    <h5 class=\"white\">You have no Event registrations. Register in one of our Events!!!</h5>\r\n                                </div>\r\n                                <div *ngIf=\"hasEvents\">\r\n                                    <div class=\"row\">\r\n                                        <div *ngFor=\"let event of events\">\r\n                                            <!-- <div class=\"col-12\">\r\n                                                <div class=\"card pull-up\">\r\n                                                    <h5 class=\"card-header\">{{event.event_id.title}}</h5>\r\n                                                    <div class=\"card-body\">\r\n                                                        <h5 class=\"card-title\">What you need to know</h5>\r\n\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col-6\">\r\n                                                                Date : {{event.event_id.event_date}}\r\n                                                            </div>\r\n                                                            <div class=\"col-6\">\r\n                                                                Venue : {{event.event_id.venue}}\r\n                                                            </div>\r\n                                                        </div>\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col\">\r\n                                                                Contact : <a href=\"mailto://{{event.event_id.contact_email}}\">{{event.event_id.contact_email}}</a>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                        <hr />\r\n                                                        <span [ngClass]=\"{'danger': event.status != 'Paid'}\">\r\n                                                            {{event.status}}\r\n                                                        </span>\r\n                                                        <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                                            (click)=\"cancelEventRegistration(event._id)\">\r\n                                                            Remove from Cart\r\n                                                        </button>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div> -->\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted col-12\">\r\n                                    <div *ngIf=\"!paymentConfirmed\">\r\n                                        <div *ngIf=\"isCartConfirmed && !paymentSent\">\r\n                                            <div class=\"col-12 \">\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-6\">\r\n                                                        <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2 float-right\"\r\n                                                            (click)=payOnline()>Pay\r\n                                                            Online</button>\r\n                                                    </div>\r\n                                                    <div class=\"col-6\">\r\n                                                        <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                                            data-toggle=\"modal\" data-target=\"#DDModal\">Pay\r\n                                                            through Demand Draft</button>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <hr />\r\n                            <span [ngClass]=\"{'danger': event.status != 'Paid'}\">\r\n                                {{event.status}}\r\n                            </span>\r\n                            <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                (click)=\"cancelEventRegistration(event._id)\">\r\n                                Remove from Cart\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted col-12\">\r\n        <div *ngIf=\"!paymentConfirmed\">\r\n            <div *ngIf=\"isCartConfirmed && !paymentSent\">\r\n                <div class=\"col-12 \">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-6\">\r\n                            <button onclick=\"$('#frm-payment').submit()\" class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2 float-right\"\r\n                                (click)=payOnline()>Pay\r\n                                Online</button>\r\n                        </div>\r\n                        <div class=\"col-6\">\r\n                            <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                data-toggle=\"modal\" data-target=\"#DDModal\">Pay\r\n                                through Demand Draft</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <form action=\"https://test.payu.in/_payment\" id=\"frm-payment\" method=\"post\">\r\n            <input type=\"hidden\" name=\"key\" value={{appService.getKey()}}>\r\n            <input type=\"hidden\" name=\"txnid\" value={{genTxnId()}}>\r\n            <input type=\"hidden\" name=\"amount\" value={{amount}}>\r\n            <input type=\"hidden\" name=\"productinfo\" value={{this.appService.getProductInfo()}}>\r\n            <input type=\"hidden\" name=\"firstname\" value={{user_name}}>\r\n            <input type=\"hidden\" name=\"email\" value={{user_email}}>\r\n            <input type=\"hidden\" name=\"phone\" value={{user_mobile_number}}>\r\n            <input type=\"hidden\" name=\"gmID\" value={{user_gmID}}>\r\n            <input type=\"hidden\" name=\"surl\" value=\"http://localhost:4200/payment/success\">\r\n            <input type=\"hidden\" name=\"furl\" value=\"http://localhost:4200/payment/failure\">\r\n            <input type=\"hidden\" name=\"hash\" value={{data}}>\r\n\r\n        </form>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n    <div class=\"content-wrapper\">\r\n        <div class=\"content-wrapper-before\"></div>\r\n        <div class=\"content-header row\">\r\n            <div class=\"content-header-left col-4\">\r\n                <h3 class=\"content-header-title\">Cart - Rs. {{totalAmount}}</h3>\r\n            </div>\r\n            <div class=\"content-header-right col-4\">\r\n                <div class=\"breadcrumbs-top float-md-right\">\r\n                    <div class=\"breadcrumb-wrapper mr-1\">\r\n                        <ol class=\"breadcrumb\">\r\n                            <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n                            </li>\r\n                            <li class=\"breadcrumb-item active\"> Cart\r\n                            </li>\r\n                        </ol>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"content-header-left col-4\">\r\n                <span class=\"float-right\" *ngIf=\"workshops.length != 0 || events.length != 0\" style=\"margin:2px\">\r\n                    <ng-container *ngIf=\"!isCartConfirmed; else paymentEnable\">\r\n                        <button class=\"btn btn-bg-gradient-x-purple-red border-white border-2\" (click)=\"confirmCart()\">Confirm\r\n                            Cart</button>\r\n                    </ng-container>\r\n                    <ng-template #paymentEnable>\r\n                        <ng-container *ngIf=\"user.cart_paid; else showPayment\">\r\n                            <span class=\"white\">\r\n                                Cart Confirmed | Paid\r\n                            </span>\r\n                        </ng-container>\r\n                        <ng-template #showPayment>\r\n                            <button class=\"btn btn-bg-gradient-x-orange-yellow border-white border-2\">Pay\r\n                                Online</button>\r\n                            <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                data-toggle=\"modal\" data-target=\"#DDModal\">Upload DD</button>\r\n                        </ng-template>\r\n\r\n                    </ng-template>\r\n                </span>\r\n            </div>\r\n        </div>\r\n        <div class=\"content-body\">\r\n            Modal\r\n            <div class=\"modal fade\" id=\"DDModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\r\n                aria-hidden=\"true\">\r\n                <div class=\"modal-dialog\" role=\"document\">\r\n                    <div class=\"modal-content\">\r\n                        <div class=\"modal-header\">\r\n                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Upload DD - Rs. {{totalAmount}}</h5>\r\n                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                                <span aria-hidden=\"true\">&times;</span>\r\n                            </button>\r\n                        </div>\r\n                        <div class=\"modal-body\">\r\n                            <form>\r\n                                <input #imageInput placeholder=\"Select an Image\" type=\"file\" accept=\"image/*\" (change)=\"processFile($event)\">\r\n                            </form>\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <section id=\"content-types\">\r\n                <div class=\"row match-height\">\r\n                    <div class=\"col-4\" *ngFor=\"let workshop of workshops\">\r\n                        <div class=\"card pull-up\">\r\n                            <div class=\"card-body\">\r\n                                <h3 class=\"card-title\"> Workshop - {{workshop.event_id.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                                            class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                                <h6 class=\"card-subtitle text-muted\">Department of\r\n                                    {{workshop.event_id.department_id.name}}</h6>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <span class=\"card-title grey-text text-darken-4\">Pre Requesites</span> <br />\r\n                                {{workshop.event_id.rules}}\r\n                                <hr />\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <span class=\"card-title grey-text text-darken-4\">Amount</span> <br />\r\n                                Rs. {{workshop.event_id.amount}}\r\n                                <hr />\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                Contact <p class=\"card-text\">\r\n                                    <a href=\"mailto:{{workshop.event_id.contact_email}}\">{{workshop.event_id.contact_email}}</a>\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <span [ngClass]=\"{'danger': workshop.status != 'Paid'}\">\r\n                                    {{workshop.status}}\r\n                                </span>\r\n                                <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                    (click)=\"cancelEventRegistration(event._id)\">\r\n                                    Remove from Cart\r\n                                </button>\r\n                            </div>\r\n                            <div class=\"card-reveal\">\r\n                                <h4>Timing</h4>\r\n                                Date : {{workshop.event_id.event_date | date}}\r\n                                {{workshop.event_id.start_time}} -\r\n                                {{workshop.event_id.end_time}}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"row match-height\">\r\n                    <div class=\"col-4\" *ngFor=\"let event of events\">\r\n                        <div class=\"card pull-up\">\r\n                            <div class=\"card-body\">\r\n                                <h3 class=\"card-title\"> Event - {{event.event_id.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                                            class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                                <h6 class=\"card-subtitle text-muted\">Department of\r\n                                    {{event.event_id.department_id.name}}</h6>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <span class=\"card-title grey-text text-darken-4\">Rules</span> <br />\r\n                                {{event.event_id.rules | rulesTransform}}\r\n                                <hr />\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                Contact <p class=\"card-text\">\r\n                                    <a href=\"mailto:{{event.event_id.contact_email}}\">{{event.event_id.contact_email}}</a>\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <span [ngClass]=\"{'danger': event.status != 'Paid'}\">\r\n                                    {{event.status}}\r\n                                </span>\r\n                                <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                    (click)=\"cancelEventRegistration(event._id)\">\r\n                                    Remove from Cart\r\n                                </button>\r\n                            </div>\r\n                            <div class=\"card-reveal\">\r\n                                <h4>Timing</h4><i class=\"fas fa-times float-right\"></i>\r\n                                Date : {{event.event_id.event_date | date}}\r\n                                {{event.event_id.start_time}} -\r\n                                {{event.event_id.end_time}}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </section>\r\n        </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        <!--   Modal\r\n        <div class=\"modal fade\" id=\"DDModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\r\n            aria-hidden=\"true\">\r\n            <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Upload DD - Rs. {{amount}}</h5>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                            <span aria-hidden=\"true\">&times;</span>\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form>\r\n                            <input #imageInput placeholder=\"Select an Image\" type=\"file\" accept=\"image/*\" (change)=\"processFile($event)\">\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"content-body\">\r\n            <section id=\"content-types\">\r\n                <div class=\"row match-height justify-content-md-center\">\r\n                    <div class=\"col-xl-6 col-md-12\">\r\n                    </div>\r\n                </div>\r\n            </section>\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"card  bg-gradient-x-blue\">\r\n                        <div class=\"card-header\">\r\n                            <span class=\"card-title white h4\">\r\n                                Heres what you added to your Tech Show!\r\n                            </span>\r\n                            <span class=\"float-right\" *ngIf=\"hasWorkshops || hasEvents\" style=\"margin:2px\">\r\n                                <button *ngIf=\"!isCartConfirmed\" class=\"btn btn-bg-gradient-x-blue-green border-white border-2\"\r\n                                    (click)=\"confirmCart()\">Confirm\r\n                                    Cart</button>\r\n                            </span>\r\n                            <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n                            <div class=\"heading-elements\">\r\n                                <ul class=\"list-inline mb-0\">\r\n                                </ul>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <h3 class=\"white\">Workshops</h3>\r\n                                <br />\r\n                                <ng-container *ngIf=\"!hasWorkshops; else hasWorkshop\">\r\n                                        <h5 class=\"white\">You have no workshop registrations. Register in one of our\r\n                                                workshops!!!</h5>\r\n                                </ng-container>\r\n                                <ng-template #hasWorkshop>\r\n                                        <div class=\"row\">\r\n                                                <div *ngFor=\"let workshop of workshops\">\r\n                                                    <div class=\"col-12\">\r\n                                                        <div class=\"card pull-up\">\r\n                                                            <div class=\"card-header\">\r\n                                                                <div class=\"h4\">{{workshop.event_id.title}}</div>\r\n                                                            </div>\r\n                                                            <div class=\"card-body\">\r\n                                                                <h5 class=\"card-title\">What you need to know</h5>\r\n                                                                <div class=\"row\">\r\n                                                                    <div class=\"col-6\">\r\n                                                                        Date : {{workshop.event_id.event_date}}\r\n                                                                    </div>\r\n                                                                    <div class=\"col-6\">\r\n                                                                        Venue : {{workshop.event_id.venue}}\r\n                                                                    </div>\r\n                                                                </div>\r\n                                                                <div class=\"row\">\r\n                                                                    <div class=\"col\">\r\n                                                                        Contact : <a href=\"mailto://{{workshop.event_id.contact_email}}\">{{workshop.event_id.contact_email}}</a>\r\n                                                                    </div>\r\n                                                                </div>\r\n                                                                <span [ngClass]=\"{'danger': workshop.satus != 'Paid'}\">\r\n                                                                    {{workshop.status}}\r\n                                                                </span>\r\n                                                                <button *ngIf=\"!isCartConfirmed\" class=\"btn btn-bg-gradient-x-red-pink float-right\"\r\n                                                                    (click)=\"cancelWorkshopRegistration(workshop._id)\">\r\n                                                                    Remove from Cart\r\n                                                                </button>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                </ng-template>\r\n                                    \r\n                                <h3 class=\"white\">Events</h3>\r\n\r\n                                <div *ngIf=\"!hasEvents\">\r\n                                    <h5 class=\"white\">You have no Event registrations. Register in one of our Events!!!</h5>\r\n                                </div>\r\n                                <div *ngIf=\"hasEvents\">\r\n                                    <div class=\"row\">\r\n                                        <div *ngFor=\"let event of events\">\r\n                                             <div class=\"col-12\">\r\n                                                <div class=\"card pull-up\">\r\n                                                    <h5 class=\"card-header\">{{event.event_id.title}}</h5>\r\n                                                    <div class=\"card-body\">\r\n                                                        <h5 class=\"card-title\">What you need to know</h5>\r\n\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col-6\">\r\n                                                                Date : {{event.event_id.event_date}}\r\n                                                            </div>\r\n                                                            <div class=\"col-6\">\r\n                                                                Venue : {{event.event_id.venue}}\r\n                                                            </div>\r\n                                                        </div>\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col\">\r\n                                                                Contact : <a href=\"mailto://{{event.event_id.contact_email}}\">{{event.event_id.contact_email}}</a>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                        <hr />\r\n                                                        <span [ngClass]=\"{'danger': event.status != 'Paid'}\">\r\n                                                            {{event.status}}\r\n                                                        </span>\r\n                                                        <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                                            (click)=\"cancelEventRegistration(event._id)\">\r\n                                                            Remove from Cart\r\n                                                        </button>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div> \r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted col-12\">\r\n                                    <div *ngIf=\"!paymentConfirmed\">\r\n                                        <div *ngIf=\"isCartConfirmed && !paymentSent\">\r\n                                            <div class=\"col-12 \">\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-6\">\r\n                                                        <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2 float-right\"\r\n                                                            (click)=payOnline()>Pay\r\n                                                            Online</button>\r\n                                                    </div>\r\n                                                    <div class=\"col-6\">\r\n                                                        <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                                            data-toggle=\"modal\" data-target=\"#DDModal\">Pay\r\n                                                            through Demand Draft</button>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <hr />\r\n                            <span [ngClass]=\"{'danger': event.status != 'Paid'}\">\r\n                                {{event.status}}\r\n                            </span>\r\n                            <button *ngIf=\"!isCartConfirmed\" class=\"btn  btn-bg-gradient-x-red-pink float-right\"\r\n                                (click)=\"cancelEventRegistration(event._id)\">\r\n                                Remove from Cart\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n-->\r\n        <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted col-12\">\r\n            <div *ngIf=\"!paymentConfirmed\">\r\n                <div *ngIf=\"isCartConfirmed && !paymentSent\">\r\n                    <div class=\"col-12 \">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-6\">\r\n                                    <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                   (click)=\"payOnline()\" data-toggle=\"modal\" data-target=\"#PayOnline\">Online</button>\r\n                            </div>\r\n                            <div class=\"col-6\">\r\n                                <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                                    data-toggle=\"modal\" data-target=\"#DDModal\">Pay\r\n                                    through Demand Draft</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <form action=\"https://test.payu.in/_payment\" id=\"frm-payment\" method=\"post\">\r\n                <input type=\"hidden\" name=\"key\" value={{appService.getKey()}}>\r\n                <input type=\"hidden\" name=\"txnid\" value={{txnId}}>\r\n                <input type=\"hidden\" name=\"amount\" value={{totalAmount+(totalAmount*appService.getTransactionFee())}}>\r\n                <input type=\"hidden\" name=\"productinfo\" value={{this.appService.getProductInfo()}}>\r\n                <input type=\"hidden\" name=\"firstname\" value={{user.name}}>\r\n                <input type=\"hidden\" name=\"email\" value={{user.email_id}}>\r\n                <input type=\"hidden\" name=\"phone\" value={{user.mobile_number}}>\r\n                <input type=\"hidden\" name=\"surl\" value=\"http://localhost:3000/payment/success\">\r\n                <input type=\"hidden\" name=\"furl\" value=\"http://localhost:3000/payment/failure\">\r\n                <input type=\"hidden\" name=\"hash\" value={{hashString}}>\r\n\r\n            </form>\r\n            <div class=\"modal fade\" id=\"PayOnline\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\r\n                aria-hidden=\"true\">\r\n                <div class=\"modal-dialog\" role=\"document\">\r\n                    <div class=\"modal-content\">\r\n                        <div class=\"modal-header\">\r\n                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Cart Amount - Rs. {{totalAmount+(totalAmount*appService.getTransactionFee())}}</h5>\r\n                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                                <span aria-hidden=\"true\">&times;</span>\r\n                            </button>\r\n                        </div>\r\n                        <div class=\"modal-body\">\r\n                            DO You Really Want Pay Online?\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                            <button type=\"submit\" onclick=\"$('#frm-payment').submit()\"class=\"btn btn-secondary\">PAY</button>\r\n                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <!-- </div> -->"
 
 /***/ }),
 
@@ -3595,8 +3727,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/user/user.service */ "./src/app/services/user/user.service.ts");
 /* harmony import */ var src_app_services_payment_payment_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/payment/payment.service */ "./src/app/services/payment/payment.service.ts");
 /* harmony import */ var src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/app/app.service */ "./src/app/services/app/app.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3611,54 +3741,88 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
-
 var CartComponent = /** @class */ (function () {
-    function CartComponent(eventRegistrationService, appService, http, paymentService, userService, formBuilder) {
+    function CartComponent(eventRegistrationService, userService, paymentService, appService) {
         this.eventRegistrationService = eventRegistrationService;
-        this.appService = appService;
-        this.http = http;
-        this.paymentService = paymentService;
         this.userService = userService;
-        this.formBuilder = formBuilder;
-        this.isCartConfirmed = false;
-        this.paymentSent = false;
-        this.paymentConfirmed = false;
+        this.paymentService = paymentService;
+        this.appService = appService;
         this.workshops = [];
         this.events = [];
-        this.data = [];
-        this.hasWorkshops = false;
-        this.hasEvents = false;
-        this.amount = 0;
+        this.isCartConfirmed = false;
+        this.submitted = false;
+        var hash = this.hashData.bind(this);
+        var transaction = this.genTxnId.bind(this);
+        hash(false);
+        transaction(false);
     }
     CartComponent.prototype.ngOnInit = function () {
+        this.count = 0;
+        this.currentUserId = '';
+        this.totalAmount = 0;
+        this.user = (JSON.parse(localStorage.getItem('user')));
+        if (this.user != null) {
+            this.currentUserId = this.user.id;
+        }
+        var data = this.getUserWorkshops.bind(this);
+        data(this.currentUserId);
+        this.getUserWorkshops(this.user.id);
+        this.getUserEvents(this.user.id);
+        this.checkCartConfirmation();
+    };
+    CartComponent.prototype.checkCartConfirmation = function () {
         var _this = this;
-        this.user_id = JSON.parse(localStorage.getItem('user')).id;
-        this.user_name = JSON.parse(localStorage.getItem('user')).name;
-        this.user_email = JSON.parse(localStorage.getItem('user')).email_id;
-        this.user_mobile_number = JSON.parse(localStorage.getItem('user')).mobile_number;
-        this.user_gmID = JSON.parse(localStorage.getItem('user')).gmID;
-        this.userService.isCartConfirmed(this.user_id).subscribe(function (response) {
-            if (!response.error) {
-                _this.isCartConfirmed = response.isCartConfirmed;
+        this.userService.isCartConfirmed(this.user.id).subscribe(function (response) {
+            _this.isCartConfirmed = response.isCartConfirmed;
+        });
+    };
+    CartComponent.prototype.getUserWorkshops = function (user_id) {
+        var _this = this;
+        this.eventRegistrationService.getUserWorkshops(user_id).subscribe(function (res) {
+            if (res) {
+                _this.workshops = res.msg;
+                _this.calculateAmount();
             }
         });
-        this.calculateAmount();
-        this.hashData(this.amount);
-        this.getWorkshops();
-        this.getEvents();
+    };
+    CartComponent.prototype.calculateAmount = function () {
+        var _this = this;
+        this.totalAmount = 0;
+        if (this.events.length != 0) {
+            this.totalAmount += 200;
+        }
+        if (this.workshops.length != 0) {
+            this.workshops.forEach(function (workshop) {
+                _this.totalAmount += workshop.event_id.amount;
+            });
+        }
+    };
+    CartComponent.prototype.removeRegistration = function (registration_id) {
+        this.eventRegistrationService.cancelEventRegistration(registration_id).subscribe(function (response) {
+        });
+    };
+    CartComponent.prototype.getUserEvents = function (user_id) {
+        var _this = this;
+        this.eventRegistrationService.getUserEvents(user_id).subscribe(function (res) {
+            if (res) {
+                _this.events = res.msg;
+                _this.calculateAmount();
+            }
+        });
     };
     CartComponent.prototype.confirmCart = function () {
         var _this = this;
-        this.userService.confirmCart(this.user_id).subscribe(function (response) {
+        this.userService.confirmCart(this.user.id).subscribe(function (response) {
             if (response.error == true) {
                 M.toast({ html: response.msg, classes: 'roundeds' });
             }
             else {
                 M.toast({ html: response.msg, classes: 'roundeds' });
-                _this.getWorkshops();
+                _this.isCartConfirmed = true;
+                _this.getUserEvents(_this.user.id);
+                _this.getUserWorkshops(_this.user.id);
                 _this.calculateAmount();
-                _this.userService.isCartConfirmed(_this.user_id).subscribe(function (response) {
+                _this.userService.isCartConfirmed(_this.user.id).subscribe(function (response) {
                     if (!response.error) {
                         _this.isCartConfirmed = response.isCartConfirmed;
                     }
@@ -3666,102 +3830,22 @@ var CartComponent = /** @class */ (function () {
             }
         });
     };
-    CartComponent.prototype.cancelWorkshopRegistration = function (_id) {
-        var _this = this;
-        this.eventRegistrationService.cancelWorkshopRegistration(_id).subscribe(function (response) {
-            if (response.error == true) {
-                M.toast({ html: response.msg, classes: 'roundeds' });
-            }
-            else {
-                M.toast({ html: response.msg, classes: 'roundeds' });
-                _this.getWorkshops();
-                _this.calculateAmount();
-            }
-        });
+    CartComponent.prototype.payOnline = function () {
+        this.genTxnId(true);
+        this.hashData(true);
+        //this.finished();
+        console.log("Pay " + this.txnId);
+        console.log("HASH " + this.hashString);
     };
-    CartComponent.prototype.cancelEventRegistration = function (_id) {
-        var _this = this;
-        this.eventRegistrationService.cancelEventRegistration(_id).subscribe(function (response) {
-            if (response.error == true) {
-                M.toast({ html: response.msg, classes: 'roundeds' });
-            }
-            else {
-                M.toast({ html: response.msg, classes: 'roundeds' });
-                _this.getEvents();
-                _this.calculateAmount();
-            }
-        });
-    };
-    CartComponent.prototype.getWorkshops = function () {
-        var _this = this;
-        this.eventRegistrationService.getUserWorkshops(this.user_id).subscribe(function (docs) {
-            if (docs.length == 0) {
-                _this.hasWorkshops = false;
-            }
-            else {
-                _this.workshops = docs;
-                _this.hasWorkshops = true;
-            }
-        });
-    };
-    CartComponent.prototype.getEvents = function () {
-        var _this = this;
-        this.eventRegistrationService.getUserEvents(this.user_id).subscribe(function (docs) {
-            _this.events = docs;
-        });
-    };
-    CartComponent.prototype.processFile = function (hadEvent) {
-        var _this = this;
-        var fileList = hadEvent.target.files;
-        if (fileList.length > 0) {
-            var file = fileList[0];
-            var formData = new FormData();
-            formData.append('uploadFile', file, file.name);
-            formData.append('id', this.user_id);
-            this.userService.uploadCartDDImage(formData).subscribe(function (response) {
-                if (response.error == true) {
-                    M.toast({ html: response.msg, classes: 'roundeds danger' });
-                }
-                else {
-                    M.toast({ html: response.msg, classes: 'roundeds' });
-                    _this.getEvents();
-                    _this.getWorkshops();
-                }
-            });
+    CartComponent.prototype.genTxnId = function (value) {
+        if (value) {
+            this.txnId = '';
+            var d = new Date();
+            this.txnId = JSON.parse(localStorage.getItem('user')).gmID + '_' + this.reverseString(d.getTime().toString());
+            this.txnId = this.txnId.substr(0, 25);
         }
-    };
-    CartComponent.prototype.calculateAmount = function () {
-        var _this = this;
-        this.workshops.forEach(function (workshop) {
-            _this.amount += workshop.event_id.amount;
-        });
-        if (this.events.length != 0) {
-            this.amount += 200;
-        }
-    };
-    CartComponent.prototype.genTxnId = function () {
-        var d = new Date();
-        this.txnId = JSON.parse(localStorage.getItem('user')).gmID + '_' + this.reverseString(d.getTime().toString());
-        this.txnId = this.txnId.substr(0, 25);
-        return this.txnId;
-    };
-    CartComponent.prototype.hashData = function (amount) {
-        var _this = this;
-        var body = {
-            key: this.appService.getKey(),
-            salt: this.appService.getSalt(),
-            totalAmount: amount + (amount * this.appService.getTransactionFee()),
-            txnId: this.genTxnId(),
-            productInfo: this.appService.getProductInfo(),
-            name: JSON.parse(localStorage.getItem('user')).name,
-            email: JSON.parse(localStorage.getItem('user')).email_id,
-            mobile_number: JSON.parse(localStorage.getItem('user')).mobile_number,
-            gmId: JSON.parse(localStorage.getItem('user')).gmID,
-        };
-        console.log(this.amount);
-        this.paymentService.genHash(body).subscribe(function (response) {
-            _this.data.push(response.hash);
-        });
+        // console.log("In Gen TXN"+this.txnId);
+        //return this.txnId;
     };
     CartComponent.prototype.reverseString = function (str) {
         // Step 1. Use the split() method to return a new array
@@ -3776,6 +3860,261 @@ var CartComponent = /** @class */ (function () {
         //Step 4. Return the reversed string
         return joinArray; // "olleh"
     };
+    CartComponent.prototype.hashData = function (value) {
+        var _this = this;
+        if (value) {
+            var tamount = this.totalAmount + (this.totalAmount * this.appService.getTransactionFee());
+            var body = {
+                key: this.appService.getKey(),
+                salt: this.appService.getSalt(),
+                amount: tamount,
+                txnId: this.txnId,
+                productInfo: this.appService.getProductInfo(),
+                name: JSON.parse(localStorage.getItem('user')).name,
+                email: JSON.parse(localStorage.getItem('user')).email_id,
+                mobile_number: JSON.parse(localStorage.getItem('user')).mobile_number,
+            };
+            console.log("In Traxn HashData" + this.txnId);
+            this.paymentService.genHash(body).subscribe(function (response) {
+                if (response.error) {
+                    console.log('ehello');
+                    _this.hashString = response.hash;
+                }
+                console.log(_this.hashString);
+            });
+        }
+    };
+    CartComponent.prototype.finsish = function () {
+    };
+    // workshops: Array<any>;
+    // events: Array<any>;
+    // user_id: string;
+    // user_name: string;
+    // user_email: string;
+    // user_gmID: string;
+    // user_mobile_number: number;
+    // hasWorkshops: boolean;
+    // hasEvents: boolean;
+    // amount: number;
+    // isCartConfirmed: boolean = false;
+    // paymentSent: boolean = false;
+    // paymentConfirmed: boolean = false;
+    // txnId: string;
+    // data: Array<any>;
+    // paymentForm: FormGroup;
+    // constructor(private eventRegistrationService: EventRegistrationService,
+    //   private appService: AppService, private http: HttpClient,
+    //   private paymentService: PaymentService,
+    //   private userService: UserService,
+    //   private formBuilder: FormBuilder) {
+    //   this.workshops = []
+    //   this.events = []
+    //   this.data = [];
+    //   this.hasWorkshops = false;
+    //   this.hasEvents = false;
+    //   this.amount = 0;
+    // }
+    // ngOnInit() {
+    //   this.calculateAmount();
+    //   this.getWorkshops();
+    //   this.getEvents();
+    //   // this.userService.isCartConfirmed(this.user_id).subscribe((response: any) => {
+    //   //   if (!response.error) {
+    //   //     this.isCartConfirmed = response.isCartConfirmed;
+    //   //   }
+    //   // });
+    //   this.user_id = JSON.parse(localStorage.getItem('user')).id;
+    //   this.user_name = JSON.parse(localStorage.getItem('user')).name;
+    //   this.user_email = JSON.parse(localStorage.getItem('user')).email_id;
+    //   this.user_mobile_number = JSON.parse(localStorage.getItem('user')).mobile_number;
+    //   this.user_gmID = JSON.parse(localStorage.getItem('user')).gmID;
+    //   this.hashData(this.amount);
+    //   console.log(this.amount);
+    //   //console.log(this.data);
+    // }
+    // confirmCart() {
+    //   this.userService.confirmCart(this.user_id).subscribe((response: any) => {
+    //     if (response.error == true) {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //     }
+    //     else {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //       this.getWorkshops();
+    //       this.calculateAmount();
+    //       this.userService.isCartConfirmed(this.user_id).subscribe((response: any) => {
+    //         if (!response.error) {
+    //           this.isCartConfirmed = response.isCartConfirmed;
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
+    // cancelWorkshopRegistration(_id: string) {
+    //   this.eventRegistrationService.cancelWorkshopRegistration(_id).subscribe((response: any) => {
+    //     if (response.error == true) {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //     }
+    //     else {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //       this.getWorkshops();
+    //       this.calculateAmount();
+    //     }
+    //   })
+    // }
+    // cancelEventRegistration(_id: string) {
+    //   this.eventRegistrationService.cancelEventRegistration(_id).subscribe((response: any) => {
+    //     if (response.error == true) {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //     }
+    //     else {
+    //       M.toast({ html: response.msg, classes: 'roundeds' });
+    //       this.getEvents();
+    //       //this.calculateAmount();
+    //     }
+    //   })
+    // }
+    // getWorkshops() {
+    //   // this.eventRegistrationService.getWorkshops(this.user_id).subscribe((response: any) => {
+    //   //   if (response.error == true) {
+    //   //     M.toast({ html: response.msg, classes: 'roundeds danger' });
+    //   //   }
+    //   //   else {
+    //   //     this.workshops = response;
+    //   //     console.log(this.workshops);
+    //   //     // this.calculateAmount();
+    //   //     // if (this.workshops.length == 0) {
+    //   //     //   this.hasWorkshops = false;
+    //   //     // }
+    //   //     // else {
+    //   //     //   this.hasWorkshops = true;
+    //   //       // if (this.workshops[0].status == 'Verifying Payment') {
+    //   //       //   this.paymentSent = true;
+    //   //       // }
+    //   //       // else {
+    //   //       //   this.paymentSent = false;
+    //   //       // }
+    //   //       // if (this.workshops[0].status == 'Paid') {
+    //   //       //   this.paymentConfirmed = true;
+    //   //       // } else {
+    //   //       //   this.paymentConfirmed = false;
+    //   //       // }
+    //   //     // }
+    //   //   }
+    //   // })
+    // }
+    // getEvents() {
+    //   // this.eventRegistrationService.getEventRegistrations(this.user_id).subscribe((response: any) => {
+    //   //   if (response.error == true) {
+    //   //     M.toast({ html: response.msg, classes: 'roundeds danger' });
+    //   //   }
+    //   //   else {
+    //   //     this.events = response;
+    //   //     console.log("Events"+this.events);
+    //   //     //this.calculateAmount()
+    //   //     //   if (this.events.length == 0) {
+    //   //     //     this.hasEvents = false;
+    //   //     //   }
+    //   //     //   else {
+    //   //     //     this.hasEvents = true;
+    //   //     //   }
+    //   //     //   if (this.events[0].status == 'Paid') {
+    //   //     //     this.paymentConfirmed = true;
+    //   //     //   } else {
+    //   //     //     this.paymentConfirmed = false;
+    //   //     //   }
+    //   //      }
+    //   //   });
+    // }
+    // // processFile(hadEvent:any) {
+    // //   let fileList: FileList = hadEvent.target.files;
+    // //   if (fileList.length > 0) {
+    // //     let file: File = fileList[0];
+    // //     let formData: FormData = new FormData();
+    // //     formData.append('uploadFile', file, file.name);
+    // //     formData.append('id', this.user_id);
+    // //     this.userService.uploadCartDDImage(formData).subscribe((response: any) => {
+    // //       if (response.error == true) {
+    // //         M.toast({ html: response.msg, classes: 'roundeds danger' });
+    // //       }
+    // //       else {
+    // //         M.toast({ html: response.msg, classes: 'roundeds' });
+    // //         this.getEvents();
+    // //         this.getWorkshops();
+    // //       }
+    // //     })
+    // //   }
+    // // }
+    // calculateAmount() {
+    //   this.workshops.forEach(workshop => {
+    //     this.amount += workshop.event_id.amount;
+    //   });
+    //   if (this.events.length != 0) {
+    //     this.amount += 200;
+    //   }
+    // }
+    //
+    // hashData(amount: any) {
+    //   var body = {
+    //     key: this.appService.getKey(),
+    //     salt: this.appService.getSalt(),
+    //     totalAmount: amount + (amount * this.appService.getTransactionFee()),
+    //     txnId: this.genTxnId(),
+    //     productInfo: this.appService.getProductInfo(),
+    //     name: JSON.parse(localStorage.getItem('user')).name,
+    //     email: JSON.parse(localStorage.getItem('user')).email_id,
+    //     mobile_number: JSON.parse(localStorage.getItem('user')).mobile_number,
+    //     gmId: JSON.parse(localStorage.getItem('user')).gmID,
+    //   }
+    //   console.log(this.amount);
+    //   this.paymentService.genHash(body).subscribe((response: any) => {
+    //     this.data.push(response.hash);
+    //     //console.log(hashdata);
+    //   });
+    // }
+    // reverseString(str: String) {
+    //   // Step 1. Use the split() method to return a new array
+    //   var splitString = str.split(""); // var splitString = "hello".split("");
+    //   // ["h", "e", "l", "l", "o"]
+    //   // Step 2. Use the reverse() method to reverse the new created array
+    //   var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+    //   // ["o", "l", "l", "e", "h"]
+    //   // Step 3. Use the join() method to join all elements of the array into a string
+    //   var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+    //   // "olleh"
+    CartComponent.prototype.processFile = function (hadEvent) {
+        var _this = this;
+        var fileList = hadEvent.target.files;
+        if (fileList.length > 0) {
+            var file = fileList[0];
+            var formData = new FormData();
+            formData.append('uploadFile', file, file.name);
+            formData.append('id', this.user.id);
+            this.userService.uploadCartDDImage(formData).subscribe(function (response) {
+                if (response.error == true) {
+                    M.toast({ html: response.msg, classes: 'roundeds danger' });
+                }
+                else {
+                    M.toast({ html: response.msg, classes: 'roundeds' });
+                    _this.getUserEvents(_this.user.id);
+                    _this.getUserWorkshops(_this.user.id);
+                }
+            });
+        }
+    };
+    CartComponent.prototype.cancelEventRegistration = function (_id) {
+        var _this = this;
+        this.eventRegistrationService.cancelEventRegistration(_id).subscribe(function (response) {
+            if (response.error == true) {
+                M.toast({ html: response.msg, classes: 'roundeds' });
+            }
+            else {
+                M.toast({ html: response.msg, classes: 'roundeds' });
+                _this.getUserEvents(_this.user.id);
+                _this.getUserWorkshops(_this.user.id);
+                _this.calculateAmount();
+            }
+        });
+    };
     CartComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-cart',
@@ -3783,10 +4122,9 @@ var CartComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./cart.component.css */ "./src/app/component/user/cart/cart.component.css")]
         }),
         __metadata("design:paramtypes", [src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_1__["EventRegistrationService"],
-            src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_4__["AppService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
-            src_app_services_payment_payment_service__WEBPACK_IMPORTED_MODULE_3__["PaymentService"],
             src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"]])
+            src_app_services_payment_payment_service__WEBPACK_IMPORTED_MODULE_3__["PaymentService"],
+            src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_4__["AppService"]])
     ], CartComponent);
     return CartComponent;
 }());
@@ -3813,7 +4151,7 @@ module.exports = "\r\n/* Form Style */\r\na:hover,a:focus{\r\n text-decoration: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select [(ngModel)]=\"searchText\" (change)=\"filter()\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option value=\"All\">All</option>\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"row float-right white\">\r\n          <span *ngIf=\"this.currentPage != 1\">\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n          </span>\r\n          &nbsp; Page {{currentPage}} &nbsp;\r\n          <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n        </div>\r\n      </span>\r\n\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{event.image_name}}\">\r\n              <!--<div class=\"card-body\">\r\n                {{event.description}}\r\n              </div>-->\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n\t\t\t\t<span class=\"card-title grey-text text-darken-4\">Description<i class=\"fas fa-times float-right\"></i></span>\r\n\t\t\t\t{{event.description}}\r\n                <span class=\"card-title grey-text text-darken-4\">Rules</span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <ng-container *ngIf=\"user; else notLoggedIn\">\r\n                    <ng-container *ngIf=\"user.cart_confirmed; else cartNotConfirmed\">\r\n                        <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                            Cart already Confirmed\r\n                          </button>\r\n                    </ng-container>\r\n                    <ng-template #cartNotConfirmed>\r\n                        <div *ngIf=\"event.min_members == event.max_members == 1 && !registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                              Register Now <i class=\"la la-angle-right\"></i>\r\n                            </button>\r\n                          </div>\r\n                          <div *ngIf=\"event.min_members != event.max_members && !registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                              [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                              Register Team <i class=\"la la-angle-right\"></i>\r\n                            </button>\r\n                          </div>\r\n                          <div *ngIf=\"registeredEvents.includes(event._id)\">\r\n                            <button type=\"button\" *ngIf=\"registeredEvents.includes(event._id)d\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                              style=\"width:100%\">\r\n                              Already Registered\r\n                            </button>\r\n                          </div>\r\n                    </ng-template>\r\n                  </ng-container>\r\n                  <ng-template #notLoggedIn>\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </ng-template>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <span class=\"content-header-left h3 col-md-3 col-3 mb-4\">\r\n        <span class=\"content-header-title\">Events\r\n        </span>\r\n      </span>\r\n      <span class=\"content-header-left col-md-3 col-3 mb-3\">\r\n        <select [(ngModel)]=\"searchText\" (change)=\"filter()\" id=\"searchText\" class=\"custom-select float-right\">\r\n          <option value=\"All\">All</option>\r\n          <option *ngFor=\"let dept of departments\" value=\"{{dept.name}}\">\r\n            {{dept.name}}\r\n          </option>\r\n        </select>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a [routerLink]=\"['/user/home']\" [routerLinkActive]=\"['active']\"\r\n                  [routerLinkActiveOptions]=\"{exact:true}\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\">Events\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </span>\r\n      <span class=\"content-header-right col-md-3 col-3\">\r\n        <div class=\"row float-right white\">\r\n          <span *ngIf=\"this.currentPage != 1\">\r\n            <span class=\"btn btn-sm btn-info\" (click)=\"previousPage()\"> &lt; </span>\r\n          </span>\r\n          &nbsp; Page {{currentPage}} &nbsp;\r\n          <span class=\"btn btn-sm btn-info\" (click)=\"nextPage()\"> &gt; </span>\r\n        </div>\r\n      </span>\r\n\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height\">\r\n          <div class=\"col-4\" *ngFor=\"let event of events\">\r\n            <div class=\"card pull-up\">\r\n              <div class=\"card-body\">\r\n                <h3 class=\"card-title\">{{event.title}} <span class=\"card-title activator grey-text text-darken-4 float-right\"><i\r\n                      class=\"fas fa-ellipsis-v right\"></i></span></h3>\r\n                <h6 class=\"card-subtitle text-muted\">Department of {{event.department_id.name}}</h6>\r\n              </div>\r\n              <img class=\"activator card-image\" src=\"http://www.gyanmitra19.mepcoeng.ac.in/assests/images/events/{{event.image_name}}\">\r\n              <div class=\"card-body\">\r\n                Contact <p class=\"card-text\">\r\n                  <a href=\"mailto:{{event.contact_email}}\">{{event.contact_email}}</a>\r\n                </p>\r\n              </div>\r\n              <div class=\"card-reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Description<i class=\"fas fa-times float-right\"></i></span>\r\n                {{event.description}}\r\n                <span class=\"card-title grey-text text-darken-4\">Rules</span>\r\n                <ul>\r\n                  <li *ngFor=\"let rule of (event.rules | rulesTransform)\">{{ rule }}</li>\r\n                </ul>\r\n              </div>\r\n              <div class=\"card-footer border-top-blue-grey border-top-lighten-5 text-muted\">\r\n                <span class=\"float-left\"> {{event.event_date | date }}</span>\r\n                <span class=\"float-right\">\r\n                  <ng-container *ngIf=\"user; else notLoggedIn\">\r\n                    <ng-container *ngIf=\"user.cart_confirmed; else cartNotConfirmed\">\r\n                      <button type=\"button\" class=\"btn btn-outline-danger\" style=\"width:100%\">\r\n                        Cart already Confirmed\r\n                      </button>\r\n                    </ng-container>\r\n                    <ng-template #cartNotConfirmed>\r\n                      <div *ngIf=\"event.min_members == event.max_members == 1 && !registeredEvents.includes(event._id)\">\r\n                        <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"selectEvent(event._id)\" style=\"width:100%\">\r\n                          Register Now <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"event.min_members != event.max_members && !registeredEvents.includes(event._id)\">\r\n                        <button type=\"button\" [routerLink]=\"['/user/teamRegister',event._id]\" [routerLinkActive]=\"['active']\"\r\n                          [routerLinkActiveOptions]=\"{exact:true}\" class=\"btn btn-outline-primary\" style=\"width:100%\">\r\n                          Register Team <i class=\"la la-angle-right\"></i>\r\n                        </button>\r\n                      </div>\r\n                      <div *ngIf=\"registeredEvents.includes(event._id)\">\r\n                        <button type=\"button\" *ngIf=\"registeredEvents.includes(event._id)d\" class=\"btn btn-sm round btn-bg-gradient-x-purple-red\"\r\n                          style=\"width:100%\">\r\n                          Already Registered\r\n                        </button>\r\n                      </div>\r\n                    </ng-template>\r\n                  </ng-container>\r\n                  <ng-template #notLoggedIn>\r\n                    <a class=\"btn btn-lg btn-glow btn-bg-gradient-x-blue-purple-2\" style=\"width:100%\" [routerLink]=\"['/user/login']\"\r\n                      [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">Login to Register</a>\r\n                  </ng-template>\r\n                </span>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -4148,7 +4486,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  payment-failure works!\r\n</p>\r\n"
+module.exports = "<div class=\"app-content content\">\n  <div class=\"content-wrapper\">\n    <div class=\"content-wrapper-before\"></div>\n    <div class=\"content-header row\">\n      <div class=\"content-header-left col-4\">\n        <h3 class=\"content-header-title\">PaymentFailure</h3>\n      </div>\n      <div class=\"content-header-right col-4\">\n        <div class=\"breadcrumbs-top float-md-right\">\n          <div class=\"breadcrumb-wrapper mr-1\">\n            <ol class=\"breadcrumb\">\n              <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\n              </li>\n              <li class=\"breadcrumb-item active\">Sorry\n              </li>\n            </ol>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div classs=\"content-body\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n          <h1 class=\"text-center\">Transcation Failure</h1>\n        </div>\n      </div>\n    </div>"
 
 /***/ }),
 
@@ -4211,7 +4549,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  payment-success works!\r\n</p>\r\n"
+module.exports = "<p>\n  payment-success works!\n</p>\n"
 
 /***/ }),
 
@@ -4343,7 +4681,7 @@ var RegisterComponent = /** @class */ (function () {
         this.submitted = false;
         this.registerForm = this.formBuilder.group({
             email_id: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].email])],
-            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern("[a-zA-z]+")])],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             conpassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             mobile_number: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern("[0-9]{10}$")])],
@@ -4633,7 +4971,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n        <h3 class=\"content-header-title\">Accomodation</h3>\r\n      </div>\r\n      <div class=\"content-header-right col-md-8 col-12\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\"> Accomodation\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-xl-6 col-md-12\">\r\n          </div>\r\n        </div>\r\n      </section>\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <div class=\"card\">\r\n            <div class=\"card-header\">\r\n              <h4 class=\"card-title\">\r\n                <span *ngIf=\"accomodation\" [ngClass]=\"{'success': accomodation.acc_payment_status == 'Paid' && accomodation.acc_status == 'Confirmed'}\"\r\n                  [ngClass]=\"{'danger': accomodation.acc_payment_status == 'Not Paid' && accomodation.acc_status == 'Not Confirmed'}\">\r\n                  Payment Status : {{accomodation.acc_payment_status}} | Accomodation Status :\r\n                  {{accomodation.acc_status}}\r\n                </span>\r\n                <span *ngIf=\"!accomodation\">\r\n                  Accomodation Status : Not Applied\r\n                </span>\r\n              </h4>\r\n              <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n              <div class=\"heading-elements\">\r\n                <ul class=\"list-inline mb-0\">\r\n                </ul>\r\n              </div>\r\n            </div>\r\n            <div class=\"card-content collapse show\">\r\n              <div class=\"card-body\">\r\n                <div *ngIf=\"!accomodation\">\r\n                  <form class=\"form\" [formGroup]=\"accomodationForm\" (ngSubmit)=onSubmit(accomodationForm.value)>\r\n                    <div class=\"form-group\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-5\">\r\n                         \r\n                          <select class=\"custom-select\"  placeholder=\"Number of Days\"formControlName=\"acc_days\">\r\n                            <option value=\"0\" selected disabled>Number of Days</option>  \r\n                            <option value=\"1\">1</option>\r\n                            <option value=\"2\">2</option>\r\n                          </select>\r\n  \r\n                        </div>\r\n                        <div class=\"col-2\">\r\n                            <button type=\"reset\" class=\"btn btn-outline-success right\">Reset</button>\r\n                        </div>\r\n                        <div class=\"col-2\">\r\n                            <button type=\"submit\" class=\"btn btn-outline-success right\">Apply</button>\r\n                        </div>\r\n                      </div>\r\n                      \r\n                    </div>\r\n                  </form>\r\n                </div>\r\n                <div>\r\n                  <div *ngIf=\"hasAccomodation && accomodation.acc_status=='Approved' && accomodation.acc_payment_status=='Not Paid'\">\r\n                    <div class=\"container\">\r\n                      <h2>Payment</h2>\r\n                      <hr />\r\n                      <div class=\"form-group\">\r\n                        <div class=\"row\">\r\n                          <button class=\"btn btn-linkedin\" type=\"button\">Pay Online</button>\r\n                          <button class=\"btn btn-google\" type=\"button\" data-toggle=\"collapse\" data-target=\"#DDUpload\">Upload\r\n                            Demand Draft</button>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"collapse\" id=\"DDUpload\">\r\n                          <div class=\"card card-body\">\r\n                            <form>\r\n                              <input #imageInput placeholder=\"Select an Image\" type=\"file\" accept=\"image/*\" (change)=\"processFile($event)\">\r\n                            </form>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"danger\" *ngIf=\"hasAccomodation && accomodation.acc_status=='Not Confirmed' && accomodation.acc_payment_status=='Not Paid'\">\r\n                    <div class=\"container\">\r\n                      <h2>\r\n                        Wait till your accomodation is opened up for payment\r\n                      </h2>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"app-content content\">\r\n  <div class=\"content-wrapper\">\r\n    <div class=\"content-wrapper-before\"></div>\r\n    <div class=\"content-header row\">\r\n      <div class=\"content-header-left col-md-4 col-12 mb-2\">\r\n        <h3 class=\"content-header-title\">Accomodation</h3>\r\n      </div>\r\n      <div class=\"content-header-right col-md-8 col-12\">\r\n        <div class=\"breadcrumbs-top float-md-right\">\r\n          <div class=\"breadcrumb-wrapper mr-1\">\r\n            <ol class=\"breadcrumb\">\r\n              <li class=\"breadcrumb-item\"><a href=\"index.html\">Home</a>\r\n              </li>\r\n              <li class=\"breadcrumb-item active\"> Accomodation\r\n              </li>\r\n            </ol>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"content-body\">\r\n      <section id=\"content-types\">\r\n        <div class=\"row match-height justify-content-md-center\">\r\n          <div class=\"col-xl-6 col-md-12\">\r\n          </div>\r\n        </div>\r\n      </section>\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <div class=\"card\">\r\n            <div class=\"card-header\">\r\n              <h4 class=\"card-title\">\r\n                <span *ngIf=\"accomodation\" [ngClass]=\"{'success': accomodation.acc_payment_status == 'Paid' && accomodation.acc_status == 'Confirmed'}\"\r\n                  [ngClass]=\"{'danger': accomodation.acc_payment_status == 'Not Paid' && accomodation.acc_status == 'Not Confirmed'}\">\r\n                  Payment Status : {{accomodation.acc_payment_status}} | Accomodation Status :\r\n                  {{accomodation.acc_status}}\r\n                </span>\r\n                <span *ngIf=\"!accomodation\">\r\n                  Accomodation Status : Not Applied\r\n                </span>\r\n              </h4>\r\n              <a class=\"heading-elements-toggle\"><i class=\"la la-ellipsis-v font-medium-3\"></i></a>\r\n              <div class=\"heading-elements\">\r\n                <ul class=\"list-inline mb-0\">\r\n                </ul>\r\n              </div>\r\n            </div>\r\n            <div class=\"card-content collapse show\">\r\n              <div class=\"card-body\">\r\n                <div *ngIf=\"!accomodation\">\r\n                  <form class=\"form\" [formGroup]=\"accomodationForm\" (ngSubmit)=onSubmit(accomodationForm.value)>\r\n                    <div class=\"form-group\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-5\">\r\n\r\n                          <select class=\"custom-select\" placeholder=\"Number of Days\" formControlName=\"acc_days\">\r\n                            <option value=\"0\" selected disabled>Number of Days</option>\r\n                            <option value=\"1\">1</option>\r\n                            <option value=\"2\">2</option>\r\n                          </select>\r\n\r\n                        </div>\r\n                        <div class=\"col-2\">\r\n                          <button type=\"reset\" class=\"btn btn-outline-success right\">Reset</button>\r\n                        </div>\r\n                        <div class=\"col-2\">\r\n                          <button type=\"submit\" class=\"btn btn-outline-success right\">Apply</button>\r\n                        </div>\r\n                      </div>\r\n\r\n                    </div>\r\n                  </form>\r\n                </div>\r\n                <div>\r\n                  <div *ngIf=\"hasAccomodation && accomodation.acc_status=='Approved' && accomodation.acc_payment_status=='Not Paid'\">\r\n                    <div class=\"container\">\r\n                      <h2>Payment</h2>\r\n                      <hr />\r\n                      <div class=\"form-group\">\r\n                        <div class=\"row\">\r\n                            <button class=\"btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right\"\r\n                            (click)=\"payOnline()\" data-toggle=\"modal\" data-target=\"#PayOnline\">Online</button>\r\n                          <button class=\"btn btn-google\" type=\"button\" data-toggle=\"collapse\" data-target=\"#DDUpload\">Upload\r\n                            Demand Draft</button>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"collapse\" id=\"DDUpload\">\r\n                          <div class=\"card card-body\">\r\n                            <form>\r\n                              <input #imageInput placeholder=\"Select an Image\" type=\"file\" accept=\"image/*\" (change)=\"processFile($event)\">\r\n                            </form>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"danger\" *ngIf=\"hasAccomodation && accomodation.acc_status=='Not Confirmed' && accomodation.acc_payment_status=='Not Paid'\">\r\n                    <div class=\"container\">\r\n                      <h2>\r\n                        Wait till your accomodation is opened up for payment\r\n                      </h2>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<form action=\"https://test.payu.in/_payment\" id=\"frm-payment\" method=\"post\">\r\n  <input type=\"hidden\" name=\"key\" value={{appService.getKey()}}>\r\n  <input type=\"hidden\" name=\"txnid\" value={{txnId}}>\r\n  <input type=\"hidden\" name=\"amount\" value={{totalAmount+(totalAmount*appService.getTransactionFee())}}>\r\n  <input type=\"hidden\" name=\"productinfo\" value={{this.appService.getProductInfo()}}>\r\n  <input type=\"hidden\" name=\"firstname\" value={{user.name}}>\r\n  <input type=\"hidden\" name=\"email\" value={{user.email_id}}>\r\n  <input type=\"hidden\" name=\"phone\" value={{user.mobile_number}}>\r\n  <input type=\"hidden\" name=\"surl\" value=\"http://localhost:3000/payment/acc/success\">\r\n  <input type=\"hidden\" name=\"furl\" value=\"http://localhost:3000/payment/acc/failure\">\r\n  <input type=\"hidden\" name=\"hash\" value={{hashString}}>\r\n\r\n</form>\r\n<div class=\"modal fade\" id=\"PayOnline\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Cart Amount - Rs.\r\n          {{totalAmount+(totalAmount*appService.getTransactionFee())}}</h5>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        DO You Really Want Pay Online?\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"submit\" onclick=\"$('#frm-payment').submit()\" class=\"btn btn-secondary\">PAY</button>\r\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -4650,6 +4988,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_services_accomodation_accomodation_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/accomodation/accomodation.service */ "./src/app/services/accomodation/accomodation.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/app/app.service */ "./src/app/services/app/app.service.ts");
+/* harmony import */ var src_app_services_payment_payment_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/payment/payment.service */ "./src/app/services/payment/payment.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4662,10 +5002,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 //Check line:64 error
 var UserAccomodationComponent = /** @class */ (function () {
-    function UserAccomodationComponent(accomodationService, formBuilder) {
+    function UserAccomodationComponent(accomodationService, appService, paymentService, formBuilder) {
         this.accomodationService = accomodationService;
+        this.appService = appService;
+        this.paymentService = paymentService;
         this.formBuilder = formBuilder;
     }
     UserAccomodationComponent.prototype.ngOnInit = function () {
@@ -4727,13 +5071,65 @@ var UserAccomodationComponent = /** @class */ (function () {
             });
         }
     };
+    UserAccomodationComponent.prototype.payOnline = function () {
+        this.genTxnId(true);
+        this.hashData(true);
+        //this.finished();
+        console.log("Pay " + this.txnId);
+        console.log("HASH " + this.hashString);
+    };
+    UserAccomodationComponent.prototype.genTxnId = function (value) {
+        if (value) {
+            this.txnId = '';
+            var d = new Date();
+            this.txnId = JSON.parse(localStorage.getItem('user')).gmID + this.reverseString(d.getTime().toString());
+            this.txnId = this.txnId.substr(0, 25);
+        }
+    };
+    UserAccomodationComponent.prototype.reverseString = function (str) {
+        // Step 1. Use the split() method to return a new array
+        var splitString = str.split(""); // var splitString = "hello".split("");
+        // ["h", "e", "l", "l", "o"]
+        // Step 2. Use the reverse() method to reverse the new created array
+        var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+        // ["o", "l", "l", "e", "h"]
+        // Step 3. Use the join() method to join all elements of the array into a string
+        var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+        // "olleh"
+        //Step 4. Return the reversed string
+        return joinArray; // "olleh"
+    };
+    UserAccomodationComponent.prototype.hashData = function (value) {
+        var _this = this;
+        if (value) {
+            var tamount = 100 + (100 * this.appService.getTransactionFee());
+            var body = {
+                key: this.appService.getKey(),
+                salt: this.appService.getSalt(),
+                amount: tamount,
+                txnId: this.txnId,
+                productInfo: this.appService.getProductInfo(),
+                name: JSON.parse(localStorage.getItem('user')).name,
+                email: JSON.parse(localStorage.getItem('user')).email_id,
+                mobile_number: JSON.parse(localStorage.getItem('user')).mobile_number,
+            };
+            console.log("In Traxn HashData" + this.txnId);
+            this.paymentService.genHash(body).subscribe(function (response) {
+                if (response.error) {
+                    _this.hashString = response.hash;
+                }
+            });
+        }
+    };
     UserAccomodationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-accomodation',
             template: __webpack_require__(/*! ./user-accomodation.component.html */ "./src/app/component/user/user-accomodation/user-accomodation.component.html"),
             styles: [__webpack_require__(/*! ./user-accomodation.component.css */ "./src/app/component/user/user-accomodation/user-accomodation.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_services_accomodation_accomodation_service__WEBPACK_IMPORTED_MODULE_1__["AccomodationService"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]])
+        __metadata("design:paramtypes", [src_app_services_accomodation_accomodation_service__WEBPACK_IMPORTED_MODULE_1__["AccomodationService"],
+            src_app_services_app_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"],
+            src_app_services_payment_payment_service__WEBPACK_IMPORTED_MODULE_4__["PaymentService"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]])
     ], UserAccomodationComponent);
     return UserAccomodationComponent;
 }());
@@ -5087,7 +5483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/eventRegistration/event-registration.service */ "./src/app/services/eventRegistration/event-registration.service.ts");
 /* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
 /* harmony import */ var src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/department/department.service */ "./src/app/services/department/department.service.ts");
-/* harmony import */ var src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/user/user.service */ "./src/app/services/user/user.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5104,13 +5500,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var WorkshopsComponent = /** @class */ (function () {
-    function WorkshopsComponent(eventService, userService, eventRegistrationService, authService, deptService) {
+    function WorkshopsComponent(eventService, eventRegistrationService, authService, deptService, formBuilder) {
         var _this = this;
         this.eventService = eventService;
-        this.userService = userService;
         this.eventRegistrationService = eventRegistrationService;
         this.authService = authService;
         this.deptService = deptService;
+        this.formBuilder = formBuilder;
         this.registeredEvents = [];
         this.workshops = [];
         this.statuses = {};
@@ -5127,6 +5523,22 @@ var WorkshopsComponent = /** @class */ (function () {
             }
         });
     }
+    WorkshopsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.currentUserId != '') {
+            this.eventService.readWithPageAndDepartment('Workshop', 'All', 1).subscribe(function (response) {
+                _this.workshops = response;
+            });
+        }
+        this.currentPage = 1;
+        this.currentUserId = '';
+        this.user = (JSON.parse(localStorage.getItem('user')));
+        if (this.user != null) {
+            this.currentUserId = this.user.id;
+        }
+        this.getRegistrations();
+        this.loadFull(this.currentPage);
+    };
     WorkshopsComponent.prototype.getCurrentUser = function () {
         var _this = this;
         this.authService.getCurrentUser().subscribe(function (response) {
@@ -5151,25 +5563,9 @@ var WorkshopsComponent = /** @class */ (function () {
             _this.departments = response;
         });
     };
-    WorkshopsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.currentUserId != '') {
-            this.eventService.readWithPageAndDepartment('Workshop', 'All', 1).subscribe(function (response) {
-                _this.workshops = response;
-            });
-        }
-        this.currentPage = 1;
-        this.currentUserId = '';
-        this.user = (JSON.parse(localStorage.getItem('user')));
-        if (this.user != null) {
-            this.currentUserId = this.user.id;
-        }
-        this.getRegistrations();
-        this.loadFull(this.currentPage);
-    };
     WorkshopsComponent.prototype.getRegistrations = function () {
         var _this = this;
-        this.eventRegistrationService.getRegisteredEvents(this.currentUserId, 'Event').subscribe(function (response) {
+        this.eventRegistrationService.getRegisteredEvents(this.currentUserId, 'Workshop').subscribe(function (response) {
             _this.registeredEvents = response.msg;
         });
     };
@@ -5257,7 +5653,11 @@ var WorkshopsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./workshops.component.html */ "./src/app/component/user/workshops/workshops.component.html"),
             styles: [__webpack_require__(/*! ./workshops.component.css */ "./src/app/component/user/workshops/workshops.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_services_event_event_service__WEBPACK_IMPORTED_MODULE_1__["EventService"], src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__["EventRegistrationService"], src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__["DepartmentService"]])
+        __metadata("design:paramtypes", [src_app_services_event_event_service__WEBPACK_IMPORTED_MODULE_1__["EventService"],
+            src_app_services_eventRegistration_event_registration_service__WEBPACK_IMPORTED_MODULE_2__["EventRegistrationService"],
+            src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            src_app_services_department_department_service__WEBPACK_IMPORTED_MODULE_4__["DepartmentService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]])
     ], WorkshopsComponent);
     return WorkshopsComponent;
 }());
@@ -6573,12 +6973,12 @@ var EventRegistrationService = /** @class */ (function () {
     EventRegistrationService.prototype.getUserWorkshops = function (user_id) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.app.getUrl(this.baseUrl) + 'getRegistrations/' + user_id + "/Workshop");
+        return this.http.get(this.app.getUrl(this.baseUrl) + 'userRegisteredEvents/' + user_id + "/Workshop");
     };
     EventRegistrationService.prototype.getUserEvents = function (user_id) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.app.getUrl(this.baseUrl) + 'getRegistrations/' + user_id + "/Event");
+        return this.http.get(this.app.getUrl(this.baseUrl) + 'userRegisteredEvents/' + user_id + "/Event");
     };
     EventRegistrationService.prototype.confirmPayment = function (user_id) {
         var data = {
@@ -6770,12 +7170,6 @@ var PaymentService = /** @class */ (function () {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.app.getUrl(this.baseUrl + 'getHash'), data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) { return res; }, { 'headers': headers }));
-    };
-    PaymentService.prototype.payment = function (data) {
-        var headers = new Headers();
-        headers.append('Content-Type', 'text/json');
-        console.log(data);
-        return this.http.post(this.app.getPaymentUrl(), data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) { return res; }, { 'headers': headers }));
     };
     PaymentService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -7470,17 +7864,17 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: true,
+    production: false,
     backend: {
-        server: 'http://www.gyanmitra19.mepcoeng.ac.in'
+        server: 'http://192.168.16.14/'
     },
     frontend: {
-        server: 'http://www.gyanmitra19.mepcoeng.ac.in'
+        server: 'http://192.168.16.14/'
     },
     payment: {
-        key: 'gtKFFx',
-        salt: 'eCwWELxi',
-        url: 'https://test.payu.in/_payment',
+        key: 'AFqk4w',
+        salt: 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQB5hDQhkawze7s4dGtwYW1B0js4RoooRqW/WBl0IwTXZM8ct6QE9EdX2R72lNMFNynnukVz88V/HnDXAiZqvVkZjVzKGaWTU1PcHscI3vK85s00tzM/h+9xhdnPnHQk90r+WfYe3DwhS/y7QZMA4hrk3MnAEDHIfCR7OCpPLutd64kiwIGYdtVkYGVgYXqx4u12U4Ws2D4yZNBHlpsx3LQ03CCzLZlOWoGasELfHfh7mGTuEPqSvDdwTpOiwuOqKdl+/jMwrfKtEEU/zcNZhaLIdHFMuZ6g+5auMid8benMyJ54GWNq9Pve/cjMyVZaFv2DlqIFwgn9KzWsFT+YXZAgMBAAECggEBAMyE2vYs0p+UE4QO0Uz9fRgOe4Nw5xkzxbkHJYu9WI5Caa7l/OT4urWUSNqjpEQF4dSK6QW93OaHk8RTWs4HYKJ8HOT85FfpojzwtWmtkmz0BWLKLKBbFNBGP4cxYAO9Nn6Cu96BGY9ejKWvMCWfMBV+1u/0463aa8HeWiZz4n45OuXbWYa0O/T8KZQd8rBXm26e6jBaIeXztcTrX6uZypr2cWXs1XqLb0Zjw/buJbtdPdJ22ndzIMr2uaihhibRbkxJz0JXIl0aHIruOghHqGHJ2T+YJ3Ef9olH1OGYNDXAQmGPJ+w7M4BlKD7MMyOpv70GYSrIK6Nt9DTXKRxR0IECgYEA9QIxr4zMN6kRoRff7U8LxaiXxFA7XwtDy8a3wU8IQbZanG7oCM5sYlZMk9NfpbVVMCo4jNujMcEawNYdvBaayFo9GrWm/cWY4xfkq61rJiEGlx6St0zH1xKHGlDgWCmBxi3aeHL8mHJT9drVJlXY4a6JP2uzSMe/pgr+oE3+FCkCgYEA2Vy3OX8dAJVCnqD6HdQboDFe6iP2Zx/Tdrts415w79uD6PHY/XlmctbXTexbvQTPLlBkK0MABxa5ponDaANpBHTB983bn93WoM+K1gCWUpMX8rwwH4I7APZECR2y20bHVwJZTuDeifahKI2tU8GeShCI1IWE2pAsRHhZh9tfmjECgYAvq1idbkiBf9yVOj7wPhPtRisZH/8dM+Th7ezsqILTvjYM/6sXo4oE7AOEM3kFla1YbK6KAWXUFV0uLbqlUMSWvK/s1XEDKQHhFVIBcQFK7twIZQNotIChQNKWdSvhG1pLg7pg+wZYZs4dJJGaHtPOvRWpCDxeqbaJCNSXvfT0WQKBgQCqwcCbJbYGCDwu3C3BkykkvsRe0mO3ffQlOXaAZGf6tou5S415C48lNowsBjvHkWilbLhUmC0EZKDyKRXet5cfzg23e/xGagM7j+/00L9HHZFZuudfSXLK/axTMQaaZs8hFpJMejG5VowijLKWsuuEKdskgcPt5Acyvw0uwnMncQKBgBUtfvw390WC90Sm+iSZszsp4dZBgXCJPb5trhxotL7JMv5s6V5sraLV6E9AiDvtMSrzOPhbYV1UDyYcXIICuwQi2fkFZvgmM+qWdNaSZMyDG+6HG5gtqfhDOgePITtuwt07xoV4RD6KBjy6M/09m4eWGiRaOLPYNumvpOjmnU1b',
+        url: 'https://secure.payu.in/_payment',
         accomodation: 100,
         transcationFee: 0.04,
         productInfo: 'GyanMitra19'
@@ -7651,6 +8045,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_component_user_gyan_mitra18_gyan_mitra18_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/component/user/gyan-mitra18/gyan-mitra18.component */ "./src/app/component/user/gyan-mitra18/gyan-mitra18.component.ts");
 /* harmony import */ var src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/component/user/payment-success/payment-success.component */ "./src/app/component/user/payment-success/payment-success.component.ts");
 /* harmony import */ var src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/component/user/payment-failure/payment-failure.component */ "./src/app/component/user/payment-failure/payment-failure.component.ts");
+/* harmony import */ var src_app_component_user_acc_failure_acc_failure_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/component/user/acc-failure/acc-failure.component */ "./src/app/component/user/acc-failure/acc-failure.component.ts");
+/* harmony import */ var src_app_component_user_acc_success_acc_success_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/component/user/acc-success/acc-success.component */ "./src/app/component/user/acc-success/acc-success.component.ts");
+
+
 
 
 
@@ -7677,8 +8075,10 @@ var USER_ROUTE = [
     { path: 'accomodation', component: src_app_component_user_user_accomodation_user_accomodation_component__WEBPACK_IMPORTED_MODULE_8__["UserAccomodationComponent"] },
     { path: 'teamRegister/:id', component: src_app_component_user_team_register_team_register_component__WEBPACK_IMPORTED_MODULE_10__["TeamRegisterComponent"] },
     { path: 'gyanmitra18', component: src_app_component_user_gyan_mitra18_gyan_mitra18_component__WEBPACK_IMPORTED_MODULE_11__["GyanMitra18Component"] },
-    { path: 'payment/success', component: src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_12__["PaymentSuccessComponent"] },
-    { path: 'payment/failure', component: src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_13__["PaymentFailureComponent"] }
+    { path: 'payment/success', component: src_app_component_user_payment_success_payment_success_component__WEBPACK_IMPORTED_MODULE_12__["PaymentSuccessComponent"], canActivate: [src_app_guard_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] },
+    { path: 'payment/failure', component: src_app_component_user_payment_failure_payment_failure_component__WEBPACK_IMPORTED_MODULE_13__["PaymentFailureComponent"], canActivate: [src_app_guard_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] },
+    { path: 'acc/payment/success', component: src_app_component_user_acc_success_acc_success_component__WEBPACK_IMPORTED_MODULE_15__["AccSuccessComponent"], canActivate: [src_app_guard_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] },
+    { path: 'acc/payment/failure', component: src_app_component_user_acc_failure_acc_failure_component__WEBPACK_IMPORTED_MODULE_14__["AccFailureComponent"], canActivate: [src_app_guard_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]] }
 ];
 
 
@@ -7691,7 +8091,7 @@ var USER_ROUTE = [
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-AngularJs\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! G:\STUDY\PROJECT\MEAN\GyanMitra19\GyanMitra19-AngularJs\src\main.ts */"./src/main.ts");
 
 
 /***/ })

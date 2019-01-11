@@ -49,7 +49,7 @@ var production = true;
 if (production) {
     app.use(cors({ origin: 'http://192.168.16.14/' }));
 } else {
-    app.use(cors({ origin: 'http://localhost:4200' }));
+    app.use(cors({ origin: 'http://localhost:3000' }));
     //port = 3000;
 }
 

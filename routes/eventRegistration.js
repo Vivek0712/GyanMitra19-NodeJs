@@ -8,24 +8,26 @@ const TeamMember = require('../models/team_member');
 const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-router.get('/registeredEvents/:id/:type', (req, res)=>{
-    Registration.find({user_id: req.params.id}).populate('event_id').populate({
+router.get('/registeredEvents/:id/:type', (req, res) => {
+    Registration.find({
+        user_id: req.params.id
+    }).populate('event_id').populate({
         path: 'event_id',
         populate: {
             path: 'category_id'
         }
-    }).exec((err, docs)=>{
-        if(err){
+    }).exec((err, docs) => {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
             })
         } else {
-            docs = docs.filter((doc)=>{
+            docs = docs.filter((doc) => {
                 return doc.event_id.category_id.name == req.params.type
             })
             ids = [];
-            docs.forEach((doc)=>{
+            docs.forEach((doc) => {
                 ids.push(doc.event_id._id)
             })
             res.json({
@@ -34,7 +36,7 @@ router.get('/registeredEvents/:id/:type', (req, res)=>{
             })
         }
     })
-})
+});
 
 router.post('/newTeamEventRegistration', (req, res) => {
     if (req.body.position === "leader") {
@@ -209,7 +211,7 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
                 event_id: {
                     $ne: req.params.event_id
                 }
-            }).populate('event_id').populate({
+            }).populate({
                 path: 'event_id',
                 populate: {
                     path: 'category_id'
@@ -245,8 +247,8 @@ router.post('/confirmCartPayment', (req, res) => {
     let user_id = req.body.user_id;
     User.findByIdAndUpdate(user_id, {
         cart_paid: true
-    }, (err, docs)=>{
-        if(err){
+    }, (err, docs) => {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
@@ -256,14 +258,13 @@ router.post('/confirmCartPayment', (req, res) => {
                 user_id: req.body.user_id
             }, {
                 status: 'Paid'
-            }, (error, documents)=>{
-                if(error){
+            }, (error, documents) => {
+                if (error) {
                     res.json({
                         error: true,
                         msg: err
                     })
-                }
-                else {
+                } else {
                     res.json({
                         error: false,
                         msg: 'Payment Approved!'
@@ -378,6 +379,37 @@ router.put('/:id', (req, res) => {
     })
 });
 
+router.get('/userRegisteredEvents/:id/:type', (req, res) => {
+    Registration.find({
+        user_id: req.params.id
+    }).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).exec((err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            docs = docs.filter((doc) => {
+                return doc.event_id.category_id.name == req.params.type
+            })
+            res.json({
+                error: false,
+                msg: docs
+            })
+        }
+    })
+})
+
 router.get('/events/:id', function (req, res, next) {
     Registration.find({
         event_id: req.params.id
@@ -408,21 +440,21 @@ router.get('/:email', function (req, res, next) {
 });
 
 router.get('/getUserEvents/:id', function (req, res, next) {
-    Registration.find({
-        user_id: req.params.id
-    }).populate('event_id').exec(function (err, docs) {
-        if (err) {
-            res.json({
-                error: true,
-                msg: 'NO Events'
-            });
-        } else {
-            res.json({
-                error: false,
-                msg: docs
-            });
-        }
-    });
+    // Registration.find({
+    //     user_id: req.params.id
+    // }).populate('event_id').exec(function (err, docs) {
+    //     if (err) {
+    //         res.json({
+    //             error: true,
+    //             msg: 'NO Events'
+    //         });
+    //     } else {
+    //         res.json({
+    //             error: false,
+    //             msg: docs
+    //         });
+    //     }
+    // });
 });
 
 
@@ -546,14 +578,16 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 });
 
 
-router.get('/checkEventRegistrationStatus/:event_id/:user_id',function(req,res)  {
-    Registration.find({event_id:req.params.event_id,user_id:req.params.user_id},function(err,docs) {
-        if(docs.length == 0){
+router.get('/checkEventRegistrationStatus/:event_id/:user_id', function (req, res) {
+    Registration.find({
+        event_id: req.params.event_id,
+        user_id: req.params.user_id
+    }, function (err, docs) {
+        if (docs.length == 0) {
             res.json({
                 registered: false
             })
-        }
-        else {
+        } else {
             res.json({
                 registered: true
             })
