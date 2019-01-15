@@ -42,14 +42,14 @@ const payment = require('./routes/payment');
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
 if (production) {
-    app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in/' }));
+    app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in' }));
 } else {
-    app.use(cors({ origin: 'http://localhost:4200' }));
+    app.use(cors({ origin: 'http://localhost:3000' }));
     //port = 3000;
 }
 
@@ -107,21 +107,14 @@ if (production) {
 }
 else {
     app.get('/', (req, res) => {
-        res.send('invaild endpoint');
+        res.send('HELLO WORlD!');
     });
-
-   
-    // Start Server
-   
-    var distDir = __dirname + "/dist/";
-    app.use('/', express.static(distDir));
-    // app.get('*', (req, res) => {
-    //     res.sendFile(distDir + "index.html");
-    // });
-    app.get('/*', (req, res) => {
+    
+    app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/index.html'));
     });
-
+    
+    // Start Server
     app.listen(port, () => {
         console.log('Server started on port ' + port);
     });
