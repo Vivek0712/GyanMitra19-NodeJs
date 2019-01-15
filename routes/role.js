@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
 // Modify Role
 // Created By : Aravind S
 // Date : 20-December-2018
-router.put('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
 // Deletes an Role
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
