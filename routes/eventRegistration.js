@@ -243,6 +243,39 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     })
 });
 
+router.post('/refuseCartPayment',(req, res)=>{
+    let user_id = req.body.user_id;
+    User.findByIdAndUpdate(user_id, {
+        cart_paid: false,
+        cart_dd_image: ''
+    }, (err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            Registration.updateMany({
+                user_id: req.body.user_id
+            }, {
+                status: 'Not Paid'
+            }, (error, documents) => {
+                if (error) {
+                    res.json({
+                        error: true,
+                        msg: err
+                    })
+                } else {
+                    res.json({
+                        error: false,
+                        msg: 'Payment Refused!'
+                    })
+                }
+            })
+        }
+    });
+})
+
 router.post('/confirmCartPayment', (req, res) => {
     let user_id = req.body.user_id;
     User.findByIdAndUpdate(user_id, {
