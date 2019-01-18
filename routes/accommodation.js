@@ -166,7 +166,7 @@ router.get('/:id', (req, res) => {
 // Confirms Payment for user once paid
 // Modified By : Aravind S
 // Date : 21-December-2018
-router.put('/confirmPayment/:id', (req, res) => {
+router.post('/update/confirmPayment/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.id}`);
 
@@ -299,7 +299,7 @@ router.post('/confirmAccommodation/:id', (req, res) => {
 // Cancels an Accommodation of an user
 // Created By : Aravind S
 // Date : 20-December-2018
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 

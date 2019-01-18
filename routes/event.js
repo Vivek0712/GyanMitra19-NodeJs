@@ -243,7 +243,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
@@ -294,7 +294,7 @@ router.put('/:id', (req, res) => {
 //Wrongly typed
 //Shyam
 //23/12/2018
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 

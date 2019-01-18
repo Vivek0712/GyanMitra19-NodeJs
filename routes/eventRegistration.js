@@ -370,7 +370,7 @@ router.post('/newEventRegistration', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     Registration.findByIdAndRemove(req.params.id, (err, docs) => {
         if (err) {
             res.json({
@@ -386,7 +386,7 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
     var newParticipation = {
