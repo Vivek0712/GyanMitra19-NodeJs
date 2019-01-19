@@ -47,7 +47,7 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
 })
 
 
-router.get('/participants/search', (req, res, next) => {
+router.get('/participants/search', (req, res, next) => { 
     let _id = req.query.id;
     User.findById(_id).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').exec((err, docs) => {
         if (!err) {
