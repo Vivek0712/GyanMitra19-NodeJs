@@ -387,7 +387,7 @@ router.post('/delete/:id', (req, res) => {
     })
 });
 
-router.post('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
     var newParticipation = {
