@@ -628,4 +628,6 @@ router.get('/checkEventRegistrationStatus/:event_id/:user_id', function (req, re
     })
 });
 
+
+
 module.exports = router;
