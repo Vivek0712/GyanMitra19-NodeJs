@@ -192,7 +192,7 @@ router.get('/participants', function (req, res, next) {
     if (!req.query.page) {
         User.find({
             type: 'user'
-        }, function (err, docs) {
+        }).populate('college_id').then( (err, docs) => {
             if (!err) {
                 res.send(docs);
             } else {
@@ -204,15 +204,13 @@ router.get('/participants', function (req, res, next) {
         })
     } else {
         let page = req.query.page
-        User.findUsers(page, 'user', function (err, docs) {
+        User.find({}).populate('college_id').skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
             if (!err) {
                 res.send(docs);
             } else {
-                res.send({
-                    error: true,
-                    msg: err
-                });
+                console.log(err);
             }
+    
         });
     }
 });
