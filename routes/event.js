@@ -34,6 +34,29 @@ router.get('/:event/:department/:page', function (req, res) {
                 const from = ((page - 1) * 6)
                 let to = (page * 6)
                 docs = docs.slice(from, to)
+                if(req.params.event == "Workshop"){
+                    for (var i = 0; i < docs.length; i++) {
+                        Registration.find({ event_id: docs[i]._id }).exec((err,document) => {
+                            console.log(i);
+                            console.log(document);
+                            try {
+                                if (document.length == docs[i].max_limit) {
+                                    docs[i].max_limit_status = true;
+                                    console.log("Test");
+                                }
+                                else {
+                                    docs[i].max_limit_status = false;
+                                }
+                            }
+                            catch (err) {
+    
+                            }
+                            finally {
+    
+                            }
+                        })
+                    }
+                }
                 res.send(docs)
             }
         })
@@ -75,7 +98,7 @@ router.post('/uploadImage/:id', (request, res) => {
                         image_name: request.params.id + path.extname(file.originalname)
                     }
                 }, (err, resp) => {
-                    if (err) {} else {}
+                    if (err) { } else { }
                 })
             }
         })
@@ -243,7 +266,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
@@ -276,25 +299,25 @@ router.put('/:id', (req, res) => {
     Event.findByIdAndUpdate(req.params.id, {
         $set: event
     }, {
-        new: true
-    }, (err, doc) => {
-        if (!err) {
-            res.json({
-                error: false,
-                msg: "Event Updated"
-            });
-        } else {
-            res.json({
-                error: true,
-                msg: "Failed To Update Event" + err
-            });
-        }
-    });
+            new: true
+        }, (err, doc) => {
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: "Event Updated"
+                });
+            } else {
+                res.json({
+                    error: true,
+                    msg: "Failed To Update Event" + err
+                });
+            }
+        });
 })
 //Wrongly typed
 //Shyam
 //23/12/2018
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
@@ -314,13 +337,13 @@ router.delete('/:id', (req, res) => {
 });
 
 router.get('/getWorkshop', (req, res, next) => {
-   // console.log('helloworshop');
+    // console.log('helloworshop');
     Event.find().populate('category_id').exec((err, docs) => {
-        docs = docs.filter((doc) => { 
+        docs = docs.filter((doc) => {
             console.log(doc);
         })
     })
-    
+
 });
 
 

@@ -57,7 +57,7 @@ router.get('/', function(req, res, next) {
 
 //Error :id not :update
 //Modified by Aravind Raj
-router.put('/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.course_name}`);
 
@@ -80,7 +80,7 @@ router.put('/:id', (req, res) => {
 
 //Error Delete by name was don
 //Modified by Aravind Raj
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.name}`);
 

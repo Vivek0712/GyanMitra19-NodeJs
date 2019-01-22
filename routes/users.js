@@ -47,9 +47,9 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
 })
 
 
-router.get('/participants/search', (req, res, next) => {
+router.get('/participants/search', (req, res, next) => { 
     let _id = req.query.id;
-    User.findById(_id, (err, docs) => {
+    User.findById(_id).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').exec((err, docs) => {
         if (!err) {
             res.json(docs);
         } else {
@@ -192,7 +192,7 @@ router.get('/participants', function (req, res, next) {
     if (!req.query.page) {
         User.find({
             type: 'user'
-        }).populate('college_id').then( (err, docs) => {
+        }).populate('college_id').exec(function (err, docs) {
             if (!err) {
                 res.send(docs);
             } else {
@@ -215,6 +215,21 @@ router.get('/participants', function (req, res, next) {
     }
 });
 
+router.post('/participants/filter',function(req,res){
+    User.find({
+        type: 'user',college_id:{$regex: req.body.college_id},Gender:{$regex: req.body.gender},cart_paid:req.body.paidStatus 
+    }).populate('college_id').populate('department_id').populate('year_id').populate('year_id').exec(function (err, docs) {
+        if (!err) {
+            res.send(docs);
+        } else {
+            res.send({
+                error: true,
+                msg: err
+            });
+        }
+    });
+});
+
 router.get('/isCartConfirmed/:id', (req, res) => {
     User.findById(req.params.id, (err, docs) => {
         if (err) {
@@ -231,7 +246,7 @@ router.get('/isCartConfirmed/:id', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
 
@@ -251,6 +266,36 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
+
+router.post('/update/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+
+    var newUser = {
+        name: req.body.name,
+        email_id: req.body.email_id,
+        mobile_number: req.body.mobile_number,
+        college_id: req.body.college_id,
+        degree_id: req.body.degree_id,
+        department_id: req.body.department_id,
+        year_id: req.body.year_id
+    }
+    
+    User.findByIdAndUpdate(req.params.id,{ $set: newUser }, (err, doc) => {
+        if (!err) {
+            res.json({
+                error: false,
+                msg: 'User Updated'
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Error in Updating user"
+            });
+        }
+    });
+});
+
 router.get('/admin', (req, res) => {
     User.find({
         type: 'admin'
