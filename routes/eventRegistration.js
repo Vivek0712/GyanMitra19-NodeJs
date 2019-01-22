@@ -32,7 +32,8 @@ router.get('/registeredEvents/:id/:type', (req, res) => {
             })
             res.json({
                 error: false,
-                msg: ids
+                msg: ids,
+                doc:docs
             })
         }
     })
