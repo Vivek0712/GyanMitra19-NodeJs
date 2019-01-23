@@ -9,38 +9,40 @@ var ObjectId = require('mongoose').Types.ObjectId;
 router.post('/authenticate', (req, res, next) => {
     const email_id = req.body.email_id;
     const password = req.body.password;
-    User.getUserByEmailId(email_id, (err, user) => {
+    User.find({email_id:email_id,activated: true}, (err, user) => {
         if (err) throw err;
-        if (!user) {
-            return res.json({ success: false, email: false, msg: 'USER NOT FOUND  ' + email_id });
+        else if (!user) {
+            return res.json({ success: false, email: false, msg: 'Register your account (or) Check your mail for activation ' + email_id });
         }
-        User.comparePassword(password, user.password, (err, isMatch) => {
-            if (err) throw err;
-            if (isMatch) {
-                const token = jwt.sign({ data: user }, config.application.secret, {
-                    expiresIn: 604800 // 1 week
-                });
-                res.json({
-                    success: true,
-                    email: true,
-                    password: true,
-                    token: 'JWT ' + token,
-                    user: {
-                        id: user._id,
-                        name: user.name,
-                        email_id: user.email_id,
-                        type: user.type,
-                        gmID: user.gmID,
-                        mobile_number: user.mobile_number,
-                        cart_paid: user.cart_paid,
-                        cart_confirmed: user.cart_confirmed
-                    },
-                    msg: 'YOUR LOGGED IN'
-                })
-            } else {
-                return res.json({ success: false, password: false, msg: 'WRONG PASSWORD' });
-            }
-        });
+        else {
+            User.comparePassword(password, user[0].password, (err, isMatch) => {
+                if (err) throw err;
+                if (isMatch) {
+                    const token = jwt.sign({ data: user }, config.application.secret, {
+                        expiresIn: 604800 // 1 week
+                    });
+                    res.json({
+                        success: true,
+                        email: true,
+                        password: true,
+                        token: 'JWT ' + token,
+                        user: {
+                            id: user._id,
+                            name: user[0].name,
+                            email_id: user[0].email_id,
+                            type: user[0].type,
+                            gmID: user[0].gmID,
+                            mobile_number: user[0].mobile_number,
+                            cart_paid: user[0].cart_paid,
+                            cart_confirmed: user[0].cart_confirmed
+                        },
+                        msg: 'YOUR LOGGED IN'
+                    })
+                } else {
+                    return res.json({ success: false, password: false, msg: 'WRONG PASSWORD' });
+                }
+            });
+        }
     });
 });
 
