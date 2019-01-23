@@ -446,7 +446,12 @@ router.get('/userRegisteredEvents/:id/:type', (req, res) => {
 router.get('/events/:id', function (req, res, next) {
     Registration.find({
         event_id: req.params.id
-    }).populate('user_id').exec((err, docs) => {
+    }).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).exec((err, docs) => {
         if (err) {
             res.json({
                 error: true,

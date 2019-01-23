@@ -8,8 +8,8 @@ var ObjectId = require('mongoose').Types.ObjectId;
 let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "gyanmitra19@gmail.com",
-        pass: "mitragyan19"
+        user: "gyanmitra19@mepcoeng.ac.in",
+        pass: "mepco123"
     }
 });
 
@@ -56,17 +56,18 @@ router.post('/create', (req, res, next) => {
                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to Activate</a>"
                             }
                             smtpTransport.sendMail(mailOptions, function (error, response) {
-                                if (error) {
-                                    res.json({
-                                        success: false,
-                                        msg: 'Failed to register user' + error
-                                    });
-                                } else {
+                                if (!error){
                                     res.json({
                                         success: true,
                                         msg: 'User Registered Activation Mail has been sent'
                                     });
                                 }
+								else {
+									res.json({
+                                        success: true,
+                                        msg: 'User Registered.'
+                                    });
+								}
                             });
                         }
                     })
