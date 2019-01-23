@@ -33,7 +33,7 @@ router.get('/registeredEvents/:id/:type', (req, res) => {
             res.json({
                 error: false,
                 msg: ids,
-                doc:docs
+                doc: docs
             })
         }
     })
@@ -244,7 +244,7 @@ router.get('/checkRegistration/:event_id/:user_id', (req, res) => {
     })
 });
 
-router.post('/refuseCartPayment',(req, res)=>{
+router.post('/refuseCartPayment', (req, res) => {
     let user_id = req.body.user_id;
     User.findByIdAndUpdate(user_id, {
         cart_paid: false,
@@ -447,7 +447,27 @@ router.get('/userRegisteredEvents/:id/:type', (req, res) => {
 router.get('/events/:id', function (req, res, next) {
     Registration.find({
         event_id: req.params.id
-    }).populate('user_id').exec((err, docs) => {
+    }).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'degree_id'
+        }
+    }).populate('event_id').exec((err, docs) => {
         if (err) {
             res.json({
                 error: true,
