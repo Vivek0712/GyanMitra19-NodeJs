@@ -16,9 +16,6 @@ router.post('/getHash', (req, res, next) => {
      var sha = new jsSHA('SHA-512', "TEXT");
      sha.update(hashString)
      var hash = sha.getHash("HEX");
-     
-     console.log(req.body.key + '|' + req.body.txnId + '|' + req.body.amount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + req.body.salt);
-     console.log(hash);
      res.json({
           error: true,
           'hash':hash
