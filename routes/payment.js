@@ -135,4 +135,22 @@ router.post('/acc/success', (req, res, next) => {
  
       }
 })
+
+router.get('/payedUsers',function(req,res) {
+     Payment.find({payment_status: "Paid"}).populate("user_id").exec((err,docs)=>{
+          if(err){
+               res.json({
+                    success: false,
+                    msg: err
+               })
+          }
+          else {
+               res.json({
+                    success:true,
+                    msg: docs
+               })
+          }
+     })
+});
+
 module.exports = router;

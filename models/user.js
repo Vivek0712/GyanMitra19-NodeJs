@@ -20,7 +20,7 @@ const UserSchema = mongoose.Schema({
     },
     department_id: {
         type: Schema.Types.ObjectId,
-        ref: 'Department',
+        ref: 'Course',
     },
     degree_id: {
         type: Schema.Types.ObjectId,

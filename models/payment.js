@@ -13,8 +13,7 @@ const PaymentSchema = mongoose.Schema({
         required: true
     },
     file_name: {
-        type: String,
-        
+        type: String
     },
     payment_status: {
         type: String,
