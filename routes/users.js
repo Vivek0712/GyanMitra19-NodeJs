@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const User = require('../models/user');
 const EventRegistration = require('../models/registration');
+const Accomodation = require('../models/accommodation');
 var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
 var multer = require('multer')
@@ -13,12 +12,12 @@ var multer = require('multer')
 router.post('/uploadCartDDImage/:id', (req, res) => {
     User.updateMany({
         _id: req.params.id
-    },{
+    }, {
         $set: {
             cart_dd_image: 'Awaiting Confirmation'
         }
-    }, (err, docs)=>{
-        if(err){
+    }, (err, docs) => {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
@@ -32,7 +31,7 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
             status: 'Verifying Payment'
         }
     }, (err, docs) => {
-        if(err){
+        if (err) {
             res.json({
                 error: true,
                 msg: err
@@ -47,7 +46,7 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
 })
 
 
-router.get('/participants/search', (req, res, next) => { 
+router.get('/participants/search', (req, res, next) => {
     let _id = req.query.id;
     User.findById(_id).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').exec((err, docs) => {
         if (!err) {
@@ -186,14 +185,20 @@ router.post('/confirmCart', function (req, res) {
     })
 })
 
+
 //Read All Participants
 router.get('/participants', function (req, res, next) {
 
     if (!req.query.page) {
         User.find({
             type: 'user'
-        }).populate('college_id').exec(function (err, docs) {
+        }).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').populate('degree_id').exec(function (err, docs) {
             if (!err) {
+                docs = docs.filter((val)=>{
+                    if(val.college_id != null){
+                        return true;
+                    }
+                })
                 res.send(docs);
             } else {
                 res.send({
@@ -210,14 +215,21 @@ router.get('/participants', function (req, res, next) {
             } else {
                 console.log(err);
             }
-    
+
         });
     }
 });
 
-router.post('/participants/filter',function(req,res){
+router.post('/participants/filter', function (req, res) {
     User.find({
-        type: 'user',college_id:{$regex: req.body.college_id},Gender:{$regex: req.body.gender},cart_paid:req.body.paidStatus 
+        type: 'user',
+        college_id: {
+            $regex: req.body.college_id
+        },
+        Gender: {
+            $regex: req.body.gender
+        },
+        cart_paid: req.body.paidStatus
     }).populate('college_id').populate('department_id').populate('year_id').populate('year_id').exec(function (err, docs) {
         if (!err) {
             res.send(docs);
@@ -280,8 +292,10 @@ router.post('/update/:id', (req, res) => {
         department_id: req.body.department_id,
         year_id: req.body.year_id
     }
-    
-    User.findByIdAndUpdate(req.params.id,{ $set: newUser }, (err, doc) => {
+
+    User.findByIdAndUpdate(req.params.id, {
+        $set: newUser
+    }, (err, doc) => {
         if (!err) {
             res.json({
                 error: false,

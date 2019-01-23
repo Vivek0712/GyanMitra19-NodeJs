@@ -38,18 +38,19 @@ const year = require('./routes/year');
 const eventRegistration = require('./routes/eventRegistration');
 const configurations = require('./routes/config');
 const payment = require('./routes/payment');
+const report = require('./routes/reports')
 //End Routes
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = true;
+var production = false;
 // CORS Middleware
 
 
 if (production) {
     app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in' }));
 } else {
-    app.use(cors({ origin: 'http://localhost:3000' }));
+    app.use(cors({ origin: 'http://localhost:4200' }));
     //port = 3000;
 }
 
@@ -87,6 +88,7 @@ app.use('/participationStatus', participationStatus);
 app.use('/eventRegistration', eventRegistration);
 app.use('/config', configurations);
 app.use('/payment', payment);
+app.use('/report',report)
 //Routes Ends
 
 // Index Route
