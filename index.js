@@ -43,12 +43,13 @@ const report = require('./routes/reports')
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = false;
+var production = true;
 // CORS Middleware
 
 
 if (production) {
     app.use(cors({ origin: 'http://www.gyanmitra19.mepcoeng.ac.in' }));
+    //app.use(cors({ origin: 'http://localhost:3000' }));
 } else {
     app.use(cors({ origin: 'http://localhost:4200' }));
     //port = 3000;
