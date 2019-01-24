@@ -6,7 +6,7 @@ var nodemailer = require("nodemailer");
 var ObjectId = require('mongoose').Types.ObjectId;
 //Fill up mail details and proceed
 let smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
+    service: "gmail",
     auth: {
         user: "gyanmitra19@gmail.com",
         pass: "gyan94860"
@@ -49,7 +49,7 @@ router.post('/create', (req, res, next) => {
                                 msg: 'Failed to add activtion Code to user' + err2
                             });
                         } else {
-                            link = "http://localhost:4200/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
+                            link = "http://www.gyanmitra19.mepcoeng.ac.in/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
                             let mailOptions = {
                                 to: req.body.email_id,
                                 subject: "Please confirm your Email account",
@@ -65,7 +65,7 @@ router.post('/create', (req, res, next) => {
 								else {
 									res.json({
                                         success: true,
-                                        msg: 'User Registered.'
+                                        msg: error
                                     });
 								}
                             });
