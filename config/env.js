@@ -2,13 +2,13 @@ config = {
     database: {
 
         //Local DB
-        name: 'mongodb://127.0.0.1:27017/gyanmitra19'
+        //name: 'mongodb://127.0.0.1:27017/gyanmitra19'
 
         //MLAB DB
         //name: 'mongodb://gyanmitra19:gyanmitra19@ds241664.mlab.com:41664/gyanmitra19'
 
         //Server DB
-        //name: 'mongodb://gyanmitra19:GyanMitra19@192.168.16.14/gyanmitra19'
+        name: 'mongodb://gyanmitra19:GyanMitra19@192.168.16.14/gyanmitra19'
     },
     application: {
         secret: 'secret',
