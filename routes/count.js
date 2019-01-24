@@ -10,7 +10,4 @@ router.get('/registrations',function(req,res){
     })
 });
 
-router.get('/DomainCount/:id',function(req,res){
-});
-
 module.exports = router;

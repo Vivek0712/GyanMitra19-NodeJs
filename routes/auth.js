@@ -27,7 +27,7 @@ router.post('/authenticate', (req, res, next) => {
                         password: true,
                         token: 'JWT ' + token,
                         user: {
-                            id: user._id,
+                            id: user[0]._id,
                             name: user[0].name,
                             email_id: user[0].email_id,
                             type: user[0].type,
