@@ -16,6 +16,11 @@ router.get('/registeredEvents/:id/:type', (req, res) => {
         populate: {
             path: 'category_id'
         }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
+        }
     }).exec((err, docs) => {
         if (err) {
             res.json({
