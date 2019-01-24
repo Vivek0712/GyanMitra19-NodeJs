@@ -46,44 +46,25 @@ router.get('/populate', (req, res) => {
 // Uploads a file for DD
 // Created By : Aravind S
 // Date : 31-December-2018
-router.post('/uploadImage/:id', (request, res) => {
-    var upload = multer({
-        storage: multer.diskStorage({
-            destination: function (req, file, cb) {
-                cb(null, './assests/images/accomodation/');
-            },
-            filename: function (req, file, cb) {
-                cb(null, request.params.id + path.extname(file.originalname));
-                data = {
-                    acc_file_name: request.params.id + path.extname(file.originalname),
-                    acc_payment_status: 'Paid',
-                    acc_mode_of_payment: 'Demand Draft'
-                }
-                Accomodation.updateOne({
-                    user_id: request.params.id
-                }, data, (err, resp) => {
-                    if (err) {
-                        res.json({
-                            error: true,
-                            msg: err
-                        })
-                    }
-                    else {
-                        res.json({
-                            error: false,
-                            msg: 'Image Successfully Uploaded'
-                        })
-                    }
-                })
-            }
-        })
-    }).any()
-    upload(request, res, function (err) {
+router.get('/confirmDDUser/:id', (request, res) => {
+    data = {
+        acc_payment_status: 'DD Pending',
+        acc_mode_of_payment: 'Demand Draft'
+    }
+    Accomodation.updateOne({
+        user_id: request.params.id
+    }, data, (err, resp) => {
         if (err) {
             res.json({
                 error: true,
                 msg: err
-            });
+            })
+        }
+        else {
+            res.json({
+                error: false,
+                msg: 'Request to pay through DD has been placed'
+            })
         }
     })
 })
@@ -148,17 +129,20 @@ router.get('/', function (req, res, next) {
     }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/getAccomodation/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-    Accomodation.findById(req.params.id, (err, docs) => {
+    Accomodation.find({user_id: req.params.id}, (err, docs) => {
         if (err) {
             res.json({
                 error: true,
                 msg: err
             });
         } else {
-            res.send(docs);
+            res.json({
+                error: false,
+                docs: docs
+            });
         }
     })
 })
@@ -275,7 +259,8 @@ router.post('/refusePayment/:id', (req, res) => {
 // Date : 20-December-2018
 router.post('/confirmAccommodation/:id', (req, res) => {
     var accommodation = {
-        acc_status: 'Confirmed'
+        acc_status: 'Confirmed',
+        acc_payment_status: 'Paid'
     };
     Accomodation.findByIdAndUpdate(req.params.id, {
         $set: accommodation

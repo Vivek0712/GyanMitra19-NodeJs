@@ -15,6 +15,7 @@ router.post('/authenticate', (req, res, next) => {
             return res.json({ success: false, email: false, msg: 'Register your account (or) Check your mail for activation ' + email_id });
         }
         else {
+            console.log(user);
             User.comparePassword(password, user[0].password, (err, isMatch) => {
                 if (err) throw err;
                 if (isMatch) {
