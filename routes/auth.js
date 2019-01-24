@@ -11,14 +11,14 @@ router.post('/authenticate', (req, res, next) => {
     const password = req.body.password;
     User.find({email_id:email_id,activated: true}, (err, user) => {
         if (err) throw err;
-        else if (!user) {
+        else if (user.length == 0) {
             return res.json({ success: false, email: false, msg: 'Register your account (or) Check your mail for activation ' + email_id });
         }
         else {
             User.comparePassword(password, user[0].password, (err, isMatch) => {
                 if (err) throw err;
                 if (isMatch) {
-                    const token = jwt.sign({ data: user }, config.application.secret, {
+                    const token = jwt.sign({ data: user[0] }, config.application.secret, {
                         expiresIn: 604800 // 1 week
                     });
                     res.json({
