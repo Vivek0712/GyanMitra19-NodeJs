@@ -48,8 +48,7 @@ router.get('/populate', (req, res) => {
 // Date : 31-December-2018
 router.get('/confirmDDUser/:id', (request, res) => {
     data = {
-        acc_file_name: request.params.id + path.extname(file.originalname),
-        acc_payment_status: 'Paid',
+        acc_payment_status: 'DD Pending',
         acc_mode_of_payment: 'Demand Draft'
     }
     Accomodation.updateOne({
@@ -64,7 +63,7 @@ router.get('/confirmDDUser/:id', (request, res) => {
         else {
             res.json({
                 error: false,
-                msg: 'DD Confirmed'
+                msg: 'Request to pay through DD has been placed'
             })
         }
     })
@@ -260,7 +259,8 @@ router.post('/refusePayment/:id', (req, res) => {
 // Date : 20-December-2018
 router.post('/confirmAccommodation/:id', (req, res) => {
     var accommodation = {
-        acc_status: 'Confirmed'
+        acc_status: 'Confirmed',
+        acc_payment_status: 'Paid'
     };
     Accomodation.findByIdAndUpdate(req.params.id, {
         $set: accommodation
