@@ -43,7 +43,7 @@ const report = require('./routes/reports')
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = true;
+var production = false;
 // CORS Middleware
 
 
