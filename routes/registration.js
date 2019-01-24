@@ -15,8 +15,10 @@ let smtpTransport = nodemailer.createTransport({
 
 //Create Registration User
 router.post('/create', (req, res, next) => {
-    User.find({email_id:req.body.email_id},(err,docs)=> {
-        if(docs.length == 0){
+    User.find({
+        email_id: req.body.email_id
+    }, (err, docs) => {
+        if (docs.length == 0) {
             let newUser = new User({
                 name: req.body.name,
                 college_id: req.body.college_id,
@@ -56,31 +58,52 @@ router.post('/create', (req, res, next) => {
                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to Activate</a>"
                             }
                             smtpTransport.sendMail(mailOptions, function (error, response) {
-                                if (!error){
+                                if (!error) {
                                     res.json({
                                         success: true,
                                         msg: 'User Registered Activation Mail has been sent'
                                     });
-                                }
-								else {
-									res.json({
+                                } else {
+                                    res.json({
                                         success: true,
                                         msg: error
                                     });
-								}
+                                }
                             });
                         }
                     })
                 }
             });
-        }
-        else {
+        } else {
             res.json({
                 success: false,
                 msg: 'Mail id is already registered'
             })
         }
     });
+});
+
+router.get('/generateGMID', (req, res) => {
+    User.find({
+        activated: true,
+        gmID: ""
+    }).exec((err, docs) => {
+        var respo = []
+        docs.forEach(element => {
+            var _id = element._id.toString()
+            User.updateOne({
+                _id: ObjectId(_id)
+            }, {
+                $set: {
+                    gmID: 'GM19_' + _id.substring(_id.length - 8, _id.length)
+                }
+            })
+        })
+        res.json({
+            error: false,
+            msg: 'GM ID Generated'
+        })
+    })
 });
 
 router.post('/activate', function (req, res, next) {
@@ -99,7 +122,7 @@ router.post('/activate', function (req, res, next) {
         } else {
             if (user.activation_code == activation_code) {
                 user.activated = true;
-                var  id = user._id.toString();
+                var id = user._id.toString();
                 user.gmID = 'GM19_' + id.substring(id.length - 8, id.length);
                 user.save(function (err, newUser) {
                     if (err) {
@@ -143,7 +166,7 @@ router.get('/hasConfirmed/:id', function (req, res, next) {
             res.json({
                 error: true,
                 data: user,
-                msg:"Confirmed"
+                msg: "Confirmed"
             })
         }
     })

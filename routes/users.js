@@ -94,7 +94,6 @@ router.get('/', function (req, res, next) {
         if (!err) {
             res.send(docs);
         } else {
-            console.log(err);
         }
 
     });
@@ -194,8 +193,8 @@ router.get('/participants', function (req, res, next) {
             type: 'user'
         }).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').populate('degree_id').exec(function (err, docs) {
             if (!err) {
-                docs = docs.filter((val)=>{
-                    if(val.college_id != null){
+                docs = docs.filter((val) => {
+                    if (val.college_id != null) {
                         return true;
                     }
                 })
@@ -213,7 +212,6 @@ router.get('/participants', function (req, res, next) {
             if (!err) {
                 res.send(docs);
             } else {
-                console.log(err);
             }
 
         });
@@ -253,6 +251,33 @@ router.get('/isCartConfirmed/:id', (req, res) => {
             res.json({
                 error: false,
                 isCartConfirmed: docs.cart_confirmed
+            })
+        }
+    })
+})
+
+router.get('/refreshUser/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    User.findById(req.params.id, (err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            res.json({
+                error: false,
+                msg: {
+                    id: docs._id,
+                    name: docs.name,
+                    email_id: docs.email_id,
+                    type: docs.type,
+                    gmID: docs.gmID,
+                    mobile_number: docs.mobile_number,
+                    cart_paid: docs.cart_paid,
+                    cart_confirmed: docs.cart_confirmed
+                }
             })
         }
     })
