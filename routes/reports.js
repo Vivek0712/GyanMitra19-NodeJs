@@ -10,18 +10,20 @@ const Team = require('../models/team')
 const TeamMember = require('../models/team_member')
 var ObjectId = require('mongoose').Types.ObjectId;
 
-router.get('/removeInvalidUsersWithInvalidCollegeID', (req, res)=>{
+router.get('/removeInvalidUsersWithInvalidCollegeID', (req, res) => {
 
     // Removes Invalid users without college_id
 
-    User.find({type:{
-        $ne: 'admin'
-    }}).populate('college_id').then((docs)=>{
-        docs.forEach((doc)=>{
-            if(!doc.college_id){
+    User.find({
+        type: {
+            $ne: 'admin'
+        }
+    }).populate('college_id').then((docs) => {
+        docs.forEach((doc) => {
+            if (!doc.college_id) {
                 User.findOneAndRemove({
-                _id: doc._id
-                }, (err, docu)=>{
+                    _id: doc._id
+                }, (err, docu) => {
                     console.log(docu);
                 })
             }
@@ -31,38 +33,36 @@ router.get('/removeInvalidUsersWithInvalidCollegeID', (req, res)=>{
 })
 
 
-router.get('/removeInvalidRegistrationsWithInvalidUserID', (req, res)=>{
+router.get('/removeInvalidRegistrationsWithInvalidUserID', (req, res) => {
 
     // Removes Invalid Registrations without User ID
 
-    EventRegistration.find({}).populate('user_id').then((docs)=>{
+    EventRegistration.find({}).populate('user_id').then((docs) => {
         resA = []
-        docs.forEach((doc)=>{
-            if(!doc.user_id){
+        docs.forEach((doc) => {
+            if (!doc.user_id) {
                 console.log(doc._id)
                 EventRegistration.findOneAndDelete({
-                    _id:doc._id
-                },(err, newdoc)=>{
-                })
+                    _id: doc._id
+                }, (err, newdoc) => {})
             }
         })
         res.send('Finished')
     })
 })
 
-router.get('/removeInvalidTeams', (req, res)=>{
+router.get('/removeInvalidTeams', (req, res) => {
 
     // Removes Invalid Registrations without User ID
 
-    Team.find({}).populate('user_id').then((docs)=>{
+    Team.find({}).populate('user_id').then((docs) => {
         resA = []
-        docs.forEach((doc)=>{
-            if(!doc.user_id){
+        docs.forEach((doc) => {
+            if (!doc.user_id) {
                 console.log(doc._id)
                 Team.findOneAndDelete({
-                    _id:doc._id
-                },(err, newdoc)=>{
-                })
+                    _id: doc._id
+                }, (err, newdoc) => {})
             }
         })
         res.send('Finished')
@@ -70,19 +70,18 @@ router.get('/removeInvalidTeams', (req, res)=>{
 })
 
 
-router.get('/removeInvalidTeamMembers', (req, res)=>{
+router.get('/removeInvalidTeamMembers', (req, res) => {
 
     // Removes Invalid Registrations without User ID
 
-    TeamMember.find({}).populate('user_id').populate('team_id').then((docs)=>{
+    TeamMember.find({}).populate('user_id').populate('team_id').then((docs) => {
         resA = []
-        docs.forEach((doc)=>{
-            if(!doc.user_id || !doc.team_id){
+        docs.forEach((doc) => {
+            if (!doc.user_id || !doc.team_id) {
                 console.log(doc._id)
                 TeamMember.findOneAndDelete({
-                    _id:doc._id
-                },(err, newdoc)=>{
-                })
+                    _id: doc._id
+                }, (err, newdoc) => {})
             }
         })
         res.send('Finished')
@@ -116,8 +115,8 @@ router.get('/allEventRegistrations', (req, res) => {
         populate: {
             path: 'year_id'
         }
-    }).exec((err, docs)=>{
-        if(err){
+    }).exec((err, docs) => {
+        if (err) {
             res.json({
                 error: true,
                 msg: err
