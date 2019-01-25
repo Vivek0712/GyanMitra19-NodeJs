@@ -17,6 +17,7 @@ router.post('/getHash', (req, res, next) => {
         Dont Upload the ENV file in the github
         Calculate the amount for the Accomodoation also
         I have sent the env file in the email.
+        Use Email id to find user
          --Shyam.R
      */
      var hashString = config.payment.key + '|' + req.body.txnId + '|' + req.body.amount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
