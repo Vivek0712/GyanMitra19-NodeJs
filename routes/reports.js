@@ -6,7 +6,89 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
 const EventRegistration = require('../models/registration')
+const Team = require('../models/team')
+const TeamMember = require('../models/team_member')
 var ObjectId = require('mongoose').Types.ObjectId;
+
+router.get('/removeInvalidUsersWithInvalidCollegeID', (req, res)=>{
+
+    // Removes Invalid users without college_id
+
+    User.find({type:{
+        $ne: 'admin'
+    }}).populate('college_id').then((docs)=>{
+        docs.forEach((doc)=>{
+            if(!doc.college_id){
+                User.findOneAndRemove({
+                _id: doc._id
+                }, (err, docu)=>{
+                    console.log(docu);
+                })
+            }
+        })
+        res.send('Finished')
+    })
+})
+
+
+router.get('/removeInvalidRegistrationsWithInvalidUserID', (req, res)=>{
+
+    // Removes Invalid Registrations without User ID
+
+    EventRegistration.find({}).populate('user_id').then((docs)=>{
+        resA = []
+        docs.forEach((doc)=>{
+            if(!doc.user_id){
+                console.log(doc._id)
+                EventRegistration.findOneAndDelete({
+                    _id:doc._id
+                },(err, newdoc)=>{
+                })
+            }
+        })
+        res.send('Finished')
+    })
+})
+
+router.get('/removeInvalidTeams', (req, res)=>{
+
+    // Removes Invalid Registrations without User ID
+
+    Team.find({}).populate('user_id').then((docs)=>{
+        resA = []
+        docs.forEach((doc)=>{
+            if(!doc.user_id){
+                console.log(doc._id)
+                Team.findOneAndDelete({
+                    _id:doc._id
+                },(err, newdoc)=>{
+                })
+            }
+        })
+        res.send('Finished')
+    })
+})
+
+
+router.get('/removeInvalidTeamMembers', (req, res)=>{
+
+    // Removes Invalid Registrations without User ID
+
+    TeamMember.find({}).populate('user_id').populate('team_id').then((docs)=>{
+        resA = []
+        docs.forEach((doc)=>{
+            if(!doc.user_id || !doc.team_id){
+                console.log(doc._id)
+                TeamMember.findOneAndDelete({
+                    _id:doc._id
+                },(err, newdoc)=>{
+                })
+            }
+        })
+        res.send('Finished')
+    })
+})
+
 
 router.get('/allEventRegistrations', (req, res) => {
     EventRegistration.find({}).populate('event_id').populate({
@@ -47,30 +129,6 @@ router.get('/allEventRegistrations', (req, res) => {
             })
         }
     })
-
-    // EventRegistration.find({}).populate('user_id').exec((error, docs) => {
-    //     if (error) {
-    //         res.json({
-    //             error: true,
-    //             msg: error
-    //         })
-    //     } else {
-    //         invalidUserIDs = []
-    //         docs.forEach((doc) => {
-    //             if (doc.user_id == null) {
-    //                 EventRegistration.remove({_id: doc._id},(err, d)=>{
-    //                     console.log(d)
-    //                 })
-    //                 invalidUserIDs.push(doc._id)
-    //             }
-    //         })
-    //         res.json({
-    //             error: false,
-    //             msg: invalidUserIDs
-    //         })
-
-    //     }
-    // })
 })
 
 router.get('/totalDomainCount', (req, res) => {
