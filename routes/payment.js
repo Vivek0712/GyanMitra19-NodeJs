@@ -10,8 +10,13 @@ const Accomodation = require('../models/accommodation');
 router.post('/getHash', (req, res, next) => {
 
      /* 
-        Here total amount must be calculated
-        Replace the req.body.amount with the total Amount calculated here 
+        Here Only  total amount must be calculated.
+        Replace the req.body.amount with the total Amount calculated here .
+        Do this first.
+        Dont open the Online Payment
+        Dont Upload the ENV file in the github
+        Calculate the amount for the Accomodoation also
+        I have sent the env file in the email
          --Shyam.R
      */
      var hashString = config.payment.key + '|' + req.body.txnId + '|' + req.body.amount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
