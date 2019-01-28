@@ -3,11 +3,139 @@ const router = express.Router();
 const config = require('../config/env');
 const User = require('../models/user');
 const EventRegistration = require('../models/registration');
-const Accomodation = require('../models/accommodation');
+const PasswordToken = require('../models/passwordtoken')
 var ObjectId = require('mongoose').Types.ObjectId;
-var path = require('path')
-var multer = require('multer')
+var nodemailer = require("nodemailer");
+const bcrypt = require('bcryptjs')
 
+let smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "gyanmitra19@gmail.com",
+        pass: "gyan94860"
+    }
+});
+
+router.post('/resetPassword', (req, res) => {
+    User.find({
+        email_id: req.body.email_id
+    }).then((docs) => {
+        PasswordToken.find({
+            user_id: docs[0]._id,
+            token: req.body.token
+        }).then((docs) => {
+            if (docs.length == 0) {
+                res.json({
+                    error: true,
+                    msg: 'Invalid Reset Request'
+                })
+            } else {
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(req.body.password, salt, (err, hash) => {
+                        if(err){
+                            res.json({
+                                error: true,
+                                msg: 'An error Occured'
+                            })
+                        } else {
+                            PasswordToken.findByIdAndRemove(docs[0]._id, (removeError, removeDocs)=>{
+                                if(removeError){
+                                    res.json({
+                                        error: true,
+                                        msg: 'An error Occured'
+                                    })
+                                } else {
+                                    User.findByIdAndUpdate(docs[0].user_id, {
+                                        $set:{
+                                            password: hash
+                                        }
+                                    }, (updateError, updateDocs)=>{
+                                        res.json({
+                                            error: false,
+                                            msg: 'Your password has been successfully reset'
+                                        })
+                                    })
+                                }
+                            })
+                        }
+                    });
+                });
+            }
+        })
+    })
+})
+
+router.post('/forgotPassword', (req, res) => {
+    User.find({
+        email_id: req.body.email_id,
+        activated: true
+    }, (err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            if (docs.length == 0) {
+                res.json({
+                    error: false,
+                    msg: 'Please Verify that you have registerd and activated'
+                })
+            } else {
+                PasswordToken.countDocuments({
+                    user_id: docs[0]._id
+                }, (countError, count) => {
+                    if (countError) {
+                        res.json({
+                            error: true,
+                            msg: countError
+                        })
+                    } else {
+                        if (count == 0) {
+                            var token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+                            PasswordToken.create({
+                                user_id: docs[0]._id,
+                                token: token
+                            }, (error, doc) => {
+                                if (error) {
+                                    res.json({
+                                        error: true,
+                                        msg: error
+                                    })
+                                } else {
+                                    link = "http://www.gyanmitra19.mepcoeng.ac.in/user/" + "resetPassword/" + token;
+                                    let mailOptions = {
+                                        to: req.body.email_id,
+                                        subject: "Reset your GyanMitra19 Password",
+                                        html: "Hello,<br> Please Click on the link to reset your GyanMitra19 password.<br><a href=" + link + ">Click here to Reset Password</a>"
+                                    }
+                                    smtpTransport.sendMail(mailOptions, function (error, response) {
+                                        if (!error) {
+                                            res.json({
+                                                success: true,
+                                                msg: 'Check your inbox for the reset link'
+                                            });
+                                        } else {
+                                            res.json({
+                                                success: false,
+                                                msg: error
+                                            });
+                                        }
+                                    });
+                                }
+                            })
+                        } else {
+                            res.json({
+                                error: false,
+                                msg: 'An link has already been sent to your mail'
+                            })
+                        }
+                    }
+                })
+            }
+        }
+    })
+})
 
 router.post('/uploadCartDDImage/:id', (req, res) => {
     User.updateMany({
@@ -44,7 +172,6 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
         }
     })
 })
-
 
 router.get('/participants/search', (req, res, next) => {
     let _id = req.query.id;
@@ -94,8 +221,7 @@ router.get('/', function (req, res, next) {
     }).skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
         if (!err) {
             res.send(docs);
-        } else {
-        }
+        } else {}
 
     });
 });
@@ -212,8 +338,7 @@ router.get('/participants', function (req, res, next) {
         User.find({}).populate('college_id').skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
             if (!err) {
                 res.send(docs);
-            } else {
-            }
+            } else {}
 
         });
     }
