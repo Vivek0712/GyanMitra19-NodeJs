@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
 const Event = require('../models/event');
+const Category = require('../models/category');
 const Registration = require('../models/registration');
 var ObjectId = require('mongoose').Types.ObjectId;
 var path = require('path')
@@ -68,6 +69,15 @@ router.get('/:event/:department/:page', function (req, res) {
             }
         })
     }
+});
+
+
+router.get('/event/:event/id/:department_id', function (req, res) {
+    Category.find({name: req.params.event},(err,doc)=>{
+        Event.find({department_id: req.params.department_id, category_id: doc[0]._id},(err,docs)=>{
+            res.send(docs);
+        })
+    })
 });
 
 router.post('/uploadImage/:id', (request, res) => {

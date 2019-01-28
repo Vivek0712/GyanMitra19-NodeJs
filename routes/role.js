@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
 
     Role.getAllRoles(page, (err, docs) => {
         if (!err) {
-            res.send(docs);
+            res.json({ error: true, msg: docs });
         } else {
             res.json({ error: true, msg: err });
         }
@@ -52,9 +52,9 @@ router.post('/update/:id', (req, res) => {
     };
     Role.findByIdAndUpdate(req.params.id, { $set: role }, { new: true }, (err, doc) => {
         if (!err) {
-            res.json({ error: false, msg: "Role Created" });
+            res.json({ error: false, msg: "Role Updated" });
         } else {
-            res.json({ error: true, msg: "Failed to Create Role : " + err });
+            res.json({ error: true, msg: "Failed to Update Role : " + err });
         }
     });
 })

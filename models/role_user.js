@@ -13,6 +13,11 @@ const RoleUserSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Role',
         required: true
+    },
+    department_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Department',
+        required: true
     }
 });
 RoleUserSchema.plugin(pagination);

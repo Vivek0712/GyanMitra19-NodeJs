@@ -9,6 +9,7 @@ const RoleSchema = mongoose.Schema({
         required: true
     }
 });
+
 RoleSchema.plugin(pagination);
 const Role = module.exports = mongoose.model('Role', RoleSchema);
 

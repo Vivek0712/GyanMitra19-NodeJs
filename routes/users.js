@@ -67,6 +67,7 @@ router.post('/create', (req, res, next) => {
         email_id: req.body.email_id,
         type: req.body.type,
         password: req.body.password,
+        activated: true
     });
 
     User.addUser(newUser, (err, user) => {
