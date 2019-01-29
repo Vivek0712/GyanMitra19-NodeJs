@@ -61,14 +61,18 @@ router.post('/success', (req, res, next) => {
                               pad: pd
                          });
                     } else {
-                         res.redirect('/user/payment/success');
+                         User.findByIdAndUpdate(user[0]._id,{
+                              $set:{
+                                   cart_paid: true
+                              }
+                         },(error, doc)=>{
+                              res.redirect('/user/payment/success');
+                         })
                     }
                })
           })
      } else {
-
           res.send({ 'status': pd });
-
      }
 })
 
@@ -78,7 +82,6 @@ router.get('/test', (req, res, next) => {
 });
 
 router.post('/acc/failure', (req, res, next) => {
-     
      res.redirect('/user/acc/payment/failure');
 })
 router.post('/acc/success', (req, res, next) => {
