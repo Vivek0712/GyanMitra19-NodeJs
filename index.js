@@ -39,6 +39,7 @@ const eventRegistration = require('./routes/eventRegistration');
 const configurations = require('./routes/config');
 const payment = require('./routes/payment');
 const report = require('./routes/reports')
+const qrcode = require('./routes/qrcode')
 //End Routes
 
 //Running Port
@@ -89,7 +90,8 @@ app.use('/participationStatus', participationStatus);
 app.use('/eventRegistration', eventRegistration);
 app.use('/config', configurations);
 app.use('/payment', payment);
-app.use('/report',report)
+app.use('/qr',qrcode);
+app.use('/report',report);
 //Routes Ends
 
 // Index Route
