@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/env');
 const Payment = require('../models/payment');
+const EventRegistration = require('../models/registration');
 var ObjectId = require('mongoose').Types.ObjectId;
 var crypto = require('crypto');
 var jsSHA = require("jssha");
@@ -20,18 +21,47 @@ router.post('/getHash', (req, res, next) => {
         Use Email id to find user
          --Shyam.R
      */
-     var hashString = config.payment.key + '|' + req.body.txnId + '|' + req.body.amount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
-     var sha = new jsSHA('SHA-512', "TEXT");
-     sha.update(hashString)
-     var hash = sha.getHash("HEX");
-     res.json({
-          error: true,
-          'hash': hash
+     var totalAmount = 0;
+     User.find({
+          email_id: req.body.email
+     }).then((docs) => {
+          EventRegistration.find({
+               user_id: docs[0]._id
+          }).populate('event_id').populate({
+               path:'event_id',
+               populate:{
+                    path:'category_id'
+               }
+          }).then((registrations) => {
+               var workshops = []
+               var events = []
+               workshops = registrations.filter((workshop)=>{
+                    return workshop.event_id.category_id.name == 'Workshop'
+               })
+               events = registrations.filter((event)=>{
+                    return event.event_id.category_id.name == 'Event'
+               })
+               var totalAmount = 0;
+               workshops.forEach((workshop)=>{
+                    totalAmount += workshop.event_id.amount
+               })
+               if(events.length != 0){
+                    totalAmount+=200
+               }
+               totalAmount += totalAmount * 0.04
+               console.log(totalAmount)
+               var hashString = config.payment.key + '|' + req.body.txnId + '|' + totalAmount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
+               var sha = new jsSHA('SHA-512', "TEXT");
+               sha.update(hashString)
+               var hash = sha.getHash("HEX");
+               res.json({
+                    error: true,
+                    'hash': hash
+               })
+          })
      })
-
 });
 router.post('/failure', (req, res, next) => {
-     //res.send('Failed');
      res.redirect('/user/payment/failure');
 })
 router.post('/success', (req, res, next) => {
@@ -41,7 +71,9 @@ router.post('/success', (req, res, next) => {
      sha.update(hashString)
      var hash = sha.getHash("HEX");
      if (hash == pd.hash) {
-          User.find({ email_id: pd.email }, (err, user) => {
+          User.find({
+               email_id: pd.email
+          }, (err, user) => {
                if (err) throw err;
                let payment = new Payment({
                     transaction_id: pd.txnid,
@@ -61,18 +93,20 @@ router.post('/success', (req, res, next) => {
                               pad: pd
                          });
                     } else {
-                         User.findByIdAndUpdate(user[0]._id,{
-                              $set:{
+                         User.findByIdAndUpdate(user[0]._id, {
+                              $set: {
                                    cart_paid: true
                               }
-                         },(error, doc)=>{
+                         }, (error, doc) => {
                               res.redirect('/user/payment/success');
                          })
                     }
                })
           })
      } else {
-          res.send({ 'status': pd });
+          res.send({
+               'status': pd
+          });
      }
 })
 
@@ -100,7 +134,9 @@ router.post('/acc/success', (req, res, next) => {
      // Verify the new hash with the hash value in response
 
      if (hash == pd.hash) {
-          User.find({ email_id: pd.email }, (err, user) => {
+          User.find({
+               email_id: pd.email
+          }, (err, user) => {
                if (err) throw err;
                let acc = new Accomodation({
                     acc_transcation_id: pd.txnid,
@@ -127,20 +163,23 @@ router.post('/acc/success', (req, res, next) => {
 
      } else {
 
-          res.send({ 'status': "Error occured" });
+          res.send({
+               'status': "Error occured"
+          });
 
      }
 })
 
 router.get('/payedUsers', function (req, res) {
-     Payment.find({ payment_status: "Paid" }).populate("user_id").exec((err, docs) => {
+     Payment.find({
+          payment_status: "Paid"
+     }).populate("user_id").exec((err, docs) => {
           if (err) {
                res.json({
                     success: false,
                     msg: err
                })
-          }
-          else {
+          } else {
                res.json({
                     success: true,
                     msg: docs
