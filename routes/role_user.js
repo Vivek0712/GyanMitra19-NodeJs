@@ -28,7 +28,6 @@ router.post('/create' , (req,res, next)=>{
 // Date : 20-December-2018
 router.get('/', function(req, res, next) {
     let page = req.query.page ? req.query.page : 1;
-
     RoleUser.find({}).populate('user_id').populate('role_id').populate('department_id').exec((err, docs) => {
         if (!err) {
             res.send(docs);

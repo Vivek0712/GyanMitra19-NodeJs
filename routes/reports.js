@@ -8,7 +8,75 @@ const User = require('../models/user')
 const EventRegistration = require('../models/registration')
 const Team = require('../models/team')
 const TeamMember = require('../models/team_member')
+const Event = require('../models/event')
+var Sync = require('sync');
 var ObjectId = require('mongoose').Types.ObjectId;
+
+function getCount(_id) {
+    EventRegistration.countDocuments({
+        event_id: _id
+    }, (err, count) => {
+        return count
+    })
+}
+
+router.get('/getWorkshopCOunt', (req, res) => {
+    EventRegistration.aggregate([{
+            '$group': {
+                _id: {
+                    event_id: '$event_id',
+                },
+                count: {
+                    $sum: 1
+                }
+            }
+        },
+        {
+            $lookup: {
+                from: "events",
+                localField: "_id.event_id",
+                foreignField: "_id",
+                as: "event"
+            }
+        }
+    ]).then((docs) => {
+        docs = docs.filter((doc) => {
+            if (doc.event[0].category_id == '5c327d04f352872964702c65') {
+                return true
+            }
+        })
+        res.json(docs)
+    })
+})
+
+router.get('/getEventCount', (req, res) => {
+    EventRegistration.aggregate([{
+            '$group': {
+                _id: {
+                    event_id: '$event_id',
+                },
+                count: {
+                    $sum: 1
+                }
+            }
+        },
+        {
+            $lookup: {
+                from: "events",
+                localField: "_id.event_id",
+                foreignField: "_id",
+                as: "event"
+            }
+        }
+    ]).then((docs) => {
+        docs = docs.filter((doc) => {
+            if (doc.event[0].category_id == '5c327d06f352872964702c66') {
+                return true
+            }
+        })
+        res.json(docs)
+    })
+})
 
 router.get('/removeInvalidUsersWithInvalidCollegeID', (req, res) => {
 
