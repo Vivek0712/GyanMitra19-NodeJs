@@ -9,18 +9,6 @@ var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
 router.post('/getHash', (req, res, next) => {
-
-     /* 
-        Here Only  total amount must be calculated.
-        Replace the req.body.amount with the total Amount calculated here .
-        Do this first.
-        Dont open the Online Payment
-        Dont Upload the ENV file in the github
-        Calculate the amount for the Accomodoation also
-        I have sent the env file in the email.
-        Use Email id to find user
-         --Shyam.R
-     */
      var totalAmount = 0;
      User.find({
           email_id: req.body.email
