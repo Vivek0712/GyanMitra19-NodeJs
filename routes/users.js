@@ -344,6 +344,39 @@ router.get('/participants', function (req, res, next) {
     }
 });
 
+router.get('/participantsActivated', function (req, res, next) {
+
+    if (!req.query.page) {
+        User.find({
+            type: 'user',
+            activated: true
+        }).populate('college_id').populate('department_id').populate('degree_id').populate('year_id').populate('degree_id').exec(function (err, docs) {
+            if (!err) {
+                docs = docs.filter((val) => {
+                    if (val.college_id != null) {
+                        return true;
+                    }
+                })
+                res.send(docs);
+            } else {
+                res.send({
+                    error: true,
+                    msg: err
+                });
+            }
+        })
+    } else {
+        let page = req.query.page
+        User.find({}).populate('college_id').skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
+            if (!err) {
+                res.send(docs);
+            } else {}
+
+        });
+    }
+});
+
+
 router.post('/participants/filter', function (req, res) {
     User.find({
         type: 'user',
