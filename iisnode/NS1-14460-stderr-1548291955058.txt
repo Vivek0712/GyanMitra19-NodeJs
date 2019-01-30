@@ -1,8 +1,0 @@
-(node:14460) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
-Application has thrown an uncaught exception and is terminated:
-ReferenceError: error is not defined
-    at User.findById (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\routes\users.js:250:22)
-    at D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\model.js:4645:16
-    at model.Query.Query._findOne (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:1961:5)
-    at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
-    at process._tickCallback (internal/process/next_tick.js:61:11)
