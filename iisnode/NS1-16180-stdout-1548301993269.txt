@@ -1,2 +1,0 @@
-Server started on port \\.\pipe\424af6d9-4717-4285-80c5-6040b52c7ab8
-Database error MongoNetworkError: failed to connect to server [192.168.16.14:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.16.14:27017]
