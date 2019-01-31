@@ -8,6 +8,30 @@ var crypto = require('crypto');
 var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
+
+
+router.post('/getAccHash', (req, res, next) => {
+     var totalAmount = 0;
+     User.find({
+          email_id: req.body.email
+     }).then((docs) => {
+          Accomodation.find({
+               user_id: docs[0]._id
+          }).exec((findErr, findRes) => {
+               totalAmount = findRes[0].acc_days * 100
+               totalAmount += totalAmount * 0.04
+               var hashString = config.payment.key + '|' + req.body.txnId + '|' + totalAmount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
+               var sha = new jsSHA('SHA-512', "TEXT");
+               sha.update(hashString)
+               var hash = sha.getHash("HEX");
+               res.json({
+                    error: true,
+                    'hash': hash
+               })
+          })
+     })
+});
+
 router.post('/getHash', (req, res, next) => {
      var totalAmount = 0;
      User.find({
@@ -16,25 +40,25 @@ router.post('/getHash', (req, res, next) => {
           EventRegistration.find({
                user_id: docs[0]._id
           }).populate('event_id').populate({
-               path:'event_id',
-               populate:{
-                    path:'category_id'
+               path: 'event_id',
+               populate: {
+                    path: 'category_id'
                }
           }).then((registrations) => {
                var workshops = []
                var events = []
-               workshops = registrations.filter((workshop)=>{
+               workshops = registrations.filter((workshop) => {
                     return workshop.event_id.category_id.name == 'Workshop'
                })
-               events = registrations.filter((event)=>{
+               events = registrations.filter((event) => {
                     return event.event_id.category_id.name == 'Event'
                })
                var totalAmount = 0;
-               workshops.forEach((workshop)=>{
+               workshops.forEach((workshop) => {
                     totalAmount += workshop.event_id.amount
                })
-               if(events.length != 0){
-                    totalAmount+=200
+               if (events.length != 0) {
+                    totalAmount += 200
                }
                totalAmount += totalAmount * 0.04
                console.log(totalAmount)
@@ -49,9 +73,11 @@ router.post('/getHash', (req, res, next) => {
           })
      })
 });
+
 router.post('/failure', (req, res, next) => {
      res.redirect('/user/payment/failure');
 })
+
 router.post('/success', (req, res, next) => {
      var pd = req.body;
      var hashString = config.payment.salt + '|' + pd.status + '||||||||||' + '|' + pd.email + '|' + pd.firstname + '|' + pd.productinfo + '|' + pd.amount + '|' + pd.txnid + '|' + pd.key;
@@ -126,16 +152,13 @@ router.post('/acc/success', (req, res, next) => {
                email_id: pd.email
           }, (err, user) => {
                if (err) throw err;
-               let acc = new Accomodation({
+               let acc ={
                     acc_transcation_id: pd.txnid,
                     acc_mode_of_payment: 'Online',
                     acc_payment_status: 'Paid',
-                    acc_status: 'Paid',
-                    user_id: user[0]._id,
-                    acc_amount: pd.amount
-
-               });
-               acc.save(function (err, newUser) {
+                    acc_status: 'Paid'
+               };
+               Accomodation.update({user_id: user[0]._id},{$set:acc}, (err, newUser) => {
                     if (err) {
                          res.json({
                               success: false,

@@ -74,7 +74,7 @@ router.get('/confirmDDUser/:id', (request, res) => {
 // Date : 20-December-2018
 router.post('/create', (req, res, next) => {
     let newAccommodation = new Accomodation({
-        acc__transaction_id: req.body.acc_transaction_id,
+        acc__transaction_id: "",
         acc_mode_of_payment: req.body.acc_mode_of_payment,
         acc_days: req.body.acc_days,
         acc_file_name: req.body.acc_file_name,
