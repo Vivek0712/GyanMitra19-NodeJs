@@ -188,11 +188,11 @@ router.get('/registeredInWorkshops', (req, res) => {
             return doc.event_id.category_id.name == "Workshop"
         })
         docs = docs.sort();
+        var names = []
         var responseArray = []
         docs.forEach((doc)=>{
-            if(responseArray.includes(doc)){
-
-            } else {
+            if(!names.includes(doc.user_id.name)){
+                names.push(doc.user_id.name)
                 responseArray.push(doc)
             }
         })
@@ -240,7 +240,6 @@ router.get('/registeredInEvents', (req, res) => {
             if(!names.includes(doc.user_id.name)){
                 names.push(doc.user_id.name)
                 responseArray.push(doc)
-                console.log(doc.user_id.name)
             }
         })
         res.json({
