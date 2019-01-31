@@ -158,90 +158,95 @@ router.get('/removeInvalidTeamMembers', (req, res) => {
 })
 
 router.get('/registeredInWorkshops', (req, res) => {
-    EventRegistration.find({}).populate('event_id').populate({
-        path: 'event_id',
-        populate: {
-            path: 'department_id'
+    EventRegistration.find({}).populate('user_id').populate('event_id').populate({
+        path:'event_id',
+        populate:{
+            path:'category_id'
         }
     }).populate({
-        path: 'event_id',
-        populate: {
-            path: 'category_id'
-        }
-    }).populate('user_id').populate({
-        path: 'user_id',
-        populate: {
-            path: 'department_id'
+        path:'event_id',
+        populate:{
+            path:'department_id'
         }
     }).populate({
-        path: 'user_id',
-        populate: {
-            path: 'college_id'
+        path:'user_id',
+        populate:{
+            path:'college_id'
         }
     }).populate({
-        path: 'user_id',
-        populate: {
-            path: 'year_id'
+        path:'user_id',
+        populate:{
+            path:'degree_id'
         }
-    }).exec((err, docs) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            docs=docs.filter((doc)=>{
-                return doc.event_id.category_id.name == 'Workshop'
-            })
-            res.json({
-                error: false,
-                msg: docs
-            })
+    }).populate({
+        path:'user_id',
+        populate:{
+            path:'year_id'
         }
+    }).exec((err, docs)=>{
+        docs = docs.filter((doc)=>{
+            return doc.event_id.category_id.name == "Workshop"
+        })
+        docs = docs.sort();
+        var responseArray = []
+        docs.forEach((doc)=>{
+            if(responseArray.includes(doc)){
+
+            } else {
+                responseArray.push(doc)
+            }
+        })
+        res.json({
+            error: false,
+            msg: responseArray
+        })
     })
 })
 
 router.get('/registeredInEvents', (req, res) => {
-    EventRegistration.find({}).populate('event_id').populate({
-        path: 'event_id',
-        populate: {
-            path: 'department_id'
+    EventRegistration.find({}).populate('user_id').populate('event_id').populate({
+        path:'event_id',
+        populate:{
+            path:'category_id'
         }
     }).populate({
-        path: 'event_id',
-        populate: {
-            path: 'category_id'
-        }
-    }).populate('user_id').populate({
-        path: 'user_id',
-        populate: {
-            path: 'department_id'
+        path:'event_id',
+        populate:{
+            path:'department_id'
         }
     }).populate({
-        path: 'user_id',
-        populate: {
-            path: 'college_id'
+        path:'user_id',
+        populate:{
+            path:'college_id'
         }
     }).populate({
-        path: 'user_id',
-        populate: {
-            path: 'year_id'
+        path:'user_id',
+        populate:{
+            path:'degree_id'
         }
-    }).exec((err, docs) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            docs=docs.filter((doc)=>{
-                return doc.event_id.category_id.name == 'Event'
-            })
-            res.json({
-                error: false,
-                msg: docs
-            })
+    }).populate({
+        path:'user_id',
+        populate:{
+            path:'year_id'
         }
+    }).exec((err, docs)=>{
+        docs = docs.filter((doc)=>{
+            return doc.event_id.category_id.name == "Event"
+        })
+        docs = docs.sort();
+        var names = []
+        var responseArray = []
+        docs.forEach((doc)=>{
+            if(!names.includes(doc.user_id.name)){
+                names.push(doc.user_id.name)
+                responseArray.push(doc)
+                console.log(doc.user_id.name)
+            }
+        })
+        res.json({
+            error: false,
+            msg: responseArray
+        })
     })
 })
 
