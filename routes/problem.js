@@ -20,4 +20,28 @@ router.post('/create', (req, res, next) => {
         }
     });
 });
+
+router.get('/',(req,res)=> {
+    Problem.find({},(err,docs)=> {
+        res.send(docs);
+    })
+})
+
+router.post('/delete/:id',(req,res)=> {
+    Problem.findByIdAndRemove(req.params.id,(err,docs) => {
+        if(err) {
+            res.json({
+                error:true,
+                msg: "Error While Deleting"
+            })
+        }
+        else {
+            res.json({
+                error:false,
+                msg: "Problem will be solved,soon"
+            })
+        }
+    })
+})
+
 module.exports = router;
