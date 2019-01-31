@@ -49,6 +49,7 @@ router.get('/getWorkshopCOunt', (req, res) => {
     })
 })
 
+
 router.get('/getEventCount', (req, res) => {
     EventRegistration.aggregate([{
             '$group': {
@@ -153,6 +154,94 @@ router.get('/removeInvalidTeamMembers', (req, res) => {
             }
         })
         res.send('Finished')
+    })
+})
+
+router.get('/registeredInWorkshops', (req, res) => {
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
+        }
+    }).exec((err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            docs=docs.filter((doc)=>{
+                return doc.event_id.category_id.name == 'Workshop'
+            })
+            res.json({
+                error: false,
+                msg: docs
+            })
+        }
+    })
+})
+
+router.get('/registeredInEvents', (req, res) => {
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
+        }
+    }).exec((err, docs) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: err
+            })
+        } else {
+            docs=docs.filter((doc)=>{
+                return doc.event_id.category_id.name == 'Event'
+            })
+            res.json({
+                error: false,
+                msg: docs
+            })
+        }
     })
 })
 

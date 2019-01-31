@@ -40,11 +40,12 @@ const configurations = require('./routes/config');
 const payment = require('./routes/payment');
 const report = require('./routes/reports')
 const qrcode = require('./routes/qrcode')
+const problem = require('./routes/problem')
 //End Routes
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = true;
+var production = false;
 // CORS Middleware
 
 
@@ -92,6 +93,8 @@ app.use('/config', configurations);
 app.use('/payment', payment);
 app.use('/qr',qrcode);
 app.use('/report',report);
+app.use('/problem',problem)
+
 //Routes Ends
 
 // Index Route
