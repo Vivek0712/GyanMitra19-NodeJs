@@ -4,7 +4,8 @@ const Problem = require('../models/problem');
 
 router.post('/create', (req, res, next) => {
     let newProblem = new Problem({
-        name: req.body.name
+        name: req.body.name,
+        resolved:false
     });
     newProblem.save((err, doc) => {
         if (err) {

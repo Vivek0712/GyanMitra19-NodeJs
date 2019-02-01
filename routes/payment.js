@@ -97,22 +97,34 @@ router.post('/success', (req, res, next) => {
                     user_id: user[0]._id,
                     amount: pd.amount
                });
-               payment.save(function (err, newUser) {
-                    if (err) {
+               Payment.find({transaction_id: pd.txnId}).exec((error, docs)=>{
+                    if(docs.length == 0){
+                         payment.save(function (err, newUser) {
+                              if (err) {
+                                   res.json({
+                                        success: false,
+                                        msg: err,
+                                        user: user,
+                                        payment: payment,
+                                        pad: pd
+                                   });
+                              } else {
+                                   User.findByIdAndUpdate(user[0]._id, {
+                                        $set: {
+                                             cart_paid: true
+                                        }
+                                   }, (myError, myDocs) => {
+                                        res.redirect('/user/payment/success');
+                                   })
+                              }
+                         })
+                    } else {
                          res.json({
                               success: false,
-                              msg: err,
+                              msg: 'Already Paid. Ignore this message',
                               user: user,
-                              payment: payment,
+                              payment, payment,
                               pad: pd
-                         });
-                    } else {
-                         User.findByIdAndUpdate(user[0]._id, {
-                              $set: {
-                                   cart_paid: true
-                              }
-                         }, (error, doc) => {
-                              res.redirect('/user/payment/success');
                          })
                     }
                })
