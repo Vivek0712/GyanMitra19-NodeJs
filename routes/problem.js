@@ -28,18 +28,18 @@ router.get('/',(req,res)=> {
     })
 })
 
-router.post('/delete/:id',(req,res)=> {
-    Problem.findByIdAndRemove(req.params.id,(err,docs) => {
+router.post('/resolve/:id',(req,res)=> {
+    Problem.findByIdAndUpdate(req.params.id,{$set:{resolved: true}},(err,docs) => {
         if(err) {
             res.json({
                 error:true,
-                msg: "Error While Deleting"
+                msg: "Error While resolving"
             })
         }
         else {
             res.json({
                 error:false,
-                msg: "Problem will be solved,soon"
+                msg: "Problem Solved!"
             })
         }
     })
