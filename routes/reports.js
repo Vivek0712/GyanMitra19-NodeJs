@@ -381,4 +381,15 @@ router.get('/totalWorkshopWiseCount', (req, res) => {
     })
 })
 
+router.get('/getInvalidCollegeParticipants',(req,res)=>{
+    User.find({type: 'user'}).populate('college_id').exec((err,docs)=> {
+        docs = docs.filter((val) => {
+            if(val.college_id == null) {
+                return true
+            }
+        })
+        res.send(docs);
+    })
+})
+
 module.exports = router;

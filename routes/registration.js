@@ -83,6 +83,73 @@ router.post('/create', (req, res, next) => {
     });
 });
 
+// router.post('/createOfflineUser', (req, res, next) => {
+//     User.find({
+//         email_id: req.body.email_id
+//     }, (err, docs) => {
+//         if (docs.length == 0) {
+//             let newUser = new User({
+//                 name: req.body.name,
+//                 college_id: req.body.college_id,
+//                 department_id: req.body.department_id,
+//                 degree_id: req.body.degree_id,
+//                 email_id: req.body.email_id,
+//                 year_id: req.body.year_id,
+//                 gender: req.body.gender,
+//                 mobile_number: req.body.mobile_number,
+//                 type: req.body.type,
+//                 registration_mode: "offline",
+//                 gmID: '',
+//                 cart_paid: false
+//             });
+
+//             User.addUser(newUser, (err, user) => {
+//                 if (err) {
+//                     res.json({
+//                         success: false,
+//                         msg: 'Failed to register user' + err
+//                     });
+//                 } else {
+//                     User.activationCode(newUser, (err2, activationUser) => {
+//                         if (err) {
+//                             res.json({
+//                                 success: false,
+//                                 msg: 'Failed to add activtion Code to user' + err2
+//                             });
+//                         } else {
+//                             link = "http://www.gyanmitra19.mepcoeng.ac.in/user/" + "activate/" + activationUser._id + "/" + activationUser.activation_code;
+//                             let mailOptions = {
+//                                 to: req.body.email_id,
+//                                 subject: "Please confirm your Email account",
+//                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to Activate</a>"
+//                             }
+//                             smtpTransport.sendMail(mailOptions, function (error, response) {
+//                                 if (!error) {
+//                                     res.json({
+//                                         success: true,
+//                                         msg: 'User Registered Activation Mail has been sent'
+//                                     });
+//                                 } else {
+//                                     res.json({
+//                                         success: true,
+//                                         msg: error
+//                                     });
+//                                 }
+//                             });
+//                         }
+//                     })
+//                 }
+//             });
+//         } else {
+//             res.json({
+//                 success: false,
+//                 msg: 'Mail id is already registered'
+//             })
+//         }
+//     });
+// });
+
+
 router.get('/generateGMID', (req, res) => {
     User.find({
         activated: true,
