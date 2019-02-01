@@ -34,7 +34,8 @@ router.post('/create', (req, res, next) => {
                 password: req.body.password,
                 registration_mode: req.body.registration_mode,
                 gmID: '',
-                cart_paid: false
+                cart_paid: false,
+                cart_confirmed: false
             });
 
             User.addUser(newUser, (err, user) => {

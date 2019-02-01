@@ -392,4 +392,17 @@ router.get('/getInvalidCollegeParticipants',(req,res)=>{
     })
 })
 
+
+router.get('/makeCartConfirmed',(req,res)=> {
+    User.find({},(err,docs)=> {
+        docs.forEach((val)=> {
+            if(val.cart_confirmed == null) {
+                User.findByIdAndUpdate(val._id,{$set: {cart_confirmed:false}},()=>{
+                    //console.log("Success");
+                });
+            }
+        })
+    })
+})
+
 module.exports = router;
