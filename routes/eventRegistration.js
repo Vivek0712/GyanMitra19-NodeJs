@@ -598,12 +598,12 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
         } else {
             User.findById(req.params.user_id, (err, currentUser) => {
                 if (err) throw console.error();
-
+               // console.log(currentUser.college_id);
                 User.find({
                     college_id: currentUser.college_id,
                     activated: true,
                     cart_confirmed: false
-                }, ' email_id', (err, collegeMates) => {
+                }, 'email_id', (err, collegeMates) => {
                     if (err) {
                         res.json({
                             error: true,
