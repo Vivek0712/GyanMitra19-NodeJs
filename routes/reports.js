@@ -406,12 +406,12 @@ router.get('/makeCartConfirmed',(req,res)=> {
 })
 
 
-router.get('/activateUsers',(req,res)=>{
-    User.find({activated:false},(err,docs)=>{
-        docs.forEach((doc)=> {
+// router.get('/activateUsers',(req,res)=>{
+//     User.find({activated:false},(err,docs)=>{
+//         docs.forEach((doc)=> {
             
-        })
-    })
-})
+//         })
+//     })
+// })
 
 module.exports = router;
