@@ -392,7 +392,6 @@ router.get('/getInvalidCollegeParticipants',(req,res)=>{
     })
 })
 
-
 router.get('/makeCartConfirmed',(req,res)=> {
     User.find({},(err,docs)=> {
         docs.forEach((val)=> {
@@ -416,5 +415,14 @@ router.get('/updatePaymentStatuses',(req, res)=>{
         })
     })
 })
+
+
+// router.get('/activateUsers',(req,res)=>{
+//     User.find({activated:false},(err,docs)=>{
+//         docs.forEach((doc)=> {
+            
+//         })
+//     })
+// })
 
 module.exports = router;

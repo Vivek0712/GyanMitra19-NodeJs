@@ -58,17 +58,10 @@ router.post('/create', (req, res, next) => {
                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to Activate</a>"
                             }
                             smtpTransport.sendMail(mailOptions, function (error, response) {
-                                if (!error) {
-                                    res.json({
-                                        success: true,
-                                        msg: 'User Registered Activation Mail has been sent'
-                                    });
-                                } else {
-                                    res.json({
-                                        success: true,
-                                        msg: error
-                                    });
-                                }
+                                res.json({
+                                    success: true,
+                                    msg: 'User Registered Successfully'
+                                });
                             });
                         }
                     })
@@ -161,10 +154,10 @@ router.get('/generateGMID', (req, res) => {
             User.updateOne({
                 _id: ObjectId(_id)
             }, {
-                $set: {
-                    gmID: 'GM19_' + _id.substring(_id.length - 8, _id.length)
-                }
-            })
+                    $set: {
+                        gmID: 'GM19_' + _id.substring(_id.length - 8, _id.length)
+                    }
+                })
         })
         res.json({
             error: false,
