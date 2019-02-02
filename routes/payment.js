@@ -8,14 +8,6 @@ var crypto = require('crypto');
 var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
-
-let smtpTransport = nodemailer.createTransport({
-     service: "gmail",
-     auth: {
-         user: "gyanmitra19@gmail.com",
-         pass: "gyan94860"
-     }
- });
  
 
 router.post('/getAccHash', (req, res, next) => {
