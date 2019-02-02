@@ -9,6 +9,14 @@ var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
 
+let smtpTransport = nodemailer.createTransport({
+     service: "gmail",
+     auth: {
+         user: "gyanmitra19@gmail.com",
+         pass: "gyan94860"
+     }
+ });
+ 
 
 router.post('/getAccHash', (req, res, next) => {
      var totalAmount = 0;
@@ -61,7 +69,6 @@ router.post('/getHash', (req, res, next) => {
                     totalAmount += 200
                }
                totalAmount += totalAmount * 0.04
-               console.log(totalAmount)
                var hashString = config.payment.key + '|' + req.body.txnId + '|' + totalAmount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
                var sha = new jsSHA('SHA-512', "TEXT");
                sha.update(hashString)
