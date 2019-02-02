@@ -264,20 +264,20 @@ router.post('/refuseCartPayment', (req, res) => {
             Registration.updateMany({
                 user_id: req.body.user_id
             }, {
-                status: 'Not Paid'
-            }, (error, documents) => {
-                if (error) {
-                    res.json({
-                        error: true,
-                        msg: err
-                    })
-                } else {
-                    res.json({
-                        error: false,
-                        msg: 'Payment Refused!'
-                    })
-                }
-            })
+                    status: 'Not Paid'
+                }, (error, documents) => {
+                    if (error) {
+                        res.json({
+                            error: true,
+                            msg: err
+                        })
+                    } else {
+                        res.json({
+                            error: false,
+                            msg: 'Payment Refused!'
+                        })
+                    }
+                })
         }
     });
 })
@@ -297,20 +297,20 @@ router.post('/confirmCartPayment', (req, res) => {
             Registration.updateMany({
                 user_id: req.body.user_id
             }, {
-                status: 'Paid'
-            }, (error, documents) => {
-                if (error) {
-                    res.json({
-                        error: true,
-                        msg: err
-                    })
-                } else {
-                    res.json({
-                        error: false,
-                        msg: 'Payment Approved!'
-                    })
-                }
-            })
+                    status: 'Paid'
+                }, (error, documents) => {
+                    if (error) {
+                        res.json({
+                            error: true,
+                            msg: err
+                        })
+                    } else {
+                        res.json({
+                            error: false,
+                            msg: 'Payment Approved!'
+                        })
+                    }
+                })
         }
     });
 });
@@ -402,20 +402,20 @@ router.post('/update/:id', (req, res) => {
     Registration.findByIdAndUpdate(req.params.id, {
         $set: newParticipation
     }, {
-        new: true
-    }, (err, docs) => {
-        if (!err) {
-            res.json({
-                error: false,
-                msg: "Attendance updated"
-            });
-        } else {
-            res.json({
-                error: true,
-                msg: "Failed To Update Attendance" + err
-            });
-        }
-    })
+            new: true
+        }, (err, docs) => {
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: "Attendance updated"
+                });
+            } else {
+                res.json({
+                    error: true,
+                    msg: "Failed To Update Attendance" + err
+                });
+            }
+        })
 });
 
 router.get('/userRegisteredEvents/:id/:type', (req, res) => {
@@ -603,7 +603,6 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
                     activated: true,
                     cart_confirmed: false
                 }, 'email_id', (err, collegeMates) => {
-                    console.log(this.collegeMates);
                     if (err) {
                         res.json({
                             error: true,
@@ -633,6 +632,34 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 
     });
 });
+
+router.get('/getGyanMates',function(req,res){
+    User.find({
+    }, 'email_id', (err, collegeMates) => {
+        if (err) {
+            res.json({
+                error: true,
+                msg: 'No Mates'
+            });
+        } else {
+            var college_mates = new Array();
+            for (key in collegeMates) {
+                if (collegeMates.hasOwnProperty) {
+                    college_mates[key] = new Object();
+                    if (collegeMates[key]._id.toString().localeCompare(currentUser._id.toString())) {
+                        college_mates[key].id = collegeMates[key]._id;
+                        college_mates[key].text = collegeMates[key].email_id;
+                    }
+                }
+            }
+            res.json({
+                error: false,
+                msg: college_mates
+            })
+
+        }
+    })
+})
 
 
 router.get('/checkEventRegistrationStatus/:event_id/:user_id', function (req, res) {

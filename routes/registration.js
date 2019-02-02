@@ -65,6 +65,7 @@ router.post('/create', (req, res, next) => {
                                         msg: 'User Registered Activation Mail has been sent'
                                     });
                                 } else {
+                                    console.log(error);
                                     res.json({
                                         success: true,
                                         msg: error
