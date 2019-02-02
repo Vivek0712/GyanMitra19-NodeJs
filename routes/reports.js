@@ -392,7 +392,6 @@ router.get('/getInvalidCollegeParticipants',(req,res)=>{
     })
 })
 
-
 router.get('/makeCartConfirmed',(req,res)=> {
     User.find({},(err,docs)=> {
         docs.forEach((val)=> {
