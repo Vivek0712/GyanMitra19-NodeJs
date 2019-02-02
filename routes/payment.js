@@ -97,8 +97,10 @@ router.post('/success', (req, res, next) => {
                     user_id: user[0]._id,
                     amount: pd.amount
                });
-               Payment.find({transaction_id: pd.txnId}).exec((error, docs)=>{
-                    if(docs.length == 0){
+               Payment.find({
+                    transaction_id: pd.txnId
+               }).exec((error, docs) => {
+                    if (docs.length == 0) {
                          payment.save(function (err, newUser) {
                               if (err) {
                                    res.json({
@@ -114,7 +116,16 @@ router.post('/success', (req, res, next) => {
                                              cart_paid: true
                                         }
                                    }, (myError, myDocs) => {
-                                        res.redirect('/user/payment/success');
+                                        EventRegistration.updateMany({
+                                             user_id: user[0]._id
+                                        }, {
+                                             $set: {
+                                                  status: 'Paid'
+                                             }
+                                        }, () => {
+                                             res.redirect('/user/payment/success');
+                                        })
+
                                    })
                               }
                          })
@@ -123,7 +134,8 @@ router.post('/success', (req, res, next) => {
                               success: false,
                               msg: 'Already Paid. Ignore this message',
                               user: user,
-                              payment, payment,
+                              payment,
+                              payment,
                               pad: pd
                          })
                     }
@@ -164,13 +176,17 @@ router.post('/acc/success', (req, res, next) => {
                email_id: pd.email
           }, (err, user) => {
                if (err) throw err;
-               let acc ={
+               let acc = {
                     acc_transcation_id: pd.txnid,
                     acc_mode_of_payment: 'Online',
                     acc_payment_status: 'Paid',
                     acc_status: 'Paid'
                };
-               Accomodation.update({user_id: user[0]._id},{$set:acc}, (err, newUser) => {
+               Accomodation.update({
+                    user_id: user[0]._id
+               }, {
+                    $set: acc
+               }, (err, newUser) => {
                     if (err) {
                          res.json({
                               success: false,
