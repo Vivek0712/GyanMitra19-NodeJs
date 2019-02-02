@@ -1,0 +1,17 @@
+Server started on port \\.\pipe\478ef846-cc84-44dc-897e-546afe1a8d78
+Connected to Database mongodb://gyanmitra19:GyanMitra19@127.0.0.1:27017/gyanmitra19
+416
+208
+208
+208
+208
+208
+364
+208
+208
+364
+208
+416
+416
+416
+416

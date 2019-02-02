@@ -1,5 +1,4 @@
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 64)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -11,8 +10,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 65)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 131)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -24,8 +23,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 66)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 132)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -37,8 +36,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 67)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 133)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -50,8 +49,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 68)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 134)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -63,8 +62,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 69)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 135)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -76,8 +75,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 70)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 136)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -89,8 +88,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 71)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 137)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -102,8 +101,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 72)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 138)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -115,8 +114,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 73)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 139)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -128,8 +127,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 74)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 140)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -141,8 +140,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 75)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 141)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -154,8 +153,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 76)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 142)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -167,8 +166,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 77)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 143)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -180,8 +179,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 78)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 144)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -193,8 +192,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 79)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 145)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -206,8 +205,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 80)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 146)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -219,8 +218,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 81)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 147)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -232,8 +231,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 82)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 148)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -245,8 +244,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 83)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 149)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -258,8 +257,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 84)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 150)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -271,8 +270,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 85)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 151)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -284,8 +283,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 86)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 152)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -297,8 +296,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 87)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 153)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -310,8 +309,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 88)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 154)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -323,8 +322,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 89)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 155)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -336,8 +335,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 90)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 156)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -349,8 +348,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 91)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 157)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -362,8 +361,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 92)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 158)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -375,8 +374,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 93)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 159)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -388,8 +387,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 94)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 160)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -401,8 +400,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 95)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 161)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -414,8 +413,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 96)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 162)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -427,8 +426,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 97)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 163)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -440,8 +439,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 98)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 164)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -453,8 +452,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 99)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 165)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -466,8 +465,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 100)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 166)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -479,8 +478,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 101)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 167)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -492,8 +491,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 102)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 168)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -505,8 +504,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 103)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 169)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -518,8 +517,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 104)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 170)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -531,8 +530,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 105)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 171)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -544,8 +543,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 106)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 172)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -557,8 +556,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 107)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 173)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -570,8 +569,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 108)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 174)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -583,8 +582,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 109)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 175)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -596,8 +595,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 110)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 176)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -609,8 +608,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 111)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 177)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -622,8 +621,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 112)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 178)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -635,8 +634,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 113)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 179)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -648,8 +647,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 114)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 180)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -661,8 +660,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 115)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 181)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -674,8 +673,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 116)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 182)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -687,8 +686,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 117)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 183)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -700,8 +699,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 118)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 184)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -713,8 +712,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 119)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 185)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -726,8 +725,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 120)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 186)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -739,8 +738,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 121)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 187)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -752,8 +751,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 122)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 188)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -765,8 +764,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 123)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 189)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -778,8 +777,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 124)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 190)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -791,8 +790,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 125)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 191)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -804,8 +803,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 126)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 192)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -817,8 +816,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 127)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 193)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -830,8 +829,8 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 128)
-(node:5856) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 194)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
     at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
     at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
     at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
@@ -843,4 +842,16 @@
     at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
     at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
     at process._tickCallback (internal/process/next_tick.js:61:11)
-(node:5856) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 129)
+(node:1892) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 195)
+(node:1892) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "user_id" for model "Registration"
+    at new CastError (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\error\cast.js:29:11)
+    at ObjectId.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schema\objectid.js:232:11)
+    at ObjectId.SchemaType.applySetters (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:813:12)
+    at ObjectId.SchemaType._castForQuery (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:1216:15)
+    at ObjectId.SchemaType.castForQuery (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:1206:15)
+    at ObjectId.SchemaType.castForQueryWrapper (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\schematype.js:1185:15)
+    at cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\cast.js:306:32)
+    at model.Query.Query.cast (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:4227:12)
+    at model.Query.Query._countDocuments (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\mongoose\lib\query.js:2094:10)
+    at process.nextTick (D:\WWW\mepcoeng.ac.in\joomla\newwebjoomla\GyanMitra2k19\GyanMitra19-NodeJs\node_modules\kareem\index.js:369:33)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
