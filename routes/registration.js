@@ -28,7 +28,6 @@ router.post('/create', (req, res, next) => {
                 year_id: req.body.year_id,
                 gender: req.body.gender,
                 mobile_number: req.body.mobile_number,
-                cart_confirmed: false,
                 activated: req.body.activated,
                 type: req.body.type,
                 password: req.body.password,
