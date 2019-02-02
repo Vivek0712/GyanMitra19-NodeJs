@@ -264,20 +264,20 @@ router.post('/refuseCartPayment', (req, res) => {
             Registration.updateMany({
                 user_id: req.body.user_id
             }, {
-                    status: 'Not Paid'
-                }, (error, documents) => {
-                    if (error) {
-                        res.json({
-                            error: true,
-                            msg: err
-                        })
-                    } else {
-                        res.json({
-                            error: false,
-                            msg: 'Payment Refused!'
-                        })
-                    }
-                })
+                status: 'Not Paid'
+            }, (error, documents) => {
+                if (error) {
+                    res.json({
+                        error: true,
+                        msg: err
+                    })
+                } else {
+                    res.json({
+                        error: false,
+                        msg: 'Payment Refused!'
+                    })
+                }
+            })
         }
     });
 })
@@ -297,9 +297,42 @@ router.post('/confirmCartPayment', (req, res) => {
             Registration.updateMany({
                 user_id: req.body.user_id
             }, {
-                    status: 'Paid'
-                }, (error, documents) => {
-                    if (error) {
+                status: 'Paid'
+            }, (error, documents) => {
+                if (error) {
+                    res.json({
+                        error: true,
+                        msg: err
+                    })
+                } else {
+                    res.json({
+                        error: false,
+                        msg: 'Payment Approved!'
+                    })
+                }
+            })
+        }
+    });
+});
+
+router.post('/newWorkshopRegistration', (req, res) => {
+
+    Event.find({
+        _id: req.body.event_id
+    }).exec((findError, findDocs) => {
+        Registration.countDocuments({
+            event_id: req.body.event_id
+        }, (countError, count) => {
+            if (count < findDocs[0].max_limit) {
+                let newRegistration = new Registration({
+                    event_id: req.body.event_id,
+                    user_id: req.body.user_id,
+                    registration_type: req.body.registration_type,
+                    participation: 'Absent',
+                    status: 'Not Confirmed'
+                })
+                newRegistration.save((err, doc) => {
+                    if (err) {
                         res.json({
                             error: true,
                             msg: err
@@ -307,35 +340,18 @@ router.post('/confirmCartPayment', (req, res) => {
                     } else {
                         res.json({
                             error: false,
-                            msg: 'Payment Approved!'
+                            msg: 'Successfully Registered!'
                         })
                     }
+                });
+            } else {
+                res.json({
+                    error: false,
+                    msg: 'Workshop Maximum Limit Reached!'
                 })
-        }
-    });
-});
-
-router.post('/newWorkshopRegistration', (req, res) => {
-    let newRegistration = new Registration({
-        event_id: req.body.event_id,
-        user_id: req.body.user_id,
-        registration_type: req.body.registration_type,
-        participation: 'Absent',
-        status: 'Not Confirmed'
+            }
+        })
     })
-    newRegistration.save((err, doc) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            res.json({
-                error: false,
-                msg: 'Successfully Registered!'
-            })
-        }
-    });
 });
 
 
@@ -402,20 +418,20 @@ router.post('/update/:id', (req, res) => {
     Registration.findByIdAndUpdate(req.params.id, {
         $set: newParticipation
     }, {
-            new: true
-        }, (err, docs) => {
-            if (!err) {
-                res.json({
-                    error: false,
-                    msg: "Attendance updated"
-                });
-            } else {
-                res.json({
-                    error: true,
-                    msg: "Failed To Update Attendance" + err
-                });
-            }
-        })
+        new: true
+    }, (err, docs) => {
+        if (!err) {
+            res.json({
+                error: false,
+                msg: "Attendance updated"
+            });
+        } else {
+            res.json({
+                error: true,
+                msg: "Failed To Update Attendance" + err
+            });
+        }
+    })
 });
 
 router.get('/userRegisteredEvents/:id/:type', (req, res) => {
@@ -633,9 +649,8 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
     });
 });
 
-router.get('/getGyanMates',function(req,res){
-    User.find({
-    }, 'email_id', (err, collegeMates) => {
+router.get('/getGyanMates', function (req, res) {
+    User.find({}, 'email_id', (err, collegeMates) => {
         if (err) {
             res.json({
                 error: true,
