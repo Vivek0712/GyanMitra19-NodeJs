@@ -8,7 +8,7 @@ var crypto = require('crypto');
 var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
- 
+
 
 router.post('/getAccHash', (req, res, next) => {
      var totalAmount = 0;
@@ -118,12 +118,12 @@ router.post('/success', (req, res, next) => {
                                         EventRegistration.updateMany({
                                              user_id: user[0]._id
                                         }, {
-                                             $set: {
-                                                  status: 'Paid'
-                                             }
-                                        }, () => {
-                                             res.redirect('/user/payment/success');
-                                        })
+                                                  $set: {
+                                                       status: 'Paid'
+                                                  }
+                                             }, () => {
+                                                  res.redirect('/user/payment/success');
+                                             })
 
                                    })
                               }
@@ -184,17 +184,17 @@ router.post('/acc/success', (req, res, next) => {
                Accomodation.update({
                     user_id: user[0]._id
                }, {
-                    $set: acc
-               }, (err, newUser) => {
-                    if (err) {
-                         res.json({
-                              success: false,
-                              msg: 'Not Updated'
-                         });
-                    } else {
-                         res.redirect('/user/acc/payment/success');
-                    }
-               })
+                         $set: acc
+                    }, (err, newUser) => {
+                         if (err) {
+                              res.json({
+                                   success: false,
+                                   msg: 'Not Updated'
+                              });
+                         } else {
+                              res.redirect('/user/acc/payment/success');
+                         }
+                    })
           })
 
 
@@ -212,6 +212,27 @@ router.get('/payedUsers', function (req, res) {
      Payment.find({
           payment_status: "Paid"
      }).populate("user_id").exec((err, docs) => {
+          // var event = new Array();
+          // var workshop = new Array();
+          // var temp = docs.forEach((val) => {
+          //      EventRegistration.find({ user_id: val.user_id._id }).populate('event_id').exec((err, doc) => {
+          //           console.log(doc);
+          //           if (doc.length == 0) {
+          //                event.push("Not Participated");
+          //                workshop.push("Not Participated");
+          //           }
+          //           else {
+          //                if (doc[0].event_id.category_id._id == "5c327d06f352872964702c66") {
+          //                     event.push(doc[0].event_id.title);
+          //                }
+          //                if (doc[0].event_id.category_id._id == "5c327d04f352872964702c65") {
+          //                     workshop.push(doc[0].event_id.title);
+          //                }
+          //           }
+          //           return true;
+          //      })
+          // })
+          // console.log(event);
           if (err) {
                res.json({
                     success: false,
