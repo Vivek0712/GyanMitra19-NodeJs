@@ -381,4 +381,37 @@ router.get('/totalWorkshopWiseCount', (req, res) => {
     })
 })
 
+router.get('/getInvalidCollegeParticipants',(req,res)=>{
+    User.find({type: 'user'}).populate('college_id').exec((err,docs)=> {
+        docs = docs.filter((val) => {
+            if(val.college_id == null) {
+                return true
+            }
+        })
+        res.send(docs);
+    })
+})
+
+
+router.get('/makeCartConfirmed',(req,res)=> {
+    User.find({},(err,docs)=> {
+        docs.forEach((val)=> {
+            if(val.cart_confirmed == null) {
+                User.findByIdAndUpdate(val._id,{$set: {cart_confirmed:false}},()=>{
+                    //console.log("Success");
+                });
+            }
+        })
+    })
+})
+
+
+router.get('/activateUsers',(req,res)=>{
+    User.find({activated:false},(err,docs)=>{
+        docs.forEach((doc)=> {
+            
+        })
+    })
+})
+
 module.exports = router;

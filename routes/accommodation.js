@@ -9,6 +9,15 @@ const Accomodation = require('../models/accommodation');
 var ObjectId = require('mongoose').Types.ObjectId;
 var multer = require('multer')
 var path = require('path')
+var nodemailer = require("nodemailer");
+
+let smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "gyanmitra19@gmail.com",
+        pass: "gyan94860"
+    }
+});
 
 router.get('/populate', (req, res) => {
     Accomodation.find().populate('user_id').populate({
@@ -59,12 +68,26 @@ router.get('/confirmDDUser/:id', (request, res) => {
                 error: true,
                 msg: err
             })
-        }
-        else {
-            res.json({
-                error: false,
-                msg: 'Request to pay through DD has been placed'
-            })
+        } else {
+            let mailOptions = {
+                to: req.body.email_id,
+                subject: "GyanMitra19 - Accomodation Payment",
+                html: "<ol><li>The Demand draft must be drawn in the favour of Mepco Schlenk Engineering College</li><li>The Demand draft must be payable at Sivakasi, Tamil Nadu</li><li>At the back side of your <b></b>, write your <b>GM ID</b> followed by 'Accomodation' and the number of days with pencil</li><li>Demand draft must reach us on or before <b>05-Feb-2019</b> via any means to the address : <br />The Convenor,<br />GyanMitra 19,<br />Mepco Schlenk Engineering College,<br />Virudhunagar District,<br />Tamil Nadu - 626 006<br /></li></ol>"
+            }
+            smtpTransport.sendMail(mailOptions, function (error, response) {
+                if (!error) {
+                    res.json({
+                        success: true,
+                        msg: 'Request to pay through DD has been placed'
+                    })
+                } else {
+                    res.json({
+                        success: false,
+                        msg: error
+                    });
+                }
+            });
+
         }
     })
 })
@@ -132,7 +155,9 @@ router.get('/', function (req, res, next) {
 router.get('/getAccomodation/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-    Accomodation.find({user_id: req.params.id}, (err, docs) => {
+    Accomodation.find({
+        user_id: req.params.id
+    }, (err, docs) => {
         if (err) {
             res.json({
                 error: true,

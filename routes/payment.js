@@ -8,7 +8,7 @@ var crypto = require('crypto');
 var jsSHA = require("jssha");
 const User = require('../models/user');
 const Accomodation = require('../models/accommodation');
-
+ 
 
 router.post('/getAccHash', (req, res, next) => {
      var totalAmount = 0;
@@ -61,7 +61,6 @@ router.post('/getHash', (req, res, next) => {
                     totalAmount += 200
                }
                totalAmount += totalAmount * 0.04
-               console.log(totalAmount)
                var hashString = config.payment.key + '|' + req.body.txnId + '|' + totalAmount + '|' + req.body.productInfo + '|' + req.body.name + '|' + req.body.email + '|||||||||||' + config.payment.salt;
                var sha = new jsSHA('SHA-512', "TEXT");
                sha.update(hashString)
@@ -97,8 +96,10 @@ router.post('/success', (req, res, next) => {
                     user_id: user[0]._id,
                     amount: pd.amount
                });
-               Payment.find({transaction_id: pd.txnId}).exec((error, docs)=>{
-                    if(docs.length == 0){
+               Payment.find({
+                    transaction_id: pd.txnId
+               }).exec((error, docs) => {
+                    if (docs.length == 0) {
                          payment.save(function (err, newUser) {
                               if (err) {
                                    res.json({
@@ -114,7 +115,16 @@ router.post('/success', (req, res, next) => {
                                              cart_paid: true
                                         }
                                    }, (myError, myDocs) => {
-                                        res.redirect('/user/payment/success');
+                                        EventRegistration.updateMany({
+                                             user_id: user[0]._id
+                                        }, {
+                                             $set: {
+                                                  status: 'Paid'
+                                             }
+                                        }, () => {
+                                             res.redirect('/user/payment/success');
+                                        })
+
                                    })
                               }
                          })
@@ -123,7 +133,8 @@ router.post('/success', (req, res, next) => {
                               success: false,
                               msg: 'Already Paid. Ignore this message',
                               user: user,
-                              payment, payment,
+                              payment,
+                              payment,
                               pad: pd
                          })
                     }
@@ -164,13 +175,17 @@ router.post('/acc/success', (req, res, next) => {
                email_id: pd.email
           }, (err, user) => {
                if (err) throw err;
-               let acc ={
+               let acc = {
                     acc_transcation_id: pd.txnid,
                     acc_mode_of_payment: 'Online',
                     acc_payment_status: 'Paid',
                     acc_status: 'Paid'
                };
-               Accomodation.update({user_id: user[0]._id},{$set:acc}, (err, newUser) => {
+               Accomodation.update({
+                    user_id: user[0]._id
+               }, {
+                    $set: acc
+               }, (err, newUser) => {
                     if (err) {
                          res.json({
                               success: false,

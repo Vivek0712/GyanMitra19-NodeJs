@@ -9,7 +9,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 router.post('/authenticate', (req, res, next) => {
     const email_id = req.body.email_id;
     const password = req.body.password;
-    User.find({email_id:email_id,activated: true}, (err, user) => {
+    User.find({email_id:email_id}, (err, user) => {
         if (err) throw err;
         else if (user.length == 0) {
             return res.json({ success: false, email: false, msg: 'Register your account (or) Check your mail for activation ' + email_id });
