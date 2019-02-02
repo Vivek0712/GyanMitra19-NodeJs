@@ -8,7 +8,7 @@ const User = require('../models/user')
 const EventRegistration = require('../models/registration')
 const Team = require('../models/team')
 const TeamMember = require('../models/team_member')
-const Event = require('../models/event')
+const Payment = require('../models/payment')
 var Sync = require('sync');
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -401,6 +401,18 @@ router.get('/makeCartConfirmed',(req,res)=> {
                     //console.log("Success");
                 });
             }
+        })
+    })
+})
+
+
+// res.send() disabled. Activate this route and wait for some time and terminate this.
+router.get('/updatePaymentStatuses',(req, res)=>{
+    Payment.find({}).exec((err, docs)=>{
+        docs.forEach((doc)=>{
+            EventRegistration.findByIdAndUpdate(doc.user_id,{$set:{status: 'Paid'}},(findErr, findDocs)=>{
+                
+            })
         })
     })
 })
