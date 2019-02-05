@@ -20,6 +20,42 @@ function getCount(_id) {
     })
 }
 
+router.get('/getWorkshopStatus', (req, res) => {
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate('user_id').exec((err, docs) => {
+        var eventStatus = {};
+        var events = [];
+        docs = docs.filter((doc) => {
+            return doc.event_id.category_id.name == "Workshop"
+        })
+        docs.forEach((doc) => {
+            if (events.includes(doc.event_id.title)) {
+                if(doc.user_id.cart_paid){
+                    eventStatus[doc.event_id.title]["Paid"] += 1;
+                } else {
+                    eventStatus[doc.event_id.title]["Not Paid"] += 0;
+                }
+            } else {
+                var reportData = {};
+                if (doc.user_id.cart_paid) {
+                    reportData["Paid"] = 1;
+                    reportData["Not Paid"] = 0;
+                } else {
+                    reportData["Paid"] = 0;
+                    reportData["Not Paid"] = 1;
+                }
+                events.push(doc.event_id.title)
+                eventStatus[doc.event_id.title]=reportData;
+            }
+        })
+        res.json(eventStatus)
+    })
+})
+
 router.get('/getEventStatus', (req, res) => {
     EventRegistration.find({}).populate('event_id').populate({
         path: 'event_id',
@@ -49,7 +85,7 @@ router.get('/getEventStatus', (req, res) => {
                     reportData["Not Paid"] = 1;
                 }
                 events.push(doc.event_id.title)
-                eventStatus[doc.event_id.title].push(reportData);
+                eventStatus[doc.event_id.title]=reportData;
             }
         })
         res.json(eventStatus)
