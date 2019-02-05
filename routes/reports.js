@@ -20,62 +20,77 @@ function getCount(_id) {
     })
 }
 
-router.get('/getWorkshopCOunt', (req, res) => {
-    EventRegistration.aggregate([{
-        '$group': {
-            _id: {
-                event_id: '$event_id',
-            },
-            count: {
-                $sum: 1
-            }
+router.get('/getWorkshopCount', (req, res) => {
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
         }
-    },
-    {
-        $lookup: {
-            from: "events",
-            localField: "_id.event_id",
-            foreignField: "_id",
-            as: "event"
-        }
-    }
-    ]).then((docs) => {
+    }).populate('user_id').exec((err, docs) => {
+        var eventStatus = {};
+        var events = [];
         docs = docs.filter((doc) => {
-            if (doc.event[0].category_id == '5c327d04f352872964702c65') {
-                return true
+            return doc.event_id.category_id.name == "Workshop"
+        })
+        docs.forEach((doc) => {
+            if (events.includes(doc.event_id.title)) {
+                console.log(doc.user_id.cart_paid)
+                if(doc.user_id.cart_paid){
+                    eventStatus[doc.event_id.title]["Paid"] += 1;
+                } else {
+                    eventStatus[doc.event_id.title]["Not Paid"] += 1;
+                }
+            } else {
+                var reportData = {};
+                console.log(doc.user_id.cart_paid)
+                if (doc.user_id.cart_paid) {
+                    reportData["Paid"] = 1;
+                    reportData["Not Paid"] = 0;
+                } else {
+                    reportData["Paid"] = 0;
+                    reportData["Not Paid"] = 1;
+                }
+                events.push(doc.event_id.title)
+                eventStatus[doc.event_id.title]=reportData;
             }
         })
-        res.json(docs)
+        res.json(eventStatus)
     })
 })
 
-
 router.get('/getEventCount', (req, res) => {
-    EventRegistration.aggregate([{
-        '$group': {
-            _id: {
-                event_id: '$event_id',
-            },
-            count: {
-                $sum: 1
-            }
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
         }
-    },
-    {
-        $lookup: {
-            from: "events",
-            localField: "_id.event_id",
-            foreignField: "_id",
-            as: "event"
-        }
-    }
-    ]).then((docs) => {
+    }).populate('user_id').exec((err, docs) => {
+        var eventStatus = {};
+        var events = [];
         docs = docs.filter((doc) => {
-            if (doc.event[0].category_id == '5c327d06f352872964702c66') {
-                return true
+            return doc.event_id.category_id.name == "Event"
+        })
+        docs.forEach((doc) => {
+            if (events.includes(doc.event_id.title)) {
+                if(doc.user_id.cart_paid){
+                    eventStatus[doc.event_id.title]["Paid"] += 1;
+                } else {
+                    eventStatus[doc.event_id.title]["Not Paid"] += 1;
+                }
+            } else {
+                var reportData = {};
+                if (doc.user_id.cart_paid) {
+                    reportData["Paid"] = 1;
+                    reportData["Not Paid"] = 0;
+                } else {
+                    reportData["Paid"] = 0;
+                    reportData["Not Paid"] = 1;
+                }
+                events.push(doc.event_id.title)
+                eventStatus[doc.event_id.title]=reportData;
             }
         })
-        res.json(docs)
+        res.json(eventStatus)
     })
 })
 
