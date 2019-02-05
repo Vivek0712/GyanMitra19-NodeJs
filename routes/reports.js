@@ -34,6 +34,7 @@ router.get('/getWorkshopStatus', (req, res) => {
         })
         docs.forEach((doc) => {
             if (events.includes(doc.event_id.title)) {
+                console.log(doc.user_id.cart_paid)
                 if(doc.user_id.cart_paid){
                     eventStatus[doc.event_id.title]["Paid"] += 1;
                 } else {
@@ -94,23 +95,23 @@ router.get('/getEventStatus', (req, res) => {
 
 router.get('/getWorkshopCOunt', (req, res) => {
     EventRegistration.aggregate([{
-            '$group': {
-                _id: {
-                    event_id: '$event_id',
-                },
-                count: {
-                    $sum: 1
-                }
-            }
-        },
-        {
-            $lookup: {
-                from: "events",
-                localField: "_id.event_id",
-                foreignField: "_id",
-                as: "event"
+        '$group': {
+            _id: {
+                event_id: '$event_id',
+            },
+            count: {
+                $sum: 1
             }
         }
+    },
+    {
+        $lookup: {
+            from: "events",
+            localField: "_id.event_id",
+            foreignField: "_id",
+            as: "event"
+        }
+    }
     ]).then((docs) => {
         docs = docs.filter((doc) => {
             if (doc.event[0].category_id == '5c327d04f352872964702c65') {
@@ -124,23 +125,23 @@ router.get('/getWorkshopCOunt', (req, res) => {
 
 router.get('/getEventCount', (req, res) => {
     EventRegistration.aggregate([{
-            '$group': {
-                _id: {
-                    event_id: '$event_id',
-                },
-                count: {
-                    $sum: 1
-                }
-            }
-        },
-        {
-            $lookup: {
-                from: "events",
-                localField: "_id.event_id",
-                foreignField: "_id",
-                as: "event"
+        '$group': {
+            _id: {
+                event_id: '$event_id',
+            },
+            count: {
+                $sum: 1
             }
         }
+    },
+    {
+        $lookup: {
+            from: "events",
+            localField: "_id.event_id",
+            foreignField: "_id",
+            as: "event"
+        }
+    }
     ]).then((docs) => {
         docs = docs.filter((doc) => {
             if (doc.event[0].category_id == '5c327d06f352872964702c66') {
@@ -185,7 +186,7 @@ router.get('/removeInvalidRegistrationsWithInvalidUserID', (req, res) => {
                 console.log(doc._id)
                 EventRegistration.findOneAndDelete({
                     _id: doc._id
-                }, (err, newdoc) => {})
+                }, (err, newdoc) => { })
             }
         })
         res.send('Finished')
@@ -203,7 +204,7 @@ router.get('/removeInvalidTeams', (req, res) => {
                 console.log(doc._id)
                 Team.findOneAndDelete({
                     _id: doc._id
-                }, (err, newdoc) => {})
+                }, (err, newdoc) => { })
             }
         })
         res.send('Finished')
@@ -222,7 +223,7 @@ router.get('/removeInvalidTeamMembers', (req, res) => {
                 console.log(doc._id)
                 TeamMember.findOneAndDelete({
                     _id: doc._id
-                }, (err, newdoc) => {})
+                }, (err, newdoc) => { })
             }
         })
         res.send('Finished')
@@ -454,9 +455,7 @@ router.get('/totalWorkshopWiseCount', (req, res) => {
 })
 
 router.get('/getInvalidCollegeParticipants', (req, res) => {
-    User.find({
-        type: 'user'
-    }).populate('college_id').exec((err, docs) => {
+    User.find({ type: 'user' }).populate('college_id').exec((err, docs) => {
         docs = docs.filter((val) => {
             if (val.college_id == null) {
                 return true
@@ -470,11 +469,7 @@ router.get('/makeCartConfirmed', (req, res) => {
     User.find({}, (err, docs) => {
         docs.forEach((val) => {
             if (val.cart_confirmed == null) {
-                User.findByIdAndUpdate(val._id, {
-                    $set: {
-                        cart_confirmed: false
-                    }
-                }, () => {
+                User.findByIdAndUpdate(val._id, { $set: { cart_confirmed: false } }, () => {
                     //console.log("Success");
                 });
             }
@@ -487,15 +482,12 @@ router.get('/makeCartConfirmed', (req, res) => {
 router.get('/updatePaymentStatuses', (req, res) => {
     Payment.find({}).exec((err, docs) => {
         docs.forEach((doc) => {
-            EventRegistration.findByIdAndUpdate(doc.user_id, {
-                $set: {
-                    status: 'Paid'
-                }
-            }, (findErr, findDocs) => {
-
+            EventRegistration.update({ user_id: doc.user_id }, { $set: { status: 'Paid' } }, { new: true }, (findErr, findDocs) => {
+                //res.send("Hello");
             })
         })
     })
+    res.send("Hello");
 })
 
 
