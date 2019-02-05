@@ -409,7 +409,7 @@ router.get('/makeCartConfirmed', (req, res) => {
 router.get('/updatePaymentStatuses', (req, res) => {
     Payment.find({}).exec((err, docs) => {
         docs.forEach((doc) => {
-            EventRegistration.update({ user_id: doc.user_id }, { $set: { status: 'Paid' } }, { new: true }, (findErr, findDocs) => {
+            EventRegistration.updateMany({ user_id: doc.user_id }, { $set: { status: 'Paid' } }, { new: true }, (findErr, findDocs) => {
                 //res.send("Hello");
             })
         })

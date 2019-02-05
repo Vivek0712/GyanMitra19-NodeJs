@@ -3,6 +3,7 @@ const router = express.Router();
 const config = require('../config/env');
 const User = require('../models/user');
 const EventRegistration = require('../models/registration');
+const Payment = require('../models/payment');
 const PasswordToken = require('../models/passwordtoken')
 var ObjectId = require('mongoose').Types.ObjectId;
 var nodemailer = require("nodemailer");
@@ -32,24 +33,24 @@ router.post('/resetPassword', (req, res) => {
             } else {
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(req.body.password, salt, (err, hash) => {
-                        if(err){
+                        if (err) {
                             res.json({
                                 error: true,
                                 msg: 'An error Occured'
                             })
                         } else {
-                            PasswordToken.findByIdAndRemove(docs[0]._id, (removeError, removeDocs)=>{
-                                if(removeError){
+                            PasswordToken.findByIdAndRemove(docs[0]._id, (removeError, removeDocs) => {
+                                if (removeError) {
                                     res.json({
                                         error: true,
                                         msg: 'An error Occured'
                                     })
                                 } else {
                                     User.findByIdAndUpdate(docs[0].user_id, {
-                                        $set:{
+                                        $set: {
                                             password: hash
                                         }
-                                    }, (updateError, updateDocs)=>{
+                                    }, (updateError, updateDocs) => {
                                         res.json({
                                             error: false,
                                             msg: 'Your password has been successfully reset'
@@ -141,36 +142,36 @@ router.post('/uploadCartDDImage/:id', (req, res) => {
     User.updateMany({
         _id: req.params.id
     }, {
-        $set: {
-            cart_dd_image: 'Awaiting Confirmation'
-        }
-    }, (err, docs) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        }
-    })
+            $set: {
+                cart_dd_image: 'Awaiting Confirmation'
+            }
+        }, (err, docs) => {
+            if (err) {
+                res.json({
+                    error: true,
+                    msg: err
+                })
+            }
+        })
     EventRegistration.updateMany({
         user_id: req.params.id
     }, {
-        $set: {
-            status: 'Verifying Payment'
-        }
-    }, (err, docs) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            res.json({
-                error: false,
-                msg: 'Request successfully Sent!'
-            })
-        }
-    })
+            $set: {
+                status: 'Verifying Payment'
+            }
+        }, (err, docs) => {
+            if (err) {
+                res.json({
+                    error: true,
+                    msg: err
+                })
+            } else {
+                res.json({
+                    error: false,
+                    msg: 'Request successfully Sent!'
+                })
+            }
+        })
 })
 
 router.get('/participants/search', (req, res, next) => {
@@ -221,7 +222,7 @@ router.get('/', function (req, res, next) {
     }).skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
         if (!err) {
             res.send(docs);
-        } else {}
+        } else { }
 
     });
 });
@@ -265,6 +266,57 @@ router.post('/confirmPayment', function (req, res) {
     });
 });
 
+router.post('/confirmPaymentOffline', function (req, res) {
+
+    User.findByIdAndUpdate(req.body._id, {
+        confirmed: true
+    }, function (err, result) {
+        EventRegistration.find({
+            user_id: req.body._id
+        }).populate('event_id').populate({
+            path: 'event_id',
+            populate: {
+                path: 'category_id'
+            }
+        }).then((registrations) => {
+            var workshops = []
+            var events = []
+            var totalAmount = 0;
+            workshops = registrations.filter((workshop) => {
+                return workshop.event_id.category_id.name == 'Workshop'
+            })
+            events = registrations.filter((event) => {
+                return event.event_id.category_id.name == 'Event'
+            })
+            var totalAmount = 0;
+            workshops.forEach((workshop) => {
+                totalAmount += workshop.event_id.amount
+            })
+            if (events.length != 0) {
+                totalAmount += 200
+            }
+            let newPayment = new Payment({
+                mode_of_payment: "Offline",
+                status: "Paid",
+                user_id: req.body._id,
+                amount: totalAmount
+            })
+
+            EventRegistration.updateMany({ user_id: req.body._id }, { $set: { status: 'Paid' } });
+
+            newPayment.save((err, doc) => {
+                if (!err) {
+                    res.json({
+                        error: false,
+                        msg: 'Confirmed Payment Successfully'
+                    })
+                }
+            })
+
+        })
+    })
+});
+
 router.post('/confirmCart', function (req, res) {
     if (!ObjectId.isValid(req.body.user_id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.body.user_id}`);
@@ -289,22 +341,22 @@ router.post('/confirmCart', function (req, res) {
                     EventRegistration.updateMany({
                         user_id: req.body.user_id
                     }, {
-                        $set: {
-                            status: 'Payment pending'
-                        }
-                    }, (err) => {
-                        if (err) {
-                            res.json({
-                                error: true,
-                                msg: 'Unable to Confirm Cart. Try Again'
-                            })
-                        } else {
-                            res.json({
-                                error: false,
-                                msg: 'Your cart has been successfully confirmed'
-                            })
-                        }
-                    })
+                            $set: {
+                                status: 'Payment pending'
+                            }
+                        }, (err) => {
+                            if (err) {
+                                res.json({
+                                    error: true,
+                                    msg: 'Unable to Confirm Cart. Try Again'
+                                })
+                            } else {
+                                res.json({
+                                    error: false,
+                                    msg: 'Your cart has been successfully confirmed'
+                                })
+                            }
+                        })
                 }
             })
         }
@@ -338,7 +390,7 @@ router.get('/participants', function (req, res, next) {
         User.find({}).populate('college_id').skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
             if (!err) {
                 res.send(docs);
-            } else {}
+            } else { }
 
         });
     }
@@ -370,7 +422,7 @@ router.get('/participantsActivated', function (req, res, next) {
         User.find({}).populate('college_id').skip(config.pagination.perPage * (page - 1)).limit(config.pagination.perPage).exec((err, docs) => {
             if (!err) {
                 res.send(docs);
-            } else {}
+            } else { }
 
         });
     }
