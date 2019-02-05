@@ -316,26 +316,42 @@ router.post('/confirmCartPayment', (req, res) => {
 });
 
 router.post('/newWorkshopRegistration', (req, res) => {
-    let newRegistration = new Registration({
-        event_id: req.body.event_id,
-        user_id: req.body.user_id,
-        registration_type: req.body.registration_type,
-        participation: 'Absent',
-        status: 'Not Confirmed'
+
+    Event.find({
+        _id: req.body.event_id
+    }).exec((findError, findDocs) => {
+        Registration.countDocuments({
+            event_id: req.body.event_id
+        }, (countError, count) => {
+            if (count < findDocs[0].max_limit) {
+                let newRegistration = new Registration({
+                    event_id: req.body.event_id,
+                    user_id: req.body.user_id,
+                    registration_type: req.body.registration_type,
+                    participation: 'Absent',
+                    status: 'Not Confirmed'
+                })
+                newRegistration.save((err, doc) => {
+                    if (err) {
+                        res.json({
+                            error: true,
+                            msg: err
+                        })
+                    } else {
+                        res.json({
+                            error: false,
+                            msg: 'Successfully Registered!'
+                        })
+                    }
+                });
+            } else {
+                res.json({
+                    error: false,
+                    msg: 'Workshop Maximum Limit Reached!'
+                })
+            }
+        })
     })
-    newRegistration.save((err, doc) => {
-        if (err) {
-            res.json({
-                error: true,
-                msg: err
-            })
-        } else {
-            res.json({
-                error: false,
-                msg: 'Successfully Registered!'
-            })
-        }
-    });
 });
 
 
@@ -633,8 +649,7 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
 });
 
 router.get('/getGyanMates', function (req, res) {
-    User.find({
-    }, 'email_id', (err, collegeMates) => {
+    User.find({}, 'email_id', (err, collegeMates) => {
         if (err) {
             res.json({
                 error: true,
