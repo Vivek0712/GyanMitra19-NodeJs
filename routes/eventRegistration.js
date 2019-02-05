@@ -570,7 +570,6 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
                 User.find({
                     college_id: currentUser.college_id,
                     gender: currentUser.gender,
-                    activated: true,
                     cart_confirmed: false
                 }, ' email_id', (err, collegeMates) => {
                     if (err) {
@@ -633,7 +632,7 @@ router.get('/getCollegeMates/:event_id/:user_id', function (req, res, next) {
     });
 });
 
-router.get('/getGyanMates',function(req,res){
+router.get('/getGyanMates', function (req, res) {
     User.find({
     }, 'email_id', (err, collegeMates) => {
         if (err) {

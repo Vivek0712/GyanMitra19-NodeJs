@@ -247,4 +247,36 @@ router.get('/payedUsers', function (req, res) {
      })
 });
 
+router.get('/calculateTotalAmount/:id', (req, res) => {
+     EventRegistration.find({
+          user_id: req.params.id
+     }).populate('event_id').populate({
+          path: 'event_id',
+          populate: {
+               path: 'category_id'
+          }
+     }).then((registrations) => {
+          var workshops = []
+          var events = []
+          var totalAmount = 0;
+          workshops = registrations.filter((workshop) => {
+               return workshop.event_id.category_id.name == 'Workshop'
+          })
+          events = registrations.filter((event) => {
+               return event.event_id.category_id.name == 'Event'
+          })
+          var totalAmount = 0;
+          workshops.forEach((workshop) => {
+               totalAmount += workshop.event_id.amount
+          })
+          if (events.length != 0) {
+               totalAmount += 200
+          }
+          res.json({
+               amount: totalAmount
+          })
+     })
+});
+
+
 module.exports = router;
