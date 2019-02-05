@@ -20,6 +20,42 @@ function getCount(_id) {
     })
 }
 
+router.get('/getEventStatus', (req, res) => {
+    EventRegistration.find({}).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).populate('user_id').exec((err, docs) => {
+        var eventStatus = {};
+        var events = [];
+        docs = docs.filter((doc) => {
+            return doc.event_id.category_id.name == "Event"
+        })
+        docs.forEach((doc) => {
+            if (events.includes(doc.event_id.title)) {
+                if(doc.user_id.cart_paid){
+                    eventStatus[doc.event_id.title]["Paid"] += 1;
+                } else {
+                    eventStatus[doc.event_id.title]["Not Paid"] += 0;
+                }
+            } else {
+                var reportData = {};
+                if (doc.user_id.cart_paid) {
+                    reportData["Paid"] = 1;
+                    reportData["Not Paid"] = 0;
+                } else {
+                    reportData["Paid"] = 0;
+                    reportData["Not Paid"] = 1;
+                }
+                events.push(doc.event_id.title)
+                eventStatus[doc.event_id.title].push(reportData);
+            }
+        })
+        res.json(eventStatus)
+    })
+})
+
 router.get('/getWorkshopCOunt', (req, res) => {
     EventRegistration.aggregate([{
             '$group': {
@@ -159,39 +195,39 @@ router.get('/removeInvalidTeamMembers', (req, res) => {
 
 router.get('/registeredInWorkshops', (req, res) => {
     EventRegistration.find({}).populate('user_id').populate('event_id').populate({
-        path:'event_id',
-        populate:{
-            path:'category_id'
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
         }
     }).populate({
-        path:'event_id',
-        populate:{
-            path:'department_id'
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'college_id'
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'degree_id'
+        path: 'user_id',
+        populate: {
+            path: 'degree_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'year_id'
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
         }
-    }).exec((err, docs)=>{
-        docs = docs.filter((doc)=>{
+    }).exec((err, docs) => {
+        docs = docs.filter((doc) => {
             return doc.event_id.category_id.name == "Workshop"
         })
         docs = docs.sort();
         var names = []
         var responseArray = []
-        docs.forEach((doc)=>{
-            if(!names.includes(doc.user_id.name)){
+        docs.forEach((doc) => {
+            if (!names.includes(doc.user_id.name)) {
                 names.push(doc.user_id.name)
                 responseArray.push(doc)
             }
@@ -205,39 +241,39 @@ router.get('/registeredInWorkshops', (req, res) => {
 
 router.get('/registeredInEvents', (req, res) => {
     EventRegistration.find({}).populate('user_id').populate('event_id').populate({
-        path:'event_id',
-        populate:{
-            path:'category_id'
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
         }
     }).populate({
-        path:'event_id',
-        populate:{
-            path:'department_id'
+        path: 'event_id',
+        populate: {
+            path: 'department_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'college_id'
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'degree_id'
+        path: 'user_id',
+        populate: {
+            path: 'degree_id'
         }
     }).populate({
-        path:'user_id',
-        populate:{
-            path:'year_id'
+        path: 'user_id',
+        populate: {
+            path: 'year_id'
         }
-    }).exec((err, docs)=>{
-        docs = docs.filter((doc)=>{
+    }).exec((err, docs) => {
+        docs = docs.filter((doc) => {
             return doc.event_id.category_id.name == "Event"
         })
         docs = docs.sort();
         var names = []
         var responseArray = []
-        docs.forEach((doc)=>{
-            if(!names.includes(doc.user_id.name)){
+        docs.forEach((doc) => {
+            if (!names.includes(doc.user_id.name)) {
                 names.push(doc.user_id.name)
                 responseArray.push(doc)
             }
@@ -381,10 +417,12 @@ router.get('/totalWorkshopWiseCount', (req, res) => {
     })
 })
 
-router.get('/getInvalidCollegeParticipants',(req,res)=>{
-    User.find({type: 'user'}).populate('college_id').exec((err,docs)=> {
+router.get('/getInvalidCollegeParticipants', (req, res) => {
+    User.find({
+        type: 'user'
+    }).populate('college_id').exec((err, docs) => {
         docs = docs.filter((val) => {
-            if(val.college_id == null) {
+            if (val.college_id == null) {
                 return true
             }
         })
@@ -392,11 +430,15 @@ router.get('/getInvalidCollegeParticipants',(req,res)=>{
     })
 })
 
-router.get('/makeCartConfirmed',(req,res)=> {
-    User.find({},(err,docs)=> {
-        docs.forEach((val)=> {
-            if(val.cart_confirmed == null) {
-                User.findByIdAndUpdate(val._id,{$set: {cart_confirmed:false}},()=>{
+router.get('/makeCartConfirmed', (req, res) => {
+    User.find({}, (err, docs) => {
+        docs.forEach((val) => {
+            if (val.cart_confirmed == null) {
+                User.findByIdAndUpdate(val._id, {
+                    $set: {
+                        cart_confirmed: false
+                    }
+                }, () => {
                     //console.log("Success");
                 });
             }
@@ -406,11 +448,15 @@ router.get('/makeCartConfirmed',(req,res)=> {
 
 
 // res.send() disabled. Activate this route and wait for some time and terminate this.
-router.get('/updatePaymentStatuses',(req, res)=>{
-    Payment.find({}).exec((err, docs)=>{
-        docs.forEach((doc)=>{
-            EventRegistration.findByIdAndUpdate(doc.user_id,{$set:{status: 'Paid'}},(findErr, findDocs)=>{
-                
+router.get('/updatePaymentStatuses', (req, res) => {
+    Payment.find({}).exec((err, docs) => {
+        docs.forEach((doc) => {
+            EventRegistration.findByIdAndUpdate(doc.user_id, {
+                $set: {
+                    status: 'Paid'
+                }
+            }, (findErr, findDocs) => {
+
             })
         })
     })
@@ -420,7 +466,7 @@ router.get('/updatePaymentStatuses',(req, res)=>{
 // router.get('/activateUsers',(req,res)=>{
 //     User.find({activated:false},(err,docs)=>{
 //         docs.forEach((doc)=> {
-            
+
 //         })
 //     })
 // })
