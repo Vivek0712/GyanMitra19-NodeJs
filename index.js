@@ -92,9 +92,9 @@ app.use('/participationStatus', participationStatus);
 app.use('/eventRegistration', eventRegistration);
 app.use('/config', configurations);
 app.use('/payment', payment);
-app.use('/qr',qrcode);
-app.use('/report',report);
-app.use('/problem',problem)
+app.use('/qr', qrcode);
+app.use('/report', report);
+app.use('/problem', problem)
 
 //Routes Ends
 
@@ -118,11 +118,11 @@ else {
     app.get('/', (req, res) => {
         res.send('HELLO WORlD!');
     });
-    
+
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/index.html'));
     });
-    
+
     // Start Server
     app.listen(port, () => {
         console.log('Server started on port ' + port);
