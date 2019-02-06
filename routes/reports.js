@@ -58,6 +58,17 @@ router.get('/getWorkshopCount', (req, res) => {
     })
 })
 
+router.get('/getParticipatingColleges',(req, res)=>{
+    EventRegistration.find({}).populate('user_id').populate({
+        path:'user_id',
+        populate:{
+            path:'college_id'
+        }
+    }).exec((err, docs)=>{
+
+    })
+})
+
 router.get('/getDayCount', (req, res)=>{
     EventRegistration.find({}).populate('user_id').populate('event_id').populate({
         path:'event_id',
@@ -188,7 +199,6 @@ router.get('/removeInvalidTeams', (req, res) => {
     })
 })
 
-
 router.get('/removeInvalidTeamMembers', (req, res) => {
 
     // Removes Invalid Registrations without User ID
@@ -241,10 +251,7 @@ router.get('/registeredInWorkshops', (req, res) => {
         var names = []
         var responseArray = []
         docs.forEach((doc) => {
-            if (!names.includes(doc.user_id.name)) {
-                names.push(doc.user_id.name)
-                responseArray.push(doc)
-            }
+            responseArray.push(doc)
         })
         res.json({
             error: false,
