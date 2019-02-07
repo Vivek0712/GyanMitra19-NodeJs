@@ -45,7 +45,7 @@ const problem = require('./routes/problem')
 
 //Running Port
 const port = process.env.PORT || 3000;
-var production = true;
+var production = false;
 // CORS Middleware
 
 
