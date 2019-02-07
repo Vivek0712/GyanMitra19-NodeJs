@@ -243,6 +243,11 @@ router.get('/registeredInWorkshops', (req, res) => {
         populate: {
             path: 'year_id'
         }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
+        }
     }).exec((err, docs) => {
         docs = docs.filter((doc) => {
             return doc.event_id.category_id.name == "Workshop"
@@ -285,6 +290,11 @@ router.get('/registeredInEvents', (req, res) => {
         path: 'user_id',
         populate: {
             path: 'year_id'
+        }
+    }).populate({
+        path: 'user_id',
+        populate: {
+            path: 'department_id'
         }
     }).exec((err, docs) => {
         docs = docs.filter((doc) => {
