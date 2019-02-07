@@ -269,40 +269,34 @@ router.post('/confirmPayment', function (req, res) {
 router.post('/confirmPaymentOffline', function (req, res) {
 
     User.findByIdAndUpdate(req.body._id, {
-        confirmed: true
+        confirmed: true,
+        cart_paid: true
     }, function (err, result) {
-        EventRegistration.find({
-            user_id: req.body._id
-        }).populate('event_id').populate({
-            path: 'event_id',
-            populate: {
-                path: 'category_id'
+
+        EventRegistration.findById(req.body.event_id).populate('event_id').exec(function (err, docs) {
+            if (docs.event_id.category_id == "5c327d06f352872964702c66") {
+                EventRegistration.find({ user_id: req.body._id }).populate('event_id').exec((err, doc) => {
+                    if (doc != null) {
+                        doc.forEach((val) => {
+                            if (val.event_id.category_id == "5c327d06f352872964702c66") {
+                                EventRegistration.findByIdAndUpdate(val._id, { $set: { status: "Paid" } }, (err, doc) => { })
+                            }
+                        })
+                    }
+                })
             }
-        }).then((registrations) => {
-            var workshops = []
-            var events = []
-            var totalAmount = 0;
-            workshops = registrations.filter((workshop) => {
-                return workshop.event_id.category_id.name == 'Workshop'
-            })
-            events = registrations.filter((event) => {
-                return event.event_id.category_id.name == 'Event'
-            })
-            var totalAmount = 0;
-            workshops.forEach((workshop) => {
-                totalAmount += workshop.event_id.amount
-            })
-            if (events.length != 0) {
-                totalAmount += 200
+            else {
+                EventRegistration.findByIdAndUpdate(req.body.event_id, { $set: { status: "Paid" } }, { new: true }, (err, doc) => {
+                })
             }
             let newPayment = new Payment({
                 mode_of_payment: "Offline",
                 status: "Paid",
                 user_id: req.body._id,
-                amount: totalAmount
+                amount: docs.event_id.amount,
+                payment_status: "Paid",
+                transaction_id: result.gmID
             })
-
-            EventRegistration.updateMany({ user_id: req.body._id }, { $set: { status: 'Paid' } });
 
             newPayment.save((err, doc) => {
                 if (!err) {
@@ -312,10 +306,9 @@ router.post('/confirmPaymentOffline', function (req, res) {
                     })
                 }
             })
-
         })
     })
-});
+})
 
 router.post('/confirmCart', function (req, res) {
     if (!ObjectId.isValid(req.body.user_id))
