@@ -58,6 +58,52 @@ router.get('/getWorkshopCount', (req, res) => {
     })
 })
 
+router.get('/getParticipatingColleges',(req, res)=>{
+    EventRegistration.find({}).populate('user_id').populate({
+        path:'user_id',
+        populate:{
+            path:'college_id'
+        }
+    }).exec((err, docs)=>{
+
+    })
+})
+
+router.get('/getDayCount', (req, res)=>{
+    EventRegistration.find({}).populate('user_id').populate('event_id').populate({
+        path:'event_id',
+        populate:{
+            path:'category_id'
+        }
+    }).exec((err, docs)=>{
+        var eventStatus = {};
+        var events = [];
+        docs.forEach((doc) => {
+            if (events.includes(doc.user_id._id)) {
+                if(doc.event_id.category_id.name == "Workshop"){
+                    eventStatus[doc.user_id._id]["Workshop"] = true;
+                } else {
+                    eventStatus[doc.user_id._id]["Event"] = true;                   
+                }
+            } else {
+                var reportData = {};
+                reportData["Name"] = doc.user_id.name
+                reportData["Paid"] = doc.user_id.cart_paid
+                if(doc.event_id.category_id.name == "Workshop"){
+                    reportData["Workshop"] = true;
+                    reportData["Event"] = false;                   
+                } else {
+                    reportData["Workshop"] = false;
+                    reportData["Event"] = true;                
+                }
+                events.push(doc.user_id._id)
+                eventStatus[doc.user_id._id]=reportData;
+            }
+        })
+        res.json(eventStatus)
+    })
+})
+
 router.get('/getEventCount', (req, res) => {
     EventRegistration.find({}).populate('event_id').populate({
         path: 'event_id',
@@ -153,7 +199,6 @@ router.get('/removeInvalidTeams', (req, res) => {
     })
 })
 
-
 router.get('/removeInvalidTeamMembers', (req, res) => {
 
     // Removes Invalid Registrations without User ID
@@ -206,10 +251,7 @@ router.get('/registeredInWorkshops', (req, res) => {
         var names = []
         var responseArray = []
         docs.forEach((doc) => {
-            if (!names.includes(doc.user_id.name)) {
-                names.push(doc.user_id.name)
-                responseArray.push(doc)
-            }
+            responseArray.push(doc)
         })
         res.json({
             error: false,

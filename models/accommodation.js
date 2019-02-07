@@ -12,7 +12,8 @@ const AccommodationSchema = mongoose.Schema({
         type: String
     },
     acc_days:{
-        type: String
+        type: String,
+        required: true
     },
     acc_file_name: {
         type: String
