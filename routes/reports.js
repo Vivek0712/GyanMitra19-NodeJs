@@ -8,6 +8,7 @@ const User = require('../models/user')
 const EventRegistration = require('../models/registration')
 const Team = require('../models/team')
 const TeamMember = require('../models/team_member')
+const College = require('../models/college');
 const Payment = require('../models/payment')
 var Sync = require('sync');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -35,7 +36,7 @@ router.get('/getWorkshopCount', (req, res) => {
         docs.forEach((doc) => {
             if (events.includes(doc.event_id.title)) {
                 console.log(doc.user_id.cart_paid)
-                if(doc.user_id.cart_paid){
+                if (doc.user_id.cart_paid) {
                     eventStatus[doc.event_id.title]["Paid"] += 1;
                 } else {
                     eventStatus[doc.event_id.title]["Not Paid"] += 1;
@@ -51,53 +52,53 @@ router.get('/getWorkshopCount', (req, res) => {
                     reportData["Not Paid"] = 1;
                 }
                 events.push(doc.event_id.title)
-                eventStatus[doc.event_id.title]=reportData;
+                eventStatus[doc.event_id.title] = reportData;
             }
         })
         res.json(eventStatus)
     })
 })
 
-router.get('/getParticipatingColleges',(req, res)=>{
+router.get('/getParticipatingColleges', (req, res) => {
     EventRegistration.find({}).populate('user_id').populate({
-        path:'user_id',
-        populate:{
-            path:'college_id'
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
         }
-    }).exec((err, docs)=>{
+    }).exec((err, docs) => {
 
     })
 })
 
-router.get('/getDayCount', (req, res)=>{
+router.get('/getDayCount', (req, res) => {
     EventRegistration.find({}).populate('user_id').populate('event_id').populate({
-        path:'event_id',
-        populate:{
-            path:'category_id'
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
         }
-    }).exec((err, docs)=>{
+    }).exec((err, docs) => {
         var eventStatus = {};
         var events = [];
         docs.forEach((doc) => {
             if (events.includes(doc.user_id._id)) {
-                if(doc.event_id.category_id.name == "Workshop"){
+                if (doc.event_id.category_id.name == "Workshop") {
                     eventStatus[doc.user_id._id]["Workshop"] = true;
                 } else {
-                    eventStatus[doc.user_id._id]["Event"] = true;                   
+                    eventStatus[doc.user_id._id]["Event"] = true;
                 }
             } else {
                 var reportData = {};
                 reportData["Name"] = doc.user_id.name
                 reportData["Paid"] = doc.user_id.cart_paid
-                if(doc.event_id.category_id.name == "Workshop"){
+                if (doc.event_id.category_id.name == "Workshop") {
                     reportData["Workshop"] = true;
-                    reportData["Event"] = false;                   
+                    reportData["Event"] = false;
                 } else {
                     reportData["Workshop"] = false;
-                    reportData["Event"] = true;                
+                    reportData["Event"] = true;
                 }
                 events.push(doc.user_id._id)
-                eventStatus[doc.user_id._id]=reportData;
+                eventStatus[doc.user_id._id] = reportData;
             }
         })
         res.json(eventStatus)
@@ -118,7 +119,7 @@ router.get('/getEventCount', (req, res) => {
         })
         docs.forEach((doc) => {
             if (events.includes(doc.event_id.title)) {
-                if(doc.user_id.cart_paid){
+                if (doc.user_id.cart_paid) {
                     eventStatus[doc.event_id.title]["Paid"] += 1;
                 } else {
                     eventStatus[doc.event_id.title]["Not Paid"] += 1;
@@ -133,7 +134,7 @@ router.get('/getEventCount', (req, res) => {
                     reportData["Not Paid"] = 1;
                 }
                 events.push(doc.event_id.title)
-                eventStatus[doc.event_id.title]=reportData;
+                eventStatus[doc.event_id.title] = reportData;
             }
         })
         res.json(eventStatus)
@@ -492,5 +493,116 @@ router.get('/updatePaymentStatuses', (req, res) => {
 //         })
 //     })
 // })
+
+
+router.get('/totalCollegeCount', (req, res) => {
+    College.find({}, (err, docs) => {
+        let collegeCount = new Array();
+        docs.forEach((val) => {
+
+            User.count({ college_id: val._id }, (err, count) => {
+                User.count({ college_id: val._id, cart_paid: true }, (err, count1) => {
+
+                    let temp = {
+                        collegeName: val.name,
+                        count: count,
+                        paidCount: count1
+                    }
+                    if (temp.count != 0) {
+                        console.log(temp.collegeName + "," + temp.count + "," + temp.paidCount);
+                    }
+                });
+
+            })
+        })
+    });
+});
+
+router.get('/totalCollegeCountWithEvent', (req, res) => {
+    EventRegistration.find({}).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).exec((err, docs) => {
+        doc = docs.filter((doc) => {
+            return doc.event_id.category_id.name == "Event"
+        })
+        var ids = []
+        var colleges = []
+        var result = {}
+        docs.forEach((doc) => {
+            if (!ids.includes(doc.user_id._id)) {
+                ids.push(doc.user_id._id)
+                if (colleges.includes(doc.user_id.college_id.name)) {
+                    if (doc.user_id.cart_paid) {
+                        result[doc.user_id.college_id.name]["Paid"] += 1
+                        result[doc.user_id.college_id.name]["Total"] += 1
+                    } else {
+                        result[doc.user_id.college_id.name]["Not Paid"] += 1
+                        result[doc.user_id.college_id.name]["Total"] += 1
+                    }
+                } else {
+                    colleges.push(doc.user_id.college_id.name)
+                    if (doc.user_id.cart_paid) {
+                        result[doc.user_id.college_id.name] = { "Paid": 1, "Not Paid": 0, "Total": 1 }
+                    } else {
+                        result[doc.user_id.college_id.name] = { "Paid": 0, "Not Paid": 1, "Total": 1 }
+                    }
+                }
+            }
+        })
+        res.json(result)
+    })
+});
+
+
+router.get('/totalCollegeCountWithWorkshop', (req, res) => {
+    EventRegistration.find({}).populate('user_id').populate({
+        path: 'user_id',
+        populate: {
+            path: 'college_id'
+        }
+    }).populate('event_id').populate({
+        path: 'event_id',
+        populate: {
+            path: 'category_id'
+        }
+    }).exec((err, docs) => {
+        doc = docs.filter((doc) => {
+            return doc.event_id.category_id.name == "Workshop"
+        })
+        var ids = []
+        var colleges = []
+        var result = {}
+        docs.forEach((doc) => {
+            if (!ids.includes(doc.user_id._id)) {
+                ids.push(doc.user_id._id)
+                if (colleges.includes(doc.user_id.college_id.name)) {
+                    if (doc.user_id.cart_paid) {
+                        result[doc.user_id.college_id.name]["Paid"] += 1
+                        result[doc.user_id.college_id.name]["Total"] += 1
+                    } else {
+                        result[doc.user_id.college_id.name]["Not Paid"] += 1
+                        result[doc.user_id.college_id.name]["Total"] += 1
+                    }
+                } else {
+                    colleges.push(doc.user_id.college_id.name)
+                    if (doc.user_id.cart_paid) {
+                        result[doc.user_id.college_id.name] = { "Paid": 1, "Not Paid": 0, "Total": 1 }
+                    } else {
+                        result[doc.user_id.college_id.name] = { "Paid": 0, "Not Paid": 1, "Total": 1 }
+                    }
+                }
+            }
+        })
+        res.json(result)
+    })
+});
 
 module.exports = router;
