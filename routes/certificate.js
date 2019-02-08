@@ -68,11 +68,11 @@ router.get('/:event_id', function (req, res, next) {
     });
 });
 
-router.get('/find/:id', function (req, res, next) {
+router.get('/find/:user_id', function (req, res, next) {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
     Certificate.find({
-        user_id: req.params.id
+        user_id: req.params.user_id
     }, (err, doc) => {
         if (!err) {
             res.json({
@@ -103,29 +103,6 @@ router.get('/find/:id', function (req, res, next) {
     })
 })
 
-router.get('/update/:qr', (req, res) => {
-    var certificate = {
-        issued: true
-    };
-    Certificate.update(req.params.id, {
-        $set: certificate
-    }, {
-        new: true
-    }, (err, doc) => {
-        if (!err) {
-            res.json({
-                error: false,
-                msg: "Certificate Updated"
-            });
-        } else {
-            res.json({
-                error: true,
-                msg: "Failed To Update Certificate" + err
-            });
-        }
-    });
-})
-
 router.post('/writeCertificate/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
@@ -133,7 +110,9 @@ router.post('/writeCertificate/:id', (req, res) => {
     var certificate = {
         written: true
     };
-    Certificate.update(req.params.id, {
+    Certificate.update({
+        user_id: req.params.id
+    }, {
         $set: certificate
     }, {
         new: true
@@ -152,29 +131,32 @@ router.post('/writeCertificate/:id', (req, res) => {
     });
 })
 
-router.post('/issueCertificate/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-
+router.post('/issueCertificate', (req, res) => {
     var certificate = {
         issued: true
     };
-    Certificate.update(req.params.id, {
-        $set: certificate
-    }, {
-        new: true
-    }, (err, doc) => {
-        if (!err) {
-            res.json({
-                error: false,
-                msg: "Certificate Issued"
-            });
-        } else {
-            res.json({
-                error: true,
-                msg: "Failed To Update Certificate" + err
-            });
-        }
-    });
+    qr.find({
+        qr_code: req.body.qr_code
+    }).exec((err, docs) => {
+        Certificate.update({
+            user_id: docs[0].user_id
+        }, {
+            $set: certificate
+        }, {
+            new: true
+        }, (err, doc) => {
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: "Certificate Issued"
+                });
+            } else {
+                res.json({
+                    error: true,
+                    msg: "Failed To Update Certificate" + err
+                });
+            }
+        });
+    })
 });
 module.exports = router;
