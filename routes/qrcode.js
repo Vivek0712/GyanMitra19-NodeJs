@@ -73,65 +73,6 @@ router.post('/markPresent', (req, res) => {
                                                         } else {
                                                             res.json({
                                                                 error: false,
-                                                                msg: 'Certificate should be written. Check Certificate Table'
-                                                            });
-                                                        }
-                                                    });
-                                                } else {
-                                                    res.json({
-                                                        error: false,
-                                                        msg: 'Certificate need not be written.'
-                                                    })
-                                                }
-                                            })
-                                        }
-                                    })
-                                }
-                            })
-
-                        } else {
-                            EventRegistration.updateOne({
-                                user_id: docs[0].user_id,
-                                event_id: req.body.event_id
-                            }, {
-                                $set: {
-                                    participation: 'Participated'
-                                }
-                            }).exec((updateError, updateRes) => {
-                                if (updateError) {
-                                    res.json({
-                                        error: true,
-                                        msg: updateError
-                                    })
-                                } else {
-                                    qr.find({
-                                        qr_code : req.body.qr_code
-                                    }).exec((qrError, qrDocs) => {
-                                        if (qrDocs.length == 0) {
-                                            res.json({
-                                                error: false,
-                                                msg: 'QR Code is not Registered'
-                                            })
-                                        } else {
-                                            Certificate.find({
-                                                user_id: qrDocs[0].user_id
-                                            }).exec((certErr, certDoc) => {
-                                                if (certDoc.length == 0) {
-                                                    let newCertificate = new Certificate({
-                                                        user_id: docs[0].user_id,
-                                                        event_id: req.body.event_id,
-                                                        written: false,
-                                                        issued: false
-                                                    });
-                                                    newCertificate.save((err, doc) => {
-                                                        if (err) {
-                                                            res.json({
-                                                                error: true,
-                                                                msg: 'Failed to Create Certficate Entry' + err
-                                                            });
-                                                        } else {
-                                                            res.json({
-                                                                error: false,
                                                                 msg: 'Registration Successfull. Certificate should be written. Check Certificate Table'
                                                             });
                                                         }
@@ -147,6 +88,65 @@ router.post('/markPresent', (req, res) => {
                                     })
                                 }
                             })
+
+                        } else {
+                            EventRegistration.updateOne({
+                                user_id: docs[0].user_id,
+                                event_id: req.body.event_id
+                            }, {
+                                    $set: {
+                                        participation: 'Participated'
+                                    }
+                                }).exec((updateError, updateRes) => {
+                                    if (updateError) {
+                                        res.json({
+                                            error: true,
+                                            msg: updateError
+                                        })
+                                    } else {
+                                        qr.find({
+                                            qr_code: req.body.qr_code
+                                        }).exec((qrError, qrDocs) => {
+                                            if (qrDocs.length == 0) {
+                                                res.json({
+                                                    error: false,
+                                                    msg: 'QR Code is not Registered'
+                                                })
+                                            } else {
+                                                Certificate.find({
+                                                    user_id: qrDocs[0].user_id
+                                                }).exec((certErr, certDoc) => {
+                                                    if (certDoc.length == 0) {
+                                                        let newCertificate = new Certificate({
+                                                            user_id: docs[0].user_id,
+                                                            event_id: req.body.event_id,
+                                                            written: false,
+                                                            issued: false
+                                                        });
+                                                        newCertificate.save((err, doc) => {
+                                                            if (err) {
+                                                                res.json({
+                                                                    error: true,
+                                                                    msg: 'Failed to Create Certficate Entry' + err
+                                                                });
+                                                            } else {
+                                                                res.json({
+                                                                    error: false,
+                                                                    msg: 'Registration Successfull. Certificate should be written. Check Certificate Table'
+                                                                });
+                                                            }
+                                                        });
+                                                    } else {
+                                                        res.json({
+                                                            error: false,
+                                                            msg: 'Registration Successfull. Certificate need not be written.'
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
                         }
                     }
                 })
@@ -213,7 +213,6 @@ router.post('/createMap', (req, res) => {
                 })
             }
         }
-
     })
 })
 
