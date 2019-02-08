@@ -103,32 +103,28 @@ router.get('/find/:user_id', function (req, res, next) {
     })
 })
 
-router.post('/writeCertificate/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
-
+router.post('/writeCertificate/', (req, res) => {
     var certificate = {
         written: true
     };
-    Certificate.update({
-        user_id: req.params.id
-    }, {
-        $set: certificate
-    }, {
-        new: true
-    }, (err, doc) => {
-        if (!err) {
-            res.json({
-                error: false,
-                msg: "Certificate Written"
-            });
-        } else {
-            res.json({
-                error: true,
-                msg: "Failed To Update Certificate" + err
-            });
-        }
-    });
+    Certificate.findByIdAndUpdate(
+        req.body.id, {
+            $set: certificate
+        }, {
+            new: true
+        }, (err, doc) => {
+            if (!err) {
+                res.json({
+                    error: false,
+                    msg: "Certificate Written"
+                });
+            } else {
+                res.json({
+                    error: true,
+                    msg: "Failed To Update Certificate" + err
+                });
+            }
+        });
 })
 
 router.post('/issueCertificate', (req, res) => {
