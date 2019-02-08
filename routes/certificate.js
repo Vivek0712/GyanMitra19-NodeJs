@@ -58,7 +58,10 @@ router.get('/:event_id', function (req, res, next) {
         }
     }).exec((err, docs) => {
         if (!err) {
-            res.send(docs);
+            res.json({
+                err: false,
+                msg: docs
+            });
         } else {
             res.json({
                 error: true,
@@ -103,7 +106,7 @@ router.get('/find/:user_id', function (req, res, next) {
     })
 })
 
-router.post('/writeCertificate/', (req, res) => {
+router.post('/writeCertificate', (req, res) => {
     var certificate = {
         written: true
     };
