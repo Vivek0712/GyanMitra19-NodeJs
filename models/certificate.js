@@ -17,6 +17,10 @@ const CertificateSchema = mongoose.Schema({
     issued: {
         type: Boolean,
         required: true
+    },
+    written:{
+        type: Boolean,
+        required: true
     }
 });
 const Certificate = module.exports = mongoose.model('Certificate', CertificateSchema);
