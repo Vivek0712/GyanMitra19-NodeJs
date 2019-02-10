@@ -4,6 +4,7 @@ const Registration = require('../models/registration');
 const User = require('../models/user');
 const Event = require('../models/event');
 const Team = require('../models/team');
+const Certificate = require('../models/certificate');
 const TeamMember = require('../models/team_member');
 const College = require('../models/college');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -392,6 +393,69 @@ router.post('/newEventRegistration', (req, res) => {
     })
 });
 
+router.post('/newEventRegistrationOffline', (req, res) => {
+    if (!ObjectId.isValid(req.body.user_id))
+        return res.status(400).send(`NO RECORD WITH GIVEN ID : ${req.params.id}`);
+    Registration.countDocuments({
+        user_id: req.body.user_id,
+        event_id: req.body.event_id
+    }).then((count) => {
+        if (count != 0) {
+            res.json({
+                error: true,
+                msg: 'Already Registered!'
+            })
+        } else {
+            let newRegistration = new Registration({
+                user_id: req.body.user_id,
+                event_id: req.body.event_id,
+                registration_type: req.body.registration_type,
+                participation: req.body.participation,
+                status: req.body.status
+            })
+            newRegistration.save((err, doc) => {
+                if (err) {
+                    res.json({
+                        error: true,
+                        msg: err
+                    })
+                } else {
+                    Certificate.find({
+                        user_id: req.body.user_id
+                    }).exec((certErr, certDoc) => {
+                        if (certDoc.length == 0) {
+                            let newCertificate = new Certificate({
+                                user_id: req.body.user_id,
+                                event_id: req.body.event_id,
+                                written: false,
+                                issued: false
+                            });
+                            newCertificate.save((err, doc) => {
+                                if (err) {
+                                    res.json({
+                                        error: true,
+                                        msg: 'Failed to Create Certficate Entry' + err
+                                    });
+                                } else {
+                                    res.json({
+                                        error: false,
+                                        msg: 'Registration Successfull,Certificate should be written. Check Certificate Table'
+                                    });
+                                }
+                            });
+                        } else {
+                            res.json({
+                                error: false,
+                                msg: 'Registration successfull,Certificate need not be written.'
+                            })
+                        }
+                    })
+                }
+            });
+        }
+    })
+});
+
 router.post('/delete/:id', (req, res) => {
     Registration.findByIdAndRemove(req.params.id, (err, docs) => {
         if (err) {
@@ -421,10 +485,38 @@ router.post('/update/:id', (req, res) => {
             new: true
         }, (err, docs) => {
             if (!err) {
-                res.json({
-                    error: false,
-                    msg: "Attendance updated"
-                });
+                Registration.findById(req.params.id, (err, doc) => {
+                    Certificate.find({
+                        user_id: doc.user_id
+                    }).exec((certErr, certDoc) => {
+                        if (certDoc.length == 0) {
+                            let newCertificate = new Certificate({
+                                user_id: doc.user_id,
+                                event_id: doc.event_id,
+                                written: false,
+                                issued: false
+                            });
+                            newCertificate.save((err, doc) => {
+                                if (err) {
+                                    res.json({
+                                        error: true,
+                                        msg: 'Failed to Create Certficate Entry' + err
+                                    });
+                                } else {
+                                    res.json({
+                                        error: false,
+                                        msg: 'Attendance Updated ,Certificate should be written. Check Certificate Table'
+                                    });
+                                }
+                            });
+                        } else {
+                            res.json({
+                                error: false,
+                                msg: 'Attendance updated ,Certificate need not be written.'
+                            })
+                        }
+                    })
+                })
             } else {
                 res.json({
                     error: true,
