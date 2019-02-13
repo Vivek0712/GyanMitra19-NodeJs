@@ -10,6 +10,14 @@ const EventRegistration = require('../models/registration')
 const qr = require('../models/qrcode')
 const Certificate = require('../models/certificate')
 
+router.get('/getRegisteredParticipants', (req, res) => {
+    qr.find({}).populate('user_id').exec((err, docs) => {
+        docs.forEach((val) => {
+            console.log(val.user_id.name + "," + val.user_id.email_id + "," + val.user_id.mobile_number);
+        })
+    })
+})
+
 router.post('/markPresent', (req, res) => {
     QRCode.find({
         qr_code: req.body.qr_code
