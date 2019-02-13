@@ -1,2 +1,0 @@
-Server started on port \\.\pipe\0f041d38-b1b8-4a7b-a1e2-db6fc28bbf9b
-Connected to Database mongodb://gyanmitra19:GyanMitra19@127.0.0.1:27017/gyanmitra19
